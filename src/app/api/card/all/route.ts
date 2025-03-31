@@ -35,10 +35,10 @@ export async function GET ( req: Request) {
     let sortdata:CardType[] = [];
     switch (sort) {
         case "Price: Low to High":
-            sortdata = [...dataprice].sort((a, b) => a.price - b.price);
+            sortdata = [...dataprice].sort((a, b) => a.price * (1 - a.sale) - b.price * (1 - b.sale));
             break;
         case "Price: High to Low":
-            sortdata = [...dataprice].sort((a, b) => b.price - a.price);
+            sortdata = [...dataprice].sort((a, b) => b.price * (1 - b.sale) - a.price * (1 - a.sale));
             break;
         case "Newest Arrivals":
             sortdata = [...dataprice].sort((a, b) => b.isnew ? 1 : -1);
