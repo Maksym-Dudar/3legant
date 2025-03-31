@@ -1,16 +1,19 @@
-import { BannerGrid } from "@/components/sections/BannerGrid";
-import { ProductCarousel } from "@/components/sections/ProductCarousel";
-import { SimplyUnique } from "@/components/sections/SimplyUnique";
-import Slider from "@/components/sections/Slider";
+import { ShopByCategory } from "@/components/sections/mainPage/ShopByCategory";
+import { NewArrivalsSection } from "@/components/sections/mainPage/NewArrivalsSection";
+import { HeroSection } from "@/components/sections/mainPage/HeroSection";
+import { DiscountBanner } from "@/components/sections/mainPage/DiscountBanner";
+import { LatestArticles } from "@/components/sections/mainPage/LatestArticles";
+
 import MainLayouts from "@/components/layouts/MainLayouts";
 
 export default function Home() {
 	return (
 		<MainLayouts>
-			<Slider />
-			<SimplyUnique />
-			<BannerGrid />
-			<ProductCarousel />
+			<HeroSection />
+			<ShopByCategory />
+			<NewArrivalsSection />
+			<DiscountBanner />
+			<LatestArticles />
 		</MainLayouts>
 	);
 }

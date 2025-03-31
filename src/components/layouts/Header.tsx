@@ -13,11 +13,11 @@ export default function Header() {
 		<PadingXLayouts>
 			<div className='w-full flex justify-between py-4'>
 				<Link key={LINk_HOME.href} href={LINk_HOME.href} className=''>
-						<h1 className='text-2xl'>3legant</h1>
+						<h1 className='text-24 font-500'>3legant</h1>
 				</Link>
 				<nav className='flex gap-x-10 items-center '>
 					{LINK_NAV_ITEMS.map((item) => (
-						<Link key={item.href} href={item.href} className={pathname !== item.href ? 'hover:scale-105 text-notactive': ''}>
+						<Link key={item.href} href={item.href} className={pathname !== item.href ? 'hover:scale-105 text-notactive text-14 font-500 leading-170': ''}>
 							{item.label}
 						</Link>
 					))}
@@ -46,7 +46,7 @@ export default function Header() {
 							height={24}
 							alt='acount'
 						/>
-						<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-bag'>
+						<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
 							3
 						</div>
 					</button>

@@ -4,8 +4,9 @@ import { useEffect, useRef, type PropsWithChildren } from "react";
 import Image from "next/image";
 import { ButtonAction } from "../ButtonAction";
 import gsap from "gsap";
+import { CardType } from "@/types/card";
 
-export function CarouselCard({
+export function Card({
 	id,
 	title,
 	price,
@@ -13,21 +14,13 @@ export function CarouselCard({
 	sale,
 	isnew,
 	img,
-}: PropsWithChildren<{
-	id: number;
-	title: string;
-	price: number;
-	nstar: number;
-	sale: number;
-	isnew: boolean;
-	img: string;
-}>) {
+}: CardType) {
 	const buttonRef = useRef<HTMLDivElement>(null);
 	const buttonFavoriteRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		gsap.set(buttonFavoriteRef.current, { y: -60 });
-		gsap.set(buttonRef.current, { y: 60 });
+		gsap.set(buttonFavoriteRef.current, { y: -70 });
+		gsap.set(buttonRef.current, { y: 70 });
 	}, []);
 
 	const handleMouseEnter = () => {
@@ -36,23 +29,23 @@ export function CarouselCard({
 			duration: 0.3,
 			ease: "power2.out",
 		});
-		gsap.to(buttonRef.current, { 
-			y: 0, 
-			duration: 0.3, 
-			ease: "power2.out" 
+		gsap.to(buttonRef.current, {
+			y: 0,
+			duration: 0.3,
+			ease: "power2.out",
 		});
 	};
 
 	const handleMouseLeave = () => {
 		gsap.to(buttonFavoriteRef.current, {
-			y: -60,
+			y: -70,
 			duration: 0.3,
 			ease: "power2.out",
 		});
 		gsap.to(buttonRef.current, {
-			y: 60, 
-			duration: 0.3, 
-			ease: "power2.out" 
+			y: 70,
+			duration: 0.3,
+			ease: "power2.out",
 		});
 	};
 
@@ -73,14 +66,14 @@ export function CarouselCard({
 				<div className='flex absolute p-5'>
 					<div className='flex flex-col gap-2'>
 						{isnew ? (
-							<div className='font-inter text-xl px-3 py-1 bg-white rounded'>
+							<div className='font-inter px-3 py-1 bg-white rounded text-16 font-700 leading-100'>
 								NEW
 							</div>
 						) : (
 							<></>
 						)}
 						{sale ? (
-							<div className='font-inter text-xl px-3 py-1 bg-green rounded text-center text-white'>
+							<div className='font-inter px-3 py-1 bg-green rounded text-center text-white text-16 font-700 leading-100'>
 								-{sale * 100}%
 							</div>
 						) : (
@@ -118,10 +111,10 @@ export function CarouselCard({
 							<span key={i}>★</span>
 						))}
 				</div>
-				<h5 className=''>{title}</h5>
+				<h5 className='text-16 font-600 leading-160'>{title}</h5>
 				<div className='flex gap-3'>
-					<p className=''>${priceWithSale}</p>
-					<s className='text-notactive'>${price.toFixed(2)}</s>
+					<p className='text-14 font-600 leading-160'>${priceWithSale}</p>
+					<s className='text-notactive text-14 font-400 leading-160'>${price.toFixed(2)}</s>
 				</div>
 			</div>
 		</div>

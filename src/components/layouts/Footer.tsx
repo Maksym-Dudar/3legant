@@ -11,11 +11,11 @@ export default function Footer() {
 					<div className='flex justify-between items-center'>
 						<section className='flex gap-8 items-center'>
 							<Link key={LINk_HOME.href} href={LINk_HOME.href} className=''>
-								<h1 className='font-poppins text-2xl text-white border-r-1 pr-8 border-footerline'>
+								<h1 className='text-24 font-500 leading-100 text-white border-r-1 pr-8 border-footerline'>
 									3legant
 								</h1>
 							</Link>
-							<p className='text-fotergray text-footersublogo'>
+							<p className='text-fotergray text-14 font-400 leading-160'>
 								Gift & Decoration Store
 							</p>
 						</section>
@@ -24,7 +24,7 @@ export default function Footer() {
 								<Link
 									key={item.href}
 									href={item.href}
-									className='text-descriptionwhite font-inter'
+									className='text-14 font-400 leading-160 font-inter text-white'
 								>
 									{item.label}
 								</Link>
@@ -33,14 +33,14 @@ export default function Footer() {
 					</div>
 					<div className='flex justify-between py-4 border-t-1 border-footerline'>
 						<section className='flex gap-7 items-center'>
-							<p className='text-fotergray text-footer'>
+							<p className='text-fotergray text-12 font-400 leading-170'>
 								Copyright © 2023 3legant. All rights reserved
 							</p>
 							{LINK_FOOTER.map((item) => (
 								<Link
 									key={item.href}
 									href={item.href}
-									className='text-descriptionwhite font-medium'
+									className='text-12 font-600 leading-170 font-medium text-white'
 								>
 									{item.label}
 								</Link>
