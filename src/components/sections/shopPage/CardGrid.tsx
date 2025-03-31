@@ -35,6 +35,7 @@ export function CardGrid() {
 		"200-300",
 		"300-400",
 		"400-500",
+
 	];
 
 	// sorting data
