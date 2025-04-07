@@ -14,7 +14,7 @@ export function ShopByCategory() {
 								Phosfluor escently engage worldwide with web-enabled technology.
 							</p>
 						</div>
-						<ButtonPage title="Shop Now" href="/shop"/>
+						<ButtonPage title="Shop Now" href="/shop?categorie=Living room"/>
 					</div>
 					<Image
 						src='/images/main_page/banner_grid/sofa.png'
@@ -29,7 +29,7 @@ export function ShopByCategory() {
 					<div className='relative'>
 						<div className='absolute bottom-0 left-0 py-10 px-8'>
 							<h4 className='text-34 font-500 leading-110 text-black'>Bedroom</h4>
-							<ButtonPage title="Shop Now" href="/shop"/>
+							<ButtonPage title="Shop Now" href="/shop?categorie=Bedroom"/>
 						</div>
 						<Image
 							src='/images/main_page/banner_grid/badside_tabel.png'
@@ -43,7 +43,7 @@ export function ShopByCategory() {
 					<div className='relative'>
 						<div className='absolute bottom-0 left-0 py-10 px-8'>
 							<h4 className='text-34 font-500 leading-110 text-black'>Kitchen</h4>
-							<ButtonPage title="Shop Now" href="/shop"/>
+							<ButtonPage title="Shop Now" href="/shop?categorie=Kitchen"/>
 						</div>
 
 						<Image

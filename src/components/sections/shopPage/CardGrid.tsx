@@ -5,8 +5,15 @@ import { Card } from "../../ui/cards/Card";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import PadingXLayouts from "@/components/layouts/PadingXLayouts";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { url } from "inspector";
 
 export function CardGrid() {
+	const searchParams = useSearchParams();
+	const initialCategorie = searchParams.get("categorie") || "All";
+	const pathname = usePathname();
+	const router = useRouter();
+
 	// card data
 	const [data, setData] = useState<CardType[]>([]);
 	const [page, setPage] = useState<number>(1);
@@ -14,7 +21,7 @@ export function CardGrid() {
 	const [isEnd, setIsEnd] = useState<boolean>(false);
 
 	// filter data CATEGORIE
-	const [categorie, setCategorie] = useState<string>("All");
+	const [categorie, setCategorie] = useState<string>(initialCategorie);
 	const [isOpenCategorie, setIsOpenCategorie] = useState(false);
 	const categories = [
 		"All",
@@ -35,7 +42,6 @@ export function CardGrid() {
 		"200-300",
 		"300-400",
 		"400-500",
-
 	];
 
 	// sorting data
@@ -67,6 +73,9 @@ export function CardGrid() {
 			.finally(() => {
 				setLoading(false);
 				setFetchSort(!fetchsort);
+				const params = new URLSearchParams(searchParams);
+				params.set("categorie", categorie);
+				router.push(`${pathname}?${params.toString()}`, { scroll: false });
 			});
 	}, [categorie, price, page, sort]);
 
@@ -85,7 +94,7 @@ export function CardGrid() {
 							>
 								<h6>{categorie}</h6>
 								<Image
-									src='/images/shop_page/hero_banner/arrow.svg'
+									src='/images/ui/arrow.svg'
 									alt='Arrow'
 									width={5}
 									height={8}
@@ -128,7 +137,7 @@ export function CardGrid() {
 							>
 								<h6>{price}</h6>
 								<Image
-									src='/images/shop_page/hero_banner/arrow.svg'
+									src='/images/ui/arrow.svg'
 									alt='Arrow'
 									width={5}
 									height={8}
@@ -172,7 +181,7 @@ export function CardGrid() {
 						>
 							<h6>{sort}</h6>
 							<Image
-								src='/images/shop_page/hero_banner/arrow.svg'
+								src='/images/ui/arrow.svg'
 								alt='Arrow'
 								width={5}
 								height={8}
