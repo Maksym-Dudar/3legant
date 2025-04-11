@@ -98,19 +98,25 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 					</div>
 				</div>
 				<div className='flex flex-col gap-1'>
-					<div className=''>
+					<div className='flex gap-1/2'>
 						{Array(nstar)
 							.fill(0)
 							.map((_, i) => (
-								<span key={i}>★</span>
+								<Image
+									src='/images/ui/star.svg'
+									alt='Star'
+									width={16}
+									height={16}
+									key={i}
+								/>
 							))}
 					</div>
 					<h5 className='text-16 font-600 leading-160'>{title}</h5>
 					<div className='flex gap-3'>
 						<p className='text-14 font-600 leading-160'>${priceWithSale}</p>
-						<s className='text-notactive text-14 font-400 leading-160'>
+						{sale ? <s className='text-notactive text-14 font-400 leading-160'>
 							${price.toFixed(2)}
-						</s>
+						</s> : <></>}
 					</div>
 				</div>
 			</Link>

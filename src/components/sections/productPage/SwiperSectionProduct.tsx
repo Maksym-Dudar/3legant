@@ -10,11 +10,29 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 export function SwiperSectionProduct({
-	images,
-}: PropsWithChildren<{ images: string[] }>) {
+	images, isnew, sale,
+}: PropsWithChildren<{ images: string[], isnew:boolean, sale:number }>) {
 	const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 	return (
-		<div className='w-1/2 flex flex-col'>
+		<div className='w-1/2 flex flex-col gap-6'>
+			<div className='flex absolute p-5 z-50'>
+				<div className='flex flex-col gap-2'>
+					{isnew ? (
+						<div className='font-inter px-5 py-2 bg-white rounded text-16 font-700 leading-100'>
+							NEW
+						</div>
+					) : (
+						<></>
+					)}
+					{sale ? (
+						<div className='font-inter px-5 py-2 bg-green rounded text-center text-white text-16 font-700 leading-100'>
+							-{sale * 100}%
+						</div>
+					) : (
+						<></>
+					)}
+				</div>
+			</div>
 			<Swiper
 				modules={[Navigation, Thumbs, Autoplay]}
 				navigation={{

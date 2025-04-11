@@ -3,6 +3,7 @@ import { ReviewType } from "./review";
 export interface cardPageType {
     id: number;
     name: string;
+    description: string;
     price: number;
     sale: number;
     nstar: number;
@@ -12,5 +13,5 @@ export interface cardPageType {
     colors: string[];
     category: string;
     images: string[];
-    reviews: ReviewType[];
+    reviews: number;
   }
