@@ -2,9 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
 	content: [
-		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/features/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/entities/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/processes/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/shared/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/widgets/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
 		extend: {
@@ -18,6 +21,7 @@ export default {
 				action: "var(--action)",
 				fotergray: "var(--fotergray)",
 				footerline: "#6C7275",
+				green: "#38CB89",
 			},
 			spacing: {
 				"1/2": "0.125rem",
@@ -38,6 +42,7 @@ export default {
 			green: "#38CB89",
 			grey: "#F3F5F7",
 			emailform: "#F2F4F5",
+			red: "#F5B8B2",
 		},
 		borderWidth: {
 			"1": "0.1rem",
@@ -102,7 +107,7 @@ export default {
 			"700": "700",
 		},
 		fontFamily: {
-			inter: ["Inter"],
+			inter: ["Inter", "sans-serif"],
 		},
 	},
 	plugins: [],

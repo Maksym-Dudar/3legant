@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { CardType } from "@/types/card";
+import { CardType } from "@/app/types/card";
 
 const card: CardType[] = [
     {id: 1, title: 'Loveseat Sofa', price: 400, nstar: 4, sale: 0.5, isnew: true, categorie:'Living Room', img: `/request/images/card/id1.png` },
