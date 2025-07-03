@@ -9,6 +9,7 @@ import { TabsProductSection } from "./TabsProductSection";
 import { cardPageType } from "@/app/types/cardPage";
 import PadingXLayouts from "@/app/layout/PadingXLayouts";
 import { ButtonAction, OfferTime, PathPage } from "@/shared";
+import { addProductToBag } from "@/features/bag/model";
 
 
 export function HeroProductSection() {
@@ -203,7 +204,7 @@ export function HeroProductSection() {
 								<ButtonAction
 									text='Add to Cart'
 									pading={3}
-									onClick={() => console.log("Add to Cart")}
+									onClick={() => {}}
 								/>
 							</section>
 							<section className='flex gap-14 pt-6'>

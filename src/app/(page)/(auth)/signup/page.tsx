@@ -1,15 +1,71 @@
 "use client";
 
 import Image from "next/image";
-import Form from "next/form";
 import Link from "next/link";
 import { ButtonAction } from "@/shared";
 import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
 
 export default function SignInForm() {
-    const [password, setPassword] = useState<string>("");
-	const [confirmPassword, setConfirmPassword] = useState<boolean>(true);
-	const [agreeWithPolict, setAgreeWithPolict] = useState<boolean>(false);
+	const router = useRouter();
+
+	const [formData, setFormData] = useState<{
+		name: string;
+		email: string;
+		password: string;
+		confirmPassword: string;
+		agreeWithPolicy: boolean;
+	}>({
+		name: "",
+		email: "",
+		password: "",
+		confirmPassword: "",
+		agreeWithPolicy: false,
+	});
+
+	function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+		setFormData((prev) => ({
+			...prev,
+			[e.target.name]:
+				e.target.type === "checkbox" ? e.target.checked : e.target.value,
+		}));
+	}
+
+	async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+
+		e.preventDefault();
+		if (!formData.agreeWithPolicy) {
+			alert("agreeWithPolicy");
+			return;
+		}
+		if (formData.password != formData.confirmPassword) {
+			alert("confirmPassword");
+			return;
+		}
+
+		try {
+			const res = await axios.post("https://localhost:4200/signup", 
+				{
+					name: formData.name,
+					email: formData.email,
+					password: formData.password,
+				},{
+				headers: {
+					"Content-Type": "application/json",
+				},
+				withCredentials: true,
+			});
+			if (res.status == 201) {
+				router.push("https://localhost:3000/home");
+				console.log(res);
+			}
+
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 	return (
 		<section className='flex overflow-hidden'>
@@ -24,20 +80,10 @@ export default function SignInForm() {
 					style={{ objectFit: "cover" }}
 				/>
 			</aside>
-			<Form
-				action={"https://localhost:4200/signup"}
-				scroll={false}
+			<form
+				action=''
+				onSubmit={onSubmit}
 				className='flex flex-col justify-center pl-20 max-w-[500px] w-full gap-8'
-				onSubmit={(e) => {
-					if (!confirmPassword) {
-						e.preventDefault();
-						alert("Form is invalid: check password confirmation");
-					}
-					if (!agreeWithPolict) {
-						e.preventDefault();
-						alert("Form is invalid: policy agreement.");
-					}
-				}}
 			>
 				<div className='flex flex-col gap-6'>
 					<h3 className='text-40 font-500 leading-110'>Sign up</h3>
@@ -56,6 +102,7 @@ export default function SignInForm() {
 						placeholder='Your name'
 						className='text-16 font-400 leading-160 font-inter pb-1 border-b-1 w-full'
 						required
+						onChange={onChange}
 					/>
 					<input
 						type='email'
@@ -64,6 +111,7 @@ export default function SignInForm() {
 						className='text-16 font-400 leading-160 font-inter pb-1 border-b-1 w-full'
 						required
 						autoComplete='email'
+						onChange={onChange}
 					/>
 					<input
 						type='password'
@@ -72,23 +120,25 @@ export default function SignInForm() {
 						className='w-full text-16 font-400 leading-160 font-inter pb-1 border-b-1'
 						required
 						minLength={8}
-						onChange={(e) => setPassword(e.target.value)}
+						onChange={onChange}
 					/>
 					<input
 						type='password'
+						name='confirmPassword'
 						placeholder='Confirm Password'
 						className={`w-full text-16 font-400 leading-160 font-inter pb-1 border-b-1 ${
-							!confirmPassword ? "bg-red" : ""
+							formData.confirmPassword != formData.password ? "bg-red" : ""
 						}`}
 						required
 						minLength={8}
-						onBlur={(e) => setConfirmPassword(e.target.value === password)}
+						onChange={onChange}
 					/>
 					<div className='flex gap-3'>
 						<input
 							type='checkbox'
 							className='w-5 h-5'
-							onChange={(e) => setAgreeWithPolict(e.target.checked)}
+							name='agreeWithPolicy'
+							onChange={onChange}
 						/>
 						<p className='text-16 font-400 leading-160 font-inter '>
 							I agree with <b>Privacy Policy</b> and <b>Terms of Use</b>
@@ -103,7 +153,7 @@ export default function SignInForm() {
 						onClick={() => {}}
 					/>
 				</div>
-			</Form>
+			</form>
 		</section>
 	);
 }

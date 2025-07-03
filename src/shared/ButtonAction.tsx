@@ -6,7 +6,7 @@ export default function ButtonAction({
 	pading,
 	onClick,
 }: PropsWithChildren<{
-	type?: "button" | "submit" | "reset";
+	type?: "button" | "submit";
 	text: string;
 	pading: number;
 	onClick: () => void;
@@ -17,7 +17,7 @@ export default function ButtonAction({
 			onClick={onClick}
 			className={`flex w-full text-white text-center font-inter bg-black ${
 				"py-" + pading
-			}  rounded-lg justify-center text-16 font-500 leading-180`}
+			} rounded-lg justify-center text-16 font-500 leading-180`}
 		>
 			{text}
 		</button>

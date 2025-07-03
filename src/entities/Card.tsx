@@ -6,10 +6,14 @@ import gsap from "gsap";
 import { CardType } from "@/app/types/card";
 import Link from "next/link";
 import { ButtonAction } from "@/shared";
+import { addProductToBag } from "@/features/bag/model";
 
-export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
+export function Card(props: CardType) {
+
 	const buttonRef = useRef<HTMLDivElement>(null);
 	const buttonFavoriteRef = useRef<HTMLDivElement>(null);
+
+	const { id, title, price, nstar, sale, isnew, img }: CardType  = props;
 
 	useEffect(() => {
 		gsap.set(buttonFavoriteRef.current, { y: -70 });
@@ -92,9 +96,7 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 						<ButtonAction
 							text={"Add to cart"}
 							pading={2}
-							onClick={function (): void {
-								console.log("Goooooddddddd");
-							}}
+							onClick={() => addProductToBag(props)}
 						/>
 					</div>
 				</div>
@@ -115,9 +117,13 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 					<h5 className='text-16 font-600 leading-160'>{title}</h5>
 					<div className='flex gap-3'>
 						<p className='text-14 font-600 leading-160'>${priceWithSale}</p>
-						{sale ? <s className='text-notactive text-14 font-400 leading-160'>
-							${price.toFixed(2)}
-						</s> : <></>}
+						{sale ? (
+							<s className='text-notactive text-14 font-400 leading-160'>
+								${price.toFixed(2)}
+							</s>
+						) : (
+							<></>
+						)}
 					</div>
 				</div>
 			</Link>

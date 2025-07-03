@@ -1,11 +1,56 @@
-"use client"
+"use client";
 
 import Image from "next/image";
-import Form from 'next/form'
 import Link from "next/link";
 import { ButtonAction } from "@/shared";
+import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
 
 export default function SignInForm() {
+	const router = useRouter();
+
+	const [formData, setFormData] = useState<{
+		email: string;
+		password: string;
+
+	}>({
+		email: "",
+		password: "",
+	});
+
+	function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+		setFormData((prev) => ({
+			...prev,
+			[e.target.name]: e.target.value,
+		}));
+	}
+
+	async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+		try {
+			const res = await axios.post(
+				"https://localhost:4200/signin",
+				{
+					email: formData.email,
+					password: formData.password,
+				},
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+					withCredentials: true,
+				}
+			);
+			if (res.status == 201) {
+				router.push("https://localhost:3000/home");
+				console.log(res);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
 	return (
 		<section className='flex overflow-hidden'>
 			<aside className='relative w-1/2 h-screen'>
@@ -19,9 +64,9 @@ export default function SignInForm() {
 					style={{ objectFit: "cover" }}
 				/>
 			</aside>
-			<Form
-				action={"https:localhost4200"}
-				scroll={false}
+			<form
+				action={""}
+				onSubmit={onSubmit}
 				className='flex flex-col justify-center pl-20 max-w-[500px] w-full gap-8'
 			>
 				<div className='flex flex-col gap-6'>
@@ -42,6 +87,7 @@ export default function SignInForm() {
 						className='text-16 font-400 leading-160 font-inter pb-1 border-b-1 w-full'
 						required
 						autoComplete='email'
+						onChange={onChange}
 					/>
 					<input
 						type='password'
@@ -49,9 +95,13 @@ export default function SignInForm() {
 						placeholder='Password'
 						className='w-full text-16 font-400 leading-160 font-inter pb-1 border-b-1'
 						required
-						minLength={9}
+						minLength={8}
+						onChange={onChange}
 					/>
 				</div>
+				<Link href={"/forgot-password"} className='text-16 font-600 leading-160 font-inter'>
+					Forgot password?
+				</Link>
 				<div className='flex w-full'>
 					<ButtonAction
 						type='submit'
@@ -60,7 +110,7 @@ export default function SignInForm() {
 						onClick={() => {}}
 					/>
 				</div>
-			</Form>
+			</form>
 		</section>
 	);
 }
