@@ -1,10 +1,11 @@
 'use client'
 
-import { LINK_ACOUNT, LINk_HOME, LINK_NAV_ITEMS } from "@/app/constants/links";
+import { LINK_ACOUNT, LINk_HOME, LINK_NAV_ITEMS } from "@/shared/constants/links";
 import Link from "next/link";
 import Image from "next/image";
-import PadingXLayouts from "../../app/layout/PadingXLayouts";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 import { usePathname } from "next/navigation";
+import { useBag } from "@/shared/store/bag/store";
 
 export default function Header() {
 	const pathname = usePathname();
@@ -47,7 +48,7 @@ export default function Header() {
 							alt='acount'
 						/>
 						<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
-							3
+							{useBag.length}
 						</div>
 					</button>
 				</div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ButtonAction } from "@/shared";
+import { ButtonAction } from "@/shared/ui";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";

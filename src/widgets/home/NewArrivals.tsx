@@ -3,10 +3,10 @@
 import "swiper/css";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { CardType } from "@/app/types/card";
-import PadingXLayouts from "@/app/layout/PadingXLayouts";
-import { ButtonPage } from "@/shared";
-import { Card } from "@/entities/Card";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
+import { ButtonPage } from "@/shared/ui";
+import { Card } from "@/entities/product/Card";
+import { CardType } from "@/entities/product/card";
 
 export default function NewArrivals() {
 	const [data, setData] = useState<CardType[]>();

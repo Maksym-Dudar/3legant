@@ -1,6 +1,6 @@
-import PadingXLayouts from "@/app/layout/PadingXLayouts";
-import { AdvantagesCard } from "@/entities/AdvantagesCard";
-import { PATH_TO_ADVANTAGES } from "@/app/constants/path";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
+import { AdvantagesCard } from "@/entities/advantages/AdvantagesCard";
+import { PATH_TO_ADVANTAGES } from "@/shared/constants/path";
 
 export default function Advantages() {
 	return (

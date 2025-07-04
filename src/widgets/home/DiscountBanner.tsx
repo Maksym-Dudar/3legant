@@ -1,4 +1,4 @@
-import { ButtonPage } from "@/shared";
+import { ButtonPage } from "@/shared/ui";
 import Image from "next/image";
 
 export default function DiscountBanner() {

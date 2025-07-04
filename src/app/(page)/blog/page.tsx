@@ -1,9 +1,9 @@
-import MainLayouts from "@/app/layout/HeaderFooterLayouts";
+import MainLayouts from "@/shared/layout/HeaderFooterLayouts";
 
 export default function Blog() {
 	return (
-  <MainLayouts>
-	<div></div>
-  </MainLayouts>
-  );
+		<MainLayouts>
+			<div></div>
+		</MainLayouts>
+	);
 }

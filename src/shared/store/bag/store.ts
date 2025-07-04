@@ -1,19 +1,6 @@
-import { CardBagType } from "@/app/types/card";
 import { create, StateCreator } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-
-interface IInitialBagStore {
-	bag: Map<number, CardBagType>;
-}
-
-interface IAction {
-	addProduct: (item: CardBagType) => void;
-	removeProduct: (item: CardBagType) => void;
-	decreaseItemCount: (item: CardBagType) => void;
-	crear: () => void;
-}
-
-interface IBagStore extends IInitialBagStore, IAction {}
+import { IBagStore, IInitialBagStore, ItemBagType } from "./types";
 
 const initialBagStore: IInitialBagStore = {
 	bag: new Map(),
@@ -72,11 +59,11 @@ const useBagStore = create<IBagStore>()(
 );
 
 export const useBag = () => useBagStore((state) => state.bag);
-export const addProductToBagStore = (item: CardBagType) =>
+export const addProductToBagStore = (item: ItemBagType) =>
 	useBagStore.getState().addProduct(item);
-export const removeProductToBagStore = (item: CardBagType) =>
-    useBagStore.getState().removeProduct(item);
-export const decreaseItemCountBagStore = (item: CardBagType) =>
+export const removeProductToBagStore = (item: ItemBagType) =>
+	useBagStore.getState().removeProduct(item);
+export const decreaseItemCountBagStore = (item: ItemBagType) =>
 	useBagStore.getState().decreaseItemCount(item);
 export const crearBagStore = () =>
     useBagStore.getState().crear();

@@ -1,6 +1,6 @@
 
-import PadingXLayouts from "@/app/layout/PadingXLayouts";
-import { ButtonPage } from "@/shared";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
+import { ButtonPage } from "@/shared/ui";
 import Image from "next/image";
 
 export default function ShopByCategory() {

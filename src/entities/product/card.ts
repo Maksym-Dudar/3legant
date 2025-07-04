@@ -8,12 +8,3 @@ export interface CardType {
 	img: string;
 	categorie: string;
 }
-
-export interface CardBagType {
-	id: number;
-	title: string;
-	price: number;
-	img: string;
-	color: string;
-	quantity: number;
-}

@@ -1,7 +1,7 @@
-import { PATH_TO_ARTICLES } from "@/app/constants/path";
-import PadingXLayouts from "@/app/layout/PadingXLayouts";
-import { ArticlesCard } from "@/entities/ArticlesCard";
-import { ButtonPage } from "@/shared";
+import { PATH_TO_ARTICLES } from "@/shared/constants/path";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
+import { ArticlesCard } from "@/entities/articles/ArticlesCard";
+import { ButtonPage } from "@/shared/ui";
 
 
 export default function LatestArticles() {

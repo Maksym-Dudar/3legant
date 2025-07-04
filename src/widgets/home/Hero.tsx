@@ -6,8 +6,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
-import { PATH_TO_SLIDER } from "@/app/constants/path";
-import PadingXLayouts from "@/app/layout/PadingXLayouts";
+import { PATH_TO_SLIDER } from "@/shared/constants/path";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 
 export default function Hero() {
 	return (

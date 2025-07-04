@@ -6,10 +6,9 @@ import { SwiperSectionProduct } from "./SwiperSectionProduct";
 import Image from "next/image";
 import Link from "next/link";
 import { TabsProductSection } from "./TabsProductSection";
-import { cardPageType } from "@/app/types/cardPage";
-import PadingXLayouts from "@/app/layout/PadingXLayouts";
-import { ButtonAction, OfferTime, PathPage } from "@/shared";
-import { addProductToBag } from "@/features/bag/model";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
+import { ButtonAction, OfferTime, PathPage } from "@/shared/ui";
+import { cardPageType } from "./types";
 
 
 export function HeroProductSection() {

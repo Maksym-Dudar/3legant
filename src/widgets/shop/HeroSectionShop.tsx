@@ -1,5 +1,5 @@
 import PadingXLayouts from "@/app/layout/PadingXLayouts";
-import { PathPage } from "@/shared";
+import { PathPage } from "@/shared/ui";
 import Image from "next/image";
 
 export function HeroSectionShop() {

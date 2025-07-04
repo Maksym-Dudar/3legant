@@ -2,7 +2,6 @@
 
 import { useParams } from "next/navigation";
 import { PropsWithChildren, useEffect, useState } from "react";
-
 import Image from "next/image";
 
 

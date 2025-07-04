@@ -1,11 +1,11 @@
 "use client";
 
-import { CardType } from "@/app/types/card";
+import { CardType } from "@/entities/product/card";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import PadingXLayouts from "@/app/layout/PadingXLayouts";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Card } from "@/entities/Card";
+import { Card } from "@/entities/product/Card";
 
 export function CardGrid() {
 	const searchParams = useSearchParams();

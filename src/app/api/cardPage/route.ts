@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { cardPageType } from "@/app/types/cardPage";
+import { cardPageType } from "@/widgets/product/types";
 
 const productsData: cardPageType[] = [
 	{

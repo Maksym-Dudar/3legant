@@ -1,4 +1,4 @@
-import { CommentType } from "@/app/types/commentProduct";
+import { CommentType } from "@/shared/types/commentProduct";
 import { NextResponse } from "next/server";
 const comentData: CommentType[] = [
 	{

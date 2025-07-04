@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 import Image from "next/image";
-import { ButtonPage } from "@/shared";
+import { ButtonPage } from "@/shared/ui";
 export function ArticlesCard({
 	title,
 	path,

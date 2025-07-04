@@ -14,6 +14,7 @@ export interface cardPageType {
 	category: string;
 	reviews: number;
 }
+
 interface sameColorCard {
 	color: string;
 	href: string;

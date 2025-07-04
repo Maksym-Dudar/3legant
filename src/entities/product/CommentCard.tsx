@@ -1,7 +1,6 @@
 import type { PropsWithChildren } from "react";
-import { CommentType } from "@/app/types/commentProduct";
-
 import Image from "next/image";
+import { CommentType } from "@/shared/types/comment";
 
 export function CommentCard({
 	props,

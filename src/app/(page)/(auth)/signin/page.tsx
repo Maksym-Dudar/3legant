@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ButtonAction } from "@/shared";
+import { ButtonAction } from "@/shared/ui";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";

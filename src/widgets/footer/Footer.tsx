@@ -1,7 +1,7 @@
-import { LINK_FOOTER, LINk_HOME, LINK_NAV_ITEMS } from "@/app/constants/links";
-import PadingXLayouts from "../../app/layout/PadingXLayouts";
+import { LINK_FOOTER, LINk_HOME, LINK_NAV_ITEMS } from "@/shared/constants/links";
 import Link from "next/link";
 import Image from "next/image";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 
 export default function Footer() {
 	return (

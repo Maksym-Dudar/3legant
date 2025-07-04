@@ -1,7 +1,7 @@
 "use client";
 
 import { CommentCard } from "@/entities/product/CommentCard";
-import { CommentType } from "@/app/types/commentProduct";
+import { CommentType } from "@/shared/types/comment";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
