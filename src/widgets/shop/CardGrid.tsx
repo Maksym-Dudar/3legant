@@ -3,9 +3,9 @@
 import { CardType } from "@/entities/product/card";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import PadingXLayouts from "@/app/layout/PadingXLayouts";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Card } from "@/entities/product/Card";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 
 export function CardGrid() {
 	const searchParams = useSearchParams();

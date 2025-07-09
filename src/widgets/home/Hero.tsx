@@ -55,14 +55,17 @@ export default function Hero() {
 				</Swiper>
 				<div className='flex justify-between items-center gap-32 py-8 pr-8'>
 					<h2 className='text-72 font-500 leading-110 max-w break-words'>
-						Simply Unique Simply Better
+						Simply Unique
+						<br />
+						Simply Better
 					</h2>
 					<div className='text-descriptiongrey font-inter'>
 						<span className='text-black text-16 font-600 leading-160'>
 							3legant
 						</span>{" "}
-						is a gift & decorations store based in HCMC, Vietnam. Est since
-						2019.
+						is a gift & decorations store based in HCMC,
+						<br />
+						Vietnam. Est since 2019.
 					</div>
 				</div>
 			</div>

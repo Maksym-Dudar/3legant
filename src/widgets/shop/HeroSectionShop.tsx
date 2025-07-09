@@ -1,4 +1,4 @@
-import PadingXLayouts from "@/app/layout/PadingXLayouts";
+import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 import { PathPage } from "@/shared/ui";
 import Image from "next/image";
 

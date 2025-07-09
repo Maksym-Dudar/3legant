@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type PropsWithChildren } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import Link from "next/link";
