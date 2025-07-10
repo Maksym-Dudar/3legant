@@ -35,8 +35,6 @@ const bagStore: StateCreator<IBagStore> = (set) => ({
 				if (newQty > 0) {
 					item.quantity = newQty;
 					bag.set(item.id, item);
-				} else {
-					bag.delete(item.id);
 				}
 			}
 			return { ...state, bag };
@@ -70,6 +68,8 @@ const useBagStore = create<IBagStore>()(
 
 export const useBag = () => useBagStore((state) => state.bag);
 export const countProductInBagStore = () => useBagStore((state) => state.bag.size);
+export const quantityProductInBagStore = (id: number) =>
+	useBagStore.getState().bag.get(id)?.quantity;
 export const addProductToBagStore = (item: ItemBagType) =>
 	useBagStore.getState().addProduct(item);
 export const removeProductToBagStore = (item: ItemBagType) =>

@@ -42,7 +42,7 @@ const bagCard:BagCard[] = [
 export async function GET(req: Request) {
 	const { searchParams } = new URL(req.url);
 	const ids = searchParams.get("id");
-	if (!ids) return NextResponse.json({ data: {} });
+	if (!ids) return NextResponse.json({ data: [] });
 
 	let idsArray: string[] = [];
 

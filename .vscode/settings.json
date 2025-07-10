@@ -16,7 +16,7 @@
     "workbench.remoteIndicator.showExtensionRecommendations": true,
     "workbench.startupEditor": "none",
     "workbench.activityBar.iconClickBehavior": "toggle",
-    "workbench.activityBar.location": "top",
+    "workbench.activityBar.location": "default",
     "workbench.colorTheme": "Default Dark Modern",
     "workbench.preferredDarkColorTheme": "Abyss",
     "workbench.preferredHighContrastLightColorTheme": "Visual Studio Dark - C++",

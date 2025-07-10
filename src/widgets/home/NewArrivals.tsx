@@ -34,7 +34,6 @@ export default function NewArrivals() {
 						ref={scrollRef}
 						className='flex gap-6 overflow-x-scroll custom-scrollbar scroll-smooth pb-12'
 					>
-						{" "}
 						{data?.map((item) => (
 							<div key={item.id} className='flex-shrink-0 w-72'>
 								<Card {...item} />

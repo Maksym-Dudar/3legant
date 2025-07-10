@@ -42,6 +42,7 @@ export default {
 			white: "#fff",
 			green: "#38CB89",
 			grey: "#F3F5F7",
+			darkgray: "#6C7275",
 			emailform: "#F2F4F5",
 			red: "#F5B8B2",
 		},
