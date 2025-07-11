@@ -2,7 +2,6 @@ import { PropsWithChildren } from "react";
 import Image from "next/image";
 import {
 	addProductToBagStore,
-	countProductInBagStore,
 	decreaseItemCountBagStore,
 	quantityProductInBagStore,
 	removeProductToBagStore,
@@ -54,7 +53,7 @@ export function CardProductInBag({
 					</div>
 				</div>
 			</section>
-			<section className="flex flex-col items-end">
+			<section className="flex flex-col items-end gap-2">
 				<p className='text-16 font-500 leading-160'>${price}</p>
 				<ButtonClose onClick={() => removeProductToBagStore(item)}/>
 			</section>

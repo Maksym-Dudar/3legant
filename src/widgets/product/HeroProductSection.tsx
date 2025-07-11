@@ -9,6 +9,7 @@ import { TabsProductSection } from "./TabsProductSection";
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 import { ButtonAction, OfferTime, PathPage } from "@/shared/ui";
 import { cardPageType } from "./types";
+import { addProductToBagStore, quantityProductInBagStore } from "@/shared/store/bag/store";
 
 
 export function HeroProductSection() {
@@ -39,8 +40,7 @@ export function HeroProductSection() {
 	let diftime = data?.offerExpiresIn
 		? new Date(new Date(data?.offerExpiresIn).getTime() - time.getTime())
 		: undefined;
-	console.log(diftime);
-
+	const itemToAddBag = data?.id !== undefined ? { id: data.id, quantity: counter } : undefined;
 	return (
 		<PadingXLayouts>
 			{data && (
@@ -194,7 +194,6 @@ export function HeroProductSection() {
 											height={24}
 										/>
 										<p className='font-inter text-16 font-500 leading-180'>
-											{" "}
 											Wishlist
 										</p>
 									</button>
@@ -203,7 +202,11 @@ export function HeroProductSection() {
 								<ButtonAction
 									text='Add to Cart'
 									pading={3}
-									onClick={() => {}}
+									onClick={() => {
+										if (itemToAddBag) {
+											addProductToBagStore(itemToAddBag);
+										}
+									}}
 								/>
 							</section>
 							<section className='flex gap-14 pt-6'>
@@ -218,7 +221,11 @@ export function HeroProductSection() {
 							</section>
 						</div>
 					</div>
-					<TabsProductSection images={data?.images[0]} title={data?.name} subtitel={data?.description} />
+					<TabsProductSection
+						images={data?.images[0]}
+						title={data?.name}
+						subtitel={data?.description}
+					/>
 				</div>
 			)}
 		</PadingXLayouts>

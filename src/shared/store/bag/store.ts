@@ -13,7 +13,8 @@ const bagStore: StateCreator<IBagStore> = (set) => ({
 			const bag = new Map(state.bag);
 			const existing = bag.get(item.id);
 			if (existing) {
-				item.quantity = existing.quantity + 1;
+				const quantity = existing.quantity + 1;
+				if (item.quantity < quantity) item.quantity = quantity
 			}
 			bag.set(item.id, item);
 			return { ...state, bag };
