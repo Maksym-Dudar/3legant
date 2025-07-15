@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { OverlayProvider } from "@/shared/context/OverlayContext";
 
 export const metadata: Metadata = {
 	title: "3Legant",
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
 };
 
 const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-poppins",
+	subsets: ["latin"],
+	weight: ["400", "500", "600"],
+	variable: "--font-poppins",
 });
 
 export default function RootLayout({
@@ -19,7 +20,9 @@ export default function RootLayout({
 	return (
 		<html lang='en' className={poppins.variable}>
 			<body>
-				{children}
+				<OverlayProvider>
+					{children}
+				</OverlayProvider>
 			</body>
 		</html>
 	);

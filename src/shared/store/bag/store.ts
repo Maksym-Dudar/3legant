@@ -23,7 +23,10 @@ const bagStore: StateCreator<IBagStore> = (set) => ({
 	removeProduct: (item) => {
 		set((state) => {
 			const bag = new Map(state.bag);
-			bag.delete(item.id);
+			const existing = bag.get(item.id);
+			if (existing) {
+				bag.delete(item.id);
+			}
 			return { ...state, bag };
 		});
 	},
@@ -67,8 +70,8 @@ const useBagStore = create<IBagStore>()(
 	})
 );
 
-export const useBag = () => useBagStore((state) => state.bag);
-export const countProductInBagStore = () => useBagStore((state) => state.bag.size);
+export const useBagStored = () => useBagStore((state) => state.bag);
+export const useCountProductInBagStore = () => useBagStore((state) => state.bag.size);
 export const quantityProductInBagStore = (id: number) =>
 	useBagStore.getState().bag.get(id)?.quantity;
 export const addProductToBagStore = (item: ItemBagType) =>

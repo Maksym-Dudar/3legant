@@ -55,7 +55,7 @@ export function CardProductInBag({
 			</section>
 			<section className="flex flex-col items-end gap-2">
 				<p className='text-16 font-500 leading-160'>${price}</p>
-				<ButtonClose onClick={() => removeProductToBagStore(item)}/>
+				<ButtonClose size={5} onClick={() => removeProductToBagStore(item)}/>
 			</section>
 		</div>
 	);

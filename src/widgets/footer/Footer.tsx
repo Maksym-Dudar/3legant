@@ -15,7 +15,7 @@ export default function Footer() {
 									3legant
 								</h1>
 							</Link>
-							<p className='text-fotergray text-14 font-400 leading-160'>
+							<p className='text-whitegray text-14 font-400 leading-160'>
 								Gift & Decoration Store
 							</p>
 						</section>
@@ -33,7 +33,7 @@ export default function Footer() {
 					</div>
 					<div className='flex justify-between py-4 border-t-1 border-footerline'>
 						<section className='flex gap-7 items-center'>
-							<p className='text-fotergray text-12 font-400 leading-170'>
+							<p className='text-whitegray text-12 font-400 leading-170'>
 								Copyright © 2023 3legant. All rights reserved
 							</p>
 							{LINK_FOOTER.map((item) => (
@@ -48,19 +48,19 @@ export default function Footer() {
 						</section>
 						<section className='flex gap-6'>
 							<Image
-								src='/images/footer_social_icon/instagram.svg'
+								src='/images/socialmessenger_icon/instagram.svg'
 								width={20}
 								height={20}
 								alt='instagram'
 							/>
 							<Image
-								src='/images/footer_social_icon/facebook.svg'
+								src='/images/socialmessenger_icon/facebook.svg'
 								width={20}
 								height={20}
 								alt='facebook'
 							/>
 							<Image
-								src='/images/footer_social_icon/youtube.svg'
+								src='/images/socialmessenger_icon/youtube.svg'
 								width={20}
 								height={20}
 								alt='youtube'

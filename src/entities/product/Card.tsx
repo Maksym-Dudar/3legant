@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { ButtonAction } from "@/shared/ui";
+import { addProductToBagStore } from "@/shared/store/bag/store";
 import Image from "next/image";
 import gsap from "gsap";
 import Link from "next/link";
-import { ButtonAction } from "@/shared/ui";
-import { addProductToBagStore } from "@/shared/store/bag/store";
-import { CardType } from "@/entities/product/card";
+import { CardType } from "./card.types";
 
 export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 	const buttonRef = useRef<HTMLDivElement>(null);

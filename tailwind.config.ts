@@ -19,7 +19,7 @@ export default {
 				subtitel: "var(--subtitel)",
 				notactive: "var(--notactive)",
 				action: "var(--action)",
-				fotergray: "var(--fotergray)",
+				whitegray: "var(--whitegray)",
 				footerline: "#6C7275",
 				green: "#38CB89",
 			},
@@ -47,6 +47,8 @@ export default {
 			red: "#F5B8B2",
 		},
 		borderWidth: {
+			"1/2": "0.05rem",
+			"2/3": "0.075rem",
 			"1": "0.1rem",
 			"2": "0.15rem",
 		},

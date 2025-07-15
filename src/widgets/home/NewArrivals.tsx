@@ -5,8 +5,9 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 import { ButtonPage } from "@/shared/ui";
-import { Card } from "@/entities/product/Card";
-import { CardType } from "@/entities/product/card";
+import { CardType } from "@/entities/product/card.types";
+import { Card } from "@/entities/product/card";
+import Loading from "@/shared/loading/loading";
 
 export default function NewArrivals() {
 	const [data, setData] = useState<CardType[]>();
@@ -30,7 +31,7 @@ export default function NewArrivals() {
 						</h3>
 						<ButtonPage title='More Products' href='/shop' />
 					</div>
-					<div
+					{!data ? <Loading /> : <div
 						ref={scrollRef}
 						className='flex gap-6 overflow-x-scroll custom-scrollbar scroll-smooth pb-12'
 					>
@@ -39,7 +40,8 @@ export default function NewArrivals() {
 								<Card {...item} />
 							</div>
 						))}
-					</div>
+					</div>}
+					
 				</div>
 			</div>
 		</PadingXLayouts>

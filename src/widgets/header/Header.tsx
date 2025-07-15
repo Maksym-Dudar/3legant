@@ -1,57 +1,76 @@
-'use client'
+"use client";
 
-import { LINK_ACOUNT, LINk_HOME, LINK_NAV_ITEMS } from "@/shared/constants/links";
+import {
+	LINK_ACOUNT,
+	LINk_HOME,
+	LINK_NAV_ITEMS,
+} from "@/shared/constants/links";
 import Link from "next/link";
 import Image from "next/image";
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 import { usePathname } from "next/navigation";
-import { countProductInBagStore } from "@/shared/store/bag/store";
-import { Dispatch, SetStateAction } from "react";
+import { useCountProductInBagStore } from "@/shared/store/bag/store";
+import { useBagContext } from "@/shared/context/BagContext";
+import { useWindowSize } from "@/shared/hooks/useWindowSize";
+import { sizeWhenShovMobileMenu } from "@/shared/constants/windowSize";
+import { ButtonMenu } from "@/shared/ui/ButtonMenu";
+import { useMobileMenuContext } from "@/shared/context/MobileMenuContext";
 
-export default function Header({ onToggleBag }: { onToggleBag: Dispatch<SetStateAction<boolean>> }) {
+export default function Header() {
 	const pathname = usePathname();
+	const { openBag } = useBagContext();
+	const { openMobileMenu } = useMobileMenuContext();
+	const { width } = useWindowSize();
+	const size = useCountProductInBagStore();
+
+	const showMobileMenuIcon = width < sizeWhenShovMobileMenu;
 	return (
 		<PadingXLayouts>
 			<div className='w-full flex justify-between py-4'>
-				<Link key={LINk_HOME.href} href={LINk_HOME.href} className=''>
-					<h1 className='text-24 font-500'>3legant</h1>
-				</Link>
+				<div className='flex items-center gap-3'>
+					{showMobileMenuIcon && <ButtonMenu onClick={openMobileMenu} />}
+					<Link key={LINk_HOME.href} href={LINk_HOME.href} className=''>
+						<h1 className='text-24 font-500'>3legant</h1>
+					</Link>
+				</div>
 				<nav className='flex gap-x-10 items-center '>
-					{LINK_NAV_ITEMS.map((item) => (
-						<Link
-							key={item.href}
-							href={item.href}
-							className={
-								pathname !== item.href
-									? "hover:scale-105 text-notactive text-14 font-500 leading-170"
-									: ""
-							}
-						>
-							{item.label}
-						</Link>
-					))}
+					{!showMobileMenuIcon &&
+						LINK_NAV_ITEMS.map((item) => (
+							<Link
+								key={item.href}
+								href={item.href}
+								className={
+									pathname !== item.href
+										? "hover:scale-105 text-notactive text-14 font-500 leading-170"
+										: ""
+								}
+							>
+								{item.label}
+							</Link>
+						))}
 				</nav>
 				<div className='flex gap-4 items-center'>
-					<button>
-						<Image
-							src='/images/header_menu/search.svg'
-							width={20}
-							height={20}
-							alt='search'
-						/>
-					</button>
-					<Link key={LINK_ACOUNT.href} href={LINK_ACOUNT.href} className=''>
-						<Image
-							src='/images/header_menu/user.svg'
-							width={22}
-							height={22}
-							alt='acount'
-						/>
-					</Link>
-					<button
-						className='flex gap-1 items-center'
-						onClick={() => onToggleBag(true)}
-					>
+					{!showMobileMenuIcon && (
+						<button>
+							<Image
+								src='/images/header_menu/search.svg'
+								width={20}
+								height={20}
+								alt='search'
+							/>
+						</button>
+					)}
+					{!showMobileMenuIcon && (
+						<Link key={LINK_ACOUNT.href} href={LINK_ACOUNT.href} className=''>
+							<Image
+								src='/images/header_menu/user.svg'
+								width={22}
+								height={22}
+								alt='acount'
+							/>
+						</Link>
+					)}
+					<button className='flex gap-1 items-center' onClick={openBag}>
 						<Image
 							src='/images/header_menu/shopping_bag.svg'
 							width={24}
@@ -59,7 +78,7 @@ export default function Header({ onToggleBag }: { onToggleBag: Dispatch<SetState
 							alt='acount'
 						/>
 						<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
-							{countProductInBagStore()}
+							{size}
 						</div>
 					</button>
 				</div>

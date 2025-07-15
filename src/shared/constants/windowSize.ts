@@ -1,0 +1,1 @@
+export const sizeWhenShovMobileMenu: number = 690

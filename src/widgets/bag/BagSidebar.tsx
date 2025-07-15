@@ -1,21 +1,20 @@
 "use client";
 
-import { quantityProductInBagStore, useBag } from "@/shared/store/bag/store";
+import { quantityProductInBagStore, useBagStored } from "@/shared/store/bag/store";
 import { BagCard } from "@/shared/types/bag";
-import { ButtonAction, ButtonPage } from "@/shared/ui";
+import { ButtonAction } from "@/shared/ui";
 import axios from "axios";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CardProductInBag } from "./CardProductInBag";
 import Link from "next/link";
+import { useBagContext } from "@/shared/context/BagContext";
+import { ButtonClose } from "@/shared/ui/ButtonClose";
 
-export function BagSidebar({
-	onToggleBag,
-}: {
-	onToggleBag: Dispatch<SetStateAction<boolean>>;
-}) {
+export function BagSidebar() {
 	const [data, setData] = useState<BagCard[]>([]);
 	const scrollRef = useRef<HTMLDivElement>(null);
-	const bag = useBag();
+	const { isOpenBag, closeBag } = useBagContext();
+	const bag = useBagStored();
 
 	useEffect(() => {
 		let idArray: string = "";
@@ -30,17 +29,19 @@ export function BagSidebar({
 	}, [bag]);
 
 	let subtotal: number = 0;
-	data.map((item) => subtotal += item.price * (quantityProductInBagStore(item.id) ?? 0));
+	data.map(
+		(item) =>
+			(subtotal += item.price * (quantityProductInBagStore(item.id) ?? 0))
+	);
 
 	return (
-		<div className='flex'>
-			<div
-				className='flex fixed w-full h-full z-40 bg-opacity-60 bg-black'
-				onClick={() => onToggleBag(false)}
-			></div>
+		isOpenBag && (
 			<aside className='flex flex-col justify-between fixed h-full w-1/3 z-50 bg-white right-0 py-10 px-6'>
 				<section className='flex flex-col gap-4'>
-					<h3 className='text-black text-28 font-500 leading-120'>Cart</h3>
+					<div className='flex flex-row justify-between'>
+						<h3 className='text-black text-28 font-500 leading-120'>Cart</h3>
+						<ButtonClose size={8} onClick={closeBag} />
+					</div>
 					<div ref={scrollRef} className='flex flex-col gap-3'>
 						{data?.map((item) => (
 							<CardProductInBag
@@ -80,10 +81,10 @@ export function BagSidebar({
 									View Cart
 								</div>
 							</Link>
-						</div>{" "}
+						</div>
 					</div>
 				</section>
 			</aside>
-		</div>
+		)
 	);
 }
