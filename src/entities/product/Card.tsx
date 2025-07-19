@@ -7,6 +7,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import Link from "next/link";
 import { CardType } from "./card.types";
+import { addProductToWishlistStore } from "@/shared/store/wishlist/store";
 
 export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 	const buttonRef = useRef<HTMLDivElement>(null);
@@ -81,17 +82,24 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 				</Link>
 
 				<div
-					className='absolute right-5 top-5 rounded-full bg-white p-2'
+					className='absolute right-5 top-5 rounded-full bg-white p-2 cursor-pointer'
 					ref={buttonFavoriteRef}
 				>
-					<Image
-						src='/images/ui/shape.svg'
-						alt={title}
-						width={0}
-						height={0}
-						sizes='100vw'
-						style={{ width: "100%", height: "100%" }}
-					/>
+					<button
+						onClick={() => {
+							console.log("clik");
+							addProductToWishlistStore({ id: id });
+						}}
+					>
+						<Image
+							src='/images/ui/shape.svg'
+							alt={title}
+							width={0}
+							height={0}
+							sizes='100vw'
+							style={{ width: "100%", height: "100%" }}
+						/>
+					</button>
 				</div>
 				<div className='absolute bottom-4 px-4 w-full' ref={buttonRef}>
 					<ButtonAction

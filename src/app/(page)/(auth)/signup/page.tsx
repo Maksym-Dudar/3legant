@@ -58,6 +58,7 @@ export default function SignInForm() {
 				withCredentials: true,
 			});
 			if (res.status == 201) {
+				console.log(res.data);
 				router.push("https://localhost:3000/home");
 				console.log(res);
 			}

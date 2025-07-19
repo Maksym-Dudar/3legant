@@ -6,6 +6,7 @@ import { ButtonAction } from "@/shared/ui";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { createUserStore } from "@/shared/store/user/store";
 
 
 export default function SignInForm() {
@@ -44,8 +45,9 @@ export default function SignInForm() {
 				}
 			);
 			if (res.status == 201) {
+				createUserStore(res.data);
 				router.push("https://localhost:3000/home");
-				console.log(res);
+				console.log(res.data)
 			}
 		} catch (error) {
 			console.log(error);

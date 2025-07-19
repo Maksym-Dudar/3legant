@@ -2,17 +2,24 @@
 
 import { LINK_NAV_ITEMS } from "@/shared/constants/links";
 import { useMobileMenuContext } from "@/shared/context/MobileMenuContext";
+import { useOverlayContext } from "@/shared/context/OverlayContext";
 import { useCountProductInBagStore } from "@/shared/store/bag/store";
+import { getUserStore } from "@/shared/store/user/store";
+import { useCountProductInWishlistStore } from "@/shared/store/wishlist/store";
 import { ButtonAction } from "@/shared/ui";
 import { ButtonClose } from "@/shared/ui/ButtonClose";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export function MobileMenu() {
 	const { isOpenMobileMenu, closeMobileMenu } = useMobileMenuContext();
-	const size = useCountProductInBagStore();
+	const { offOverlay } = useOverlayContext();
+
+	const bagSize = useCountProductInBagStore();
+	const wishlistSize = useCountProductInWishlistStore();
 	const pathname = usePathname();
+	const router = useRouter();
 
 	return (
 		isOpenMobileMenu && (
@@ -32,7 +39,7 @@ export function MobileMenu() {
 								className='text-14 font-400 leading-160 font-inter pl-11 py-2 border-1 border-descriptiongrey rounded-lg w-full'
 							/>
 							<Image
-								src='/images/header_menu/search.svg'
+								src='/images/ui/search.svg'
 								width={20}
 								height={20}
 								alt=''
@@ -69,29 +76,57 @@ export function MobileMenu() {
 									Cart
 									<div className='flex flex-row gap-1 items-center'>
 										<Image
-											src='/images/header_menu/shopping_bag.svg'
+											src='/images/ui/shopping_bag.svg'
 											width={24}
 											height={24}
 											alt='acount'
 										/>
 										<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
-											{size}
+											{bagSize}
 										</div>
 									</div>
 								</Link>
 							</div>
 							<div className='w-full border-b-2/3 border-whitegray pb-2'>
-								<Link href='/Wishlist' className='text-16 font-500 leading-170'>
+								<Link
+									href='/wishlist'
+									className='flex flex-row justify-between text-16 font-500 leading-170'
+								>
 									Wishlist
+									<div className='flex flex-row gap-1 items-center'>
+										<Image
+											src='/images/ui/shape.svg'
+											width={24}
+											height={24}
+											alt='acount'
+										/>
+										<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
+											{wishlistSize}
+										</div>
+									</div>
 								</Link>
 							</div>
 						</div>
-						<ButtonAction
-							type='button'
-							text='Sing In'
-							onClick={() => {}}
-							pading={2}
-						/>
+						{getUserStore().email ? (
+							<ButtonAction
+								type='button'
+								text='Acount'
+								onClick={() => {
+									router.push("/acount");
+								}}
+								pading={2}
+							/>
+						) : (
+							<ButtonAction
+								type='button'
+								text='Sign In'
+								onClick={() => {
+									offOverlay();
+									router.push("/signin");
+								}}
+								pading={2}
+							/>
+						)}
 						<div className='flex gap-6'>
 							<Image
 								src='/images/socialmessenger_icon/instagram-black.svg'

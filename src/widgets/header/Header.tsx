@@ -53,7 +53,7 @@ export default function Header() {
 					{!showMobileMenuIcon && (
 						<button>
 							<Image
-								src='/images/header_menu/search.svg'
+								src='/images/ui/search.svg'
 								width={20}
 								height={20}
 								alt='search'
@@ -63,7 +63,7 @@ export default function Header() {
 					{!showMobileMenuIcon && (
 						<Link key={LINK_ACOUNT.href} href={LINK_ACOUNT.href} className=''>
 							<Image
-								src='/images/header_menu/user.svg'
+								src='/images/ui/user.svg'
 								width={22}
 								height={22}
 								alt='acount'
@@ -72,7 +72,7 @@ export default function Header() {
 					)}
 					<button className='flex gap-1 items-center' onClick={openBag}>
 						<Image
-							src='/images/header_menu/shopping_bag.svg'
+							src='/images/ui/shopping_bag.svg'
 							width={24}
 							height={24}
 							alt='acount'

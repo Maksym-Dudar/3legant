@@ -15,18 +15,19 @@ const wishlistStore: StateCreator<IWishlistStore> = (set) => ({
 	addProduct: (item) => {
 		set((state) => {
 			const wishlist = new Set(state.wishlist);
-			const existing = wishlist.has(item);
+			const existing = [...wishlist].some((x) => x.id === item.id);
 			if (!existing) {
 				wishlist.add(item);
 			}
+			console.log(existing);
 			return { ...state, wishlist };
 		});
 	},
 	removeProduct: (item) => {
 		set((state) => {
 			const wishlist = new Set(state.wishlist);
-			const existing = wishlist.has(item);
-			if (existing) {
+			const existing = [...wishlist].some((x) => x.id === item.id);
+   			if (existing) {
 				wishlist.delete(item);
 			}
 			return { ...state, wishlist };
@@ -53,11 +54,11 @@ const useWishlistStore = create<IWishlistStore>()(
 	})
 );
 
-export const useWishlistStored = () => useWishlistStore((state) => state.wishlist);
+export const useWishlistStored = () =>
+	useWishlistStore((state) => state.wishlist);
 export const useCountProductInWishlistStore = () =>
 	useWishlistStore((state) => state.wishlist.size);
 export const addProductToWishlistStore = (item: ItemWishlistType) =>
 	useWishlistStore.getState().addProduct(item);
 export const removeProductToWishlistStore = (item: ItemWishlistType) =>
 	useWishlistStore.getState().removeProduct(item);
-
