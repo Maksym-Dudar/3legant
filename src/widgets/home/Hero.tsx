@@ -8,8 +8,13 @@ import "swiper/css/pagination";
 import Image from "next/image";
 import { PATH_TO_SLIDER } from "@/shared/constants/path";
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
+import { mobileSize } from "@/shared/constants/windowSize";
+import { useWindowSize } from "@/shared/hooks/useWindowSize";
 
 export default function Hero() {
+		const { width } = useWindowSize();
+	
+		const showButtonInSwiper = width > mobileSize;
 	return (
 		<PadingXLayouts>
 			<div className='w-full flex flex-col'>
@@ -36,36 +41,39 @@ export default function Hero() {
 							/>
 						</SwiperSlide>
 					))}
-					<div className='prev absolute top-40% translate-y-1/2 z-10 left-8 rounded-full bg-white p-2.5 cursor-pointer'>
-						<Image
-							src='/images/main_page/slider/prev.svg'
-							alt='prev'
-							width={32}
-							height={32}
-						/>
-					</div>
-					<div className='next absolute top-40% translate-y-1/2 z-10 right-8 rounded-full bg-white p-2.5 cursor-pointer'>
-						<Image
-							src='/images/main_page/slider/next.svg'
-							alt='next'
-							width={32}
-							height={32}
-						/>
-					</div>
+					{showButtonInSwiper && (
+						<>
+							<button className='prev absolute top-40% translate-y-1/2 z-10 left-8 rounded-full bg-white p-2.5 cursor-pointer'>
+								<Image
+									src='/images/main_page/slider/prev.svg'
+									alt='prev'
+									width={32}
+									height={32}
+								/>
+							</button>
+							<button className='next absolute top-40% translate-y-1/2 z-10 right-8 rounded-full bg-white p-2.5 cursor-pointer'>
+								<Image
+									src='/images/main_page/slider/next.svg'
+									alt='next'
+									width={32}
+									height={32}
+								/>
+							</button>
+						</>
+					)}
 				</Swiper>
-				<div className='flex justify-between items-center gap-32 py-8 pr-8'>
-					<h2 className='text-72 font-500 leading-110 max-w break-words'>
+				<div className='flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4 sm:gap-0 py-8 lg:pr-8'>
+					<h2 className='text-40 lg:text-64 xl:text-72 font-500 leading-110'>
 						Simply Unique
 						<br />
 						Simply Better
 					</h2>
-					<div className='text-descriptiongrey font-inter'>
-						<span className='text-black text-16 font-600 leading-160'>
+					<div className='text-descriptiongrey items-center justify-center font-inter w-4/5 sm:w-2/5 lg:w-2/5'>
+						<strong className='text-black text-16 font-600 leading-160'>
 							3legant
-						</span>{" "}
-						is a gift & decorations store based in HCMC,
-						<br />
-						Vietnam. Est since 2019.
+						</strong>{" "}
+						is a gift & decorations store based in HCMC, Vietnam. Est since
+						2019.
 					</div>
 				</div>
 			</div>

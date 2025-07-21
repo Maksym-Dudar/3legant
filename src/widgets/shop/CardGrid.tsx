@@ -1,11 +1,11 @@
 "use client";
 
-import { CardType } from "@/entities/product/card";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Card } from "@/entities/product/Card";
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
+import { CardType } from "@/entities/product/card.types";
+import { Card } from "@/entities/product/card";
 
 export function CardGrid() {
 	const searchParams = useSearchParams();
@@ -214,9 +214,11 @@ export function CardGrid() {
 						)}
 					</div>
 				</div>
-				<div className='grid grid-cols-4 gap-6 py-10'>
-					{data?.map((itemm) => (
-						<Card key={itemm.id} {...itemm} />
+				<div className='grid grid-cols-4 gap-6 py-10 w-full'>
+					{data?.map((item) => (
+						<div key={item.id} className='w-full h-auto'>
+							<Card key={item.id} {...item} />
+						</div>
 					))}
 				</div>
 				{!isEnd ? (

@@ -7,7 +7,6 @@ import {
 	NewArrivals,
 	ShopByCategory,
 } from "@/widgets/home";
-import { Suspense } from "react";
 
 export default function Home() {
 	return (

@@ -8,17 +8,25 @@ import gsap from "gsap";
 import Link from "next/link";
 import { CardType } from "./card.types";
 import { addProductToWishlistStore } from "@/shared/store/wishlist/store";
+import { useHasMouse } from "@/shared/hooks/useHasMouse";
 
 export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 	const buttonRef = useRef<HTMLDivElement>(null);
 	const buttonFavoriteRef = useRef<HTMLDivElement>(null);
+	const hasMouse = useHasMouse();
 
 	useEffect(() => {
-		gsap.set(buttonFavoriteRef.current, { y: -70 });
-		gsap.set(buttonRef.current, { y: 70 });
-	}, []);
+		if (hasMouse) {
+			gsap.set(buttonFavoriteRef.current, { y: -70 });
+			gsap.set(buttonRef.current, { y: 70 });
+		} else {
+			gsap.set(buttonFavoriteRef.current, { y: 0 });
+			gsap.set(buttonRef.current, { y: 0 });
+		}
+	}, [hasMouse]);
 
 	const handleMouseEnter = () => {
+
 		gsap.to(buttonFavoriteRef.current, {
 			y: 0,
 			duration: 0.3,
@@ -32,6 +40,7 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 	};
 
 	const handleMouseLeave = () => {
+
 		gsap.to(buttonFavoriteRef.current, {
 			y: -70,
 			duration: 0.3,
@@ -46,20 +55,21 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 
 	const priceWithSale = (price - price * sale).toFixed(2);
 	return (
-		<div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-			<div className='flex relative overflow-hidden'>
-				<Link href={`/shop/${id}`}>
-					<div className='flex'>
-						<div className='flex '>
-							<Image
-								src={img}
-								alt={title}
-								width={400}
-								height={600}
-								// sizes='100vw'
-								// style={{ width: "100%", height: "100%" }}
-							/>
-						</div>
+		<div
+			onMouseEnter={hasMouse ? handleMouseEnter : undefined}
+			onMouseLeave={hasMouse ? handleMouseLeave : undefined}
+		>
+			<div className='flex relative overflow-hidden w-full'>
+				<Link href={`/shop/${id}`} className='flex w-full'>
+					<div className='flex w-full'>
+						<Image
+							src={img}
+							alt={title}
+							width={0}
+							height={0}
+							sizes='100vw'
+							style={{ width: "100%", height: "100%" }}
+						/>
 						<div className='flex absolute p-5'>
 							<div className='flex flex-col gap-2'>
 								{isnew ? (

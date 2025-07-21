@@ -20,7 +20,6 @@ export default {
 				notactive: "var(--notactive)",
 				action: "var(--action)",
 				whitegray: "var(--whitegray)",
-				footerline: "#6C7275",
 				green: "#38CB89",
 			},
 			spacing: {
@@ -53,6 +52,7 @@ export default {
 			"2": "0.15rem",
 		},
 		fontSize: {
+			"8": "0.5rem",
 			"10": "0.625rem",
 			"12": "0.75rem",
 			"14": "0.875rem",

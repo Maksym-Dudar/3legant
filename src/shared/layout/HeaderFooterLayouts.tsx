@@ -18,9 +18,9 @@ export default function MainLayouts({ children }: PropsWithChildren<unknown>) {
 					<BagSidebar />
 					<MobileMenu />
 					<Header />
-					{/* {children}
-					<FooterBanner />
-					<Footer /> */}
+					{children}
+					<FooterBanner /> 
+					<Footer /> 
 				</MobileMenuProvider>
 			</BagProvider>
 		</>

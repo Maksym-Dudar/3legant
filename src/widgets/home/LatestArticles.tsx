@@ -12,7 +12,7 @@ export default function LatestArticles() {
 					<h3 className='text-40 font-500 leading-110'>Articles</h3>
 					<ButtonPage title='More Products' href='/shop' />
 				</div>
-				<div className='flex gap-6'>
+				<div className='grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-6'>
 					{PATH_TO_ARTICLES.map(({ title, href, path }) => (
 						<ArticlesCard key={title} title={title} href={href} path={path} />
 					))}
