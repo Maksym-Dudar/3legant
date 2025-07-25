@@ -1,4 +1,4 @@
-import { BagCard } from "@/shared/types/bag";
+import { BagCard } from "@/shared/types/bag.type";
 import { NextResponse } from "next/server";
 
 const bagCard:BagCard[] = [

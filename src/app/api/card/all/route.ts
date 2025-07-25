@@ -1,5 +1,5 @@
+import { CardType } from "@/entities/product/card.types";
 import { NextResponse } from "next/server";
-import { CardType } from "@/entities/product/card";
 
 const card: CardType[] = [
     {id: 1, title: 'Loveseat Sofa', price: 400, nstar: 4, sale: 0.5, isnew: true, categorie:'Living Room', img: `/request/images/card/id1.png` },
@@ -41,7 +41,7 @@ export async function GET ( req: Request) {
             sortdata = [...dataprice].sort((a, b) => b.price * (1 - b.sale) - a.price * (1 - a.sale));
             break;
         case "Newest Arrivals":
-            sortdata = [...dataprice].sort((a, b) => b.isnew ? 1 : -1);
+            sortdata = [...dataprice].sort((b) => b.isnew ? 1 : -1);
             break;
         case "Top Rated":
             sortdata = [...dataprice].sort((a, b) => b.nstar - a.nstar);

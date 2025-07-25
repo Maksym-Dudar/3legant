@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { OverlayProvider } from "@/shared/context/OverlayContext";
+import { QueryProvider } from "@/shared/context/QueryWrapper";
 
 export const metadata: Metadata = {
 	title: "3Legant",
@@ -14,15 +15,16 @@ const poppins = Poppins({
 	variable: "--font-poppins",
 });
 
+
 export default function RootLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang='en' className={poppins.variable}>
 			<body>
-				<OverlayProvider>
-					{children}
-				</OverlayProvider>
+				<QueryProvider>
+					<OverlayProvider>{children}</OverlayProvider>
+				</QueryProvider>
 			</body>
 		</html>
 	);

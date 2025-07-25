@@ -8,10 +8,11 @@ import { CardType } from "@/entities/product/card.types";
 import { Card } from "@/entities/product/card";
 
 export function CardGrid() {
-	const searchParams = useSearchParams();
-	const initialCategorie = searchParams.get("categorie") || "All";
-	const pathname = usePathname();
-	const router = useRouter();
+	// const searchParams = useSearchParams();
+	// const initialCategorie = searchParams.get("categorie") || "All";
+	
+	// const pathname = usePathname();
+	// const router = useRouter();
 
 	// card data
 	const [data, setData] = useState<CardType[]>([]);
@@ -20,39 +21,38 @@ export function CardGrid() {
 	const [isEnd, setIsEnd] = useState<boolean>(false);
 
 	// filter data CATEGORIE
-	const [categorie, setCategorie] = useState<string>(initialCategorie);
-	const [isOpenCategorie, setIsOpenCategorie] = useState(false);
-	const categories = [
-		"All",
-		"Living Room",
-		"Bedroom",
-		"Kitchen",
-		"Bathroom",
-		"Office",
-	];
+	// const [categorie, setCategorie] = useState<string>(initialCategorie);
+	// const [isOpenCategorie, setIsOpenCategorie] = useState(false);
+	// const categories = [
+	// 	"All",
+	// 	"Living Room",
+	// 	"Bedroom",
+	// 	"Kitchen",
+	// 	"Bathroom",
+	// 	"Office",
+	// ];
 
 	// filter data PRICE
-	const [price, setPrice] = useState<string>("All Price");
-	const [isOpenPrice, setIsOpenPrice] = useState(false);
-	const prices = [
-		"All Price",
-		"0-100",
-		"100-200",
-		"200-300",
-		"300-400",
-		"400-500",
-	];
+	// const [price, setPrice] = useState<string>("All Price");
+	// const [isOpenPrice, setIsOpenPrice] = useState(false);
+	// const prices = [
+	// 	"All Price",
+	// 	"0-100",
+	// 	"100-200",
+	// 	"200-300",
+	// 	"300-400",
+	// 	"400-500",
+	// ];
 
 	// sorting data
-	const [sort, setSort] = useState<string>("Top Rated");
-	const [isOpenSort, setIsOpenSort] = useState(false);
-	const [fetchsort, setFetchSort] = useState(false);
-	const sortes = [
-		"Top Rated",
-		"Price: Low to High",
-		"Price: High to Low",
-		"Newest Arrivals",
-	];
+	// const [sort, setSort] = useState<string>("Top Rated");
+	// const [isOpenSort, setIsOpenSort] = useState(false);
+	// const sortes = [
+	// 	"Top Rated",
+	// 	"Price: Low to High",
+	// 	"Price: High to Low",
+	// 	"Newest Arrivals",
+	// ];
 
 	// retch request data
 	useEffect(() => {
@@ -71,7 +71,6 @@ export function CardGrid() {
 			})
 			.finally(() => {
 				setLoading(false);
-				setFetchSort(!fetchsort);
 				const params = new URLSearchParams(searchParams);
 				params.set("categorie", categorie);
 				router.push(`${pathname}?${params.toString()}`, { scroll: false });
@@ -83,7 +82,7 @@ export function CardGrid() {
 			<div className='flex flex-col justify-center items-center pt-15 pb-25'>
 				<div className='flex justify-between w-full'>
 					<div className='flex justify-start items-center gap-6'>
-						<div className='relative flex flex-col w-60 justify-center gap-2'>
+						{/* <div className='relative flex flex-col w-60 justify-center gap-2'>
 							<p className='text-16 font-400 leading-160 font-inter text-descriptiongrey'>
 								CATEGORIES
 							</p>
@@ -168,8 +167,8 @@ export function CardGrid() {
 									))}
 								</ul>
 							)}
-						</div>
-					</div>
+						</div> */}
+					{/* </div>
 					<div className='relative flex flex-row w-60 justify-center gap-4 items-end'>
 						<p className='text-16 font-600 leading-160 font-inter text-black w-max items-center'>
 							Sort by
@@ -213,7 +212,7 @@ export function CardGrid() {
 							</ul>
 						)}
 					</div>
-				</div>
+				</div> */}
 				<div className='grid grid-cols-4 gap-6 py-10 w-full'>
 					{data?.map((item) => (
 						<div key={item.id} className='w-full h-auto'>
@@ -221,17 +220,16 @@ export function CardGrid() {
 						</div>
 					))}
 				</div>
-				{!isEnd ? (
-					<button
-						className='text-16 font-500 leading-170 text-black border-1 rounded-full border-black w-fit px-10 py-2'
-						onClick={() => setPage((prev) => prev + 1)}
-						disabled={loading}
-					>
-						Show more
-					</button>
-				) : (
-					""
-				)}
+						{!isEnd && (
+							<button
+								className='text-16 font-500 leading-170 text-black border-1 rounded-full border-black w-fit px-10 py-2'
+								onClick={() => setPage((prev) => prev + 1)}
+								disabled={loading}
+							>
+								Show more
+							</button>
+							)
+						}
 			</div>
 		</PadingXLayouts>
 	);

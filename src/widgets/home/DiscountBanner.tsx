@@ -18,12 +18,12 @@ export default function DiscountBanner() {
 					<p className='font-inter text-action size-4 w-full text-12 md:text-14 lg:text-16 font-400 leading-160'>
 						SALE UP TO 35% OFF
 					</p>
-					<h4 className='text-34 md:text-36 lg:text-40 font-500 leading-110'>
+					<h4 className='text-30 sm:text-34 md:text-36 lg:text-40 font-500 leading-110'>
 						HUNDREDS of
 						<br />
 						New lower prices!
 					</h4>
-					<p className='font-inter text-descriptiongrey text-16 md:text-18 lg:text-20 font-400 leading-160'>
+					<p className='font-inter text-descriptiongrey text-14 sm:text-16 md:text-18 lg:text-20 font-400 leading-160'>
 						It’s more affordable than ever to give every
 						<br /> room in your home a stylish makeover
 					</p>

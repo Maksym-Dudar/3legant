@@ -1,7 +1,7 @@
 "use client";
 
 import { quantityProductInBagStore, useBagStored } from "@/shared/store/bag/store";
-import { BagCard } from "@/shared/types/bag";
+import { BagCard } from "@/shared/types/bag.type";
 import { ButtonAction } from "@/shared/ui";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
