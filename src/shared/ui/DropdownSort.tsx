@@ -19,17 +19,17 @@ export function DropdownSort({
 }: Props) {
 	return (
 		<section
-			className='relative flex flex-row w-60 justify-center gap-4 items-end'
+			className='relative flex flex-row w-max justify-center gap-4 items-end'
 			onMouseLeave={() => close()}
 		>
-			<p className='text-16 font-600 leading-160 font-inter text-black w-max items-center'>
+			<p className='text-14 sm:text-16 font-600 leading-160 font-inter text-black  w-max items-center'>
 				Sort by
 			</p>
 			<button
-				className='flex justify-between w-max gap-2 items-center'
+				className='flex justify-between  w-max  gap-2 items-center'
 				onClick={() => onToggle()}
 			>
-				<h6>{value}</h6>
+				<h6 className='text-14 sm:text-16'>{value}</h6>
 				<Image
 					src='/images/ui/arrow.svg'
 					alt='Arrow'
@@ -39,7 +39,7 @@ export function DropdownSort({
 				/>
 			</button>
 			{isOpen && (
-				<ul className='absolute flex flex-col w-full bg-white border-2 rounded-b-md border-x-descriptiongrey border-b-descriptiongrey z-50 top-18'>
+				<ul className='absolute flex flex-col w-full bg-white z-50 top-18 rounded-2xl py-3'>
 					{options.map((item) => (
 						<li
 							key={item}

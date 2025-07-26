@@ -3,9 +3,9 @@
 import { LINK_NAV_ITEMS } from "@/shared/constants/links";
 import { useMobileMenuContext } from "@/shared/context/MobileMenuContext";
 import { useOverlayContext } from "@/shared/context/OverlayContext";
-import { useCountProductInBagStore } from "@/shared/store/bag/store";
-import { getUserStore } from "@/shared/store/user/store";
-import { useCountProductInWishlistStore } from "@/shared/store/wishlist/store";
+import { useCountProductInBagStore } from "@/features/store/bag/store";
+import { getUserStore } from "@/features/store/user/store";
+import { useCountProductInWishlistStore } from "@/features/store/wishlist/store";
 import { ButtonAction } from "@/shared/ui";
 import { ButtonClose } from "@/shared/ui/ButtonClose";
 import Image from "next/image";

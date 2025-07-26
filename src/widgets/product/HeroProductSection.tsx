@@ -9,7 +9,7 @@ import { TabsProductSection } from "./TabsProductSection";
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 import { ButtonAction, OfferTime, PathPage } from "@/shared/ui";
 import { cardPageType } from "./types";
-import { addProductToBagStore, quantityProductInBagStore } from "@/shared/store/bag/store";
+import { addProductToBagStore, quantityProductInBagStore } from "@/features/store/bag/store";
 
 
 export function HeroProductSection() {

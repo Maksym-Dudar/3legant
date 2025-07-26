@@ -7,7 +7,10 @@ export default function PathPage({
 }: PropsWithChildren<{ name: string; path: string }>) {
 	return (
 		<div className='flex items-center gap-2'>
-			<Link className='font-inter text-descriptiongrey' href={path}>
+			<Link
+				className='font-inter text-descriptiongrey text-12 md:text-14'
+				href={path}
+			>
 				{name}
 			</Link>
 			<Image src='/images/ui/arrow.svg' alt='Arrow' width={5} height={8} />

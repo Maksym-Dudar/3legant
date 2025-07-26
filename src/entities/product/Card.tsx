@@ -2,17 +2,17 @@
 
 import { useEffect, useRef } from "react";
 import { ButtonAction } from "@/shared/ui";
-import { addProductToBagStore } from "@/shared/store/bag/store";
+import { addProductToBagStore } from "@/features/store/bag/store";
 import Image from "next/image";
 import gsap from "gsap";
 import Link from "next/link";
 import { CardType } from "./card.types";
-import { addProductToWishlistStore } from "@/shared/store/wishlist/store";
+import { addProductToWishlistStore } from "@/features/store/wishlist/store";
 import { useHasMouse } from "@/shared/hooks/useHasMouse";
 
 export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 	const buttonRef = useRef<HTMLDivElement>(null);
-	const buttonFavoriteRef = useRef<HTMLDivElement>(null);
+	const buttonFavoriteRef = useRef<HTMLButtonElement>(null);
 	const hasMouse = useHasMouse();
 
 	useEffect(() => {
@@ -70,17 +70,17 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 							sizes='100vw'
 							style={{ width: "100%", height: "100%" }}
 						/>
-						<div className='flex absolute p-5'>
+						<div className='flex absolute p-2 sm:p-4 md:p-5'>
 							<div className='flex flex-col gap-2'>
 								{isnew ? (
-									<div className='font-inter px-3 py-1 bg-white rounded text-16 font-700 leading-100'>
+									<div className='font-inter px-1 sm:px-2 md:px-3 py-1 bg-white rounded text-center text-12 sm:text-14 md:text-16 font-700 leading-100'>
 										NEW
 									</div>
 								) : (
 									<></>
 								)}
 								{sale ? (
-									<div className='font-inter px-3 py-1 bg-green rounded text-center text-white text-16 font-700 leading-100'>
+									<div className='font-inter px-1 sm:px-2 md:px-3 py-1 bg-green rounded text-center text-white text-12 sm:text-14 md:text-16 font-700 leading-100'>
 										-{sale * 100}%
 									</div>
 								) : (
@@ -90,36 +90,35 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 						</div>
 					</div>
 				</Link>
-
-				<div
-					className='absolute right-5 top-5 rounded-full bg-white p-2 cursor-pointer'
+				<button
+					className='absolute right-2 sm:right-4 md:right-5 top-2 sm:top-4 md:top-5 p-1 sm:p-2 rounded-full bg-white cursor-pointer'
 					ref={buttonFavoriteRef}
+					onClick={() => {
+						console.log("clik");
+						addProductToWishlistStore({ id: id });
+					}}
 				>
-					<button
-						onClick={() => {
-							console.log("clik");
-							addProductToWishlistStore({ id: id });
-						}}
-					>
-						<Image
-							src='/images/ui/shape.svg'
-							alt={title}
-							width={0}
-							height={0}
-							sizes='100vw'
-							style={{ width: "100%", height: "100%" }}
-						/>
-					</button>
-				</div>
-				<div className='absolute bottom-4 px-4 w-full' ref={buttonRef}>
+					<Image
+						src='/images/ui/shape.svg'
+						alt={title}
+						width={0}
+						height={0}
+						sizes='100vw'
+						style={{ width: "100%", height: "100%" }}
+					/>
+				</button>
+				<div
+					className='absolute bottom-2 md:bottom-4 px-2 md:px-4 w-full'
+					ref={buttonRef}
+				>
 					<ButtonAction
 						text={"Add to cart"}
-						pading={2}
+						pading={hasMouse ? 2 : 1}
 						onClick={() => addProductToBagStore({ id: id, quantity: 1 })}
 					/>
 				</div>
 			</div>
-			<div className='flex flex-col gap-1'>
+			<div className='flex flex-col gap-1 pt-2 sm:pt-3 md:pt-4'>
 				<div className='flex gap-1/2'>
 					{Array(nstar)
 						.fill(0)
@@ -127,18 +126,22 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 							<Image
 								src='/images/ui/star.svg'
 								alt='Star'
-								width={16}
-								height={16}
+								width={hasMouse ? 16 : 12}
+								height={hasMouse ? 16 : 12}
 								key={i}
 							/>
 						))}
 				</div>
 				<Link href={`/shop/${id}`}>
-					<h5 className='text-16 font-600 leading-160'>{title}</h5>
+					<h5 className='text-14 sm:text-16 md:text-18 font-600 leading-160'>
+						{title}
+					</h5>
 					<div className='flex gap-3'>
-						<p className='text-14 font-600 leading-160'>${priceWithSale}</p>
+						<p className='text-10 sm:text-12 md:text-14 font-600 leading-160'>
+							${priceWithSale}
+						</p>
 						{sale ? (
-							<s className='text-notactive text-14 font-400 leading-160'>
+							<s className='text-notactive text-10 sm:text-12 md:text-14  font-400 leading-160'>
 								${price.toFixed(2)}
 							</s>
 						) : (

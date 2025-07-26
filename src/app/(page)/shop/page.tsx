@@ -1,12 +1,12 @@
 import MainLayouts from "@/shared/layout/HeaderFooterLayouts";
-import { CardGrid3 } from "@/widgets/shop/CardGrid3";
+import { CardGrid } from "@/widgets/shop/CardGrid";
 import { HeroSectionShop } from "@/widgets/shop/HeroSectionShop";
 
 export default function Shop() {
 	return (
 		<MainLayouts>
 			<HeroSectionShop />
-			<CardGrid3 />
+			<CardGrid />
 		</MainLayouts>
 	);
 }

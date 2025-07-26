@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 import { usePathname } from "next/navigation";
-import { useCountProductInBagStore } from "@/shared/store/bag/store";
+import { useCountProductInBagStore } from "@/features/store/bag/store";
 import { useBagContext } from "@/shared/context/BagContext";
 import { useWindowSize } from "@/shared/hooks/useWindowSize";
 import { mobileSize } from "@/shared/constants/windowSize";

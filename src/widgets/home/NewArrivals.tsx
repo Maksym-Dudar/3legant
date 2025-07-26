@@ -1,8 +1,7 @@
 "use client";
 
 import "swiper/css";
-import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 import { ButtonPage } from "@/shared/ui";
 import { CardType } from "@/entities/product/card.types";
@@ -10,6 +9,7 @@ import Loading from "@/entities/loading/loading";
 import { Card } from "@/entities/product/Card";
 import { useQuery } from "@tanstack/react-query";
 import { Erro } from "@/entities/erro/erro";
+import axios from "axios";
 
 async function fetchNewArrivals() {
 	return await axios.get(`/api/card/new`);
@@ -44,7 +44,7 @@ export default function NewArrivals() {
 							className='flex gap-4 md:gap-5 lg:gap-6 overflow-x-scroll custom-scrollbar scroll-smooth pb-12'
 						>
 							{data.data?.map((item: CardType) => (
-								<div key={item.id} className='flex-shrink-0 w-60 lg:w-72'>
+								<div key={item.id} className='flex-shrink-0 w-52 sm:w-60 lg:w-72'>
 									<Card {...item} />
 								</div>
 							))}

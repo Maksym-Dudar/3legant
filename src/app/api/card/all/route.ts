@@ -54,9 +54,9 @@ export async function GET ( req: Request) {
 
     const end = page * limit;
     
-    const data:CardType[] = sortdata.slice(0 , end);
+    const data:CardType[] = sortdata.slice((page - 1) * limit , end);
 
     const isEnd:boolean = end >= sortdata.length;
 
-    return NextResponse.json({data: data, isend:isEnd});
+    return NextResponse.json({cards: data, isend:isEnd});
 }

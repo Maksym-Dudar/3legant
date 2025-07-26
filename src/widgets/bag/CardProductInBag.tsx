@@ -5,7 +5,7 @@ import {
 	decreaseItemCountBagStore,
 	quantityProductInBagStore,
 	removeProductToBagStore,
-} from "@/shared/store/bag/store";
+} from "@/features/store/bag/store";
 import { ButtonClose } from "@/shared/ui/ButtonClose";
 
 export function CardProductInBag({

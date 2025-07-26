@@ -6,7 +6,7 @@ import { ButtonAction } from "@/shared/ui";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { createUserStore } from "@/shared/store/user/store";
+import { createUserStore } from "@/features/store/user/store";
 
 
 export default function SignInForm() {

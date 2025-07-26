@@ -15,7 +15,7 @@ export default function ButtonAction({
 		<button
 			type={type}
 			onClick={onClick}
-			className={`flex w-full text-white text-center font-inter bg-black py-${pading} rounded-lg justify-center text-16 font-500 leading-180`}
+			className={`flex w-full text-white text-center font-inter bg-black py-${pading} rounded-lg justify-center text-12 sm:text-14 md:text-16 font-500 leading-180`}
 		>
 			{text}
 		</button>
