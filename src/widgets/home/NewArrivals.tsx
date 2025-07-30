@@ -8,7 +8,7 @@ import { CardType } from "@/entities/product/card.types";
 import Loading from "@/entities/loading/loading";
 import { Card } from "@/entities/product/Card";
 import { useQuery } from "@tanstack/react-query";
-import { Erro } from "@/entities/erro/erro";
+import Erro  from "@/entities/erro/erro";
 import axios from "axios";
 
 async function fetchNewArrivals() {

@@ -36,10 +36,12 @@ export function BagSidebar() {
 
 	return (
 		isOpenBag && (
-			<aside className='flex flex-col justify-between fixed h-full w-1/3 z-50 bg-white right-0 py-10 px-6'>
+			<aside className='flex flex-col justify-between fixed h-full w-4/5 sm:w-3/5 lg:w-1/2 xl:w-1/3 z-50 bg-white right-0 py-10 px-6'>
 				<section className='flex flex-col gap-4'>
 					<div className='flex flex-row justify-between'>
-						<h3 className='text-black text-28 font-500 leading-120'>Cart</h3>
+						<h3 className='text-black text-20 sm:text-24 md:text-28 font-500 leading-120'>
+							Cart
+						</h3>
 						<ButtonClose size={8} onClick={closeBag} />
 					</div>
 					<div ref={scrollRef} className='flex flex-col gap-3'>
@@ -54,16 +56,18 @@ export function BagSidebar() {
 				</section>
 				<section className='flex flex-col'>
 					<div className='flex flex-row justify-between border-b-1 border-gray-200 py-3'>
-						<p className='text-black font-inter text-16 font-400 leading-160'>
+						<p className='text-black font-inter text-14 sm:text-16 font-400 leading-160'>
 							Subtotal
 						</p>
-						<p className='text-black font-inter text-16 font-5600 leading-160'>
+						<p className='text-black font-inter text-14 sm:text-16 font-5600 leading-160'>
 							{subtotal}
 						</p>
 					</div>
 					<div className='flex flex-row justify-between py-3'>
-						<p className='text-black text-20 font-500 leading-140'>Total</p>
-						<p className='text-black text-20 font-500 leading-140'></p>
+						<p className='text-black text-16 sm:text-20 font-500 leading-140'>
+							Total
+						</p>
+						<p className='text-black text-16 sm:text-20 font-500 leading-140'></p>
 					</div>
 					<div className='flex flex-col gap-4 pt-4 items-center'>
 						<ButtonAction
@@ -77,7 +81,7 @@ export function BagSidebar() {
 								href='/view_cart'
 								className='flex w-fit pt-2 border-b-1 border-black'
 							>
-								<div className='py-1 pr-1 font-inter text-14 font-600 leading-160 text-black'>
+								<div className='py-1 pr-1 font-inter text-12 md:text-14 font-600 leading-160 text-black'>
 									View Cart
 								</div>
 							</Link>

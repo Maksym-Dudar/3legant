@@ -7,13 +7,19 @@ import Image from "next/image";
 import gsap from "gsap";
 import Link from "next/link";
 import { CardType } from "./card.types";
-import { addProductToWishlistStore } from "@/features/store/wishlist/store";
+import { togleProductToWishlistStore, useWishlistStored } from "@/features/store/wishlist/store";
 import { useHasMouse } from "@/shared/hooks/useHasMouse";
+import { useWindowSize } from "@/shared/hooks/useWindowSize";
+import { mobileSize } from "@/shared/constants/windowSize";
 
 export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 	const buttonRef = useRef<HTMLDivElement>(null);
 	const buttonFavoriteRef = useRef<HTMLButtonElement>(null);
 	const hasMouse = useHasMouse();
+	const { width } = useWindowSize();
+	const wishlist = useWishlistStored();
+	const isInWishlist = [...wishlist].some((x) => x.id === id);
+
 
 	useEffect(() => {
 		if (hasMouse) {
@@ -26,7 +32,6 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 	}, [hasMouse]);
 
 	const handleMouseEnter = () => {
-
 		gsap.to(buttonFavoriteRef.current, {
 			y: 0,
 			duration: 0.3,
@@ -40,7 +45,6 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 	};
 
 	const handleMouseLeave = () => {
-
 		gsap.to(buttonFavoriteRef.current, {
 			y: -70,
 			duration: 0.3,
@@ -93,20 +97,30 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 				<button
 					className='absolute right-2 sm:right-4 md:right-5 top-2 sm:top-4 md:top-5 p-1 sm:p-2 rounded-full bg-white cursor-pointer'
 					ref={buttonFavoriteRef}
-					onClick={() => {
-						console.log("clik");
-						addProductToWishlistStore({ id: id });
-					}}
+					onClick={() =>{togleProductToWishlistStore({ id })}}
 				>
-					<Image
-						src='/images/ui/shape.svg'
-						alt={title}
-						width={0}
-						height={0}
-						sizes='100vw'
-						style={{ width: "100%", height: "100%" }}
-					/>
+					{isInWishlist ? (
+						<Image
+							src='/images/ui/like.svg'
+							alt={title}
+							width={0}
+							height={0}
+							sizes='100vw'
+							style={{ width: "100%", height: "100%" }}
+						/>
+					) : (
+						<Image
+							src='/images/ui/shape.svg'
+							alt={title}
+							width={0}
+							height={0}
+							sizes='100vw'
+							style={{ width: "100%", height: "100%" }}
+						/>
+					)}
+					
 				</button>
+			
 				<div
 					className='absolute bottom-2 md:bottom-4 px-2 md:px-4 w-full'
 					ref={buttonRef}
@@ -126,8 +140,8 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 							<Image
 								src='/images/ui/star.svg'
 								alt='Star'
-								width={hasMouse ? 16 : 12}
-								height={hasMouse ? 16 : 12}
+								width={width > mobileSize ? 16 : 13}
+								height={width > mobileSize ? 16 : 13}
 								key={i}
 							/>
 						))}

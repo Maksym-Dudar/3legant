@@ -10,7 +10,7 @@ const initialWishlistStore: IInitialWishlistStore = {
 	wishlist: new Set(),
 };
 
-const wishlistStore: StateCreator<IWishlistStore> = (set) => ({
+const wishlistStore: StateCreator<IWishlistStore> = (set, get) => ({
 	...initialWishlistStore,
 	addProduct: (item) => {
 		set((state) => {
@@ -19,17 +19,30 @@ const wishlistStore: StateCreator<IWishlistStore> = (set) => ({
 			if (!existing) {
 				wishlist.add(item);
 			}
-			console.log(existing);
-			return { ...state, wishlist };
+			return { wishlist };
 		});
 	},
 	removeProduct: (item) => {
 		set((state) => {
-			const wishlist = new Set(state.wishlist);
-			const existing = [...wishlist].some((x) => x.id === item.id);
-   			if (existing) {
-				wishlist.delete(item);
+			const wishlist = new Set(
+				[...state.wishlist].filter((x) => x.id !== item.id)
+			);
+			return { ...state, wishlist };
+		});
+	},
+
+	togleProduct: (item) => {
+		set((state) => {
+			const exists = [...state.wishlist].some((x) => x.id === item.id);
+			let wishlist: Set<ItemWishlistType>;
+
+			if (exists) {
+				wishlist = new Set([...state.wishlist].filter((x) => x.id !== item.id));
+			} else {
+				wishlist = new Set(state.wishlist);
+				wishlist.add(item);
 			}
+
 			return { ...state, wishlist };
 		});
 	},
@@ -62,3 +75,6 @@ export const addProductToWishlistStore = (item: ItemWishlistType) =>
 	useWishlistStore.getState().addProduct(item);
 export const removeProductToWishlistStore = (item: ItemWishlistType) =>
 	useWishlistStore.getState().removeProduct(item);
+export const togleProductToWishlistStore = (item: ItemWishlistType) =>
+	useWishlistStore.getState().togleProduct(item); 
+

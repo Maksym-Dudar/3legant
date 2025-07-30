@@ -1,6 +1,6 @@
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
 
-export function Erro() {
+export default function Erro() {
 	return (
 		<PadingXLayouts>
 			<button

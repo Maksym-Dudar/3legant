@@ -8,6 +8,7 @@ export interface IInitialWishlistStore {
 export interface IAction {
 	addProduct: (item: ItemWishlistType) => void;
 	removeProduct: (item: ItemWishlistType) => void;
+	togleProduct: (item: ItemWishlistType) => void;
 }
 
 export interface IWishlistStore extends IInitialWishlistStore, IAction {}

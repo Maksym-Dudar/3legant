@@ -13,6 +13,9 @@ import {
 import axios from "axios";
 import { CardType } from "@/entities/product/card.types";
 import { Card } from "@/entities/product/Card";
+import  Erro  from "@/entities/erro/erro";
+import Loading from "@/entities/loading/loading";
+
 
 async function fetchProductCard({
 	pageParam = 1,
@@ -21,7 +24,7 @@ async function fetchProductCard({
 }: QueryFunctionContext) {
 	const [_key, categorie, price, sort, limit] = queryKey;
 
-	const res = axios.get("/api/card/all", {
+	const res = await axios.get("/api/card/all", {
 		params: {
 			categorie: categorie,
 			price: price,
@@ -32,7 +35,7 @@ async function fetchProductCard({
 		signal,
 	});
 
-	return (await res).data;
+	return res.data;
 }
 
 export function CardGrid() {
@@ -51,7 +54,7 @@ export function CardGrid() {
 		"categorie" | "price" | "sort" | null
 	>(null);
 
-	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
+	const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading , error } =
 		useInfiniteQuery({
 			queryKey: [
 				"product_card",
@@ -68,8 +71,9 @@ export function CardGrid() {
 			},
 		});
 
-	console.log(data);
-
+	if (error) return <Erro />;
+	if (isLoading) return <Loading />;
+	
 	return (
 		<PadingXLayouts>
 			<div className='flex flex-col justify-center items-center pt-15 pb-25 w-full'>

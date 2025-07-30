@@ -8,24 +8,28 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useWindowSize } from "@/shared/hooks/useWindowSize";
+import { mobileSize } from "@/shared/constants/windowSize";
 
 export function SwiperSectionProduct({
 	images, isnew, sale,
 }: PropsWithChildren<{ images: string[], isnew:boolean, sale:number }>) {
 	const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+	const { width } = useWindowSize();
+	
 	return (
-		<div className='w-1/2 flex flex-col gap-6 pb-17'>
-			<div className='flex absolute p-5 z-50'>
+		<div className='w-full md:w-1/2 flex flex-col gap-6'>
+			<div className='flex absolute p-3 sm:p-5 z-20'>
 				<div className='flex flex-col gap-2'>
 					{isnew ? (
-						<div className='font-inter px-5 py-2 bg-white rounded text-16 font-700 leading-100'>
+						<div className='font-inter px-3 sm:px-5 md:px-3 lg:px-5 py-[6px] sm:py-2 md:py-[6px] lg:py-2 bg-white rounded text-14 md:text-16 font-700 leading-100'>
 							NEW
 						</div>
 					) : (
 						<></>
 					)}
 					{sale ? (
-						<div className='font-inter px-5 py-2 bg-green rounded text-center text-white text-16 font-700 leading-100'>
+						<div className='font-inter px-3 sm:px-5 md:px-3 lg:px-5 py-[6px] sm:py-2 md:py-[6px] lg:py-2 bg-green rounded text-center text-white text-14 md:text-16 font-700 leading-100'>
 							-{sale * 100}%
 						</div>
 					) : (
@@ -56,20 +60,20 @@ export function SwiperSectionProduct({
 						/>
 					</SwiperSlide>
 				))}
-				<div className='prev absolute top-40% translate-y-1/2 z-10 left-8 rounded-full bg-white p-2.5 cursor-pointer'>
+				<div className='prev absolute top-40% translate-y-1/2 z-10 left-6 lg:left-8 rounded-full bg-white p-2.5 cursor-pointer'>
 					<Image
 						src='/images/main_page/slider/prev.svg'
 						alt='prev'
-						width={32}
-						height={32}
+						width={width > mobileSize ? 32 : 28}
+						height={width > mobileSize ? 32 : 28}
 					/>
 				</div>
-				<div className='next absolute top-40% translate-y-1/2 z-10 right-8 rounded-full bg-white p-2.5 cursor-pointer'>
+				<div className='next absolute top-40% translate-y-1/2 z-10 right-6 lg:right-8 rounded-full bg-white p-2.5 cursor-pointer'>
 					<Image
 						src='/images/main_page/slider/next.svg'
 						alt='next'
-						width={32}
-						height={32}
+						width={width > mobileSize ? 32 : 28}
+						height={width > mobileSize ? 32 : 28}
 					/>
 				</div>
 			</Swiper>

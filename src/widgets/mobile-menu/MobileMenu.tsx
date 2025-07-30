@@ -59,6 +59,7 @@ export function MobileMenu() {
 												? "hover:scale-105 text-notactive text-14 font-500 leading-170"
 												: ""
 										}
+										onClick={offOverlay}
 									>
 										{item.label}
 									</Link>
