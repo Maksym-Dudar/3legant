@@ -12,10 +12,10 @@ import { addProductToBagStore } from "@/features/store/bag/store";
 import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loading from "@/entities/loading/loading";
-import Erro from "@/entities/erro/erro";
+import Erro from "@/entities/error/erro";
 import { mobileSize } from "@/shared/constants/windowSize";
 import { useWindowSize } from "@/shared/hooks/useWindowSize";
-import { hasProductToWishlistStore, togleProductToWishlistStore, useWishlistStored } from "@/features/store/wishlist/store";
+import { togleProductToWishlistStore, useWishlistStored } from "@/features/store/wishlist/store";
 
 async function fetchCardPage({ queryKey, signal }: QueryFunctionContext) {
 	const [id] = queryKey;
@@ -97,7 +97,7 @@ export function HeroProductSection() {
 											.fill(0)
 											.map((_, i) => (
 												<Image
-													src='/images/ui/star.svg'
+													src='/images/ui/star_active.svg'
 													alt='Star'
 													width={width > mobileSize ? 16 : 14}
 													height={width > mobileSize ? 16 : 14}

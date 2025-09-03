@@ -6,20 +6,19 @@ import { addProductToBagStore } from "@/features/store/bag/store";
 import Image from "next/image";
 import gsap from "gsap";
 import Link from "next/link";
-import { CardType } from "./card.types";
+import { ProductCard } from "./card.types";
 import { togleProductToWishlistStore, useWishlistStored } from "@/features/store/wishlist/store";
 import { useHasMouse } from "@/shared/hooks/useHasMouse";
 import { useWindowSize } from "@/shared/hooks/useWindowSize";
 import { mobileSize } from "@/shared/constants/windowSize";
 
-export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
+export function Card({ id, title, price, nstar, sale, isnew, img }: ProductCard) {
 	const buttonRef = useRef<HTMLDivElement>(null);
 	const buttonFavoriteRef = useRef<HTMLButtonElement>(null);
 	const hasMouse = useHasMouse();
 	const { width } = useWindowSize();
 	const wishlist = useWishlistStored();
 	const isInWishlist = [...wishlist].some((x) => x.id === id);
-
 
 	useEffect(() => {
 		if (hasMouse) {
@@ -97,7 +96,9 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 				<button
 					className='absolute right-2 sm:right-4 md:right-5 top-2 sm:top-4 md:top-5 p-1 sm:p-2 rounded-full bg-white cursor-pointer'
 					ref={buttonFavoriteRef}
-					onClick={() =>{togleProductToWishlistStore({ id })}}
+					onClick={() => {
+						togleProductToWishlistStore({ id });
+					}}
 				>
 					{isInWishlist ? (
 						<Image
@@ -118,9 +119,8 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 							style={{ width: "100%", height: "100%" }}
 						/>
 					)}
-					
 				</button>
-			
+
 				<div
 					className='absolute bottom-2 md:bottom-4 px-2 md:px-4 w-full'
 					ref={buttonRef}
@@ -138,7 +138,7 @@ export function Card({ id, title, price, nstar, sale, isnew, img }: CardType) {
 						.fill(0)
 						.map((_, i) => (
 							<Image
-								src='/images/ui/star.svg'
+								src='/images/ui/star_active.svg'
 								alt='Star'
 								width={width > mobileSize ? 16 : 13}
 								height={width > mobileSize ? 16 : 13}

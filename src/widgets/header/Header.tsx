@@ -1,7 +1,7 @@
 "use client";
 
 import {
-	LINK_ACOUNT,
+	LINK_ACCOUNT,
 	LINk_HOME,
 	LINK_NAV_ITEMS,
 } from "@/shared/constants/links";
@@ -64,13 +64,13 @@ export default function Header() {
 						</button>
 					)}
 					{!showMobileMenuIcon && (
-						<Link key={LINK_ACOUNT.href} href={LINK_ACOUNT.href} className=''>
+						<Link key={LINK_ACCOUNT.href} href={LINK_ACCOUNT.href} className=''>
 							<Image
 								src='/images/ui/user.svg'
 								width={0}
 								height={0}
 								className='w-[18px] md:w-[22px] h-[18px] md:h-[22px]'
-								alt='acount'
+								alt='account'
 							/>
 						</Link>
 					)}
@@ -80,7 +80,7 @@ export default function Header() {
 							width={0}
 							height={0}
 							className='w-5 md:w-6 h-5 md:h-6'
-							alt='acount'
+							alt='account'
 						/>
 						<div className='w-4 md:w-5 h-4 md:h-5 bg-black text-white flex items-center justify-center rounded-full text-10 md:text-12 font-700 leading-80'>
 							{size}

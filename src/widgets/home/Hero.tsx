@@ -43,9 +43,9 @@ export default function Hero() {
 					))}
 					{showButtonInSwiper && (
 						<>
-							<button className='prev absolute top-40% translate-y-1/2 z-10 left-8 rounded-full bg-white p-2.5 cursor-pointer'>
+							<button className='prev rotate-180 absolute top-40% translate-y-1/2 z-10 left-8 rounded-full bg-white p-2.5 cursor-pointer'>
 								<Image
-									src='/images/main_page/slider/prev.svg'
+									src='/images/main_page/slider/arrow.svg'
 									alt='prev'
 									width={32}
 									height={32}
@@ -53,7 +53,7 @@ export default function Hero() {
 							</button>
 							<button className='next absolute top-40% translate-y-1/2 z-10 right-8 rounded-full bg-white p-2.5 cursor-pointer'>
 								<Image
-									src='/images/main_page/slider/next.svg'
+									src='/images/main_page/slider/arrow.svg'
 									alt='next'
 									width={32}
 									height={32}

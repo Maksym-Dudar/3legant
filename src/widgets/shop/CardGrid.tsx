@@ -2,7 +2,7 @@
 
 import { categories, prices, sorts } from "@/shared/constants/filters";
 import PadingXLayouts from "@/shared/layout/PadingXLayouts";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { DropdownFilter } from "@/shared/ui/DropdownFilter";
 import { DropdownSort } from "@/shared/ui/DropdownSort";
@@ -11,11 +11,10 @@ import {
 	useInfiniteQuery,
 } from "@tanstack/react-query";
 import axios from "axios";
-import { CardType } from "@/entities/product/card.types";
+import { ProductCard } from "@/entities/product/card.types";
 import { Card } from "@/entities/product/Card";
-import  Erro  from "@/entities/erro/erro";
+import  Erro  from "@/entities/error/erro";
 import Loading from "@/entities/loading/loading";
-
 
 async function fetchProductCard({
 	pageParam = 1,
@@ -41,9 +40,6 @@ async function fetchProductCard({
 export function CardGrid() {
 	const searchParams = useSearchParams();
 	const initialCategorie = searchParams.get("categorie") || "All";
-
-	const router = useRouter();
-	const pathname = usePathname();
 
 	const [filter, setFilter] = useState({
 		categorie: initialCategorie,
@@ -76,7 +72,7 @@ export function CardGrid() {
 	
 	return (
 		<PadingXLayouts>
-			<div className='flex flex-col justify-center items-center pt-15 pb-25 w-full'>
+			<div className='flex flex-col justify-center items-center pt-10 md:pt-15 pb-12 md:pb-25 w-full'>
 				<div className='flex flex-col w-full items-center'>
 					<div className='flex flex-col md:flex-row w-full md:justify-between gap-6 md:gap-0'>
 						<div className='flex gap-4 sm:gap-6 flex-col md:flex-row w-full'>
@@ -117,7 +113,7 @@ export function CardGrid() {
 					<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-10 w-full'>
 						{data?.pages
 							?.flatMap((page) => page.cards)
-							?.map((item: CardType) => (
+							?.map((item: ProductCard) => (
 								<div key={item.id} className='w-full h-auto'>
 									<Card {...item} />
 								</div>

@@ -60,9 +60,9 @@ export function SwiperSectionProduct({
 						/>
 					</SwiperSlide>
 				))}
-				<div className='prev absolute top-40% translate-y-1/2 z-10 left-6 lg:left-8 rounded-full bg-white p-2.5 cursor-pointer'>
+				<div className='prev rotate-180 absolute top-40% translate-y-1/2 z-10 left-6 lg:left-8 rounded-full bg-white p-2.5 cursor-pointer'>
 					<Image
-						src='/images/main_page/slider/prev.svg'
+						src='/images/main_page/slider/arrow.svg'
 						alt='prev'
 						width={width > mobileSize ? 32 : 28}
 						height={width > mobileSize ? 32 : 28}
@@ -70,7 +70,7 @@ export function SwiperSectionProduct({
 				</div>
 				<div className='next absolute top-40% translate-y-1/2 z-10 right-6 lg:right-8 rounded-full bg-white p-2.5 cursor-pointer'>
 					<Image
-						src='/images/main_page/slider/next.svg'
+						src='/images/main_page/slider/arrow.svg'
 						alt='next'
 						width={width > mobileSize ? 32 : 28}
 						height={width > mobileSize ? 32 : 28}

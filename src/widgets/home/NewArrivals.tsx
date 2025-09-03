@@ -8,7 +8,7 @@ import { CardType } from "@/entities/product/card.types";
 import Loading from "@/entities/loading/loading";
 import { Card } from "@/entities/product/Card";
 import { useQuery } from "@tanstack/react-query";
-import Erro  from "@/entities/erro/erro";
+import Erro  from "@/entities/error/erro";
 import axios from "axios";
 
 async function fetchNewArrivals() {
@@ -41,7 +41,7 @@ export default function NewArrivals() {
 					{data && (
 						<div
 							ref={scrollRef}
-							className='flex gap-4 md:gap-5 lg:gap-6 overflow-x-scroll custom-scrollbar scroll-smooth pb-12'
+							className='flex gap-4 md:gap-5 lg:gap-6 overflow-x-scroll custom-scrollbar scroll-smooth pb-8 md:pb-12'
 						>
 							{data.data?.map((item: CardType) => (
 								<div key={item.id} className='flex-shrink-0 w-52 sm:w-60 lg:w-72'>

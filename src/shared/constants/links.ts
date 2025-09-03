@@ -5,9 +5,9 @@ export const LINK_NAV_ITEMS = [
 	{ label: "Contact Us", href: "/contact-us" },
 ];
 
-export const LINK_ACOUNT = {
-	alt: "Acount",
-	href: "/acount",
+export const LINK_ACCOUNT = {
+	alt: "Account",
+	href: "/account",
 };
 export const LINk_HOME = {
 	alt: "Home",

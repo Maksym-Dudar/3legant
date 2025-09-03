@@ -80,7 +80,7 @@ export function MobileMenu() {
 											src='/images/ui/shopping_bag.svg'
 											width={24}
 											height={24}
-											alt='acount'
+											alt='account'
 										/>
 										<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
 											{bagSize}
@@ -99,7 +99,7 @@ export function MobileMenu() {
 											src='/images/ui/shape.svg'
 											width={24}
 											height={24}
-											alt='acount'
+											alt='account'
 										/>
 										<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
 											{wishlistSize}
@@ -111,9 +111,9 @@ export function MobileMenu() {
 						{getUserStore().email ? (
 							<ButtonAction
 								type='button'
-								text='Acount'
+								text='Account'
 								onClick={() => {
-									router.push("/acount");
+									router.push("/account");
 								}}
 								pading={2}
 							/>
