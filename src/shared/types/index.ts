@@ -1,0 +1,1 @@
+export type { IProductCard } from './product.type';

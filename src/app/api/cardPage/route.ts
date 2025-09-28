@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cardPageType } from "@/widgets/product/types";
 
-const productsData: cardPageType[] = [
+const productsData: cardPage[] = [
 	{
 		id: 1,
 		name: "Loveseat Sofa",

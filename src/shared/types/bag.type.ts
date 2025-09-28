@@ -1,4 +1,4 @@
-export interface BagCard {
+export interface IBagCard {
 	id: number;
 	title: string;
 	price: number;
