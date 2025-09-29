@@ -21,7 +21,7 @@ export function BagSidebar() {
 	});
 
 	if (isLoading) return <Loading />;
-	if (error) return <Error />;
+	if (error) return <Error masage={error.message} />;
 	
 
 	return (

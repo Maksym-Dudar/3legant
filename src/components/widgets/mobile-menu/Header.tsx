@@ -1,4 +1,5 @@
 import { ButtonClose } from "@/components/ui";
+import { IMAGE } from "@/config/image.config";
 import { useMobileMenuContext } from "@/provider";
 import Image from "next/image";
 
@@ -19,10 +20,10 @@ export function Header() {
 					className='text-14 font-400 leading-160 font-inter pl-11 py-2 border-1 border-descriptiongrey rounded-lg w-full'
 				/>
 				<Image
-					src='/images/ui/search.svg'
+					src={IMAGE.SEARCH.href}
 					width={20}
 					height={20}
-					alt=''
+					alt={IMAGE.SEARCH.alt}
 					className='absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5'
 				/>
 			</label>

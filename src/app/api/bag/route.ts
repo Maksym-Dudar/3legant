@@ -1,7 +1,7 @@
-import { BagCard } from "../../../shared/types/bag.type";
+import type { IBagCard } from "@/shared/types/bag.type";
 import { NextResponse } from "next/server";
 
-const bagCard:BagCard[] = [
+const bagCard:IBagCard[] = [
 	{
 		id: 1,
 		title: "Loveseat Sofa",
@@ -52,7 +52,7 @@ export async function GET(req: Request) {
 		idsArray = ids;
     }
     
-	let data: BagCard[] = [];
+	let data: IBagCard[] = [];
 	idsArray.forEach((value) => {
 		const found = bagCard.find((item) => item.id == parseInt(value));
 		if (found) {

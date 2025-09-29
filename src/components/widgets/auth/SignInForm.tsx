@@ -4,12 +4,13 @@ import { signIn } from "@/services/auth";
 import type { ISignIn } from "@/services/auth/type";
 import { useState } from "react";
 import Link from "next/link";
-import { ButtonAction } from "@/components/ui";
+import { ButtonAction, ErrorToast } from "@/components/ui";
 import { PAGE } from "@/config/page.config";
 import { useRouter } from "next/navigation";
 
 export function SignInForm() {
 	const router = useRouter();
+	const [errorToast, setErrorToast] = useState<string | null>(null);
 
 	const [formData, setFormData] = useState<ISignIn>({
 		email: "",
@@ -29,7 +30,7 @@ export function SignInForm() {
 			await signIn(formData);
 			router.push("/");
 		} catch (error) {
-			console.log(error);
+			setErrorToast(String(error));
 		}
 	}
 	return (
@@ -37,6 +38,9 @@ export function SignInForm() {
 			onSubmit={onSubmit}
 			className='flex flex-col justify-center pl-20 max-w-[500px] w-full gap-8'
 		>
+			{errorToast && (
+				<ErrorToast message={errorToast} onClose={() => setErrorToast(null)} />
+			)}
 			<div className='flex flex-col gap-6'>
 				<h3 className='text-40 font-500 leading-110'>{PAGE.SIGN_IN.label}</h3>
 				<p className='text-16 font-400 leading-160 font-inter text-descriptiongrey'>

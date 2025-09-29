@@ -19,7 +19,7 @@ export function CommentProductSection() {
 		queryFn: fetchComment,
 	});
 	
-	if (error) return <Error />;
+	if (error) return <Error masage={error.message} />;
 	if (isLoading) return <Loading />;
 
 	return (

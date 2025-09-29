@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import type { ISignUp } from "@/services/auth/type";
 import { signUp } from "@/services/auth";
 import { PAGE } from "@/config/page.config";
-import { ButtonAction } from "@/components/ui";
+import { ButtonAction, ErrorToast } from "@/components/ui";
 
 export function SignUpForm() {
 	const router = useRouter();
+	const [errorToast, setErrorToast] = useState<string | null>(null);
 
 	const [formData, setFormData] = useState<ISignUp>({
 		name: "",
@@ -30,18 +31,18 @@ export function SignUpForm() {
 	async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		if (!formData.agreeWithPolicy) {
-			alert("agreeWithPolicy"); //todo
+			setErrorToast("agreeWithPolicy"); //todo
 			return;
 		}
 		if (formData.password != formData.confirmPassword) {
-			alert("confirmPassword");
+			setErrorToast("confirmPassword");
 			return;
 		}
 		try {
 			signUp(formData);
 			router.push("/");
 		} catch (error) {
-			console.log(error);
+			setErrorToast(String(error));
 		}
 	}
 
@@ -50,6 +51,9 @@ export function SignUpForm() {
 			onSubmit={onSubmit}
 			className='flex flex-col justify-center pl-20 max-w-[500px] w-full gap-8'
 		>
+			{errorToast && (
+				<ErrorToast message={errorToast} onClose={() => setErrorToast(null)} />
+			)}
 			<div className='flex flex-col gap-6'>
 				<h3 className='text-40 font-500 leading-110'>{PAGE.SIGN_UP.label}</h3>
 				<p className='text-16 font-400 leading-160 font-inter text-descriptiongrey'>
@@ -91,7 +95,9 @@ export function SignUpForm() {
 					name='confirmPassword'
 					placeholder='Confirm Password'
 					className={`w-full text-16 font-400 leading-160 font-inter pb-1 border-b-1 ${
-						formData.confirmPassword != formData.password ? "bg-red" : ""
+						formData.confirmPassword != formData.password
+							? "bg-palered border-1 border-red rounded-md"
+							: ""
 					}`}
 					required
 					minLength={8}

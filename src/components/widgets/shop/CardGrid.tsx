@@ -37,7 +37,7 @@ export function CardGrid() {
 		},
 	});
 
-	if (error) return <Error />;
+	if (error) return <Error masage={error.message} />;
 	if (isLoading) return <Loading />;
 
 	return (

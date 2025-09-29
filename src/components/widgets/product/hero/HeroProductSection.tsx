@@ -38,7 +38,7 @@ export function HeroProductSection() {
 		new Date(new Date(data.offerExpiresIn).getTime() - Date.now()) || new Date()
 	
 
-	if (error) return <Error />;
+	if (error) return <Error masage={error.message} />;
 	if (isLoading) return <Loading />;
 
 	return (

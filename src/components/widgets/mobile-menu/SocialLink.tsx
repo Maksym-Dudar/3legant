@@ -16,16 +16,16 @@ export function SocialLink() {
 			</Link>
 			<Link href={PAGE.FACEBOOK.link}>
 				<Image
-					src={IMAGE.INSTAGRAMBLACK.href}
-					alt={IMAGE.INSTAGRAMBLACK.alt}
+					src={IMAGE.FACEBOOKBLACK.href}
+					alt={IMAGE.FACEBOOKBLACK.alt}
 					width={24}
 					height={24}
 				/>
 			</Link>
 			<Link href={PAGE.YOUTUBE.link}>
 				<Image
-					src={IMAGE.INSTAGRAMBLACK.href}
-					alt={IMAGE.INSTAGRAMBLACK.alt}
+					src={IMAGE.YOUTUBEBLACK.href}
+					alt={IMAGE.YOUTUBEBLACK.alt}
 					width={24}
 					height={24}
 				/>

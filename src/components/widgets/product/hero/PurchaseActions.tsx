@@ -59,7 +59,7 @@ export function PurchaseActions({ id }: Props) {
 
 			<ButtonAction
 				text='Add to Cart'
-				pading={3}
+				padding={3}
 				onClick={() => {
 					if (itemToAddBag) {
 						addProductToBagStore(itemToAddBag);

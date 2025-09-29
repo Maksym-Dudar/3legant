@@ -4,9 +4,8 @@ import { DropdownFilter, DropdownSort } from "@/components/ui";
 import { FilterOpen, useShopContext } from "@/provider/ShopContext";
 import { Prices, Sorts, Category } from "@/config/product.config";
 
-interface Props {}
 
-export function Filter({}: Props) {
+export function Filter() {
 	const { filter, openFilter, setOpenFilter, setFilter } = useShopContext();
 	console.log(Object.values(Category));
 	return (
