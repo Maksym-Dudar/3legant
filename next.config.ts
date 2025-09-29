@@ -1,14 +1,23 @@
 import type { NextConfig } from "next";
-const withSvgr = require("next-svgr");
 
 const nextConfig: NextConfig = {
+	reactStrictMode: true,
+	swcMinify: true,
+	webpack(config) {
+		config.module.rules.push({
+			test: /\.svg$/,
+			issuer: /\.[jt]sx?$/,
+			use: [
+				{
+					loader: "@svgr/webpack",
+					options: {
+						icon: true, 
+					},
+				},
+			],
+		});
+		return config;
+	},
 };
-
-module.exports = withSvgr({
-  webpack(config: any, options: any) {
-	return config;
-  },
-});
-
 
 export default nextConfig;

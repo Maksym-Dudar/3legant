@@ -1,11 +1,11 @@
 "use client";
 
-import type { BagCard } from "../../../shared/types/bag.type";
+import type { IBagCard } from "../../../shared/types/bag.type";
 import { useRef } from "react";
 import { CardProductInBag } from "./CardProductInBag";
 
 interface Props {
-	data: BagCard[];
+	data: IBagCard[];
 	bag: Map<number, number>;
 }
 

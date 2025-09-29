@@ -20,14 +20,14 @@ export function MainButton({ isAuthorized, authorized, noAuthorized }: Props) {
 					type='button'
 					text={authorized.text}
 					onClick={authorized.onClick}
-					pading={2}
+					padding={2}
 				/>
 			) : (
 				<ButtonAction
 					type='button'
 					text={noAuthorized.text}
 					onClick={noAuthorized.onClick}
-					pading={2}
+					padding={2}
 				/>
 			)}
 		</>

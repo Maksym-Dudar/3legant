@@ -31,7 +31,7 @@ export function FoterBag({ subtotal, total, checkout }: Props) {
 				<ButtonAction
 					type='button'
 					text='Checkout'
-					pading={3}
+					padding={3}
 					onClick={checkout}
 				/>
 				<div>

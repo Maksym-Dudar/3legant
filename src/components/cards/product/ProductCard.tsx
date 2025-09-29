@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import Link from "next/link";
 import { useHasMouse, useWindowSize } from "@/hooks";
 import {
 	togleProductToWishlistStore,
@@ -114,7 +113,7 @@ export function ProductCard({
 				>
 					<ButtonAction
 						text={"Add to cart"}
-						pading={buttonActionPading}
+						padding={buttonActionPading}
 						onClick={() => addProductToBagStore({ id: id, quantity: 1 })}
 					/>
 				</div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useCountProductInBagStore } from "@/store/bag/store";
 import { useCountProductInWishlistStore } from "@/store/wishlist/store";
 import { PAGE } from "@/config/page.config";
+import { IMAGE } from "@/config/image.config";
 
 export function StoreList() {
 	const bagSize = useCountProductInBagStore();
@@ -17,10 +18,10 @@ export function StoreList() {
 					{PAGE.CART.label}
 					<div className='flex flex-row gap-1 items-center'>
 						<Image
-							src='/images/ui/shopping_bag.svg'
+							src={IMAGE.SHOPPINGBAG.href}
+							alt={IMAGE.SHOPPINGBAG.alt}
 							width={24}
 							height={24}
-							alt='account'
 						/>
 						<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
 							{bagSize}
@@ -36,10 +37,10 @@ export function StoreList() {
 					{PAGE.WISHLIST.label}{" "}
 					<div className='flex flex-row gap-1 items-center'>
 						<Image
-							src='/images/ui/shape.svg'
+							src={IMAGE.LIKE_NOT_ACTIVE.href}
+							alt={IMAGE.LIKE_ACTIVE.alt}
 							width={24}
 							height={24}
-							alt='account'
 						/>
 						<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
 							{wishlistSize}

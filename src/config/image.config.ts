@@ -137,6 +137,12 @@ class ImageConfig {
 		href: "/market/images/shop_page/hero_banner/hero_banner.png",
 		alt: "Shop Banner",
 	};
+
+	// auth
+	AUTH_BANNER: IImage = {
+		href: "/auth/banner.png",
+		alt: "Auth Banner",
+	};
 }
 
 export const IMAGE = new ImageConfig();
