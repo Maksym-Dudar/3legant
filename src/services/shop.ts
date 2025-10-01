@@ -7,7 +7,6 @@ export async function fetchProductCard({
 	signal,
 }: QueryFunctionContext) {
 	const [_key, categorie, price, sort, limit] = queryKey;
-	console.log("Fetch");
 	const res = await axios.get("/api/card/all", {
 		params: {
 			categorie: categorie,

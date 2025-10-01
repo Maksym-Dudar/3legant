@@ -2,14 +2,16 @@
 
 import { signIn } from "@/services/auth";
 import type { ISignIn } from "@/services/auth/type";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ButtonAction, ErrorToast } from "@/components/ui";
 import { PAGE } from "@/config/page.config";
 import { useRouter } from "next/navigation";
+import { updateUserData } from "@/store/user/store";
 
 export function SignInForm() {
 	const router = useRouter();
+
 	const [errorToast, setErrorToast] = useState<string | null>(null);
 
 	const [formData, setFormData] = useState<ISignIn>({
@@ -27,7 +29,8 @@ export function SignInForm() {
 	async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		try {
-			await signIn(formData);
+			const data = await signIn(formData);
+			updateUserData(data);
 			router.push("/");
 		} catch (error) {
 			setErrorToast(String(error));
@@ -87,3 +90,5 @@ export function SignInForm() {
 		</form>
 	);
 }
+
+

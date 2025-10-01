@@ -1,10 +1,9 @@
 import axios from "axios";
 import type { IForgotPassword, ISignIn, ISignUp } from "./type";
-import { authUrl } from "@/constants/url";
 
 export async function signIn(payload: ISignIn) {
 	const res = await axios.post(
-		authUrl,
+		"https://localhost:4200/sign-in",
 		{
 			email: payload.email,
 			password: payload.password,
@@ -16,16 +15,15 @@ export async function signIn(payload: ISignIn) {
 			withCredentials: true,
 		}
 	);
-	if (res.status != 200) {
+	if (res.status != 201) {
 		throw new Error("Помилка авторизації");
-    }
-    // todo додати створення user
-	return res.status;
+	}
+	return res.data;
 }
 
 export async function signUp(payload: ISignUp) {
 	const res = await axios.post(
-		"https://localhost:4200/signup",
+		"https://localhost:4200/sign-up",
 		{
 			name: payload.name,
 			email: payload.email,
@@ -38,16 +36,16 @@ export async function signUp(payload: ISignUp) {
 			withCredentials: true,
 		}
 	);
-	if (res.status != 200) {
+	if (res.status != 201) {
 		throw new Error("Помилка авторизації");
 	}
 	// todo додати створення user
-	return res.status;
+	return res.data;
 }
 
 export async function forgotPassword(payload: IForgotPassword) {
 	const res = await axios.post(
-		"https://localhost:4200/reset_password",
+		"https://localhost:4200/forgot-password",
 		{
 			email: payload.email,
 			password: payload.password,
@@ -64,7 +62,7 @@ export async function forgotPassword(payload: IForgotPassword) {
 		throw new Error("Помилка авторизації");
 	}
 	// todo додати створення user
-	return res.status;
+	return res.data;
 }
 
 export async function sendOtpCode(email: string) {

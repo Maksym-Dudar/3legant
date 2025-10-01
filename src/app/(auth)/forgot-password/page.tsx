@@ -1,4 +1,4 @@
-import { AsideBannerAuth, ForgotPasswordForm } from "@/components/widgets/auth";
+import { AsideBannerAuth, ForgotPasswordForm } from "@/components/forms/auth";
 
 export default function page() {
   return (

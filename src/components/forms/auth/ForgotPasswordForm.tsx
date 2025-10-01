@@ -6,11 +6,12 @@ import { forgotPassword, sendOtpCode } from "@/services/auth";
 import { ButtonAction, ErrorToast } from "@/components/ui";
 import { PAGE } from "@/config/page.config";
 import { useRouter } from "next/navigation";
+import { updateUserData } from "@/store/user/store";
 
 export function ForgotPasswordForm() {
 	const router = useRouter();
-	const [errorToast, setErrorToast] = useState<string | null>(null)
-    
+	const [errorToast, setErrorToast] = useState<string | null>(null);
+
 	const [emailReadOmly, setEmailReadOmly] = useState<boolean>(false);
 	const [formData, setFormData] = useState<IForgotPassword>({
 		email: "",
@@ -27,8 +28,8 @@ export function ForgotPasswordForm() {
 	}
 
 	function sendEmail() {
-        setEmailReadOmly(true);
-		sendOtpCode(formData.email)
+		setEmailReadOmly(true);
+		sendOtpCode(formData.email);
 	}
 
 	async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -39,10 +40,11 @@ export function ForgotPasswordForm() {
 			return;
 		}
 		try {
-            await forgotPassword(formData);
-            router.push('/')
+			const data = await forgotPassword(formData);
+			updateUserData(data);
+			router.push("/");
 		} catch (error) {
-			setErrorToast(String(error))
+			setErrorToast(String(error));
 		}
 	}
 	return (

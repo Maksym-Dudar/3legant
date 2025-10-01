@@ -7,7 +7,6 @@ import { Prices, Sorts, Category } from "@/config/product.config";
 
 export function Filter() {
 	const { filter, openFilter, setOpenFilter, setFilter } = useShopContext();
-	console.log(Object.values(Category));
 	return (
 		<div className='flex flex-col md:flex-row w-full md:justify-between gap-6 md:gap-0'>
 			<div className='flex gap-4 sm:gap-6 flex-col md:flex-row w-full'>

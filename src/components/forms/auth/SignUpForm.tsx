@@ -7,6 +7,7 @@ import type { ISignUp } from "@/services/auth/type";
 import { signUp } from "@/services/auth";
 import { PAGE } from "@/config/page.config";
 import { ButtonAction, ErrorToast } from "@/components/ui";
+import { updateUserData } from "@/store/user/store";
 
 export function SignUpForm() {
 	const router = useRouter();
@@ -39,7 +40,8 @@ export function SignUpForm() {
 			return;
 		}
 		try {
-			signUp(formData);
+			const data = await signUp(formData);
+			updateUserData(data);
 			router.push("/");
 		} catch (error) {
 			setErrorToast(String(error));

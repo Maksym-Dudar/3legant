@@ -1,4 +1,4 @@
-import { AsideBannerAuth, SignUpForm } from "@/components/widgets/auth";
+import { AsideBannerAuth, SignUpForm } from "@/components/forms/auth";
 
 export default function page() {
 	return (
