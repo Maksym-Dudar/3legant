@@ -5,9 +5,9 @@ import { useParams } from "next/navigation";
 import { Error, Loading } from "../..";
 import PadingXLayouts from "@/layout/PadingXLayouts";
 import type { IComment } from "../types";
-import { CommentCard } from "@/components/product/Comment";
-import { fetchComment } from "@/services/product";
 import { CustomComment } from "./CustomComment";
+import { fetchComment } from "@/services/requests/product";
+import { CommentCard } from "@/components/cards";
 
 
 export function CommentProductSection() {

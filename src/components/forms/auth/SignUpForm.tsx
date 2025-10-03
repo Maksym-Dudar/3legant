@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { ISignUp } from "@/services/auth/type";
-import { signUp } from "@/services/auth";
+import type { ISignUp } from "@/services/requests/auth/type";
+import { signUp } from "@/services/requests/auth";
 import { PAGE } from "@/config/page.config";
 import { ButtonAction, ErrorToast } from "@/components/ui";
 import { updateUserData } from "@/store/user/store";

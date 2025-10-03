@@ -4,7 +4,6 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SwiperSectionProduct } from "./SwiperSectionProduct";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCardPage } from "@/services/product";
 import { Error, Loading } from "../..";
 import PadingXLayouts from "@/layout/PadingXLayouts";
 import type { ICardPage } from "../types";
@@ -14,6 +13,7 @@ import { CountdownTimer } from "./CountdownTimer";
 import { OptionsProduct } from "./OptionsProduct";
 import { PurchaseActions } from "./PurchaseActions";
 import { MataDataProduct } from "./MataDataProduct";
+import { fetchCardPage } from "@/services/requests/product";
 
 export function HeroProductSection() {
 	const [_, setTime] = useState<Date>(new Date());

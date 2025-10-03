@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { IComment } from "../widgets/product/types";
+import type { IComment } from "../../widgets/product/types";
 import { useWindowSize } from "@/hooks";
 import { IMAGE } from "@/config/image.config";
 import { mobileSize } from "@/constants/windowSize";

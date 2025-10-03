@@ -1,2 +1,3 @@
 export { BannerShop as BannerShop } from "./BannerShop";
-export { HeroShop as HeroShop } from "./HeroShop";
+export { CardGridShop as CardGridShop } from "./CardGridShop";
+export { FilterShop as FilterShop } from "./FilterShop";

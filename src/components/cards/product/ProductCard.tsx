@@ -8,13 +8,13 @@ import {
 	togleProductToWishlistStore,
 	useWishlistStored,
 } from "@/store/wishlist/store";
-import type { ProductCard } from "../../product/card.types";
 import { mobileSize } from "@/constants/windowSize";
 import { FooterCard } from "./FooterCard";
 import { HeroCard } from "./HeroCard";
 import { ButtonAction } from "@/components/ui";
 import { addProductToBagStore } from "@/store/bag/store";
 import { IMAGE } from "@/config/image.config";
+import type { IProductCard } from "@/shared/types";
 
 export function ProductCard({
 	id,
@@ -24,7 +24,7 @@ export function ProductCard({
 	sale,
 	isnew,
 	img,
-}: ProductCard) {
+}: IProductCard) {
 	const buttonRef = useRef<HTMLDivElement>(null);
 	const buttonFavoriteRef = useRef<HTMLButtonElement>(null);
 	const hasMouse = useHasMouse();

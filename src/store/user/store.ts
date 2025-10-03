@@ -25,6 +25,8 @@ export const useUserStore = create<IUserStore>()(
 	})
 );
 
+export const user = useUserStore.getState().user
+
 export function updateUserData(userData: Partial<IUser>) {
 	if (!userData) return;
 	useUserStore.getState().updateUser(userData);

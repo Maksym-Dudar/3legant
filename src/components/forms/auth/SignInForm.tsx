@@ -1,7 +1,7 @@
 "use client";
 
-import { signIn } from "@/services/auth";
-import type { ISignIn } from "@/services/auth/type";
+import { signIn } from "@/services/requests/auth";
+import type { ISignIn } from "@/services/requests/auth/type";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ButtonAction, ErrorToast } from "@/components/ui";

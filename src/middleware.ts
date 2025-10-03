@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { useUserStore } from "./store/user/store";
 
 export function middleware(req: NextRequest) {
     console.log("date: ", new Date);

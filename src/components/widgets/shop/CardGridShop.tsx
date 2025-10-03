@@ -2,15 +2,16 @@
 
 import { useSearchParams } from "next/navigation";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { fetchProductCard } from "@/services/shop";
 import { Error, Loading } from "..";
 import { useShopContext } from "@/provider/ShopContext";
 import { ProductCard } from "@/components/cards";
 import type { IProductCard } from "@/shared/types";
 import type { Category } from "@/config/product.config";
 import { useEffect } from "react";
+import { fetchProductCard } from "@/services/requests/product";
+import PadingXLayouts from "@/layout/PadingXLayouts";
 
-export function CardGrid() {
+export function CardGridShop() {
 	const searchParams = useSearchParams();
 	const initialCategorie = searchParams.get("categorie") || "All";
 	const { filter, setFilter } = useShopContext();
@@ -41,8 +42,8 @@ export function CardGrid() {
 	if (isLoading) return <Loading />;
 
 	return (
-		<>
-			<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-10 w-full'>
+		<PadingXLayouts>
+			<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-10 w-full pb-12 md:pb-25'>
 				{data?.pages
 					?.flatMap((page) => page.cards)
 					?.map((item: IProductCard) => (
@@ -60,6 +61,6 @@ export function CardGrid() {
 					Show more
 				</button>
 			)}
-		</>
+		</PadingXLayouts>
 	);
 }

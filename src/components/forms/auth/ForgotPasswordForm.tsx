@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { IForgotPassword } from "@/services/auth/type";
-import { forgotPassword, sendOtpCode } from "@/services/auth";
+import type { IForgotPassword } from "@/services/requests/auth/type";
+import { forgotPassword, sendOtpCode } from "@/services/requests/auth";
 import { ButtonAction, ErrorToast } from "@/components/ui";
 import { PAGE } from "@/config/page.config";
 import { useRouter } from "next/navigation";
