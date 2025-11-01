@@ -48,3 +48,5 @@ client_secret_*.json
 # vscode
 /.vscode/
 
+
+/src/generated/prisma

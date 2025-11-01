@@ -6,9 +6,9 @@ export async function fetchBagStorage({
 	queryKey,
 	signal,
 }: QueryFunctionContext): Promise<IBagCard[]> {
-	const [_key, bag] = queryKey as ["bag", Map<number, number>];
-	const idArray = Array.from(bag.keys()).join(",");
-	const res = await axios.get(`${process.env.BACKEND_URL}/bag`, {
+	const [_key, arrayProductInBag] = queryKey as ["bag", Map<number, number>];
+	const idArray = Array.from(arrayProductInBag.keys()).join(",");
+	const res = await axios.get("https://localhost:3000/api/bag", {
 		params: { id: idArray },
 		signal,
 	});

@@ -19,7 +19,7 @@ export function CommentCard({
 	const starSize = width > mobileSize ? 16 : 13;
 
 	return (
-		<div className='flex flex-row gap-5 md:gap-10 pb-6 border-b-1 w-full'>
+		<div className='flex flex-row gap-5 md:gap-10 pb-6 border-b border-grey w-full'>
 			<div className='w-12 h-12'>
 				<Image
 					src={avatar}
@@ -34,7 +34,7 @@ export function CommentCard({
 				<h6 className='text-16 md:text-20 font-inter font-600 leading-160'>
 					{name}
 				</h6>
-				<div className='flex flex-row gap-1/2'>
+				<div className='flex flex-row gap-1'>
 					{Array(nstar)
 						.fill(0)
 						.map((_, i) => (

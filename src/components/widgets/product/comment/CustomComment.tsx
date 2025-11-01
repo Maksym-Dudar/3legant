@@ -24,7 +24,7 @@ export function CustomComment() {
 			<div className='flex flex-row w-full h-16 border-2 rounded-3xl border-whitegray items-center justify-between p-6 pr-4'>
 				<input type='text' className='w-fit md:w-3/5' />
 				<button
-					className=' border-1 rounded-full border-black bg-black w-fit'
+					className=' border rounded-full border-black bg-black w-fit'
 					onClick={() => {}}
 				>
 					{checkingMobileSize ? (

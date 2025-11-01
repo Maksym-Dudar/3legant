@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useCountProductInBagStore } from "@/store/bag/store";
-import { useCountProductInWishlistStore } from "@/store/wishlist/store";
+import { useCountProductInBagStore } from "@/services/store/bag/store";
+import { useCountProductInWishlistStore } from "@/services/store/wishlist/store";
 import { PAGE } from "@/config/page.config";
 import { IMAGE } from "@/config/image.config";
 

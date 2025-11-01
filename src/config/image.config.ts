@@ -87,6 +87,14 @@ class ImageConfig {
 		href: "/market/images/main_page/advantages/rectangle.svg",
 		alt: "rectangle",
 	};
+	CAMERA: IImage = {
+		href: "/ui/icon/camera.svg",
+		alt: "Camera",
+	};
+	EDIT: IImage = {
+		href: "/ui/icon/edit.svg",
+		alt: "Edit",
+	};
 
 	//image
 

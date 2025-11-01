@@ -3,7 +3,7 @@
 import { ButtonMenu } from "@/components/ui";
 
 import { useBagContext, useMobileMenuContext } from "@/provider";
-import { useCountProductInBagStore } from "@/store/bag/store";
+import { useCountProductInBagStore } from "@/services/store/bag/store";
 import Link from "next/link";
 import PadingXLayouts from "@/layout/PadingXLayouts";
 import { PAGE } from "@/config/page.config";

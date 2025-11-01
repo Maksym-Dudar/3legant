@@ -7,3 +7,4 @@ export { default as DropdownSort } from "./dropdown-list/DropdownSort";
 export { default as OfferTime } from "./OfferTime";
 export { default as PathPage } from "./PathPage";
 export { default as ErrorToast } from "./ErrorToast";
+export { default as InputFullWidth } from "./inputs/AccountInput";

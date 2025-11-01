@@ -1,10 +1,8 @@
-import { BagSidebar, Header, MobileMenu, Overlay } from "@/components/widgets";
-import Footer from "@/components/widgets/footer/Footer";
-import { FooterBanner } from "@/components/widgets/footer/FooterBanner";
+import { BagSidebar, Footer, FooterBanner, Header, MobileMenu, Overlay } from "@/components/widgets";
 import { BagProvider, MobileMenuProvider } from "@/provider";
 import type { PropsWithChildren } from "react";
 
-export default function MarketLayouts({ children }: PropsWithChildren<unknown>) {
+export default function layout({ children }: PropsWithChildren<unknown>) {
 	return (
 		<>
 			<BagProvider>

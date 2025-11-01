@@ -1,9 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.js";
 
 :root {
-  --background: #ffffff;
+  --background: #ffffff ;
   --black: #141718;
   --white: #ffffff;
   --descriptiongrey: #6C7275;

@@ -6,23 +6,23 @@ import { SwiperSectionProduct } from "./SwiperSectionProduct";
 import { useQuery } from "@tanstack/react-query";
 import { Error, Loading } from "../..";
 import PadingXLayouts from "@/layout/PadingXLayouts";
-import type { ICardPage } from "../types";
+import type { IProductPage } from "../types";
 import { HeaderProduct } from "../HeaderProduct";
 import { InfoProduct } from "./InfoProduct";
 import { CountdownTimer } from "./CountdownTimer";
 import { OptionsProduct } from "./OptionsProduct";
 import { PurchaseActions } from "./PurchaseActions";
-import { MataDataProduct } from "./MataDataProduct";
+import { MetaDataProduct } from "./MetaDataProduct";
 import { fetchCardPage } from "@/services/requests/product";
 
 export function HeroProductSection() {
 	const [_, setTime] = useState<Date>(new Date());
 	
 	const params = useParams();
-	const id = Number(params.id);
+	const product_id = Number(params.product_id);
 	
-	const { data, isLoading, error } = useQuery<ICardPage>({
-		queryKey: [id],
+	const { data, isLoading, error } = useQuery<IProductPage>({
+		queryKey: [product_id],
 		queryFn: fetchCardPage,
 	});
 	
@@ -45,7 +45,7 @@ export function HeroProductSection() {
 		<PadingXLayouts>
 			{data && (
 				<div className='flex flex-col w-full'>
-					<HeaderProduct category={data.category} nameProduct={data.name} />
+					<HeaderProduct category={data.category} nameProduct={data.titel} />
 					<div className='flex flex-col md:flex-row w-full justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-16'>
 						{data && (
 							<SwiperSectionProduct
@@ -56,7 +56,7 @@ export function HeroProductSection() {
 						)}
 						<div className='flex flex-col w-full md:w-1/2'>
 							<InfoProduct
-								name={data.name}
+								name={data.titel}
 								nstar={data.nstar}
 								reviews={data.reviews}
 								description={data.description}
@@ -70,11 +70,13 @@ export function HeroProductSection() {
 								same={data.same}
 								measurements={data.measurements}
 							/>
-							<PurchaseActions id={id} />
-							<MataDataProduct id={id} category={data.category} />
+							<PurchaseActions product_id={product_id} />
+							<MetaDataProduct
+								product_id={product_id}
+								category={data.category}
+							/>
 						</div>
 					</div>
-
 				</div>
 			)}
 		</PadingXLayouts>

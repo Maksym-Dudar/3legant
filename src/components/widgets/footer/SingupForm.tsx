@@ -18,7 +18,7 @@ export function SingupForm({ handelSubmit }: Props) {
 			</div>
 			<form
 				onSubmit={handelSubmit}
-				className='flex gap-2 items-center border-b-1 border-descriptiongrey pb-3'
+				className='flex gap-2 items-center border-b border-descriptiongrey pb-3'
 			>
 				<Image
 					src={IMAGE.EMAIL.href}

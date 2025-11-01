@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 
 const geistPoppins = Poppins({
 	subsets: ["latin"],
-	weight: ["200", "300", "400", "500", "600", "700", "800"],
+	weight: ["200", "300", "400", "500", "600", "700"],
 	variable: "--font-poppins",
 });
 
 const geistInter = Inter({
 	subsets: ["latin"],
-	weight: ["200", "300", "400", "500", "600", "700", "800"],
-	variable: "--font-poppins",
+	weight: ["200", "300", "400", "500", "600", "700"],
+	variable: "--font-inter",
 });
 
 export default function RootLayout({

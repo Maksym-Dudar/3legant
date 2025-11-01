@@ -7,17 +7,17 @@ import { useHasMouse, useWindowSize } from "@/hooks";
 import {
 	togleProductToWishlistStore,
 	useWishlistStored,
-} from "@/store/wishlist/store";
+} from "@/services/store/wishlist/store";
 import { mobileSize } from "@/constants/windowSize";
 import { FooterCard } from "./FooterCard";
 import { HeroCard } from "./HeroCard";
 import { ButtonAction } from "@/components/ui";
-import { addProductToBagStore } from "@/store/bag/store";
+import { addProductToBagStore } from "@/services/store/bag/store";
 import { IMAGE } from "@/config/image.config";
 import type { IProductCard } from "@/shared/types";
 
 export function ProductCard({
-	id,
+	product_id,
 	title,
 	price,
 	nstar,
@@ -30,7 +30,7 @@ export function ProductCard({
 	const hasMouse = useHasMouse();
 	const { width } = useWindowSize();
 	const wishlist = useWishlistStored();
-	const isInWishlist = [...wishlist].some((x) => x.id === id);
+	const isInWishlist = [...wishlist].some((x) => x.product_id === product_id);
 
 	useEffect(() => {
 		if (hasMouse) {
@@ -78,12 +78,18 @@ export function ProductCard({
 			onMouseLeave={hasMouse ? handleMouseLeave : undefined}
 		>
 			<div className='flex relative overflow-hidden w-full'>
-				<HeroCard id={id} title={title} isnew={isnew} sale={sale} img={img} />
+				<HeroCard
+					id={product_id}
+					title={title}
+					isnew={isnew}
+					sale={sale}
+					img={img}
+				/>
 				<button
 					className='absolute right-2 sm:right-4 md:right-5 top-2 sm:top-4 md:top-5 p-1 sm:p-2 rounded-full bg-white cursor-pointer'
 					ref={buttonFavoriteRef}
 					onClick={() => {
-						togleProductToWishlistStore({ id });
+						togleProductToWishlistStore({ product_id });
 					}}
 				>
 					{isInWishlist ? (
@@ -113,13 +119,15 @@ export function ProductCard({
 				>
 					<ButtonAction
 						text={"Add to cart"}
-						padding={buttonActionPading}
-						onClick={() => addProductToBagStore({ id: id, quantity: 1 })}
+						paddingY={buttonActionPading}
+						onClick={() =>
+							addProductToBagStore({ product_id: product_id, quantity: 1 })
+						}
 					/>
 				</div>
 			</div>
 			<FooterCard
-				id={id}
+				id={product_id}
 				title={title}
 				nstar={nstar}
 				prise={price}

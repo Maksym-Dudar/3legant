@@ -27,9 +27,9 @@ export function InfoProduct({
 	const starSize = width > mobileSize ? 16 : 14;
 
 	return (
-		<section className='flex flex-col w-full h-fit gap-4 pb-6 border-b-1'>
+		<section className='flex flex-col w-full h-fit gap-4 pb-6 border-b border-grey'>
 			<div className='flex gap-3 '>
-				<div className='flex flex-row gap-1/2'>
+				<div className='flex flex-row gap-1'>
 					{Array(nstar)
 						.fill(0)
 						.map((_, i) => (

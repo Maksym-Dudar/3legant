@@ -48,9 +48,7 @@ export async function GET(req: Request) {
 
 	if (typeof ids === "string") {
 		idsArray = ids.split(",");
-	} else if (Array.isArray(ids)) {
-		idsArray = ids;
-    }
+	} 
     
 	let data: IBagCard[] = [];
 	idsArray.forEach((value) => {
@@ -59,6 +57,7 @@ export async function GET(req: Request) {
 			data.push(found);
 		}
 	});
+	console.log("fet", data)
 
-	return NextResponse.json({data: data});
+	return NextResponse.json(data);
 }

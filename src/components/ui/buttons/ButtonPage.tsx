@@ -12,7 +12,7 @@ export default function ButtonPage({
 			<Link
 				key={title}
 				href={href}
-				className='flex w-fit pt-2 border-b-1 border-black'
+				className='flex w-fit pt-2 border-b border-black'
 			>
 				<div className='py-1 pr-1 font-inter text-14 lg:text-16 font-500 leading-170 text-black'>
 					{title}

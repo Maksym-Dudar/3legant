@@ -31,6 +31,23 @@ class PagesConfig {
 		link: "/account",
 		label: "Account",
 	};
+	ADDRESS: IPage = {
+		link: "/account/address",
+		label: "Address",
+	};
+	ADDRESCREATE: IPage = {
+		link: `${this.ADDRESS.link}/create`,
+		label: "Create",
+	};
+	ORDERS: IPage = {
+		link: "/account/orders",
+		label: "Orders",
+	};
+	WISHLIST: IPage = {
+		link: "/account/wishlist",
+		label: "Wishlist",
+	};
+
 	PRIVACY_POLICY: IPage = {
 		link: "/privacy-policy",
 		label: "Privacy policy",
@@ -42,10 +59,6 @@ class PagesConfig {
 	CART: IPage = {
 		link: "/cart",
 		label: "Cart",
-	};
-	WISHLIST: IPage = {
-		link: "/wishlist",
-		label: "Wishlist",
 	};
 	FORGOT_PASSWORD: IPage = {
 		link: "/forgot-password",
@@ -73,6 +86,9 @@ class PagesConfig {
 
 	SHOP_BY_CATEGORY(item: Category) {
 		return `${PAGE.SHOP.link}?categorie=${item}`;
+	}
+	PRODUCT(item: number) {
+		return `${PAGE.SHOP.link}/${item}`;
 	}
 }
 

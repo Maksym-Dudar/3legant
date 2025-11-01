@@ -7,7 +7,7 @@ import type { ISignUp } from "@/services/requests/auth/type";
 import { signUp } from "@/services/requests/auth";
 import { PAGE } from "@/config/page.config";
 import { ButtonAction, ErrorToast } from "@/components/ui";
-import { updateUserData } from "@/store/user/store";
+import { updateUserData } from "@/services/store/user/store";
 
 export function SignUpForm() {
 	const router = useRouter();
@@ -70,7 +70,7 @@ export function SignUpForm() {
 					type='text'
 					name='name'
 					placeholder='Your name'
-					className='text-16 font-400 leading-160 font-inter pb-1 border-b-1 w-full'
+					className='text-16 font-400 leading-160 font-inter pb-1 border-b w-full'
 					required
 					onChange={onChange}
 				/>
@@ -78,7 +78,7 @@ export function SignUpForm() {
 					type='email'
 					name='email'
 					placeholder='Your email address'
-					className='text-16 font-400 leading-160 font-inter pb-1 border-b-1 w-full'
+					className='text-16 font-400 leading-160 font-inter pb-1 border-b w-full'
 					required
 					autoComplete='email'
 					onChange={onChange}
@@ -87,7 +87,7 @@ export function SignUpForm() {
 					type='password'
 					name='password'
 					placeholder='Password'
-					className='w-full text-16 font-400 leading-160 font-inter pb-1 border-b-1'
+					className='w-full text-16 font-400 leading-160 font-inter pb-1 border-b'
 					required
 					minLength={8}
 					onChange={onChange}
@@ -96,9 +96,9 @@ export function SignUpForm() {
 					type='password'
 					name='confirmPassword'
 					placeholder='Confirm Password'
-					className={`w-full text-16 font-400 leading-160 font-inter pb-1 border-b-1 ${
+					className={`w-full text-16 font-400 leading-160 font-inter pb-1 border-b ${
 						formData.confirmPassword != formData.password
-							? "bg-palered border-1 border-red rounded-md"
+							? "bg-palered border border-red rounded-md"
 							: ""
 					}`}
 					required
@@ -121,8 +121,7 @@ export function SignUpForm() {
 				<ButtonAction
 					type='submit'
 					text={PAGE.SIGN_UP.label}
-					padding={3}
-					onClick={() => {}}
+					paddingY={3}
 				/>
 			</div>
 		</form>

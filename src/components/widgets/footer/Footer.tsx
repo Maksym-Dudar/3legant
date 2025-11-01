@@ -5,7 +5,7 @@ import { SocialLink } from "./SocialLink";
 import { CopyrightPolicy } from "./CopyrightPolicy";
 import { PAGE } from "@/config/page.config";
 
-export default function Footer() {
+export function Footer() {
 	return (
 		<footer className='bg-black'>
 			<PadingXLayouts>
@@ -17,14 +17,14 @@ export default function Footer() {
 									3legant
 								</h1>
 							</Link>
-							<div className='h-[1px] w-6 md:rotate-90 bg-darkgray'></div>
+							<div className='h-px w-6 md:rotate-90 bg-darkgray'></div>
 							<p className='text-12 md:text-14 text-whitegray font-400 leading-160'>
 								Gift & Decoration Store
 							</p>
 						</section>
 						<Menu />
 					</div>
-					<div className='h-[1px] w-full bg-darkgray'></div>
+					<div className='h-px w-full bg-darkgray'></div>
 					<div className='flex flex-col-reverse gap-8 md:gap-0 md:flex-row items-center md:justify-between'>
 						<CopyrightPolicy />
 						<SocialLink />

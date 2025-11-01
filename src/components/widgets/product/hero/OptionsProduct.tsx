@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ISameColorCard } from "../types";
 import { IMAGE } from "@/config/image.config";
+import { PAGE } from "@/config/page.config";
 
 interface Props {
 	measurements: string;
@@ -38,12 +39,12 @@ export function OptionsProduct({ measurements, color, same }: Props) {
 				<div className='flex flex-row gap-4'>
 					{same.map((item) =>
 						item.isactive ? (
-							<Link href={item.href} key={item.image}>
+							<Link href={PAGE.PRODUCT(item.product_id)} key={item.image}>
 								<Image src={item.image} alt='Arrow' width={72} height={72} />
 							</Link>
 						) : (
 							<div className='flex opacity-40' key={item.image}>
-								<Link href={item.href}>
+								<Link href={PAGE.PRODUCT(item.product_id)}>
 									<Image src={item.image} alt='Arrow' width={72} height={72} />
 								</Link>
 							</div>

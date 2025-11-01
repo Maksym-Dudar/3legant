@@ -28,9 +28,10 @@ module.exports = {
 				whitegray: "var(--whitegray)",
 				green: "#38CB89",
 				red: "#DC1616",
+				grey: "#F3F5F7",
 			},
 			spacing: {
-				"1/2": "0.125rem",
+				"1/2": "50%",
 				"40%": "38%",
 				15: "3.75rem",
 				17: "4.25rem",
@@ -65,8 +66,8 @@ module.exports = {
 		borderWidth: {
 			"1/2": "0.05rem",
 			"2/3": "0.075rem",
-			1: "0.1rem",
-			2: "0.15rem",
+			1: "1px",
+			2: "2px",
 		},
 		fontSize: {
 			8: "0.5rem",

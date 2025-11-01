@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ButtonAction, ErrorToast } from "@/components/ui";
 import { PAGE } from "@/config/page.config";
 import { useRouter } from "next/navigation";
-import { updateUserData } from "@/store/user/store";
+import { updateUserData } from "@/services/store/user/store";
 
 export function SignInForm() {
 	const router = useRouter();
@@ -47,7 +47,7 @@ export function SignInForm() {
 			<div className='flex flex-col gap-6'>
 				<h3 className='text-40 font-500 leading-110'>{PAGE.SIGN_IN.label}</h3>
 				<p className='text-16 font-400 leading-160 font-inter text-descriptiongrey'>
-					Don’t have an accout yet?
+					Don’t have an accout yet?{" "}
 					<Link href={PAGE.SIGN_UP.link} className='text-green'>
 						{PAGE.SIGN_UP.label}
 					</Link>
@@ -58,7 +58,7 @@ export function SignInForm() {
 					type='email'
 					name='email'
 					placeholder='Your email address'
-					className='text-16 font-400 leading-160 font-inter pb-1 border-b-1 w-full'
+					className='text-16 font-400 leading-160 font-inter pb-1 border-b w-full'
 					required
 					autoComplete='email'
 					onChange={onChange}
@@ -67,7 +67,7 @@ export function SignInForm() {
 					type='password'
 					name='password'
 					placeholder='Password'
-					className='w-full text-16 font-400 leading-160 font-inter pb-1 border-b-1'
+					className='w-full text-16 font-400 leading-160 font-inter pb-1 border-b'
 					required
 					minLength={8}
 					onChange={onChange}
@@ -83,8 +83,7 @@ export function SignInForm() {
 				<ButtonAction
 					type='submit'
 					text={PAGE.SIGN_IN.label}
-					padding={3}
-					onClick={() => {}}
+					paddingY={3}
 				/>
 			</div>
 		</form>

@@ -6,7 +6,7 @@ import { forgotPassword, sendOtpCode } from "@/services/requests/auth";
 import { ButtonAction, ErrorToast } from "@/components/ui";
 import { PAGE } from "@/config/page.config";
 import { useRouter } from "next/navigation";
-import { updateUserData } from "@/store/user/store";
+import { updateUserData } from "@/services/store/user/store";
 
 export function ForgotPasswordForm() {
 	const router = useRouter();
@@ -40,9 +40,11 @@ export function ForgotPasswordForm() {
 			return;
 		}
 		try {
+			console.log("send")
 			const data = await forgotPassword(formData);
+			console.log("res ",data);
 			updateUserData(data);
-			router.push("/");
+			router.push(PAGE.SIGN_IN.link);
 		} catch (error) {
 			setErrorToast(String(error));
 		}
@@ -67,7 +69,7 @@ export function ForgotPasswordForm() {
 						type='email'
 						name='email'
 						placeholder='Your email address'
-						className='text-16 font-400 leading-160 font-inter pb-1 border-b-1 w-full'
+						className='text-16 font-400 leading-160 font-inter pb-1 border-b w-full'
 						onChange={onChange}
 						required
 						readOnly={emailReadOmly}
@@ -76,7 +78,7 @@ export function ForgotPasswordForm() {
 						<ButtonAction
 							type='button'
 							text='Send code'
-							padding={2}
+							paddingY={2}
 							onClick={sendEmail}
 						/>
 					</div>
@@ -90,7 +92,7 @@ export function ForgotPasswordForm() {
 							type='text'
 							name='otpCode'
 							placeholder='Your otp code'
-							className='text-16 font-400 leading-160 font-inter pb-1 border-b-1 w-full'
+							className='text-16 font-400 leading-160 font-inter pb-1 border-b w-full'
 							required
 							onChange={onChange}
 						/>
@@ -103,7 +105,7 @@ export function ForgotPasswordForm() {
 							type='password'
 							name='password'
 							placeholder='New password'
-							className='w-full text-16 font-400 leading-160 font-inter pb-1 border-b-1'
+							className='w-full text-16 font-400 leading-160 font-inter pb-1 border-b'
 							required
 							onChange={onChange}
 							minLength={8}
@@ -113,9 +115,9 @@ export function ForgotPasswordForm() {
 						type='password'
 						name='confirmPassword'
 						placeholder='Confirm Password'
-						className={`w-full text-16 font-400 leading-160 font-inter pb-1 border-b-1 ${
+						className={`w-full text-16 font-400 leading-160 font-inter pb-1 border-b ${
 							formData.confirmPassword != formData.password
-								? "bg-palered border-1 border-red rounded-md"
+								? "bg-palered border border-red rounded-md"
 								: ""
 						}`}
 						onChange={onChange}
@@ -128,8 +130,7 @@ export function ForgotPasswordForm() {
 				<ButtonAction
 					type='submit'
 					text='Reset password'
-					padding={3}
-					onClick={() => {}}
+					paddingY={3}
 				/>
 			</div>
 		</form>

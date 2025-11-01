@@ -23,7 +23,7 @@ export function FooterCard({
 }: Props) {
 	return (
 		<div className='flex flex-col gap-1 pt-2 sm:pt-3 md:pt-4'>
-			<div className='flex gap-1/2'>
+			<div className='flex flex-row gap-1'>
 				{Array(nstar)
 					.fill(0)
 					.map((_, i) => (

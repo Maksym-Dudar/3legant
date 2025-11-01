@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 export default function useHasMouse(): boolean {
@@ -18,4 +20,3 @@ export default function useHasMouse(): boolean {
 
 	return hasMouse;
 }
-

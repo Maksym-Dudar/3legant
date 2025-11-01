@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
-import { cardPageType } from "@/widgets/product/types";
+import type { ICardPage } from "@/components/widgets/product/types";
+import { Category } from "@/config/product.config";
 
-const productsData: cardPage[] = [
+const productsData: ICardPage[] = [
 	{
 		id: 1,
 		name: "Loveseat Sofa",
@@ -46,7 +47,8 @@ const productsData: cardPage[] = [
 			"/product/8/image-5.png",
 			"/product/8/image-6.png",
 		],
-		category: "Living Room",
+		category: Category.LivingRoom,
+		priceWithoutSale: 299.543,
 		reviews: 35,
 		nstar: 5,
 		isnew: true,
@@ -57,6 +59,7 @@ const productsData: cardPage[] = [
 		description:
 			"Buy one or buy a few and make every space where you sit more convenient. Light and easy to move around with removable tray top, handy for serving snacks.",
 		price: 299.0,
+		priceWithoutSale: 299.543,
 		sale: 0.33,
 		offerExpiresIn: new Date("2025-04-20T02:12:45"),
 		measurements: '15x60x42" ',
@@ -96,7 +99,7 @@ const productsData: cardPage[] = [
 			"/product/8/image-5.png",
 			"/product/8/image-6.png",
 		],
-		category: "Living Room",
+		category: Category.LivingRoom,
 		reviews: 52,
 		nstar: 4,
 		isnew: true,
@@ -139,7 +142,7 @@ const productsData: cardPage[] = [
 				isactive: true,
 			},
 		],
-		category: "Lighting",
+		category: Category.LivingRoom,
 		images: [
 			"/product/8/image-1.png",
 			"/product/8/image-2.png",
@@ -148,6 +151,8 @@ const productsData: cardPage[] = [
 			"/product/8/image-5.png",
 			"/product/8/image-6.png",
 		],
+		priceWithoutSale: 299.543,
+
 		reviews: 14,
 		nstar: 6,
 		isnew: false,
@@ -161,7 +166,7 @@ export async function GET(req: Request) {
 	if (!product) {
 		return NextResponse.json({ error: "Product not found" }, { status: 404 });
 	}
-	const card: cardPageType = {
+	const card: ICardPage = {
 		id: product.id,
 		name: product.name,
 		description: product.description,
@@ -176,6 +181,7 @@ export async function GET(req: Request) {
 		measurements: product.measurements,
 		same: product.same,
 		reviews: product.reviews,
+		priceWithoutSale: product.priceWithoutSale
 	};
 
 	return NextResponse.json(card);

@@ -17,3 +17,8 @@ export interface IForgotPassword {
 	password: string;
 	confirmPassword: string;
 }
+
+export interface IResetPassword {
+	oldPassword: string;
+	newPassword: string;
+}

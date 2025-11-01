@@ -166,7 +166,9 @@ export async function GET ( req: Request) {
             sortdata = [...dataprice].sort((a, b) => b.nstar - a.nstar);
             break;
         default:
-            sortdata = [...dataprice].sort((a, b) => a.id - b.id);
+            sortdata = [...dataprice].sort(
+							(a, b) => a.product_id - b.product_id
+						);
             break;
     }
 

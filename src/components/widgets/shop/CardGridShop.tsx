@@ -43,24 +43,26 @@ export function CardGridShop() {
 
 	return (
 		<PadingXLayouts>
-			<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-10 w-full pb-12 md:pb-25'>
-				{data?.pages
-					?.flatMap((page) => page.cards)
-					?.map((item: IProductCard) => (
-						<div key={item.id} className='w-full h-auto'>
-							<ProductCard {...item} />
-						</div>
-					))}
-			</div>
-			{hasNextPage && (
-				<button
-					className='text-16 font-500 leading-170 text-black border-1 rounded-full border-black w-fit px-10 py-2'
-					onClick={() => fetchNextPage()}
-					disabled={isFetchingNextPage}
-				>
-					Show more
-				</button>
-			)}
+			<section className='flex flex-col w-full items-center pb-10'>
+				<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-10 w-full pb-12 md:pb-25'>
+					{data?.pages
+						?.flatMap((page) => page.cards)
+						?.map((item: IProductCard) => (
+							<div key={item.product_id} className='w-full h-auto'>
+								<ProductCard {...item} />
+							</div>
+						))}
+				</div>
+				{hasNextPage && (
+					<button
+						className='text-16 font-500 leading-170 text-black border rounded-full border-black w-fit px-10 py-2'
+						onClick={() => fetchNextPage()}
+						disabled={isFetchingNextPage}
+					>
+						Show more
+					</button>
+				)}
+			</section>
 		</PadingXLayouts>
 	);
 }

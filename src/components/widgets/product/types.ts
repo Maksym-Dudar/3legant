@@ -1,8 +1,8 @@
 import type { Category } from "@/config/product.config";
 
-export interface ICardPage {
+export interface IProductPage {
 	id: number;
-	name: string;
+	titel: string;
 	description: string;
 	price: number;
 	priceWithoutSale: number;
@@ -20,7 +20,7 @@ export interface ICardPage {
 
 export interface ISameColorCard {
 	color: string;
-	href: string;
+	product_id: number;
 	image: string;
 	isactive: boolean;
 }

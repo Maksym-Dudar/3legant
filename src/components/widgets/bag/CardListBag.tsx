@@ -16,9 +16,9 @@ export function CardListBag({data, bag}: Props) {
 		<div ref={scrollRef} className='flex flex-col gap-3'>
 			{data?.map((item) => (
 				<CardProductInBag
-					key={item.id}
+					key={item.product_id}
 					{...item}
-					count={bag.get(item.id) ?? 1}
+					count={bag.get(item.product_id) ?? 1}
 				/>
 			))}
 		</div>

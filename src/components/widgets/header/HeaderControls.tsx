@@ -4,6 +4,7 @@ import { PAGE } from "@/config/page.config";
 import Link from "next/link";
 import Image from "next/image";
 import { IMAGE } from "@/config/image.config";
+import { useUserStore } from "@/services/store/user/store";
 
 interface Props {
 	showAdaptive: boolean;
@@ -18,6 +19,11 @@ export function HeaderControls({
 	searchOnClick,
 	bagOnClick,
 }: Props) {
+	const {user} = useUserStore()
+		const userAvatar = user?.avatar
+			? process.env.NEXT_PUBLIC_BACKEND_URL + user.avatar
+			: null;
+	
 	return (
 		<div className='flex gap-4 items-center'>
 			{!showAdaptive && (
@@ -32,12 +38,15 @@ export function HeaderControls({
 			)}
 			{!showAdaptive && (
 				<Link key={PAGE.ACCOUNT.link} href={PAGE.ACCOUNT.link}>
-					<Image
-						src={IMAGE.USERICON.href}
-						alt={IMAGE.USERICON.alt}
-						width={24}
-						height={24}
-					/>{" "}
+					<div className='w-6 h-6 rounded-full overflow-hidden'>
+						<Image
+							src={userAvatar ?? IMAGE.USERICON.href}
+							alt={IMAGE.USERICON.alt}
+							width={24}
+							height={24}
+							className='object-cover'
+						/>
+					</div>
 				</Link>
 			)}
 			<button className='flex gap-1 items-center' onClick={bagOnClick}>
