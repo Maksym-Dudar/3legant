@@ -1,5 +1,6 @@
-import { CreateAddress } from "@/components/widgets/user-dashboard";
+import { AddressForm } from "@/components/widgets/user-dashboard/address/form/AddressForm";
+
 
 export default function page() {
-	return <CreateAddress />;
+	return <AddressForm />;
 }

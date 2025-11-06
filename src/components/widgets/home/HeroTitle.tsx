@@ -11,11 +11,11 @@ export default function HeroTitle() {
 	useEffect(() => {
 		async function fetchUser() {
 			try {
-				const resp = await axios.get("https://localhost:4200/user", {
+				const res = await axios.get("https://localhost:4200/user", {
 					params: { email: user.user?.email },
 					withCredentials: true,
 				});
-				user.updateUser(resp.data);
+				user.updateUser(res.data);
 			} catch (err) {
 				console.error(err);
 			}

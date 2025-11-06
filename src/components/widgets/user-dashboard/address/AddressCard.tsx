@@ -1,14 +1,18 @@
 import { IMAGE } from "@/config/image.config";
+import { PAGE } from "@/config/page.config";
 import Image from "next/image";
+import Link from "next/link";
+import { Mode } from "./type";
 
 interface Props {
     label: string;
     name: string;
     phoneNumber: string;
-    address: string;
+	address: string;
+	id: number;
 }
 
-export function AddressCard({ label, name, phoneNumber, address}: Props) {
+export function AddressCard({ label, name, phoneNumber, address, id }: Props) {
 	return (
 		<div className='w-full h-fit rounded-lg border-1 border-descriptiongrey gap-2 p-4'>
 			<section className='flex flex-row w-full justify-between'>
@@ -21,15 +25,18 @@ export function AddressCard({ label, name, phoneNumber, address}: Props) {
 						height={14}
 						className='object-cover'
 					/>
-					<p className='text-16 font-600 leading-160 text-descriptiongrey'>
+					<Link
+						href={PAGE.ADDRESCREATE.link + `?mode=${Mode.EDIT}&addressId=${id}`}
+						className='text-16 font-600 leading-160 text-descriptiongrey'
+					>
 						Edit
-					</p>
+					</Link>
 				</button>
 			</section>
 			<section className='flex flex-col gap-1 w-full'>
-                <p className='text-14 font-400 leading-160 text-black'>{name}</p>
-                <p className='text-14 font-400 leading-160 text-black'>{phoneNumber}</p>
-                <p className='text-14 font-400 leading-160 text-black'>{address}</p>
+				<p className='text-14 font-400 leading-160 text-black'>{name}</p>
+				<p className='text-14 font-400 leading-160 text-black'>{phoneNumber}</p>
+				<p className='text-14 font-400 leading-160 text-black'>{address}</p>
 			</section>
 		</div>
 	);

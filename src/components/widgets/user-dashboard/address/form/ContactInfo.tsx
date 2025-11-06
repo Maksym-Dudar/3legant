@@ -1,17 +1,15 @@
 "use client";
 
 import { InputFullWidth } from "@/components/ui";
-import { useState } from "react";
+import type { IContactInfo, IAddress, IAddressCreate } from "@/shared/types/address.type";
 
-interface Props {
-	firstName?: string;
-	lastName?: string;
-	phoneNymber?: string;
-	email?: string;
-}
-
-export default function ContactInfo(props: Props) {
-	const [contactInfo, setContactInfo] = useState(props);
+export default function ContactInfo({
+	firstName,
+	lastName,
+	phoneNumber,
+	email,
+	setInfo,
+}: IContactInfo & { setInfo: React.Dispatch<React.SetStateAction<IAddressCreate>> }) {
 	return (
 		<section className='flex flex-col w-full gap-6'>
 			<h4 className='text-20 font-500 leading-140'>Contact Infomation</h4>
@@ -22,10 +20,10 @@ export default function ContactInfo(props: Props) {
 					label='FIRST NAME'
 					type='text'
 					placeholder='Enter first name'
-					value={contactInfo.firstName ?? null}
+					value={firstName}
 					isRequired={true}
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-						setContactInfo((val) => {
+						setInfo((val) => {
 							return { ...val, firstName: e.target.value };
 						});
 					}}
@@ -37,9 +35,9 @@ export default function ContactInfo(props: Props) {
 					type='text'
 					placeholder='Enter last name'
 					isRequired={true}
-					value={contactInfo.lastName ?? null}
+					value={lastName}
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-						setContactInfo((val) => {
+						setInfo((val) => {
 							return { ...val, lastName: e.target.value };
 						});
 					}}
@@ -52,10 +50,10 @@ export default function ContactInfo(props: Props) {
 				type='tel'
 				placeholder='Enter phone number'
 				isRequired={true}
-				value={contactInfo.phoneNymber ?? null}
+				value={phoneNumber}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-					setContactInfo((val) => {
-						return { ...val, phoneNymber: e.target.value };
+					setInfo((val) => {
+						return { ...val, phoneNumber: e.target.value };
 					});
 				}}
 			/>
@@ -66,9 +64,9 @@ export default function ContactInfo(props: Props) {
 				type='email'
 				placeholder='Enter first name'
 				isRequired={true}
-				value={contactInfo.email ?? null}
+				value={email}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-					setContactInfo((val) => {
+					setInfo((val) => {
 						return { ...val, email: e.target.value };
 					});
 				}}

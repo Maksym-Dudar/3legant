@@ -5,11 +5,12 @@ interface Props {
 	id: string;
 	name: string;
 	placeholder: string;
-	value: string | number| null;
+	value: string | number | null;
 	label: string;
 	isRequired?: boolean;
 	minLength?: number;
 	isCorect?: boolean;
+	disabled?: boolean;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -23,6 +24,7 @@ export default function InputFullWidth({
 	isRequired = false,
 	isCorect = true,
 	minLength,
+	disabled = false,
 	onChange,
 }: Props) {
 	return (
@@ -42,6 +44,7 @@ export default function InputFullWidth({
 				onChange={onChange}
 				required={isRequired}
 				minLength={minLength}
+				disabled={disabled}
 				className={
 					isCorect
 						? "w-full text-inter text-14 md:text-16 font-400 leading-160 border border-solid h-10 px-4 rounded-md text-black border-descriptiongrey border-opacity-0"

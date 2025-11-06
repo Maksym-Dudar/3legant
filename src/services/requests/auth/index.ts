@@ -25,7 +25,7 @@ export async function signUp(payload: ISignUp) {
 	const res = await axios.post(
 		`https://localhost:4200/auth/sign-up`,
 		{
-			first_name: payload.name,
+			firstName: payload.name,
 			email: payload.email,
 			password: payload.password,
 		},

@@ -13,7 +13,7 @@ export function Row({id, date, status, price}: Props) {
 			<Cell data={id} />
 			<Cell data={String(date)} />
 			<Cell data={status} />
-			<Cell data={String(price)} />
+			<Cell data={"$ " + String(price)} />
 		</tr>
 	);
 }
