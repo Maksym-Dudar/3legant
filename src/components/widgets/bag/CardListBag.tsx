@@ -6,21 +6,21 @@ import { CardProductInBag } from "./CardProductInBag";
 
 interface Props {
 	data: IBagCard[];
-	bag: Map<number, number>;
 }
 
-export function CardListBag({data, bag}: Props) {
+export function CardListBag({ data }: Props) {
 	const scrollRef = useRef<HTMLDivElement>(null);
 
 	return (
 		<div ref={scrollRef} className='flex flex-col gap-3'>
-			{data?.map((item) => (
-				<CardProductInBag
-					key={item.product_id}
-					{...item}
-					count={bag.get(item.product_id) ?? 1}
-				/>
-			))}
+			{data.length &&
+				data.map((item) => (
+					<CardProductInBag
+						key={item.product_id}
+						{...item}
+						product_id={item.product_id}
+					/>
+				))}
 		</div>
 	);
 }

@@ -1,4 +1,4 @@
-import Cell from "./Cell";
+import Cell from "@/components/ui/table/Cell";
 
 interface Props {
     id: string;

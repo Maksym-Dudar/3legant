@@ -40,9 +40,7 @@ export function ForgotPasswordForm() {
 			return;
 		}
 		try {
-			console.log("send")
 			const data = await forgotPassword(formData);
-			console.log("res ",data);
 			updateUserData(data);
 			router.push(PAGE.SIGN_IN.link);
 		} catch (error) {

@@ -6,4 +6,5 @@ export interface IProductCard {
 	sale: number;
 	isnew: boolean;
 	img: string;
+	category: string
 }

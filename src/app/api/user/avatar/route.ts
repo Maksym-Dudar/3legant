@@ -62,7 +62,6 @@ export async function POST(req: Request) {
 			{ status: 201 }
 		);
 	} catch (err) {
-		console.log(err);
 		return Response.json(
 			{ massege: "Користувача не розпізнано" },
 			{ status: 401 }

@@ -1,16 +1,27 @@
-import ColumnTitel from "./ColumnTitel";
+"use client"
+
+import { useQuery } from "@tanstack/react-query";
 import { Row } from "./Row";
+import { getUserOrders } from "@/services/requests/user";
+import { Loading, Error } from "../..";
+import { useUserStore } from "@/services/store/user/store";
+import ColumnTitel from "@/components/ui/table/ColumnTitel";
 
 interface Props {
 	id: string;
 	date: Date;
-	status: string; // todo status
+	status: string; 
 	price: number;
 }
-// todo
 
 export function OrderTabel() {
-const data: Props[] = [{id: "1", date: new Date, status: "done", price: 70}]
+	const { user } = useUserStore();
+	const { data = [], error, isLoading } = useQuery<Props[]>({
+		queryKey: ["order", user?.id],
+		queryFn: getUserOrders,
+	});
+		if (error) return <Error masage={error.message} />;
+		if (isLoading) return <Loading />;
   return (
 		<table className='w-full gap-2 h-fit'>
 			<thead>
@@ -23,7 +34,7 @@ const data: Props[] = [{id: "1", date: new Date, status: "done", price: 70}]
 			</thead>
 			<tbody className="">
 				{data.map((item) => (
-					<Row {...item} />
+					<Row {...item} key={item.id}/>
 				))}
 			</tbody>
 		</table>

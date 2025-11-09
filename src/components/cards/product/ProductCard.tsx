@@ -4,17 +4,15 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useHasMouse, useWindowSize } from "@/hooks";
-import {
-	togleProductToWishlistStore,
-	useWishlistStored,
-} from "@/services/store/wishlist/store";
+
 import { mobileSize } from "@/constants/windowSize";
 import { FooterCard } from "./FooterCard";
 import { HeroCard } from "./HeroCard";
 import { ButtonAction } from "@/components/ui";
-import { addProductToBagStore } from "@/services/store/bag/store";
 import { IMAGE } from "@/config/image.config";
 import type { IProductCard } from "@/shared/types";
+import { useWishlistStore } from "@/services/store/wishlist/store";
+import { useBagStore } from "@/services/store/bag/store";
 
 export function ProductCard({
 	product_id,
@@ -29,8 +27,8 @@ export function ProductCard({
 	const buttonFavoriteRef = useRef<HTMLButtonElement>(null);
 	const hasMouse = useHasMouse();
 	const { width } = useWindowSize();
-	const wishlist = useWishlistStored();
-	const isInWishlist = [...wishlist].some((x) => x.product_id === product_id);
+	const { toggleProduct, isInWishlist } = useWishlistStore();
+	const { addProduct } = useBagStore();
 
 	useEffect(() => {
 		if (hasMouse) {
@@ -89,10 +87,10 @@ export function ProductCard({
 					className='absolute right-2 sm:right-4 md:right-5 top-2 sm:top-4 md:top-5 p-1 sm:p-2 rounded-full bg-white cursor-pointer'
 					ref={buttonFavoriteRef}
 					onClick={() => {
-						togleProductToWishlistStore({ product_id });
+						toggleProduct(product_id );
 					}}
 				>
-					{isInWishlist ? (
+					{isInWishlist(product_id) ? (
 						<Image
 							src={IMAGE.LIKE_ACTIVE.href}
 							alt={IMAGE.LIKE_ACTIVE.alt}
@@ -121,7 +119,7 @@ export function ProductCard({
 						text={"Add to cart"}
 						paddingY={buttonActionPading}
 						onClick={() =>
-							addProductToBagStore({ product_id: product_id, quantity: 1 })
+							addProduct({ product_id: product_id, quantity: 1 })
 						}
 					/>
 				</div>

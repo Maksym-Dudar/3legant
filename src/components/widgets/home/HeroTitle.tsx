@@ -1,27 +1,8 @@
 "use client"
 import PadingXLayouts from "@/layout/PadingXLayouts";
 import { useUserStore } from "@/services/store/user/store";
-import axios from "axios";
-import { useEffect } from "react";
-
 
 export default function HeroTitle() {
-	//todo
-	const user = useUserStore()
-	useEffect(() => {
-		async function fetchUser() {
-			try {
-				const res = await axios.get("https://localhost:4200/user", {
-					params: { email: user.user?.email },
-					withCredentials: true,
-				});
-				user.updateUser(res.data);
-			} catch (err) {
-				console.error(err);
-			}
-		}
-		if (user.user?.email) fetchUser();
-	}, [user.user?.email])
 	return (
 		<PadingXLayouts>
 			<div className='flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4 sm:gap-0 py-8 w-full md:pr-8 lg:pr-10'>

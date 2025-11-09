@@ -8,7 +8,10 @@ import { PAGE } from "@/config/page.config";
 import { useState } from "react";
 import { ErrorToast } from "@/components/ui";
 import { sendAvatar } from "@/services/requests/user";
+import { logOutReq } from "@/services/requests/auth";
+import { useRouter } from "next/navigation";
 export function SideMenu() {
+	const router = useRouter();
 	const { user, clearUser } = useUserStore();
 	const [errorToast, setErrorToast] = useState<string | null>(null);
 
@@ -17,8 +20,16 @@ export function SideMenu() {
 	const userAvatar = user?.avatar
 		? process.env.NEXT_PUBLIC_BACKEND_URL + user.avatar
 		: null;
-	
-	console.log(user);
+
+	async function logOut() {
+		try {
+			const res = await logOutReq();
+			clearUser();
+			router.push(PAGE.HOME.link);
+		} catch (error) {
+			setErrorToast(String(error));
+		}
+	}
 
 	async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
 		try {
@@ -26,7 +37,6 @@ export function SideMenu() {
 			if (!file) {
 				throw new Error("File not find");
 			}
-			console.log(file)
 			await sendAvatar(file);
 		} catch (error) {
 			setErrorToast(String(error));
@@ -75,9 +85,8 @@ export function SideMenu() {
 				<SideMenuLinks text={PAGE.ORDERS.label} link={PAGE.ORDERS.link} />
 				<SideMenuLinks text={PAGE.WISHLIST.label} link={PAGE.WISHLIST.link} />
 				<button
-					className='pt-5 text-descriptiongrey font-inter font-500 text-14 md:text-16 leading-160'
-					//todo add remove token
-					onClick={clearUser}
+					className='pt-5 text-descriptiongrey font-inter font-500 text-14 md:text-16 leading-160 cursor-pointer'
+					onClick={logOut}
 				>
 					Log Out
 				</button>

@@ -30,7 +30,7 @@ export function SignInForm() {
 		e.preventDefault();
 		try {
 			const data = await signIn(formData);
-			updateUserData(data);
+			const res = updateUserData(data);
 			router.push("/");
 		} catch (error) {
 			setErrorToast(String(error));

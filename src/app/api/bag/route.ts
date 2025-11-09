@@ -1,41 +1,41 @@
 import type { IBagCard } from "@/shared/types/bag.type";
 import { NextResponse } from "next/server";
 
-const bagCard:IBagCard[] = [
+const bagCard: IBagCard[] = [
 	{
-		id: 1,
+		product_id: 1,
 		title: "Loveseat Sofa",
 		price: 400,
 		color: "red",
-		img: `/request/images/card/id1.png`,
+		image: `/request/images/card/id1.png`,
 	},
 	{
-		id: 2,
+		product_id: 2,
 		title: "Loveseat Sofa",
 		price: 600,
 		color: "yellow",
-		img: `/request/images/card/id2.png`,
+		image: `/request/images/card/id2.png`,
 	},
 	{
-		id: 3,
+		product_id: 3,
 		title: "Loveseat Sofa",
 		price: 40,
 		color: "blue",
-		img: `/request/images/card/id3.png`,
+		image: `/request/images/card/id3.png`,
 	},
 	{
-		id: 4,
+		product_id: 4,
 		title: "Loveseat Sofa",
 		price: 432,
 		color: "white",
-		img: `/request/images/card/id4.png`,
+		image: `/request/images/card/id4.png`,
 	},
 	{
-		id: 5,
+		product_id: 5,
 		title: "Loveseat Sofa",
 		price: 430,
 		color: "black",
-		img: `/request/images/card/id5.png`,
+		image: `/request/images/card/id5.png`,
 	},
 ];
 
@@ -52,12 +52,11 @@ export async function GET(req: Request) {
     
 	let data: IBagCard[] = [];
 	idsArray.forEach((value) => {
-		const found = bagCard.find((item) => item.id == parseInt(value));
+		const found = bagCard.find((item) => item.product_id == parseInt(value));
 		if (found) {
 			data.push(found);
 		}
 	});
-	console.log("fet", data)
 
 	return NextResponse.json(data);
 }

@@ -1,9 +1,10 @@
+"use client"
+
 import { ButtonClose } from "@/components/ui";
 import {
-	addProductToBagStore,
-	decreaseItemCountBagStore,
+
 	quantityProductInBagStore,
-	removeProductToBagStore,
+	useBagStore,
 } from "@/services/store/bag/store";
 import Image from "next/image";
 
@@ -12,7 +13,6 @@ interface Props {
 	title: string;
 	color: string;
 	price: number;
-	count: number;
 	product_id: number;
 }
 
@@ -21,10 +21,11 @@ export function CardProductInBag({
 	title,
 	color,
 	price,
-	count,
 	product_id,
 }: Props) {
-	let item = { product_id: product_id, quantity: count };
+	const { addProduct, decreaseItemCount, removeProduct } = useBagStore();
+	let item = { product_id: product_id, quantity: quantityProductInBagStore(product_id) };
+
 
 	return (
 		<div className='flex w-full flex-row justify-between border-b py-6 shrink-0'>
@@ -40,7 +41,7 @@ export function CardProductInBag({
 					<div className='flex flex-row items-center text-12 font-600 leading-170 w-fit px-1 md:px-2 py-[2px] md:py-1 gap-3 bg-white rounded-lg border border-notactive'>
 						<button
 							className='text-16 sm:text-20 font-200 leading-100'
-							onClick={() => decreaseItemCountBagStore(item)}
+							onClick={() => decreaseItemCount(item)}
 						>
 							-
 						</button>
@@ -49,7 +50,7 @@ export function CardProductInBag({
 						</p>
 						<button
 							className='text-16 sm:text-20 font-200 leading-100'
-							onClick={() => addProductToBagStore(item)}
+							onClick={() => addProduct(item)}
 						>
 							+
 						</button>
@@ -58,7 +59,7 @@ export function CardProductInBag({
 			</section>
 			<section className='flex flex-col items-end gap-2'>
 				<p className='text-14 sm:text-16 font-500 leading-160'>${price}</p>
-				<ButtonClose size={5} onClick={() => removeProductToBagStore(item)} />
+				<ButtonClose size={5} onClick={() => removeProduct(item)} />
 			</section>
 		</div>
 	);

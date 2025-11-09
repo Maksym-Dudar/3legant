@@ -1,12 +1,10 @@
 import Image from "next/image";
 import { ButtonAction } from "@/components/ui";
-import {
-	togleProductToWishlistStore,
-	useWishlistStored,
-} from "@/services/store/wishlist/store";
+
 import { useState } from "react";
 import { addProductToBagStore } from "@/services/store/bag/store";
 import { IMAGE } from "@/config/image.config";
+import { useWishlistStore } from "@/services/store/wishlist/store";
 
 interface Props {
 	product_id: number;
@@ -15,8 +13,7 @@ interface Props {
 export function PurchaseActions({ product_id }: Props) {
 	const [counter, setCount] = useState<number>(1);
 
-	const wishlist = useWishlistStored();
-	const isInWishlist = [...wishlist].some((x) => x.product_id === product_id);
+	const { toggleProduct, isInWishlist } = useWishlistStore();
 
 	const itemToAddBag = { product_id: product_id, quantity: counter };
 
@@ -33,10 +30,10 @@ export function PurchaseActions({ product_id }: Props) {
 					<button onClick={() => setCount((prev) => prev + 1)}>+</button>
 				</div>
 				<button
-					onClick={() => togleProductToWishlistStore({ product_id })}
+					onClick={() => toggleProduct(product_id )}
 					className='flex w-full text-center border border-black py-1 sm:py-2 rounded-lg justify-center items-center gap-2'
 				>
-					{isInWishlist ? (
+					{isInWishlist(product_id) ? (
 						<Image
 							src={IMAGE.LIKE_ACTIVE.href}
 							alt={IMAGE.LIKE_ACTIVE.alt}

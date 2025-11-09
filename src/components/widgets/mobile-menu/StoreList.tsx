@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useCountProductInBagStore } from "@/services/store/bag/store";
-import { useCountProductInWishlistStore } from "@/services/store/wishlist/store";
 import { PAGE } from "@/config/page.config";
 import { IMAGE } from "@/config/image.config";
+import { useWishlistStore } from "@/services/store/wishlist/store";
+import { useBagStore } from "@/services/store/bag/store";
 
 export function StoreList() {
-	const bagSize = useCountProductInBagStore();
-	const wishlistSize = useCountProductInWishlistStore();
+	const { bag } = useBagStore();
+	const { wishlist } = useWishlistStore();
 	return (
 		<div className='flex flex-col'>
 			<div className='w-full border-b-2/3 border-whitegray pb-2'>
@@ -24,7 +24,7 @@ export function StoreList() {
 							height={24}
 						/>
 						<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
-							{bagSize}
+							{bag.length}
 						</div>
 					</div>
 				</Link>
@@ -43,7 +43,7 @@ export function StoreList() {
 							height={24}
 						/>
 						<div className='w-5 h-5 bg-black text-white flex items-center justify-center rounded-full text-12 font-700 leading-80'>
-							{wishlistSize}
+							{wishlist.length}
 						</div>
 					</div>
 				</Link>

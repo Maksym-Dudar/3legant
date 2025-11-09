@@ -1,7 +1,6 @@
 "use client";
 
 import { useBagContext } from "@/provider";
-import { useBagStored } from "@/services/store/bag/store";
 import { ButtonClose } from "@/components/ui";
 import { useQuery } from "@tanstack/react-query";
 import { calculateSubtotal, checkout } from "@/services/bag";
@@ -10,21 +9,20 @@ import { CardListBag } from "./CardListBag";
 import type { IBagCard } from "@/shared/types/bag.type";
 import { Loading, Error } from "..";
 import { fetchBagStorage } from "@/services/requests/bag";
+import { useBagStore } from "@/services/store/bag/store";
+import { useMemo } from "react";
 
 export function BagSidebar() {
 	const { isOpenBag, closeBag } = useBagContext();
-	const bag = useBagStored();
+	const { bag } = useBagStore();
 
-	const arrayProductInBag: number[] = []
-	bag.forEach((_, key) => {
-		arrayProductInBag.push(key);
-	})
+	const arrayProductInBag = bag.map((item) => item.product_id);
+
 	const { isLoading, error, data } = useQuery<IBagCard[]>({
 		queryKey: ["bag", arrayProductInBag],
 		queryFn: fetchBagStorage,
 	});
-
-	console.log()
+	const subtotal = useMemo(() => calculateSubtotal(data ?? []), [bag, data]);
 
 	return (
 		isOpenBag && (
@@ -42,13 +40,9 @@ export function BagSidebar() {
 								</h3>
 								<ButtonClose size={8} onClick={closeBag} />
 							</div>
-							<CardListBag bag={bag} data={data ?? []} />
+							<CardListBag data={data ?? []} />
 						</section>
-						<FoterBag
-							subtotal={calculateSubtotal(data ?? [])}
-							total={0}
-							checkout={checkout}
-						/>
+						<FoterBag subtotal={subtotal} total={0} checkout={checkout} />
 					</>
 				)}
 			</aside>

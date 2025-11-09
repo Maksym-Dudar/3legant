@@ -3,42 +3,44 @@ import type { IBagStore, IInitialBagStore, ItemBagType } from "./types";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 const initialBagStore: IInitialBagStore = {
-	bag: new Map(),
+	bag: [],
 };
 
 const bagStore: StateCreator<IBagStore> = (set) => ({
 	...initialBagStore,
 	addProduct: (item) => {
 		set((state) => {
-			const bag = new Map(state.bag);
-			const existing = bag.get(item.product_id);
-			if (existing) {
-				const quantity = existing + 1;
-				if (item.quantity < quantity) item.quantity = quantity;
+			const bag = [...state.bag];
+			const index = bag.findIndex((val) => val.product_id === item.product_id);
+			if (index !== -1) {
+				const existing = bag[index];
+				const newQty = Math.max(existing.quantity + 1, item.quantity);
+				bag[index] = { ...existing, quantity: newQty };
+			} else {
+				bag.push({ product_id: item.product_id, quantity: item.quantity });
 			}
-			bag.set(item.product_id, item.quantity);
 			return { ...state, bag };
 		});
 	},
+
 	removeProduct: (item) => {
 		set((state) => {
-			const bag = new Map(state.bag);
-			const existing = bag.get(item.product_id);
-			if (existing) {
-				bag.delete(item.product_id);
-			}
+			const bag = state.bag.filter((val) => val.product_id !== item.product_id);
 			return { ...state, bag };
 		});
 	},
+
 	decreaseItemCount: (item) => {
 		set((state) => {
-			const bag = new Map(state.bag);
-			const existing = bag.get(item.product_id);
-			if (existing) {
-				const newQty = existing - 1;
+			const bag = [...state.bag];
+			const index = bag.findIndex((val) => val.product_id === item.product_id);
+			if (index !== -1) {
+				const existing = bag[index];
+				const newQty = existing.quantity - 1;
 				if (newQty > 0) {
-					item.quantity = newQty;
-					bag.set(item.product_id, item.quantity);
+					bag[index] = { ...existing, quantity: newQty };
+				} else {
+					bag.splice(index, 1); 
 				}
 			}
 			return { ...state, bag };
@@ -46,39 +48,17 @@ const bagStore: StateCreator<IBagStore> = (set) => ({
 	},
 });
 
-const useBagStore = create<IBagStore>()(
+export const useBagStore = create<IBagStore>()(
 	persist(bagStore, {
 		name: "shopping-bag",
 		storage: createJSONStorage(() => localStorage),
 		partialize: (state) => ({
-			bag: Object.fromEntries(state.bag),
+			bag: state.bag,
 		}),
-		onRehydrateStorage: () => (state, error) => {
-			if (state && state.bag && !(state.bag instanceof Map)) {
-				setTimeout(() => {
-					useBagStore.setState({
-						bag: new Map(
-							Object.entries(state.bag).map(([key, value]) => [
-								Number(key),
-								value,
-							])
-						),
-					});
-				}, 0);
-			}
-		},
 	})
 );
 
-export const useBagStored = () => useBagStore((state) => state.bag);
-export const useCountProductInBagStore = () =>
-	useBagStore((state) => state.bag.size);
-export const quantityProductInBagStore = (id: number) =>
-	useBagStore.getState().bag.get(id);
-export const addProductToBagStore = (item: ItemBagType) =>
-	useBagStore.getState().addProduct(item);
-export const removeProductToBagStore = (item: ItemBagType) =>
-	useBagStore.getState().removeProduct(item);
-export const decreaseItemCountBagStore = (item: ItemBagType) =>
-	useBagStore.getState().decreaseItemCount(item);
+export const quantityProductInBagStore = (id: number): number =>
+	useBagStore.getState().bag.find((item) => item.product_id === id)?.quantity ?? 0;
+
 

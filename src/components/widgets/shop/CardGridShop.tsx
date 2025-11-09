@@ -29,7 +29,7 @@ export function CardGridShop() {
 		isLoading,
 		error,
 	} = useInfiniteQuery({
-		queryKey: ["product_card", filter.categorie, filter.price, filter.sort, 8],
+		queryKey: ["product_card", initialCategorie, filter.price, filter.sort, 8],
 		queryFn: fetchProductCard,
 		initialPageParam: 1,
 		getNextPageParam: (lastPage, pages) => {
@@ -49,7 +49,7 @@ export function CardGridShop() {
 						?.flatMap((page) => page.cards)
 						?.map((item: IProductCard) => (
 							<div key={item.product_id} className='w-full h-auto'>
-								<ProductCard {...item} />
+								<ProductCard {...item} product_id={item.product_id} />
 							</div>
 						))}
 				</div>
@@ -59,7 +59,7 @@ export function CardGridShop() {
 						onClick={() => fetchNextPage()}
 						disabled={isFetchingNextPage}
 					>
-						Show more
+						{isFetchingNextPage ? "Loading..." : "Show more"}
 					</button>
 				)}
 			</section>

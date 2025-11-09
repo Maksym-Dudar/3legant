@@ -57,7 +57,6 @@ export async function forgotPassword(payload: IForgotPassword) {
 			withCredentials: true,
 		}
 	);
-	console.log(res)
 	if (res.status != 201) {
 		throw new Error("Помилка авторизації");
 	}
@@ -96,3 +95,11 @@ export async function resetPassword(payload: IResetPassword) {
 	return res.data;
 }
 
+export async function logOutReq() {
+	const res = await axios.delete("https://localhost:4200/auth/log-out", {
+		headers: {
+			"Content-Type": "application/json",
+		},
+		withCredentials: true,
+	});
+}

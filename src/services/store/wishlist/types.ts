@@ -1,14 +1,10 @@
-export interface ItemWishlistType {
-	product_id: number;
-}
 export interface IInitialWishlistStore {
-	wishlist: Set<ItemWishlistType>;
+	wishlist: number[];
 }
 
-interface IAction {
-	addProduct: (item: ItemWishlistType) => void;
-	removeProduct: (item: ItemWishlistType) => void;
-	togleProduct: (item: ItemWishlistType) => void;
+export interface IWishlistStore extends IInitialWishlistStore {
+	addProduct: (item: number) => void;
+	removeProduct: (item: number) => void;
+	toggleProduct: (item: number) => void;
+	isInWishlist: (product_id: number) => boolean;
 }
-
-export interface IWishlistStore extends IInitialWishlistStore, IAction {}

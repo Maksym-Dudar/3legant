@@ -1,5 +1,4 @@
-import { AddressForm } from "@/components/widgets/user-dashboard/address/form/AddressForm";
-
+import { AddressForm } from "@/components/widgets/user-dashboard";
 
 export default function page() {
 	return <AddressForm />;

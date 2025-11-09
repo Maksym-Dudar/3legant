@@ -1,3 +1,5 @@
+import { WishlistTable } from "@/components/widgets/user-dashboard";
+
 export default function page() {
-	return <div>page</div>;
+	return <WishlistTable />;
 }

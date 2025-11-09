@@ -5,7 +5,7 @@ export interface IInitialUserStore {
 }
 
 interface IAction {
-	updateUser: (fields: Partial<IUser>) => void;
+	updateUser: (fields: Partial<IUser>  & {id: number}) => void;
 	clearUser: () => void;
 }
 

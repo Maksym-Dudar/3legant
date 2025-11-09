@@ -3,7 +3,7 @@ export interface ItemBagType {
 	quantity: number;
 }
 export interface IInitialBagStore {
-	bag: Map<number, number>;
+	bag: ItemBagType[];
 }
 
 export interface IAction {

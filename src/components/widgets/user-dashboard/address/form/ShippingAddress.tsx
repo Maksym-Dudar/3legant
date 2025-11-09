@@ -53,7 +53,6 @@ export default function ShippingAddress({
 							country: selectedOption,
 						}));
 					} else {
-						console.log("error");
 					}
 				}}
 			/>

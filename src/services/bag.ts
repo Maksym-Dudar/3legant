@@ -3,13 +3,11 @@ import { quantityProductInBagStore } from "@/services/store/bag/store";
 import { useRouter } from "next/router";
 
 export function calculateSubtotal(data: IBagCard[]) {
-	let subtotal = 0;
-	console.log(data);
-	data.map(
-		(item) =>
-			(subtotal += item.price * (quantityProductInBagStore(item.product_id) ?? 0))
-	);
-	return subtotal;
+	if (!data.length) return 0;
+	return data.reduce((sum, item) => {
+		const quantity = quantityProductInBagStore(item.product_id) ?? 0;
+		return sum + item.price * quantity;
+	}, 0);
 }
 
 export function checkout() {

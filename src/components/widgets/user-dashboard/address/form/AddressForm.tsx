@@ -31,12 +31,10 @@ export function AddressForm() {
 		: undefined;
 	const addressId = rawId ? Number(rawId) : undefined;
 
-	console.log(addressArray);
 
 	useEffect(() => {
 		if (mode === Mode.EDIT && addressId !== undefined) {
 			const found = addressArray.find((val) => val.id === addressId);
-			console.log(found);
 			if (found) {
 				const { id, ...addres } = found;
 				setAddress(addres);

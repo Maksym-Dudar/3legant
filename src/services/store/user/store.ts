@@ -10,9 +10,10 @@ const initialUserStore: IInitialUserStore = {
 const userStore: StateCreator<IUserStore> = (set) => ({
 	...initialUserStore,
 	updateUser: (fields) =>
-		set((state) => ({
-			user: state.user ? { ...state.user, ...fields } : { ...fields },
-		})),
+		set((state) => {
+			if (!state.user) return { user: fields };
+			return { user: { ...state.user, ...fields } };
+		}),
 	clearUser: () => set({ user: null }),
 });
 
@@ -27,7 +28,7 @@ export const useUserStore = create<IUserStore>()(
 );
 
 
-export const updateUserData = (userData: Partial<IUser>) => {
-	if (!userData) return;
+export const updateUserData = (userData: Partial<IUser> & {id: number}) => {
+	if (!userData || Object.keys(userData).length === 0) return;
 	useUserStore.getState().updateUser(userData);
 }

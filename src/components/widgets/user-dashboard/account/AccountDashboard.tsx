@@ -38,7 +38,10 @@ export function AccountDashboard() {
 			if (newPassword != "" && oldPassword == "") {
 				throw new Error("Ви не ввели старий пароль");
 			}
-			console.log(typeof user?.id)
+			if (!user) {
+				throw new Error("Користувача незнайдено спробуйте авторизуватися знову");
+			}
+
 			const playload: IUser & IPassword = {
 				id: user?.id,
 				firstName: userInfo.firstName,

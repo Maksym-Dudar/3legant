@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
+
 interface Props {
-	data: string;
+	data: ReactNode;
 }
 
 export default function Cell({ data }: Props) {

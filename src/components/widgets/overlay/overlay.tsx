@@ -20,7 +20,7 @@ export function Overlay() {
 
 	return (
 		<div
-			className='flex fixed w-full h-full z-40 bg-opacity-60 bg-black'
+			className='flex fixed w-full h-full z-40 opacity-70 bg-black'
 			onClick={handleClick}
 		></div>
 	);

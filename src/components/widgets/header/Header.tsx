@@ -3,19 +3,19 @@
 import { ButtonMenu } from "@/components/ui";
 
 import { useBagContext, useMobileMenuContext } from "@/provider";
-import { useCountProductInBagStore } from "@/services/store/bag/store";
 import Link from "next/link";
 import PadingXLayouts from "@/layout/PadingXLayouts";
 import { PAGE } from "@/config/page.config";
 import { Menu } from "./Menu";
 import { showMobileAdaptive } from "@/utils/mobileAdaptive";
 import { HeaderControls } from "./HeaderControls";
+import { useBagStore } from "@/services/store/bag/store";
 
 
 export function Header() {
 	const { openBag } = useBagContext();
 	const { openMobileMenu } = useMobileMenuContext();
-	const size = useCountProductInBagStore();
+	const { bag } = useBagStore();
 	const showAdaptive = showMobileAdaptive();
 
 	return (
@@ -30,7 +30,7 @@ export function Header() {
 					</Link>
 				</div>
 				<Menu />
-				<HeaderControls showAdaptive={showAdaptive} size={size} searchOnClick={() =>/* todo */ {}} bagOnClick={openBag} />
+				<HeaderControls showAdaptive={showAdaptive} size={bag.length} searchOnClick={() =>/* todo */ {}} bagOnClick={openBag} />
 			</div>
 		</PadingXLayouts>
 	);
