@@ -17,7 +17,7 @@ export function Header() {
 				<input
 					type='text'
 					placeholder='Search'
-					className='text-14 font-400 leading-160 font-inter pl-11 py-2 border border-descriptiongrey rounded-lg w-full'
+					className='text-14 font-400 leading-160 font-inter pl-11 py-2 border border-descriptiongray rounded-lg w-full'
 				/>
 				<Image
 					src={IMAGE.SEARCH.href}

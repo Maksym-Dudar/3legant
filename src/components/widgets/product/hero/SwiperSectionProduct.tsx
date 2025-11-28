@@ -14,11 +14,11 @@ import { IMAGE } from "@/config/image.config";
 
 interface Props {
 	images: string[];
-	isnew: boolean;
+	isNew: boolean;
 	sale: number;
 }
 
-export function SwiperSectionProduct({ images, isnew, sale }: Props) {
+export function SwiperSectionProduct({ images, isNew, sale }: Props) {
 	const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 	const { width } = useWindowSize();
 
@@ -27,7 +27,7 @@ export function SwiperSectionProduct({ images, isnew, sale }: Props) {
 		<div className='w-full md:w-1/2 flex flex-col gap-6'>
 			<div className='flex absolute p-3 sm:p-5 z-20'>
 				<div className='flex flex-col gap-2'>
-					{isnew && (
+					{isNew && (
 						<div className='font-inter px-3 sm:px-5 md:px-3 lg:px-5 py-[6px] sm:py-2 md:py-[6px] lg:py-2 bg-white rounded text-14 md:text-16 font-700 leading-100'>
 							NEW
 						</div>

@@ -4,12 +4,12 @@ import Link from "next/link";
 interface Props {
     img: string;
     title: string;
-    isnew: boolean;
+    isNew: boolean;
     id: number;
     sale: number;
  }
 
-export function HeroCard({id, title, img, isnew, sale}: Props) {
+export function HeroCard({id, title, img, isNew, sale}: Props) {
 	return (
 		<Link href={`/shop/${id}`} className='flex w-full'>
 			<div className='flex w-full'>
@@ -23,7 +23,7 @@ export function HeroCard({id, title, img, isnew, sale}: Props) {
 				/>
 				<div className='flex absolute p-2 sm:p-4 md:p-5'>
 					<div className='flex flex-col gap-2'>
-						{isnew && (
+						{isNew && (
 							<div className='font-inter px-1 sm:px-2 md:px-3 py-1 bg-white rounded text-center text-12 sm:text-14 md:text-16 font-700 leading-100'>
 								NEW
 							</div>

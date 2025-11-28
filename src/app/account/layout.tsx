@@ -18,22 +18,25 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, type PropsWithChildren } from "react";
 
 export default function layouts({ children }: PropsWithChildren<unknown>) {
-	const { user, updateUser } = useUserStore();
-	const [ loading, setloading ] = useState(true);
+	const { updateUser } = useUserStore();
+	const [loading, setloading] = useState(true);
 	const router = useRouter();
 	useEffect(() => {
 		const fetchUser = async () => {
-			if (!user || !user.email) {
-				router.push(PAGE.SIGN_IN.link);
-			} else {
-				setloading(false)
-				const res = await getUserData(user.email);
+			try {
+				const res = await getUserData();
+				setloading(false);
 				updateUser(res.data);
+			} catch (error) {
+				router.push(PAGE.SIGN_IN.link);
 			}
 		};
+
 		fetchUser();
 	}, []);
-	if(loading) return <Loading />
+
+	if (loading) return <Loading />;
+
 	return (
 		<>
 			<BagProvider>

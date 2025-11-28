@@ -2,7 +2,7 @@
 
 import { DropdownFilter, DropdownSort } from "@/components/ui";
 import { FilterOpen, useShopContext } from "@/provider/ShopContext";
-import { Prices, Sorts, Category } from "@/config/product.config";
+import { Prices, Sorts, CategoryFilter } from "@/config/product.config";
 import PadingXLayouts from "@/layout/PadingXLayouts";
 
 export function FilterShop() {
@@ -14,9 +14,12 @@ export function FilterShop() {
 					<DropdownFilter
 						label='CATEGORIES'
 						value={filter.categorie}
-						options={Object.values(Category)}
+						options={Object.values(CategoryFilter)}
 						onChange={(val) =>
-							setFilter((prev) => ({ ...prev, categorie: val as Category }))
+							setFilter((prev) => ({
+								...prev,
+								categorie: val as CategoryFilter,
+							}))
 						}
 						onToggle={() =>
 							setOpenFilter((prev) =>

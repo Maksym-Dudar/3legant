@@ -1,6 +1,6 @@
 "use client";
 
-import { Prices, Sorts, Category } from "@/config/product.config";
+import { Prices, Sorts, CategoryFilter } from "@/config/product.config";
 import {
 	createContext,
 	useContext,
@@ -12,7 +12,7 @@ import {
 } from "react";
 
 interface IFilterState {
-	categorie: Category;
+	categorie: CategoryFilter;
 	price: Prices;
 	sort: Sorts;
 }
@@ -30,7 +30,7 @@ const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
 export function ShopProvider({ children }: { children: ReactNode }) {
 	const [filter, setFilter] = useState<IFilterState>({
-		categorie: Category.All,
+		categorie: CategoryFilter.All,
 		price: Prices.All,
 		sort: Sorts.Top_rated,
 	});

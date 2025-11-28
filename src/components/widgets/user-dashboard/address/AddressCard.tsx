@@ -14,7 +14,7 @@ interface Props {
 
 export function AddressCard({ label, name, phoneNumber, address, id }: Props) {
 	return (
-		<div className='w-full h-fit rounded-lg border-1 border-descriptiongrey gap-2 p-4'>
+		<div className='w-full h-fit rounded-lg border-1 border-descriptiongray gap-2 p-4'>
 			<section className='flex flex-row w-full justify-between'>
 				<h6 className='text-16 font-600 leading-160 text-black'>{label}</h6>
 				<button className='flex flex-row gap-2 items-center'>
@@ -27,7 +27,7 @@ export function AddressCard({ label, name, phoneNumber, address, id }: Props) {
 					/>
 					<Link
 						href={PAGE.ADDRESCREATE.link + `?mode=${Mode.EDIT}&addressId=${id}`}
-						className='text-16 font-600 leading-160 text-descriptiongrey'
+						className='text-16 font-600 leading-160 text-descriptiongray'
 					>
 						Edit
 					</Link>

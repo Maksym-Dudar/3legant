@@ -1,4 +1,4 @@
-import type { Category } from "./product.config";
+import type { CategoryFilter } from "./product.config";
 
 interface IPage {
     link: string;
@@ -32,7 +32,7 @@ class PagesConfig {
 		label: "Account",
 	};
 	ADDRESS: IPage = {
-		link: "/account/address",
+		link: `${this.ACCOUNT.link}/address`,
 		label: "Address",
 	};
 	ADDRESCREATE: IPage = {
@@ -40,11 +40,11 @@ class PagesConfig {
 		label: "Create",
 	};
 	ORDERS: IPage = {
-		link: "/account/orders",
+		link: `${this.ACCOUNT.link}/orders`,
 		label: "Orders",
 	};
 	WISHLIST: IPage = {
-		link: "/account/wishlist",
+		link: `${this.ACCOUNT.link}/wishlist`,
 		label: "Wishlist",
 	};
 
@@ -84,12 +84,26 @@ class PagesConfig {
 		link: "/youtube",
 	};
 
-	SHOP_BY_CATEGORY(item: Category) {
-		return `${PAGE.SHOP.link}?categorie=${item}`;
+	SHOP_BY_CATEGORY(item: CategoryFilter) {
+		return `${this.SHOP.link}?categorie=${item}`;
 	}
 	PRODUCT(item: number) {
-		return `${PAGE.SHOP.link}/${item}`;
+		return `${this.SHOP.link}/${item}`;
 	}
+
+	// Admin
+	ADMIN_DASHBOARD: IPage = {
+		link: "/admin-panel",
+		label: "Dashboard",
+	};
+	CREATE_PRODUCT: IPage = {
+		link: `${this.ADMIN_DASHBOARD.link}/create-product`,
+		label: "Product",
+	};
+	ADMIN_ORDERS: IPage = {
+		link: `${this.ADMIN_DASHBOARD.link}/orders`,
+		label: "Orders",
+	};
 }
 
 export const PAGE = new PagesConfig()

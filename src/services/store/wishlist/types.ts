@@ -6,5 +6,5 @@ export interface IWishlistStore extends IInitialWishlistStore {
 	addProduct: (item: number) => void;
 	removeProduct: (item: number) => void;
 	toggleProduct: (item: number) => void;
-	isInWishlist: (product_id: number) => boolean;
+	isInWishlist: (productId: number) => boolean;
 }

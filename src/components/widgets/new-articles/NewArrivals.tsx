@@ -38,7 +38,7 @@ export function NewArrivals() {
 					>
 						{data.map((item: IProductCard) => (
 							<div
-								key={item.product_id}
+								key={item.productId}
 								className='shrink-0 w-52 sm:w-60 lg:w-72'
 							>
 								<ProductCard {...item} />

@@ -1,10 +1,10 @@
 import { PathPage } from "@/components/ui";
 import { PAGE } from "@/config/page.config";
-import type { Category } from "@/config/product.config";
+import { Category } from "@/config/product.config";
 
 interface Props {
-    category: Category;
-    nameProduct: string;
+	category: Category;
+	nameProduct: string;
 }
 
 export function HeaderProduct({ category, nameProduct }: Props) {

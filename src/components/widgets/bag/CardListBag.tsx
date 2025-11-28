@@ -16,9 +16,9 @@ export function CardListBag({ data }: Props) {
 			{data.length &&
 				data.map((item) => (
 					<CardProductInBag
-						key={item.product_id}
+						key={item.productId}
 						{...item}
-						product_id={item.product_id}
+						productId={item.productId}
 					/>
 				))}
 		</div>

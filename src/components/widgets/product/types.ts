@@ -8,19 +8,19 @@ export interface IProductPage {
 	priceWithoutSale: number;
 	sale: number;
 	nstar: number;
-	isnew: boolean;
+	isNew: boolean;
 	offerExpiresIn: Date;
 	measurements: string;
 	same: ISameColorCard[];
 	color: string;
 	images: string[];
-	category: Category;
+	category: Category[];
 	reviews: number;
 }
 
 export interface ISameColorCard {
 	color: string;
-	product_id: number;
+	productId: number;
 	image: string;
 	isactive: boolean;
 }

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 export function calculateSubtotal(data: IBagCard[]) {
 	if (!data.length) return 0;
 	return data.reduce((sum, item) => {
-		const quantity = quantityProductInBagStore(item.product_id) ?? 0;
+		const quantity = quantityProductInBagStore(item.productId) ?? 0;
 		return sum + item.price * quantity;
 	}, 0);
 }

@@ -19,10 +19,10 @@ export function HeroProductSection() {
 	const [_, setTime] = useState<Date>(new Date());
 	
 	const params = useParams();
-	const product_id = Number(params.product_id);
+	const productId = Number(params.productId);
 	
 	const { data, isLoading, error } = useQuery<IProductPage>({
-		queryKey: [product_id],
+		queryKey: [productId],
 		queryFn: fetchCardPage,
 	});
 	
@@ -45,12 +45,12 @@ export function HeroProductSection() {
 		<PadingXLayouts>
 			{data && (
 				<div className='flex flex-col w-full'>
-					<HeaderProduct category={data.category} nameProduct={data.titel} />
+					<HeaderProduct category={data.category[0]} nameProduct={data.titel} />
 					<div className='flex flex-col md:flex-row w-full justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-16'>
 						{data && (
 							<SwiperSectionProduct
 								images={data.images || []}
-								isnew={data.isnew}
+								isNew={data.isNew}
 								sale={data.sale}
 							/>
 						)}
@@ -70,9 +70,9 @@ export function HeroProductSection() {
 								same={data.same}
 								measurements={data.measurements}
 							/>
-							<PurchaseActions product_id={product_id} />
+							<PurchaseActions productId={productId} />
 							<MetaDataProduct
-								product_id={product_id}
+								productId={productId}
 								category={data.category}
 							/>
 						</div>

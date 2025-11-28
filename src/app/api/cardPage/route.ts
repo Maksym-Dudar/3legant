@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import type { ICardPage } from "@/components/widgets/product/types";
 import { Category } from "@/config/product.config";
+import type { IProductPage } from "@/components/widgets/product/types";
 
-const productsData: ICardPage[] = [
+const productsData: IProductPage[] = [
 	{
 		id: 1,
-		name: "Loveseat Sofa",
+		titel: "Loveseat Sofa",
 		description:
 			"Buy one or buy a few and make every space where you sit more convenient. Light and easy to move around with removable tray top, handy for serving snacks.",
 		price: 199.0,
@@ -16,25 +16,25 @@ const productsData: ICardPage[] = [
 		same: [
 			{
 				color: "Black",
-				href: "/shop/2",
+				productId: 2,
 				image: "/product/8/image-1.png",
 				isactive: true,
 			},
 			{
 				color: "Black",
-				href: "/shop/3",
+				productId: 2,
 				image: "/product/8/image-2.png",
 				isactive: true,
 			},
 			{
 				color: "Black",
-				href: "/shop/4",
+				productId: 2,
 				image: "/product/8/image-3.png",
 				isactive: false,
 			},
 			{
 				color: "Black",
-				href: "/shop/5",
+				productId: 2,
 				image: "/product/8/image-4.png",
 				isactive: false,
 			},
@@ -51,11 +51,11 @@ const productsData: ICardPage[] = [
 		priceWithoutSale: 299.543,
 		reviews: 35,
 		nstar: 5,
-		isnew: true,
+		isNew: true,
 	},
 	{
 		id: 2,
-		name: "Luxury Sofa",
+		titel: "Luxury Sofa",
 		description:
 			"Buy one or buy a few and make every space where you sit more convenient. Light and easy to move around with removable tray top, handy for serving snacks.",
 		price: 299.0,
@@ -68,25 +68,25 @@ const productsData: ICardPage[] = [
 		same: [
 			{
 				color: "Black",
-				href: "/shop/3",
+				productId: 2,
 				image: "/product/8/image-5.png",
 				isactive: true,
 			},
 			{
 				color: "Black",
-				href: "/shop/4",
+				productId: 2,
 				image: "/product/8/image-6.png",
 				isactive: true,
 			},
 			{
 				color: "Black",
-				href: "/shop/5",
+				productId: 2,
 				image: "/product/8/image-1.png",
 				isactive: true,
 			},
 			{
 				color: "Black",
-				href: "/shop/6",
+				productId: 2,
 				image: "/product/8/image-2.png",
 				isactive: true,
 			},
@@ -102,11 +102,11 @@ const productsData: ICardPage[] = [
 		category: Category.LivingRoom,
 		reviews: 52,
 		nstar: 4,
-		isnew: true,
+		isNew: true,
 	},
 	{
 		id: 3,
-		name: "Table Lamp",
+		titel: "Table Lamp",
 		description:
 			"Buy one or buy a few and make every space where you sit more convenient. Light and easy to move around with removable tray top, handy for serving snacks.",
 
@@ -119,25 +119,25 @@ const productsData: ICardPage[] = [
 		same: [
 			{
 				color: "Black",
-				href: "/shop/2",
+				productId: 2,
 				image: "/product/8/image-1.png",
 				isactive: true,
 			},
 			{
 				color: "Black",
-				href: "/shop/2",
+				productId: 2,
 				image: "/product/8/image-2.png",
 				isactive: true,
 			},
 			{
 				color: "Black",
-				href: "/shop/2",
+				productId: 2,
 				image: "/product/8/image-3.png",
 				isactive: true,
 			},
 			{
 				color: "Black",
-				href: "/shop/2",
+				productId: 2,
 				image: "/product/8/image-6.png",
 				isactive: true,
 			},
@@ -155,7 +155,7 @@ const productsData: ICardPage[] = [
 
 		reviews: 14,
 		nstar: 6,
-		isnew: false,
+		isNew: false,
 	},
 ];
 
@@ -168,12 +168,12 @@ export async function GET(req: Request) {
 	}
 	const card: ICardPage = {
 		id: product.id,
-		name: product.name,
+		name: product.titel,
 		description: product.description,
 		price: product.price,
 		nstar: product.nstar,
 		sale: product.sale,
-		isnew: product.isnew,
+		isNew: product.isNew,
 		color: product.color,
 		images: product.images,
 		category: product.category,

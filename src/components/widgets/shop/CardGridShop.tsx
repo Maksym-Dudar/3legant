@@ -6,7 +6,7 @@ import { Error, Loading } from "..";
 import { useShopContext } from "@/provider/ShopContext";
 import { ProductCard } from "@/components/cards";
 import type { IProductCard } from "@/shared/types";
-import type { Category } from "@/config/product.config";
+import { CategoryFilter } from "@/config/product.config";
 import { useEffect } from "react";
 import { fetchProductCard } from "@/services/requests/product";
 import PadingXLayouts from "@/layout/PadingXLayouts";
@@ -18,7 +18,7 @@ export function CardGridShop() {
 	useEffect(() => {
 		setFilter((prev) => ({
 			...prev,
-			categorie: initialCategorie as Category,
+			categorie: initialCategorie as CategoryFilter,
 		}));
 	}, [initialCategorie]);
 	const {
@@ -48,8 +48,8 @@ export function CardGridShop() {
 					{data?.pages
 						?.flatMap((page) => page.cards)
 						?.map((item: IProductCard) => (
-							<div key={item.product_id} className='w-full h-auto'>
-								<ProductCard {...item} product_id={item.product_id} />
+							<div key={item.productId} className='w-full h-auto'>
+								<ProductCard {...item} productId={item.productId} />
 							</div>
 						))}
 				</div>

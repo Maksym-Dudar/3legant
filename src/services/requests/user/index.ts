@@ -17,11 +17,13 @@ export async function sendAvatar(file: File) {
 	}
 	return res.data;
 }
-export async function getUserData(email: string) {
+export async function getUserData() {
 	const res = await axios.get("https://localhost:4200/user", {
-		params: { email: email },
 		withCredentials: true,
 	});
+	if (res.status != 200) {
+		throw new Error(res.statusText);
+	}
 	return res;
 }
 

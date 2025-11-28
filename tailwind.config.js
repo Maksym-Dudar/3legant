@@ -20,7 +20,7 @@ module.exports = {
 			colors: {
 				black: "var(--black)",
 				white: "var(--white)",
-				descriptiongrey: "var(--descriptiongrey)",
+				descriptiongray: "var(--descriptiongray)",
 				descriptionwhite: "var(--descriptionwhite)",
 				subtitel: "var(--subtitel)",
 				notactive: "var(--notactive)",
@@ -28,7 +28,7 @@ module.exports = {
 				whitegray: "var(--whitegray)",
 				green: "#38CB89",
 				red: "#DC1616",
-				grey: "#F3F5F7",
+				gray: "#F3F5F7",
 			},
 			spacing: {
 				"1/2": "50%",
@@ -57,7 +57,7 @@ module.exports = {
 			black: "#141718",
 			white: "#fff",
 			green: "#38CB89",
-			grey: "#F3F5F7",
+			gray: "#F3F5F7",
 			darkgray: "#6C7275",
 			emailform: "#F2F4F5",
 			palered: "#F5B8B2",

@@ -55,7 +55,7 @@ export function WishlistTable() {
 								paddingX={1}
 								paddingY={2}
 								onClick={() =>
-									addProduct({ product_id: item.id, quantity: 1 })
+									addProduct({ productId: item.id, quantity: 1 })
 								}
 							/>
 						}

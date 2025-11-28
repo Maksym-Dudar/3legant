@@ -2,25 +2,25 @@ import Image from "next/image";
 import { ButtonAction } from "@/components/ui";
 
 import { useState } from "react";
-import { addProductToBagStore } from "@/services/store/bag/store";
 import { IMAGE } from "@/config/image.config";
 import { useWishlistStore } from "@/services/store/wishlist/store";
+import { useBagStore } from "@/services/store/bag/store";
 
 interface Props {
-	product_id: number;
+	productId: number;
 }
 
-export function PurchaseActions({ product_id }: Props) {
+export function PurchaseActions({ productId }: Props) {
 	const [counter, setCount] = useState<number>(1);
-
+	const {addProduct} = useBagStore()
 	const { toggleProduct, isInWishlist } = useWishlistStore();
 
-	const itemToAddBag = { product_id: product_id, quantity: counter };
+	const itemToAddBag = { productId: productId, quantity: counter };
 
 	return (
-		<section className='flex flex-col gap-4 py-8 border-b border-grey'>
+		<section className='flex flex-col gap-4 py-8 border-b border-gray'>
 			<div className='flex gap-6'>
-				<div className='flex flex-row text-18 md:text-20 font-300 leading-170 w-fit px-3 md:px-4 py-[6px] md:py-3 gap-6 bg-grey rounded-lg'>
+				<div className='flex flex-row text-18 md:text-20 font-300 leading-170 w-fit px-3 md:px-4 py-[6px] md:py-3 gap-6 bg-gray rounded-lg'>
 					<button
 						onClick={() => setCount((prev) => (prev > 1 ? prev - 1 : prev))}
 					>
@@ -30,10 +30,10 @@ export function PurchaseActions({ product_id }: Props) {
 					<button onClick={() => setCount((prev) => prev + 1)}>+</button>
 				</div>
 				<button
-					onClick={() => toggleProduct(product_id )}
+					onClick={() => toggleProduct(productId )}
 					className='flex w-full text-center border border-black py-1 sm:py-2 rounded-lg justify-center items-center gap-2'
 				>
-					{isInWishlist(product_id) ? (
+					{isInWishlist(productId) ? (
 						<Image
 							src={IMAGE.LIKE_ACTIVE.href}
 							alt={IMAGE.LIKE_ACTIVE.alt}
@@ -59,7 +59,7 @@ export function PurchaseActions({ product_id }: Props) {
 				paddingY={3}
 				onClick={() => {
 					if (itemToAddBag) {
-						addProductToBagStore(itemToAddBag);
+						addProduct(itemToAddBag);
 					}
 				}}
 			/>

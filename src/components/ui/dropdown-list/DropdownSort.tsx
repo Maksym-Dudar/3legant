@@ -52,7 +52,7 @@ export default function DropdownSort({
 							}}
 						>
 							{item === value ? (
-								<p className='text-descriptiongrey pointer-events-none'>
+								<p className='text-descriptiongray pointer-events-none'>
 									{item}
 								</p>
 							) : (

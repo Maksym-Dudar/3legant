@@ -14,7 +14,7 @@ export function OptionsProduct({ measurements, color, same }: Props) {
 	return (
 		<section className='flex flex-col py-6 gap-6'>
 			<div className='flex flex-col gap-2'>
-				<p className='font-inter font-600 text-14 md:text-16 leading-160 text-descriptiongrey'>
+				<p className='font-inter font-600 text-14 md:text-16 leading-160 text-descriptiongray'>
 					Measurements
 				</p>
 				<p className='font-inter font-300 text-18 md:text-20 leading-180 text-black'>
@@ -24,7 +24,7 @@ export function OptionsProduct({ measurements, color, same }: Props) {
 			<div className='flex flex-col gap-4'>
 				<div className='flex flex-col gap-2'>
 					<div className='flex items-center gap-2'>
-						<p className='font-inter font-600 text-14 md:text-16 leading-160 text-descriptiongrey'>
+						<p className='font-inter font-600 text-14 md:text-16 leading-160 text-descriptiongray'>
 							Choose Color
 						</p>
 						<Image
@@ -39,12 +39,12 @@ export function OptionsProduct({ measurements, color, same }: Props) {
 				<div className='flex flex-row gap-4'>
 					{same.map((item) =>
 						item.isactive ? (
-							<Link href={PAGE.PRODUCT(item.product_id)} key={item.image}>
+							<Link href={PAGE.PRODUCT(item.productId)} key={item.image}>
 								<Image src={item.image} alt='Arrow' width={72} height={72} />
 							</Link>
 						) : (
 							<div className='flex opacity-40' key={item.image}>
-								<Link href={PAGE.PRODUCT(item.product_id)}>
+								<Link href={PAGE.PRODUCT(item.productId)}>
 									<Image src={item.image} alt='Arrow' width={72} height={72} />
 								</Link>
 							</div>

@@ -16,7 +16,7 @@ export function BagSidebar() {
 	const { isOpenBag, closeBag } = useBagContext();
 	const { bag } = useBagStore();
 
-	const arrayProductInBag = bag.map((item) => item.product_id);
+	const arrayProductInBag = bag.map((item) => item.productId);
 
 	const { isLoading, error, data } = useQuery<IBagCard[]>({
 		queryKey: ["bag", arrayProductInBag],

@@ -83,7 +83,7 @@ export function ForgotPasswordForm() {
 				</div>
 				<div className='flex flex-col gap-8'>
 					<div className='flex flex-col gap-4'>
-						<p className='text-16 font-400 leading-160 font-inter text-descriptiongrey'>
+						<p className='text-16 font-400 leading-160 font-inter text-descriptiongray'>
 							Enter your otp code from email
 						</p>
 						<input
@@ -96,7 +96,7 @@ export function ForgotPasswordForm() {
 						/>
 					</div>
 					<div className='flex flex-col gap-4'>
-						<p className='text-16 font-400 leading-160 font-inter text-descriptiongrey'>
+						<p className='text-16 font-400 leading-160 font-inter text-descriptiongray'>
 							Create new passoword
 						</p>
 						<input

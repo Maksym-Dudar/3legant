@@ -6,7 +6,7 @@ interface Props {
 
 export function CountdownTimer({ diftime }: Props) {
 	return (
-		<section className='flex flex-col py-6 gap-3 border-b border-grey'>
+		<section className='flex flex-col py-6 gap-3 border-b border-gray'>
 			<p className='font-inter font-400 text-14 md:text-16 leading-160 text-subtitel'>
 				Offer expires in:
 			</p>

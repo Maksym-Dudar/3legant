@@ -1,10 +1,18 @@
+import type { Category } from "@/config/product.config";
+
 export interface IProductCard {
-	product_id: number;
+	productId: number;
+	productGroupId: number;
+	description: string;
 	title: string;
 	price: number;
 	nstar: number;
 	sale: number;
-	isnew: boolean;
+	isNew: boolean;
 	img: string;
-	category: string
+	quantityWarehouse: number;
+	category: Category[];
+	color: string;
+	offerExpires: Date;
+	measurements: string;
 }

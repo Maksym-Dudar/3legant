@@ -1,4 +1,4 @@
-export enum Category {
+export enum CategoryFilter {
 	All = "All",
 	LivingRoom = "Living Room",
 	Bedroom = "Bedroom",
@@ -6,6 +6,15 @@ export enum Category {
 	Bathroom = "Bathroom",
 	Office = "Office",
 }
+
+export enum Category {
+	LivingRoom = "Living Room",
+	Bedroom = "Bedroom",
+	Kitchen = "Kitchen",
+	Bathroom = "Bathroom",
+	Office = "Office",
+}
+
 
 export enum Prices {
 	All = "All Price",
@@ -21,4 +30,4 @@ export enum Sorts {
 	Low_to_high_price = "Price: Low to High",
 	High_to_low_price = "Price: High to Low",
 	Newest = "Newest Arrivals",
-};
+}

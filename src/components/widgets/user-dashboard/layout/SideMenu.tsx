@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { SideMenuLinks } from "./SideMenuLinks";
 import { useUserStore } from "@/services/store/user/store";
 import { IMAGE } from "@/config/image.config";
 import { PAGE } from "@/config/page.config";
@@ -10,6 +9,7 @@ import { ErrorToast } from "@/components/ui";
 import { sendAvatar } from "@/services/requests/user";
 import { logOutReq } from "@/services/requests/auth";
 import { useRouter } from "next/navigation";
+import SideMenuLinks from "./SideMenuLinks";
 export function SideMenu() {
 	const router = useRouter();
 	const { user, clearUser } = useUserStore();
@@ -43,7 +43,7 @@ export function SideMenu() {
 		}
 	}
 	return (
-		<aside className='flex flex-col justify-center py-10 px-4 gap-10 w-full sm:w-44 md:w-60 h-fit bg-grey rounded-md mb-20'>
+		<aside className='flex flex-col justify-center py-10 px-4 gap-10 w-full sm:w-44 md:w-60 h-fit bg-gray rounded-md mb-20'>
 			{errorToast && (
 				<ErrorToast message={errorToast} onClose={() => setErrorToast(null)} />
 			)}
@@ -58,7 +58,7 @@ export function SideMenu() {
 							className='object-cover'
 						/>
 					</div>
-					<div className='absolute bottom-4 right-4 border-2 border-grey flex w-7 h-7 rounded-full bg-black cursor-pointer items-center justify-center'>
+					<div className='absolute bottom-4 right-4 border-2 border-gray flex w-7 h-7 rounded-full bg-black cursor-pointer items-center justify-center'>
 						<Image
 							src={IMAGE.CAMERA.href}
 							alt={IMAGE.CAMERA.alt}
@@ -85,7 +85,7 @@ export function SideMenu() {
 				<SideMenuLinks text={PAGE.ORDERS.label} link={PAGE.ORDERS.link} />
 				<SideMenuLinks text={PAGE.WISHLIST.label} link={PAGE.WISHLIST.link} />
 				<button
-					className='pt-5 text-descriptiongrey font-inter font-500 text-14 md:text-16 leading-160 cursor-pointer'
+					className='pt-5 text-descriptiongray font-inter font-500 text-14 md:text-16 leading-160 cursor-pointer'
 					onClick={logOut}
 				>
 					Log Out

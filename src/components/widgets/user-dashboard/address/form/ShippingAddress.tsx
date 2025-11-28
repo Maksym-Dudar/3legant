@@ -39,7 +39,7 @@ export default function ShippingAddress({
 				styles={{
 					control: (base) => ({
 						...base,
-						border: "1px solid var(--descriptiongrey)",
+						border: "1px solid var(--descriptiongray)",
 						borderRadius: "6px",
 						padding: "0 7px",
 						color: "var(--black)",

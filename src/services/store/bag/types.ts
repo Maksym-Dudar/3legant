@@ -1,5 +1,5 @@
 export interface ItemBagType {
-	product_id: number;
+	productId: number;
 	quantity: number;
 }
 export interface IInitialBagStore {

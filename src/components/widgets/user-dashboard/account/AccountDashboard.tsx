@@ -65,7 +65,6 @@ export function AccountDashboard() {
 			)}
 			<h4 className='text-16 sm:text-18 md:text-20 font-600 leading-160'>
 				Account Details
-				{user?.firstName}
 			</h4>
 			<InputFullWidth
 				id='firstName'

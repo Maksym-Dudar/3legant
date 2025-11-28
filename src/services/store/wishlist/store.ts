@@ -36,8 +36,8 @@ const wishlistStore: StateCreator<IWishlistStore> = (set, get) => ({
 		}
 	},
 
-	isInWishlist: (product_id) => {
-		return get().wishlist.some((x) => x === product_id);
+	isInWishlist: (productId) => {
+		return get().wishlist.some((x) => x === productId);
 	},
 });
 

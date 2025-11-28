@@ -1,5 +1,5 @@
 export interface IBagCard {
-	product_id: number;
+	productId: number;
 	title: string;
 	price: number;
 	color: string;

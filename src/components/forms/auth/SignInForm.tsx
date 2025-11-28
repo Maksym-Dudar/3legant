@@ -46,7 +46,7 @@ export function SignInForm() {
 			)}
 			<div className='flex flex-col gap-6'>
 				<h3 className='text-40 font-500 leading-110'>{PAGE.SIGN_IN.label}</h3>
-				<p className='text-16 font-400 leading-160 font-inter text-descriptiongrey'>
+				<p className='text-16 font-400 leading-160 font-inter text-descriptiongray'>
 					Don’t have an accout yet?{" "}
 					<Link href={PAGE.SIGN_UP.link} className='text-green'>
 						{PAGE.SIGN_UP.label}

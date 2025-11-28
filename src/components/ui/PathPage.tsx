@@ -9,7 +9,7 @@ export default function PathPage({
 	return (
 		<div className='flex items-center gap-2'>
 			<Link
-				className='font-inter text-descriptiongrey text-12 md:text-14'
+				className='font-inter text-descriptiongray text-12 md:text-14'
 				href={path}
 			>
 				{name}
