@@ -4,14 +4,7 @@ import { useWindowSize } from "@/hooks";
 import { IMAGE } from "@/config/image.config";
 import { mobileSize } from "@/constants/windowSize";
 
-export function CommentCard({
-	id,
-	name,
-	date,
-	nstar,
-	avatar,
-	comment,
-}: IComment) {
+export function CommentCard({ id, name, date, rating, avatar, comment }: IComment) {
 	const { width } = useWindowSize();
 
 	const dateComment = new Date(date);
@@ -35,7 +28,7 @@ export function CommentCard({
 					{name}
 				</h6>
 				<div className='flex flex-row gap-1'>
-					{Array(nstar)
+					{Array(rating)
 						.fill(0)
 						.map((_, i) => (
 							<Image

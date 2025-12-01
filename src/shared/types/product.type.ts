@@ -1,15 +1,15 @@
 import type { Category } from "@/config/product.config";
 
 export interface IProductCard {
-	productId: number;
+	id: number;
 	productGroupId: number;
 	description: string;
 	title: string;
 	price: number;
-	nstar: number;
+	rating: number;
 	sale: number;
 	isNew: boolean;
-	img: string;
+	image: string;
 	quantityWarehouse: number;
 	category: Category[];
 	color: string;

@@ -12,23 +12,23 @@ export function FilterShop() {
 			<div className='flex flex-col md:flex-row md:justify-between gap-6 md:gap-0 pt-10 md:pt-15 w-full'>
 				<div className='flex gap-4 sm:gap-6 flex-col md:flex-row w-full'>
 					<DropdownFilter
-						label='CATEGORIES'
-						value={filter.categorie}
+						label='CATEGORYS'
+						value={filter.category}
 						options={Object.values(CategoryFilter)}
 						onChange={(val) =>
 							setFilter((prev) => ({
 								...prev,
-								categorie: val as CategoryFilter,
+								category: val as CategoryFilter,
 							}))
 						}
 						onToggle={() =>
 							setOpenFilter((prev) =>
-								prev === FilterOpen.categorie
+								prev === FilterOpen.category
 									? FilterOpen.none
-									: FilterOpen.categorie
+									: FilterOpen.category
 							)
 						}
-						isOpen={openFilter == FilterOpen.categorie}
+						isOpen={openFilter == FilterOpen.category}
 						close={() => setOpenFilter(FilterOpen.none)}
 					/>
 					<DropdownFilter

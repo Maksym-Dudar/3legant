@@ -14,7 +14,7 @@ export function HeaderProduct({ category, nameProduct }: Props) {
 			<PathPage name={PAGE.SHOP.label} path={PAGE.SHOP.link} />
 			<PathPage
 				name={category}
-				path={category && `/${PAGE.SHOP.link}?categorie=${category}`}
+				path={category && `/${PAGE.SHOP.link}?category=${category}`}
 			/>
 			<p className='font-inter text-12 md:text-14'>{nameProduct}</p>
 		</div>

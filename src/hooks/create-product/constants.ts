@@ -1,5 +1,5 @@
 import type { ICreateProduct } from "@/shared/types/product/createProduct.type";
-import type { Option } from "@/shared/types";
+import type { IGroupSelectOption } from "@/shared/types";
 
 export const initialProduct: ICreateProduct = {
         productGroupId: -1,
@@ -11,11 +11,11 @@ export const initialProduct: ICreateProduct = {
         isNew: true,
         color: "",
         measurements: "",
-        img: [],
+        image: [],
         category: [],
 }
 
-export const optionCreate: Option = {
+export const optionCreate: IGroupSelectOption = {
 	label: "Create",
 	value: -1,
 };

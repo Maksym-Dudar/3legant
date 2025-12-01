@@ -85,7 +85,7 @@ class PagesConfig {
 	};
 
 	SHOP_BY_CATEGORY(item: CategoryFilter) {
-		return `${this.SHOP.link}?categorie=${item}`;
+		return `${this.SHOP.link}?category=${item}`;
 	}
 	PRODUCT(item: number) {
 		return `${this.SHOP.link}/${item}`;

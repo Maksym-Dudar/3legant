@@ -12,7 +12,7 @@ interface Props {
 	title: string;
 	color: string;
 	price: number;
-	productId: number;
+	id: number;
 }
 
 export function CardProductInBag({
@@ -20,12 +20,12 @@ export function CardProductInBag({
 	title,
 	color,
 	price,
-	productId: productId,
+	id: id,
 }: Props) {
 	const { addProduct, decreaseItemCount, removeProduct } = useBagStore();
 	let item = {
-		productId: productId,
-		quantity: quantityProductInBagStore(productId),
+		id: id,
+		quantity: quantityProductInBagStore(id),
 	};
 
 	return (
@@ -47,7 +47,7 @@ export function CardProductInBag({
 							-
 						</button>
 						<p className='flex w-1 justify-center'>
-							{quantityProductInBagStore(productId)}
+							{quantityProductInBagStore(id)}
 						</p>
 						<button
 							className='text-16 sm:text-20 font-200 leading-100'

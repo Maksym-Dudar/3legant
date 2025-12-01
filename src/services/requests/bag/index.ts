@@ -9,8 +9,8 @@ export async function fetchBagStorage({
 }: QueryFunctionContext): Promise<IBagCard[]> {
 	const [_key, arrayProductInBag] = queryKey as ["bag", ItemBagType[]];
 	const idArray = arrayProductInBag.join(",");
-	const res = await axios.get("https://localhost:3000/api/bag", {
-		params: { id: idArray },
+	const res = await axios.get("https://localhost:4200/product/bag", {
+		params: { ids: idArray },
 		signal,
 	});
 	return res.data;

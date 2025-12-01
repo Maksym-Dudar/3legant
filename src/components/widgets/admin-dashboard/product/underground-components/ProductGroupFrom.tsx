@@ -68,7 +68,6 @@ export function ProductGroupFrom({
 				disabled={canCreateProductGroup}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 					setProductInfo((val) => {
-						console.log(e.target.value);
 						return { ...val, title: e.target.value };
 					});
 				}}

@@ -138,18 +138,18 @@ export async function GET ( req: Request) {
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get('page') || '1', 10);
     const limit = parseInt(searchParams.get('limit') ||'16',10);
-    const categorie = searchParams.get('categorie') || 'All';
+    const category = searchParams.get('category') || 'All';
     const price = searchParams.get('price') || 'All Price';
     const sort = searchParams.get('sort') || 'Top Rated';
 
-    const datacategorie: IProductCard[] =
-			categorie === "All"
+    const datacategory: IProductCard[] =
+			category === "All"
 				? card
-				: card.filter((item) => item.category === categorie);
+				: card.filter((item) => item.category === category);
     const dataprice: IProductCard[] =
 			price === "All Price"
-				? datacategorie
-				: datacategorie.filter((item) => {
+				? datacategory
+				: datacategory.filter((item) => {
 						const itemPrice = item.price * (1 - item.sale);
 						const [minPrice, maxPrice] = price.split("-").map(Number);
 						return itemPrice >= minPrice && itemPrice <= maxPrice;

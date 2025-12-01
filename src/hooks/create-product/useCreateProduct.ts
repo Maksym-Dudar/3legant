@@ -85,7 +85,7 @@ export default function useCreateProduct(): CreateProductHookReturn {
 		const files = e.target.files;
 		if (!files) return;
 		setProductInfo((val) => ({
-			...val, img: Array.from(files)
+			...val, image: Array.from(files)
 		}))
 
 		const imageUrls = Array.from(files).map((file) =>
@@ -96,9 +96,8 @@ export default function useCreateProduct(): CreateProductHookReturn {
 
 	const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
-		if (productInfo.img.length == 0) throw new Error("Images don't found");
+		if (productInfo.image.length == 0) throw new Error("Images don't found");
 		const res = await createProduct(productInfo)
-		console.log(res)
 	};
 	return {
 		productGroup,

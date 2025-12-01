@@ -8,7 +8,6 @@ import { ProductGroupFrom } from "./underground-components/ProductGroupFrom";
 import { ProductDetailsForm } from "./underground-components/ProductDetailsForm";
 import { ProductSaleFrom } from "./underground-components/ProductSaleFrom";
 import { ProductDescriptionForm } from "./underground-components/ProductDescriptionForm";
-import { Category } from "@/config/product.config";
 
 export function CreateProduct() {
 	const {

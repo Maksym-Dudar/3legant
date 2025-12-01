@@ -3,7 +3,7 @@ import type { CategoryFilter, Prices } from "@/config/product.config";
 import Image from "next/image";
 
 interface Props {
-	label: "CATEGORIES" | "PRICE";
+	label: "CATEGORYS" | "PRICE";
 	value: CategoryFilter | Prices;
 	options: string[];
 	onChange: (val: CategoryFilter | Prices) => void;

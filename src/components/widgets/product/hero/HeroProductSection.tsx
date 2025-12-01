@@ -1,7 +1,6 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { SwiperSectionProduct } from "./SwiperSectionProduct";
 import { useQuery } from "@tanstack/react-query";
 import { Error, Loading } from "../..";
@@ -14,29 +13,17 @@ import { OptionsProduct } from "./OptionsProduct";
 import { PurchaseActions } from "./PurchaseActions";
 import { MetaDataProduct } from "./MetaDataProduct";
 import { fetchCardPage } from "@/services/requests/product";
+import { useTimer } from "@/hooks";
 
 export function HeroProductSection() {
-	const [_, setTime] = useState<Date>(new Date());
+	
 	
 	const params = useParams();
-	const productId = Number(params.productId);
-	
+	const id = Number(params.id);
 	const { data, isLoading, error } = useQuery<IProductPage>({
-		queryKey: [productId],
+		queryKey: [id],
 		queryFn: fetchCardPage,
 	});
-	
-	useEffect(() => {
-		const inter = setInterval(() => setTime(new Date()), 1000);
-		
-		return () => clearInterval(inter);
-	}, []);
-	
-	let diftime =
-		data?.offerExpiresIn &&
-		data.sale &&
-		new Date(new Date(data.offerExpiresIn).getTime() - Date.now()) || new Date()
-	
 
 	if (error) return <Error masage={error.message} />;
 	if (isLoading) return <Loading />;
@@ -45,36 +32,38 @@ export function HeroProductSection() {
 		<PadingXLayouts>
 			{data && (
 				<div className='flex flex-col w-full'>
-					<HeaderProduct category={data.category[0]} nameProduct={data.titel} />
+					<HeaderProduct category={data.category[0]} nameProduct={data.title} />
 					<div className='flex flex-col md:flex-row w-full justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-16'>
 						{data && (
 							<SwiperSectionProduct
-								images={data.images || []}
+								images={data.image || []}
 								isNew={data.isNew}
 								sale={data.sale}
 							/>
 						)}
 						<div className='flex flex-col w-full md:w-1/2'>
 							<InfoProduct
-								name={data.titel}
-								nstar={data.nstar}
+								name={data.title}
+								rating={data.rating}
 								reviews={data.reviews}
 								description={data.description}
 								price={data.price}
 								priceWithoutSale={data.priceWithoutSale}
 								sale={!!data.sale}
 							/>
-							{data.sale && <CountdownTimer diftime={diftime} />}
+							{data.sale && (
+								<CountdownTimer
+									offerExpires={new Date(data.offerExpires)}
+									sale={!!data.sale}
+								/>
+							)}
 							<OptionsProduct
 								color={data.color}
 								same={data.same}
 								measurements={data.measurements}
 							/>
-							<PurchaseActions productId={productId} />
-							<MetaDataProduct
-								productId={productId}
-								category={data.category}
-							/>
+							<PurchaseActions id={id} />
+							<MetaDataProduct id={id} category={data.category} />
 						</div>
 					</div>
 				</div>
@@ -82,3 +71,5 @@ export function HeroProductSection() {
 		</PadingXLayouts>
 	);
 }
+
+

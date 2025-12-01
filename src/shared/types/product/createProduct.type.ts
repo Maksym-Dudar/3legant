@@ -1,7 +1,7 @@
 import type { Category } from "@/config/product.config";
 
 export interface ICreateProduct {
-	productId?: number;
+	id?: number;
 	productGroupId: number;
 	title: string;
 	quantityWarehouse: number;
@@ -13,6 +13,6 @@ export interface ICreateProduct {
 	isNew: boolean;
 	color: string;
 	measurements: string;
-	category: Category[];
-	img: File[];
+	category: string[];
+	image: File[];
 }

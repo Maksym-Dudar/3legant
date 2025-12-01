@@ -11,13 +11,13 @@ const bagStore: StateCreator<IBagStore> = (set) => ({
 	addProduct: (item) => {
 		set((state) => {
 			const bag = [...state.bag];
-			const index = bag.findIndex((val) => val.productId === item.productId);
+			const index = bag.findIndex((val) => val.id === item.id);
 			if (index !== -1) {
 				const existing = bag[index];
 				const newQty = Math.max(existing.quantity + 1, item.quantity);
 				bag[index] = { ...existing, quantity: newQty };
 			} else {
-				bag.push({ productId: item.productId, quantity: item.quantity });
+				bag.push({ id: item.id, quantity: item.quantity });
 			}
 			return { ...state, bag };
 		});
@@ -25,7 +25,7 @@ const bagStore: StateCreator<IBagStore> = (set) => ({
 
 	removeProduct: (item) => {
 		set((state) => {
-			const bag = state.bag.filter((val) => val.productId !== item.productId);
+			const bag = state.bag.filter((val) => val.id !== item.id);
 			return { ...state, bag };
 		});
 	},
@@ -33,7 +33,7 @@ const bagStore: StateCreator<IBagStore> = (set) => ({
 	decreaseItemCount: (item) => {
 		set((state) => {
 			const bag = [...state.bag];
-			const index = bag.findIndex((val) => val.productId === item.productId);
+			const index = bag.findIndex((val) => val.id === item.id);
 			if (index !== -1) {
 				const existing = bag[index];
 				const newQty = existing.quantity - 1;
@@ -59,6 +59,6 @@ export const useBagStore = create<IBagStore>()(
 );
 
 export const quantityProductInBagStore = (id: number): number =>
-	useBagStore.getState().bag.find((item) => item.productId === id)?.quantity ?? 0;
+	useBagStore.getState().bag.find((item) => item.id === id)?.quantity ?? 0;
 
 

@@ -6,9 +6,6 @@ import { usePathname } from "next/navigation";
 
 export function AdminMenu() {
 	const path = usePathname();
-
-	console.log(path)
-
 	return (
 		<menu className='flex gap-6 justify-center items-center pt-2'>
 			<MenuLink

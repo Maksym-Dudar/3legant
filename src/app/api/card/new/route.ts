@@ -10,7 +10,7 @@ const cards: IProductCard[] = [
 		sale: 0.5,
 		isNew: true,
 		img: `/request/images/card/id1.png`,
-		categorie: "Furniture",
+		category: "Furniture",
 	},
 	{
 		productId: 2,
@@ -20,7 +20,7 @@ const cards: IProductCard[] = [
 		sale: 0.4,
 		isNew: true,
 		img: `/request/images/card/id2.png`,
-		categorie: "Lighting",
+		category: "Lighting",
 	},
 	{
 		productId: 3,
@@ -30,7 +30,7 @@ const cards: IProductCard[] = [
 		sale: 0.5,
 		isNew: true,
 		img: `/request/images/card/id3.png`,
-		categorie: "Lighting",
+		category: "Lighting",
 	},
 	{
 		productId: 4,
@@ -40,7 +40,7 @@ const cards: IProductCard[] = [
 		sale: 0.33,
 		isNew: true,
 		img: `/request/images/card/id4.png`,
-		categorie: "Decor",
+		category: "Decor",
 	},
 	{
 		productId: 5,
@@ -50,7 +50,7 @@ const cards: IProductCard[] = [
 		sale: 0.0,
 		isNew: false,
 		img: `/request/images/card/id5.png`,
-		categorie: "Appliances",
+		category: "Appliances",
 	},
 ];
 

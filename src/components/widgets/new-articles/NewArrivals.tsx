@@ -20,7 +20,7 @@ export function NewArrivals() {
 
 	if (isLoading) return <Loading />;
 	if (error) return <Error masage={error.message} />;
-
+	
 	return (
 		<PadingXLayouts>
 			<div className='flex flex-col w-full'>
@@ -38,7 +38,7 @@ export function NewArrivals() {
 					>
 						{data.map((item: IProductCard) => (
 							<div
-								key={item.productId}
+								key={item.id}
 								className='shrink-0 w-52 sm:w-60 lg:w-72'
 							>
 								<ProductCard {...item} />

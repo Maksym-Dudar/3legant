@@ -1,6 +1,5 @@
 "use client";
 
-import ColumnTitel from "@/components/ui/table/ColumnTitel";
 import { Row } from "./Row";
 import { useQuery } from "@tanstack/react-query";
 import { useWishlistStore } from "@/services/store/wishlist/store";
@@ -9,6 +8,7 @@ import { ButtonAction, ButtonClose } from "@/components/ui";
 import { Loading, Error } from "../..";
 import { ProductPreview } from "./ProductPreview";
 import { useBagStore } from "@/services/store/bag/store";
+import ColumnTitle from "@/components/ui/table/ColumnTitel";
 
 interface Props {
 	id: number;
@@ -38,9 +38,9 @@ export function WishlistTable() {
 		<table className='w-full gap-2 h-fit'>
 			<thead>
 				<tr>
-					<ColumnTitel title='Product' />
-					<ColumnTitel title='Price' />
-					<ColumnTitel title='Action' />
+					<ColumnTitle title='Product' />
+					<ColumnTitle title='Price' />
+					<ColumnTitle title='Action' />
 				</tr>
 			</thead>
 			<tbody className=''>
@@ -55,7 +55,7 @@ export function WishlistTable() {
 								paddingX={1}
 								paddingY={2}
 								onClick={() =>
-									addProduct({ productId: item.id, quantity: 1 })
+									addProduct({ id: item.id, quantity: 1 })
 								}
 							/>
 						}

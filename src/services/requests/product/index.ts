@@ -2,18 +2,19 @@ import type { QueryFunctionContext } from "@tanstack/react-query";
 import axios from "axios";
 
 export async function fetchProductCard({
-	pageParam = 1,
 	queryKey,
 	signal,
+	pageParam = 1 ,
 }: QueryFunctionContext) {
-	const [_key, categorie, price, sort, limit] = queryKey;
-	const res = await axios.get("/api/card/all", {
+	const [_key, category, sort, take, topPrice, lowPrice] = queryKey;
+	const res = await axios.get("https://localhost:4200/product/shop", {
 		params: {
-			categorie: categorie,
-			price: price,
+			category: category,
 			sort: sort,
-			limit: limit,
+			take: take,
 			page: pageParam,
+			topPrice: topPrice,
+			lowPrice: lowPrice,
 		},
 		signal,
 	});
@@ -22,7 +23,7 @@ export async function fetchProductCard({
 }
 
 export async function fetchNewArrivals() {
-	const res = await axios.get(`/api/card/new`);
+	const res = await axios.get(`https://localhost:4200/product/new`, {params:{ take: 8}});
 	return res.data;
 }
 
@@ -32,7 +33,7 @@ export async function fetchCardPage({
 	signal,
 }: QueryFunctionContext) {
 	const [id] = queryKey;
-	const res = await axios.get("/api/cardPage", {
+	const res = await axios.get("https://localhost:4200/product/page", {
 		params: {
 			id: id,
 		},

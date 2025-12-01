@@ -22,7 +22,7 @@ module.exports = {
 				white: "var(--white)",
 				descriptiongray: "var(--descriptiongray)",
 				descriptionwhite: "var(--descriptionwhite)",
-				subtitel: "var(--subtitel)",
+				subtitle: "var(--subtitle)",
 				notactive: "var(--notactive)",
 				action: "var(--action)",
 				whitegray: "var(--whitegray)",

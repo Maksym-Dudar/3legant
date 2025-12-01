@@ -13,12 +13,12 @@ export function CardListBag({ data }: Props) {
 
 	return (
 		<div ref={scrollRef} className='flex flex-col gap-3'>
-			{data.length &&
+			{!!data.length &&
 				data.map((item) => (
 					<CardProductInBag
-						key={item.productId}
+						key={item.id}
 						{...item}
-						productId={item.productId}
+						id={item.id}
 					/>
 				))}
 		</div>

@@ -5,7 +5,7 @@ import { Row } from "./Row";
 import { getUserOrders } from "@/services/requests/user";
 import { Loading, Error } from "../..";
 import { useUserStore } from "@/services/store/user/store";
-import ColumnTitel from "@/components/ui/table/ColumnTitel";
+import ColumnTitle from "@/components/ui/table/ColumnTitel";
 
 interface Props {
 	id: string;
@@ -34,10 +34,10 @@ export function OrderTabel() {
 			<table className='w-full gap-2 h-fit'>
 				<thead>
 					<tr>
-						<ColumnTitel title='Number ID' />
-						<ColumnTitel title='Dates' />
-						<ColumnTitel title='Status' />
-						<ColumnTitel title='Price' />
+						<ColumnTitle title='Number ID' />
+						<ColumnTitle title='Dates' />
+						<ColumnTitle title='Status' />
+						<ColumnTitle title='Price' />
 					</tr>
 				</thead>
 				<tbody className=''>

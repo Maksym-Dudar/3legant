@@ -5,7 +5,7 @@ import Image from "next/image";
 
 interface Props {
 	name: string;
-	nstar: number;
+	rating: number;
 	reviews: number;
 	description: string;
 	price: number;
@@ -15,7 +15,7 @@ interface Props {
 
 export function InfoProduct({
 	name,
-	nstar,
+	rating,
 	reviews,
 	description,
 	price,
@@ -30,7 +30,7 @@ export function InfoProduct({
 		<section className='flex flex-col w-full h-fit gap-4 pb-6 border-b border-gray'>
 			<div className='flex gap-3 '>
 				<div className='flex flex-row gap-1'>
-					{Array(nstar)
+					{Array(rating)
 						.fill(0)
 						.map((_, i) => (
 							<Image

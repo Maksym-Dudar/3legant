@@ -15,13 +15,13 @@ import { useWishlistStore } from "@/services/store/wishlist/store";
 import { useBagStore } from "@/services/store/bag/store";
 
 export function ProductCard({
-	productId,
+	id,
 	title,
 	price,
-	nstar,
+	rating,
 	sale,
 	isNew,
-	img,
+	image,
 }: IProductCard) {
 	const buttonRef = useRef<HTMLDivElement>(null);
 	const buttonFavoriteRef = useRef<HTMLButtonElement>(null);
@@ -77,20 +77,20 @@ export function ProductCard({
 		>
 			<div className='flex relative overflow-hidden w-full'>
 				<HeroCard
-					id={productId}
+					id={id}
 					title={title}
 					isNew={isNew}
 					sale={sale}
-					img={img}
+					image={image}
 				/>
 				<button
 					className='absolute right-2 sm:right-4 md:right-5 top-2 sm:top-4 md:top-5 p-1 sm:p-2 rounded-full bg-white cursor-pointer'
 					ref={buttonFavoriteRef}
 					onClick={() => {
-						toggleProduct(productId );
+						toggleProduct(id);
 					}}
 				>
-					{isInWishlist(productId) ? (
+					{isInWishlist(id) ? (
 						<Image
 							src={IMAGE.LIKE_ACTIVE.href}
 							alt={IMAGE.LIKE_ACTIVE.alt}
@@ -118,16 +118,14 @@ export function ProductCard({
 					<ButtonAction
 						text={"Add to cart"}
 						paddingY={buttonActionPading}
-						onClick={() =>
-							addProduct({ productId: productId, quantity: 1 })
-						}
+						onClick={() => addProduct({ id: id, quantity: 1 })}
 					/>
 				</div>
 			</div>
 			<FooterCard
-				id={productId}
+				id={id}
 				title={title}
-				nstar={nstar}
+				rating={rating}
 				prise={price}
 				priceWithSale={priceWithSale}
 				starSize={starSize}

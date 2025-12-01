@@ -2,25 +2,25 @@ import type { Category } from "@/config/product.config";
 
 export interface IProductPage {
 	id: number;
-	titel: string;
+	title: string;
 	description: string;
 	price: number;
 	priceWithoutSale: number;
 	sale: number;
-	nstar: number;
+	rating: number;
 	isNew: boolean;
-	offerExpiresIn: Date;
+	offerExpires: Date;
 	measurements: string;
 	same: ISameColorCard[];
 	color: string;
-	images: string[];
+	image: string[];
 	category: Category[];
 	reviews: number;
 }
 
 export interface ISameColorCard {
 	color: string;
-	productId: number;
+	id: number;
 	image: string;
 	isactive: boolean;
 }
@@ -29,7 +29,7 @@ export interface IComment {
 	id: number;
 	name: string;
 	date: Date;
-	nstar: number;
+	rating: number;
 	avatar: string;
 	comment: string;
 }

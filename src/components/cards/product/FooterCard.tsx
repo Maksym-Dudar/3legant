@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
-	nstar: number;
+	rating: number;
 	id: number;
 	sale: boolean;
 	title: string;
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export function FooterCard({
-	nstar,
+	rating,
 	id,
 	title,
 	priceWithSale,
@@ -24,7 +24,7 @@ export function FooterCard({
 	return (
 		<div className='flex flex-col gap-1 pt-2 sm:pt-3 md:pt-4'>
 			<div className='flex flex-row gap-1'>
-				{Array(nstar)
+				{Array(rating)
 					.fill(0)
 					.map((_, i) => (
 						<Image

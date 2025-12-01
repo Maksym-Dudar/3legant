@@ -7,15 +7,15 @@ import { useWishlistStore } from "@/services/store/wishlist/store";
 import { useBagStore } from "@/services/store/bag/store";
 
 interface Props {
-	productId: number;
+	id: number;
 }
 
-export function PurchaseActions({ productId }: Props) {
+export function PurchaseActions({ id }: Props) {
 	const [counter, setCount] = useState<number>(1);
 	const {addProduct} = useBagStore()
 	const { toggleProduct, isInWishlist } = useWishlistStore();
 
-	const itemToAddBag = { productId: productId, quantity: counter };
+	const itemToAddBag = { id: id, quantity: counter };
 
 	return (
 		<section className='flex flex-col gap-4 py-8 border-b border-gray'>
@@ -30,10 +30,10 @@ export function PurchaseActions({ productId }: Props) {
 					<button onClick={() => setCount((prev) => prev + 1)}>+</button>
 				</div>
 				<button
-					onClick={() => toggleProduct(productId )}
+					onClick={() => toggleProduct(id )}
 					className='flex w-full text-center border border-black py-1 sm:py-2 rounded-lg justify-center items-center gap-2'
 				>
-					{isInWishlist(productId) ? (
+					{isInWishlist(id) ? (
 						<Image
 							src={IMAGE.LIKE_ACTIVE.href}
 							alt={IMAGE.LIKE_ACTIVE.alt}

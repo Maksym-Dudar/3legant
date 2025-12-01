@@ -2,19 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
-    img: string;
+    image: string;
     title: string;
     isNew: boolean;
     id: number;
     sale: number;
  }
 
-export function HeroCard({id, title, img, isNew, sale}: Props) {
+export function HeroCard({id, title, image, isNew, sale}: Props) {
 	return (
 		<Link href={`/shop/${id}`} className='flex w-full'>
 			<div className='flex w-full'>
 				<Image
-					src={img}
+					src={image}
 					alt={title}
 					width={0}
 					height={0}

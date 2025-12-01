@@ -8,7 +8,7 @@ import PadingXLayouts from "@/layout/PadingXLayouts";
 import { ButtonPage } from "@/components/ui";
 import { IMAGE } from "@/config/image.config";
 import { PAGE } from "@/config/page.config";
-import { Category } from "@/config/product.config";
+import { CategoryFilter } from "@/config/product.config";
 
 export default function ShopByCategory() {
 	const { width } = useWindowSize();
@@ -24,7 +24,7 @@ export default function ShopByCategory() {
 								Living Room
 							</h4>
 							{showDescription && (
-								<p className='md:text-12 lg:text-16 font-400 leading-160 text-subtitel font-inter w-full xl:w-4/5'>
+								<p className='md:text-12 lg:text-16 font-400 leading-160 text-subtitle font-inter w-full xl:w-4/5'>
 									Phosfluor escently engage worldwide with web-enabled
 									technology.
 								</p>
@@ -32,7 +32,7 @@ export default function ShopByCategory() {
 						</div>
 						<ButtonPage
 							title='Shop Now'
-							href={PAGE.SHOP_BY_CATEGORY(Category.LivingRoom)}
+							href={PAGE.SHOP_BY_CATEGORY(CategoryFilter.LivingRoom)}
 						/>
 					</div>
 					<Image
@@ -51,7 +51,7 @@ export default function ShopByCategory() {
 						</h4>
 						<ButtonPage
 							title='Shop Now'
-							href={PAGE.SHOP_BY_CATEGORY(Category.Bedroom)}
+							href={PAGE.SHOP_BY_CATEGORY(CategoryFilter.Bedroom)}
 						/>
 					</div>
 					<Image
@@ -70,7 +70,7 @@ export default function ShopByCategory() {
 						</h4>
 						<ButtonPage
 							title='Shop Now'
-							href={PAGE.SHOP_BY_CATEGORY(Category.Kitchen)}
+							href={PAGE.SHOP_BY_CATEGORY(CategoryFilter.Kitchen)}
 						/>
 					</div>
 

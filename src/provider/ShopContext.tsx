@@ -12,12 +12,12 @@ import {
 } from "react";
 
 interface IFilterState {
-	categorie: CategoryFilter;
+	category: CategoryFilter;
 	price: Prices;
 	sort: Sorts;
 }
 
-export enum FilterOpen { "categorie" , "price" , "sort", "none"};
+export enum FilterOpen { "category" , "price" , "sort", "none"};
 
 interface ShopContextType {
 	filter: IFilterState;
@@ -30,7 +30,7 @@ const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
 export function ShopProvider({ children }: { children: ReactNode }) {
 	const [filter, setFilter] = useState<IFilterState>({
-		categorie: CategoryFilter.All,
+		category: CategoryFilter.All,
 		price: Prices.All,
 		sort: Sorts.Top_rated,
 	});

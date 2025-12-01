@@ -1,11 +1,11 @@
 import type { Category } from '@/config/product.config';
 
 interface Props {
-	productId: number;
+	id: number;
 	category: Category[];
 }
 
-export function MetaDataProduct({ productId, category }: Props) {
+export function MetaDataProduct({ id, category }: Props) {
 	return (
 		<section className='flex gap-14 pt-6'>
 			<div className='font-inter font-400 text-12 leading-170 text-descriptiongray'>
@@ -13,8 +13,12 @@ export function MetaDataProduct({ productId, category }: Props) {
 				<p>CATEGORY</p>
 			</div>
 			<div className='font-inter font-400 text-12 leading-170'>
-				<p>{productId}</p>
-				<p>{category.map((val) => <p>{val}</p>)}</p>
+				<p>{id}</p>
+				<span>
+					{category.map((val) => (
+						<p key={val}>{val}</p>
+					))}
+				</span>
 			</div>
 		</section>
 	);

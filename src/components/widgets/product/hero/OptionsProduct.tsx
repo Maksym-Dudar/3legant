@@ -39,12 +39,12 @@ export function OptionsProduct({ measurements, color, same }: Props) {
 				<div className='flex flex-row gap-4'>
 					{same.map((item) =>
 						item.isactive ? (
-							<Link href={PAGE.PRODUCT(item.productId)} key={item.image}>
+							<Link href={PAGE.PRODUCT(item.id)} key={item.image}>
 								<Image src={item.image} alt='Arrow' width={72} height={72} />
 							</Link>
 						) : (
 							<div className='flex opacity-40' key={item.image}>
-								<Link href={PAGE.PRODUCT(item.productId)}>
+								<Link href={PAGE.PRODUCT(item.id)}>
 									<Image src={item.image} alt='Arrow' width={72} height={72} />
 								</Link>
 							</div>
