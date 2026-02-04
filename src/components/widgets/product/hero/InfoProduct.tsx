@@ -34,7 +34,7 @@ export function InfoProduct({
 						.fill(0)
 						.map((_, i) => (
 							<Image
-								src={IMAGE.STAR_ACTIVE.href}
+								src={IMAGE.STAR_ACTIVE.src}
 								alt={IMAGE.STAR_ACTIVE.alt}
 								width={starSize}
 								height={starSize}

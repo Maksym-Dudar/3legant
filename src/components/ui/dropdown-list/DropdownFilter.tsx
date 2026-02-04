@@ -35,7 +35,7 @@ export default function DropdownFilter({
 			>
 				<h6 className='text-14 sm:text-16'>{value}</h6>
 				<Image
-					src={IMAGE.ARRROW.href}
+					src={IMAGE.ARRROW.src}
 					alt={IMAGE.ARRROW.alt}
 					width={5}
 					height={8}

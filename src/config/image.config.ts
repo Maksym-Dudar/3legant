@@ -1,106 +1,127 @@
-interface IImage {
-	href: string;
+export interface IImage {
+	src: string;
 	alt: string;
 }
 class ImageConfig {
-	ARRROW: IImage = {
-		href: "/ui/arrow/arrow_short.svg",
+	ARROW: IImage = {
+		src: "/ui/arrow/arrow_short.svg",
 		alt: "arrow",
 	};
-	ARROWBLACK: IImage = {
-		href: "/ui/arrow/arrow_black.svg",
+	ARROW_BLACK: IImage = {
+		src: "/ui/arrow/arrow_black.svg",
 		alt: "arrow",
 	};
-	ARROWWHITE: IImage = {
-		href: "/ui/arrow/arrow_white.svg",
+	ARROW_WHITE: IImage = {
+		src: "/ui/arrow/arrow_white.svg",
 		alt: "arrow",
 	};
-	FACEBOOKBLACK: IImage = {
-		href: "/ui/social/facebook_black.svg",
+	FACEBOOK_BLACK: IImage = {
+		src: "/ui/social/facebook_black.svg",
 		alt: "facebook",
 	};
-	FACEBOOKWHITE: IImage = {
-		href: "/ui/social/facebook_white.svg",
+	FACEBOOK_WHITE: IImage = {
+		src: "/ui/social/facebook_white.svg",
 		alt: "facebook",
 	};
-	INSTAGRAMBLACK: IImage = {
-		href: "/ui/social/instagram_black.svg",
+	INSTAGRAM_BLACK: IImage = {
+		src: "/ui/social/instagram_black.svg",
 		alt: "instagram",
 	};
-	INSTAGRAMWHITE: IImage = {
-		href: "/ui/social/instagram_white.svg",
+	INSTAGRAM_WHITE: IImage = {
+		src: "/ui/social/instagram_white.svg",
 		alt: "instagram",
 	};
 	SEARCH: IImage = {
-		href: "/ui/icon/search.svg",
+		src: "/ui/icon/search.svg",
 		alt: "search",
 	};
-	SHOPPINGBAG: IImage = {
-		href: "/ui/icon/shopping_bag.svg",
+	SHOPPING_BAG: IImage = {
+		src: "/ui/icon/shopping_bag.svg",
 		alt: "bag",
 	};
-	USERICON: IImage = {
-		href: "/ui/icon/user_icon.svg",
+	USER_ICON: IImage = {
+		src: "/ui/icon/user_icon.svg",
 		alt: "user",
 	};
-	YOUTUBEBLACK: IImage = {
-		href: "/ui/social/youtube_black.svg",
+	YOUTUBE_BLACK: IImage = {
+		src: "/ui/social/youtube_black.svg",
 		alt: "youtube",
 	};
-	YOUTUBEWHITE: IImage = {
-		href: "/ui/social/youtube_white.svg",
+	YOUTUBE_WHITE: IImage = {
+		src: "/ui/social/youtube_white.svg",
 		alt: "youtube",
 	};
 	EMAIL: IImage = {
-		href: "/ui/icon/email.svg",
+		src: "/ui/icon/email.svg",
 		alt: "email",
 	};
 	LIKE_ACTIVE: IImage = {
-		href: "/ui/reaction/like_active.svg",
+		src: "/ui/reaction/like_active.svg",
 		alt: "email",
 	};
 	LIKE_NOT_ACTIVE: IImage = {
-		href: "/ui/reaction/like_not_active.svg",
+		src: "/ui/reaction/like_not_active.svg",
 		alt: "email",
 	};
 	STAR_ACTIVE: IImage = {
-		href: "/ui/reaction/star_active.svg",
+		src: "/ui/reaction/star_active.svg",
 		alt: "email",
 	};
 	STAR_NOT_ACTIVE: IImage = {
-		href: "/ui/reaction/star_not_active.svg",
+		src: "/ui/reaction/star_not_active.svg",
 		alt: "email",
 	};
 	DELIVERY: IImage = {
-		href: "/market/images/main_page/advantages/fast_delivery.svg",
+		src: "/market/images/main_page/advantages/fast_delivery.svg",
 		alt: "delivery",
 	};
 	MONEY: IImage = {
-		href: "/market/images/main_page/advantages/money.svg",
+		src: "/market/images/main_page/advantages/money.svg",
 		alt: "money",
 	};
 	PROTECTION: IImage = {
-		href: "/market/images/main_page/advantages/protection.svg",
+		src: "/market/images/main_page/advantages/protection.svg",
 		alt: "protection",
 	};
-	RECTANGLE: IImage = {
-		href: "/market/images/main_page/advantages/rectangle.svg",
-		alt: "rectangle",
-	};
 	CAMERA: IImage = {
-		href: "/ui/icon/camera.svg",
+		src: "/ui/icon/camera.svg",
 		alt: "Camera",
 	};
 	EDIT: IImage = {
-		href: "/ui/icon/edit.svg",
+		src: "/ui/icon/edit.svg",
 		alt: "Edit",
+	};
+	RECTANGLE: IImage = {
+		src: "/ui/icon/rectangle.svg",
+		alt: "rectangle",
+	};
+	HOME: IImage = {
+		src: "/ui/icon/home.svg",
+		alt: "home",
+	};
+	CONTACT_MAIL: IImage = {
+		src: "/ui/icon/contact_mail.svg",
+		alt: "mail",
+	};
+	EYE_OPEN: IImage = {
+		src: "/ui/reaction/eye_open.svg",
+		alt: "Open eye",
+	};
+	EYE_CLOSE: IImage = {
+		src: "/ui/reaction/eye_close.svg",
+		alt: "Close eye",
 	};
 
 	//image
 
+	MY_PHOTO: IImage = {
+		src: "/contact/me.jpg",
+		alt: "Me",
+	};
+
 	//footer
 	FOOTER_BANNER: IImage = {
-		href: "/market/images/footer_banner/footer_banner.png",
+		src: "/market/images/footer_banner/footer_banner.png",
 		alt: "banner",
 	};
 
@@ -108,47 +129,61 @@ class ImageConfig {
 	PATH_IMAGE_SLIDER: IImage[] = [
 		{
 			alt: "slide1",
-			href: "/market/images/main_page/slider/slide_1.png",
+			src: "/market/images/main_page/slider/slide_1.png",
 		},
 		{
 			alt: "slide2",
-			href: "/market/images/main_page/slider/slide_2.png",
+			src: "/market/images/main_page/slider/slide_2.png",
 		},
 		{
 			alt: "slide3",
-			href: "/market/images/main_page/slider/slide_3.png",
+			src: "/market/images/main_page/slider/slide_3.png",
+		},
+	];
+	CATEGORY_BANNER: IImage[] = [
+		{
+			src: "/market/images/main_page/banner_grid/big_banner.png",
+			alt: "Banner 1",
+		},
+		{
+			src: "/market/images/main_page/banner_grid/small_banner_1.png",
+			alt: "Banner 2",
+		},
+		{
+			src: "/market/images/main_page/banner_grid/small_banner_2.png",
+			alt: "Banner 3",
 		},
 	];
 
-	BIG_BANNER: IImage = {
-		href: "/market/images/main_page/banner_grid/big_banner.png",
-		alt: "Banner 1",
-	};
+	// BIG_BANNER: IImage = {
+	// 	src: "/market/images/main_page/banner_grid/big_banner.png",
+	// 	alt: "Banner 1",
+	// };
 
-	SMALL_BANNER_1: IImage = {
-		href: "/market/images/main_page/banner_grid/small_banner_1.png",
-		alt: "Banner 2",
-	};
+	// SMALL_BANNER_1: IImage = {
+	// 	src: "/market/images/main_page/banner_grid/small_banner_1.png",
+	// 	alt: "Banner 2",
+	// };
 
-	SMALL_BANNER_2: IImage = {
-		href: "/market/images/main_page/banner_grid/small_banner_2.png",
-		alt: "Banner 3",
-	};
+	// SMALL_BANNER_2: IImage = {
+	// 	src: "/market/images/main_page/banner_grid/small_banner_2.png",
+	// 	alt: "Banner 3",
+	// };
 
 	DISCOUNT_BANNER: IImage = {
-		href: "/market/images/main_page/discount_banner/banner.png",
+		src: "/market/images/main_page/discount_banner/banner.png",
 		alt: "Banner",
 	};
 
 	//shop
-	SHOPBANNER: IImage = {
-		href: "/market/images/shop_page/hero_banner/hero_banner.png",
+	SHOP_BANNER: IImage = {
+		src: "/market/images/shop_page/hero_banner/hero_banner.png",
 		alt: "Shop Banner",
 	};
 
 	// auth
 	AUTH_BANNER: IImage = {
-		href: "/auth/banner.png",
+		src: "/auth/banner.png",
 		alt: "Auth Banner",
 	};
 }

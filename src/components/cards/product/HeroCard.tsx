@@ -2,14 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
-    image: string;
-    title: string;
-    isNew: boolean;
-    id: number;
-    sale: number;
- }
+	image: string;
+	title: string;
+	isNew: boolean;
+	id: number;
+	sale: number;
+}
 
-export function HeroCard({id, title, image, isNew, sale}: Props) {
+export function HeroCard({ id, title, image, isNew, sale }: Props) {
 	return (
 		<Link href={`/shop/${id}`} className='flex w-full'>
 			<div className='flex w-full'>
@@ -28,11 +28,11 @@ export function HeroCard({id, title, image, isNew, sale}: Props) {
 								NEW
 							</div>
 						)}
-                        {sale != 0 && (
-                            <div className='font-inter px-1 sm:px-2 md:px-3 py-1 bg-green rounded text-center text-white text-12 sm:text-14 md:text-16 font-700 leading-100'>
-                                -{sale * 100}%
-                            </div>
-                        )}
+						{sale != 0 && (
+							<div className='font-inter px-1 sm:px-2 md:px-3 py-1 bg-green rounded text-center text-white text-12 sm:text-14 md:text-16 font-700 leading-100'>
+								-{(Number(sale) * 100).toFixed()}%
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

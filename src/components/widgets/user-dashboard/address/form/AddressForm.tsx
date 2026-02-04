@@ -1,18 +1,21 @@
 "use client";
 
-import { useUserStore } from "@/services/store/user/store";
+import { useUserStore } from "@/store/user/store";
 import ContactInfo from "./ContactInfo";
 import ShippingAddress from "./ShippingAddress";
 import { ButtonAction, ErrorToast } from "@/components/ui";
 import { useEffect, useState } from "react";
-import { useAddressStore } from "@/services/store/address/store";
+import { useAddressStore } from "@/store/address/store";
 import { createUserAddress, updateUserAddress } from "@/services/requests/user";
 import { getDefaultAddress } from "./DefaultAddress";
 import {
 	useRouter,
 	useSearchParams,
 } from "next/dist/client/components/navigation";
-import type { IAddress, IAddressCreate } from "@/shared/types/address.type";
+import type {
+	IAddress,
+	IAddressCreate,
+} from "@/shared/types/address/address.type";
 import { Mode } from "../type";
 import { PAGE } from "@/config/page.config";
 
@@ -30,7 +33,6 @@ export function AddressForm() {
 		? (rawMode as Mode)
 		: undefined;
 	const addressId = rawId ? Number(rawId) : undefined;
-
 
 	useEffect(() => {
 		if (mode === Mode.EDIT && addressId !== undefined) {

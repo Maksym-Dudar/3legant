@@ -7,7 +7,6 @@ interface Props {
 	id: number;
 	sale: boolean;
 	title: string;
-	starSize: number;
 	priceWithSale: number;
 	prise: number;
 }
@@ -19,7 +18,6 @@ export function FooterCard({
 	priceWithSale,
 	prise,
 	sale,
-	starSize,
 }: Props) {
 	return (
 		<div className='flex flex-col gap-1 pt-2 sm:pt-3 md:pt-4'>
@@ -28,10 +26,9 @@ export function FooterCard({
 					.fill(0)
 					.map((_, i) => (
 						<Image
-							src={IMAGE.STAR_ACTIVE.href}
+							src={IMAGE.STAR_ACTIVE.src}
 							alt={IMAGE.STAR_ACTIVE.alt}
-							width={starSize}
-							height={starSize}
+							className='w-3 h-3 md:w-5 md:h-5'
 							key={i}
 						/>
 					))}
@@ -45,7 +42,7 @@ export function FooterCard({
 						${priceWithSale}
 					</p>
 					{sale && (
-						<s className='text-notactive text-10 sm:text-12 md:text-14  font-400 leading-160'>
+						<s className='text-not_active text-10 sm:text-12 md:text-14  font-400 leading-160'>
 							${prise}
 						</s>
 					)}

@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import PadingXLayouts from "@/layout/PadingXLayouts";
+import PadingXLayouts from "@/components/layout/PaddingXLayouts";
 import { AdminHeader } from "./AdminHeader";
 export function AdminLayout({ children }: PropsWithChildren<unknown>) {
 	return (

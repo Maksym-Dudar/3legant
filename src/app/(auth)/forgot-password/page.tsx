@@ -1,10 +1,5 @@
-import { AsideBannerAuth, ForgotPasswordForm } from "@/components/forms/auth";
+import { ForgotPassword } from "@/features/auth/ui/ForgotPassword";
 
 export default function page() {
-  return (
-		<section className='flex overflow-hidden'>
-			<AsideBannerAuth />
-			<ForgotPasswordForm />
-		</section>
-	);
+	return <ForgotPassword />;
 }

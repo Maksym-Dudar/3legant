@@ -1,17 +1,17 @@
-import { ButtonClose } from "@/components/ui";
+import { ButtonCross } from "@/components/ui";
 import Image from "next/image";
 
-interface Props{
-    removeProduct: () => void;
-    image: string;
-    title: string;
-    color: string;
+interface Props {
+	removeProduct: () => void;
+	image: string;
+	title: string;
+	color: string;
 }
 
 export function ProductPreview({ removeProduct, title, image, color }: Props) {
 	return (
 		<section>
-			<ButtonClose onClick={removeProduct} size={3} />
+			<ButtonCross onClick={removeProduct} size={3} />
 			<div className=''>
 				<Image
 					src={image}

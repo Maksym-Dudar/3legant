@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import "./globals.css";
+import "@/config/globals.css";
 import { Suspense } from "react";
 import { OverlayProvider, QueryProvider } from "@/provider";
 

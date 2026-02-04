@@ -6,7 +6,6 @@ import { useWindowSize } from "@/hooks";
 import Image from "next/image";
 import { useState } from "react";
 
-
 export function StarRating({
 	rating,
 	setRating,
@@ -18,7 +17,6 @@ export function StarRating({
 	const { width } = useWindowSize();
 
 	const starSize = width > mobileSize ? 16 : 13;
-	
 
 	return (
 		<div className='flex flex-rov'>
@@ -32,14 +30,14 @@ export function StarRating({
 					>
 						{rating >= value || ratingOnMouse >= value ? (
 							<Image
-								src={IMAGE.STAR_ACTIVE.href}
+								src={IMAGE.STAR_ACTIVE.src}
 								alt={IMAGE.STAR_ACTIVE.alt}
 								width={starSize}
 								height={starSize}
 							/>
 						) : (
 							<Image
-								src={IMAGE.STAR_NOT_ACTIVE.href}
+								src={IMAGE.STAR_NOT_ACTIVE.src}
 								alt={IMAGE.STAR_NOT_ACTIVE.alt}
 								width={starSize}
 								height={starSize}

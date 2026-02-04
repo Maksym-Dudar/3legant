@@ -28,7 +28,7 @@ export function OptionsProduct({ measurements, color, same }: Props) {
 							Choose Color
 						</p>
 						<Image
-							src={IMAGE.ARRROW.href}
+							src={IMAGE.ARRROW.src}
 							alt={IMAGE.ARRROW.alt}
 							width={5}
 							height={8}
@@ -48,7 +48,7 @@ export function OptionsProduct({ measurements, color, same }: Props) {
 									<Image src={item.image} alt='Arrow' width={72} height={72} />
 								</Link>
 							</div>
-						)
+						),
 					)}
 				</div>
 			</div>

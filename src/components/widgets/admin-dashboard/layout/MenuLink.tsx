@@ -9,7 +9,7 @@ interface Props {
 export function MenuLink({ link, isActive, label }: Props) {
 	return (
 		<Link
-			href={link}
+			src={link}
 			className={
 				isActive
 					? "hover:scale-105 text-black text-12 md:text-14 font-500 leading-170"

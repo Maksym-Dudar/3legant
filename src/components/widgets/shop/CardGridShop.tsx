@@ -5,15 +5,13 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { Error, Loading } from "..";
 import { useShopContext } from "@/provider/ShopContext";
 import { ProductCard } from "@/components/cards";
-import type { IProductCard } from "@/shared/types";
 import { CategoryFilter, PriceRanges } from "@/config/product.config";
 import { useEffect } from "react";
-import { fetchProductCard } from "@/services/requests/product";
-import PadingXLayouts from "@/layout/PadingXLayouts";
 
 export function CardGridShop() {
 	const searchParams = useSearchParams();
 	const initialCategory = searchParams.get("category") || "All";
+	const gropId = searchParams.get("gropId");
 	const { filter, setFilter } = useShopContext();
 	useEffect(() => {
 		setFilter((prev) => ({
@@ -22,7 +20,10 @@ export function CardGridShop() {
 		}));
 	}, [initialCategory]);
 	const range = PriceRanges[filter.price];
-	const category = String(filter.category).toLocaleUpperCase().split(' ').reduce((prev, cur) => prev + "_" + cur)
+	const category = String(filter.category)
+		.toLocaleUpperCase()
+		.split(" ")
+		.join("_")
 	const {
 		data,
 		fetchNextPage,
@@ -38,6 +39,7 @@ export function CardGridShop() {
 			8,
 			range.max,
 			range.min,
+			gropId,
 		] as const,
 		queryFn: fetchProductCard,
 		initialPageParam: 1,
@@ -51,10 +53,11 @@ export function CardGridShop() {
 	if (isLoading) return <Loading />;
 
 	return (
-		<PadingXLayouts>
 			<section className='flex flex-col w-full items-center pb-10'>
 				<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-10 w-full pb-12 md:pb-25'>
-					{data?.pages.flatMap((page) => page).map((item: IProductCard) => (
+					{data?.pages
+						.flatMap((page) => page)
+						.map((item: IProductCard) => (
 							<div key={item.id} className='w-full h-auto'>
 								<ProductCard {...item} id={item.id} />
 							</div>
@@ -70,6 +73,5 @@ export function CardGridShop() {
 					</button>
 				)}
 			</section>
-		</PadingXLayouts>
 	);
 }

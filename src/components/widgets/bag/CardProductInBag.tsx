@@ -1,10 +1,7 @@
 "use client";
 
-import { ButtonClose } from "@/components/ui";
-import {
-	quantityProductInBagStore,
-	useBagStore,
-} from "@/services/store/bag/store";
+import { ButtonCross } from "@/components/ui";
+// import { quantityProductInBagStore, useBagStore } from "@/store/cart/store";
 import Image from "next/image";
 
 interface Props {
@@ -22,11 +19,11 @@ export function CardProductInBag({
 	price,
 	id: id,
 }: Props) {
-	const { addProduct, decreaseItemCount, removeProduct } = useBagStore();
-	let item = {
-		id: id,
-		quantity: quantityProductInBagStore(id),
-	};
+	// const { addProduct, decreaseItemCount, removeProduct } = useBagStore();
+	// let item = {
+	// 	id: id,
+	// 	quantity: quantityProductInBagStore(id),
+	// };
 
 	return (
 		<div className='flex w-full flex-row justify-between border-b py-6 shrink-0'>
@@ -60,7 +57,7 @@ export function CardProductInBag({
 			</section>
 			<section className='flex flex-col items-end gap-2'>
 				<p className='text-14 sm:text-16 font-500 leading-160'>${price}</p>
-				<ButtonClose size={5} onClick={() => removeProduct(item)} />
+				<ButtonCross size={5} onClick={() => removeProduct(item)} />
 			</section>
 		</div>
 	);

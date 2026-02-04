@@ -1,6 +1,6 @@
+import type { IProductDetails } from "@/shared/types/product/product.type";
 import type { QueryFunctionContext } from "@tanstack/react-query";
 import axios from "axios";
-import type { ICreateProduct } from "@/shared/types/product/createProduct.type";
 
 export async function getProductGroup({
 	queryKey,
@@ -16,14 +16,14 @@ export async function getProductGroup({
 	return res.data;
 }
 
-export async function createProduct(payload: ICreateProduct) {
+export async function createProduct(payload: IProductDetails) {
 	const formData = new FormData();
 
 	payload.image.forEach((file, i) => {
 		formData.append(`file${i}`, file);
 	});
 
-	const { image, haveSale, ...rest } = payload;
+	const { image, ...rest } = payload;
 	Object.entries(rest).forEach(([key, value]) => {
 		formData.append(key, String(value));
 	});

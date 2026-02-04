@@ -1,8 +1,9 @@
-import { PropsWithChildren } from "react";
-
+interface Props {
+	onClick: () => void;
+}
 export default function ButtonMenu({
 	onClick,
-}: PropsWithChildren<{ onClick: () => void }>) {
+}: Props) {
 	return (
 		<button
 			onClick={onClick}

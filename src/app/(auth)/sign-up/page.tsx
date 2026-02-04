@@ -1,10 +1,5 @@
-import { AsideBannerAuth, SignUpForm } from "@/components/forms/auth";
+import { SignUp } from "@/features/auth/ui/SignUp";
 
-export default function page() {
-	return (
-		<section className='flex overflow-hidden'>
-			<AsideBannerAuth />
-			<SignUpForm />
-		</section>
-	);
+export default function Page() {
+	return <SignUp />;
 }

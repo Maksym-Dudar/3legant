@@ -7,6 +7,7 @@ interface Props {
 	value: string;
 	label: string;
 	disabled?: boolean;
+	isRequired?: boolean;
 	rows: number;
 	onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
@@ -16,6 +17,7 @@ export function TextArea({
 	placeholder,
 	value,
 	label,
+	isRequired = false,
 	disabled = false,
 	onChange,
 }: Props) {
@@ -33,6 +35,7 @@ export function TextArea({
 					resize: "none",
 					overflowY: "auto",
 				}}
+				required={isRequired} 
 				className='w-full text-inter text-14 md:text-16 font-400 leading-160 border border-solid px-4 rounded-md text-black border-descriptiongray border-opacity-0'
 			/>
 		</div>

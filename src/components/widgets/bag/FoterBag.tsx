@@ -1,4 +1,4 @@
-import { ButtonAction } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { PAGE } from "@/config/page.config";
 import Link from "next/link";
 
@@ -28,15 +28,10 @@ export function FoterBag({ subtotal, total, checkout }: Props) {
 				</p>
 			</div>
 			<div className='flex flex-col gap-4 pt-4 items-center'>
-				<ButtonAction
-					type='button'
-					text='Checkout'
-					paddingY={3}
-					onClick={checkout}
-				/>
+				<Button type='button' text='Checkout' paddingY={3} onClick={checkout} />
 				<div>
 					<Link
-						href={PAGE.CART.link}
+						src={PAGE.CART.link}
 						className='flex w-fit pt-2 border-b border-black'
 					>
 						<div className='py-1 pr-1 font-inter text-12 md:text-14 font-600 leading-160 text-black'>

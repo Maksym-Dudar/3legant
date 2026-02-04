@@ -1,5 +1,3 @@
-import type { Category } from "@/config/product.config";
-
 export interface IGroupSelectOption {
 	label: string;
 	value: number;

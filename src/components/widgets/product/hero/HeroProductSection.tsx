@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { SwiperSectionProduct } from "./SwiperSectionProduct";
 import { useQuery } from "@tanstack/react-query";
 import { Error, Loading } from "../..";
-import PadingXLayouts from "@/layout/PadingXLayouts";
+import PadingXLayouts from "@/components/layout/PaddingXLayouts";
 import type { IProductPage } from "../types";
 import { HeaderProduct } from "../HeaderProduct";
 import { InfoProduct } from "./InfoProduct";
@@ -13,11 +13,8 @@ import { OptionsProduct } from "./OptionsProduct";
 import { PurchaseActions } from "./PurchaseActions";
 import { MetaDataProduct } from "./MetaDataProduct";
 import { fetchCardPage } from "@/services/requests/product";
-import { useTimer } from "@/hooks";
 
 export function HeroProductSection() {
-	
-	
 	const params = useParams();
 	const id = Number(params.id);
 	const { data, isLoading, error } = useQuery<IProductPage>({
@@ -71,5 +68,3 @@ export function HeroProductSection() {
 		</PadingXLayouts>
 	);
 }
-
-

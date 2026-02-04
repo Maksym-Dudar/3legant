@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AddressCard } from "./AddressCard";
 import { PAGE } from "@/config/page.config";
 import { Mode } from "./type";
-import { useAddressStore } from "@/services/store/address/store";
+import { useAddressStore } from "@/store/address/store";
 
 export function AddressDashboard() {
 	const { addressArray } = useAddressStore();
@@ -34,7 +34,7 @@ export function AddressDashboard() {
 					/>
 				))}
 				<Link
-					href={PAGE.ADDRESCREATE.link + `?mode=${Mode.CREATE}`}
+					src={PAGE.ADDRESCREATE.link + `?mode=${Mode.CREATE}`}
 					className='w-full h-32 rounded-lg border-1 border-descriptiongray text-center text-black text-48 font-200 leading-160 content-center'
 				>
 					+

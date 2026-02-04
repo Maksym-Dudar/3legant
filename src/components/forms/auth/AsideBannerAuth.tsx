@@ -8,7 +8,7 @@ export function AsideBannerAuth() {
 				3legant.
 			</h1>
 			<Image
-				src={IMAGE.AUTH_BANNER.href}
+				src={IMAGE.AUTH_BANNER.src}
 				alt={IMAGE.AUTH_BANNER.alt}
                 fill
                 priority

@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+@layer base {
+  input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px theme(--color-white) inset;
+  }
+} 
+/* todo */
+
+:root {
+  --background: #ffffff ;
+  --black: #141718;
+  --white: #ffffff;
+  --description-gray: #6C7275;
+  --description-white: #FEFEFE;
+  --subtitle: #3E3E59;
+  --white-gray: #E8ECEF;
+  --not-active: #6C7275;
+  --action: #377DFF;
+  --gray: #F3F5F7
+  
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #E8ECEF;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #343839;
+  border-radius: 10px;
+}

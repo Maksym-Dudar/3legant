@@ -1,5 +1,5 @@
 import type { IBagCard } from "@/shared/types/bag.type";
-import { quantityProductInBagStore } from "@/services/store/bag/store";
+import { quantityProductInBagStore } from "@/store/cart/store";
 import { useRouter } from "next/router";
 
 export function calculateSubtotal(data: IBagCard[]) {

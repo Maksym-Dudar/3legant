@@ -27,9 +27,9 @@ export interface ISameColorCard {
 
 export interface IComment {
 	id: number;
-	name: string;
-	date: Date;
+	firstName: string;
+	createdAt: Date;
 	rating: number;
 	avatar: string;
-	comment: string;
+	text: string;
 }

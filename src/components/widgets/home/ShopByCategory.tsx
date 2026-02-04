@@ -1,11 +1,10 @@
 "use client";
 
-
 import { useWindowSize } from "@/hooks";
 import { showDescriptionInHomeCategory } from "@/constants/windowSize";
 import Image from "next/image";
-import PadingXLayouts from "@/layout/PadingXLayouts";
-import { ButtonPage } from "@/components/ui";
+import PadingXLayouts from "@/components/layout/PaddingXLayouts";
+import { ArrowLink } from "@/components/ui";
 import { IMAGE } from "@/config/image.config";
 import { PAGE } from "@/config/page.config";
 import { CategoryFilter } from "@/config/product.config";
@@ -30,13 +29,13 @@ export default function ShopByCategory() {
 								</p>
 							)}
 						</div>
-						<ButtonPage
+						<ArrowLink
 							title='Shop Now'
-							href={PAGE.SHOP_BY_CATEGORY(CategoryFilter.LivingRoom)}
+							src={PAGE.SHOP_BY_CATEGORY(CategoryFilter.LivingRoom)}
 						/>
 					</div>
 					<Image
-						src={IMAGE.BIG_BANNER.href}
+						src={IMAGE.BIG_BANNER.src}
 						alt={IMAGE.BIG_BANNER.alt}
 						width={0}
 						height={0}
@@ -49,13 +48,13 @@ export default function ShopByCategory() {
 						<h4 className='text-28 sm:text-24 md:text-30 lg:text-34 font-500 leading-110 text-black'>
 							Bedroom
 						</h4>
-						<ButtonPage
+						<ArrowLink
 							title='Shop Now'
-							href={PAGE.SHOP_BY_CATEGORY(CategoryFilter.Bedroom)}
+							src={PAGE.SHOP_BY_CATEGORY(CategoryFilter.Bedroom)}
 						/>
 					</div>
 					<Image
-						src={IMAGE.SMALL_BANNER_1.href}
+						src={IMAGE.SMALL_BANNER_1.src}
 						alt={IMAGE.SMALL_BANNER_1.alt}
 						width={0}
 						height={0}
@@ -68,14 +67,14 @@ export default function ShopByCategory() {
 						<h4 className='text-28 sm:text-24 md:text-30 lg:text-34 font-500 leading-110 text-black'>
 							Kitchen
 						</h4>
-						<ButtonPage
+						<ArrowLink
 							title='Shop Now'
-							href={PAGE.SHOP_BY_CATEGORY(CategoryFilter.Kitchen)}
+							src={PAGE.SHOP_BY_CATEGORY(CategoryFilter.Kitchen)}
 						/>
 					</div>
 
 					<Image
-						src={IMAGE.SMALL_BANNER_2.href}
+						src={IMAGE.SMALL_BANNER_2.src}
 						alt={IMAGE.SMALL_BANNER_2.alt}
 						width={0}
 						height={0}

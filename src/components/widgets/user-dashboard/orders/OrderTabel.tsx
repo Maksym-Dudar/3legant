@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Row } from "./Row";
 import { getUserOrders } from "@/services/requests/user";
 import { Loading, Error } from "../..";
-import { useUserStore } from "@/services/store/user/store";
+import { useUserStore } from "@/store/user/store";
 import ColumnTitle from "@/components/ui/table/ColumnTitel";
 
 interface Props {

@@ -1,7 +1,11 @@
 "use client";
 
 import { InputFullWidth } from "@/components/ui";
-import type { IAddressInfo, IAddress, IAddressCreate } from "@/shared/types/address.type";
+import type {
+	IAddressInfo,
+	IAddress,
+	IAddressCreate,
+} from "@/shared/types/address/address.type";
 import { getNames, getCode } from "country-list";
 import Select from "react-select";
 
@@ -13,7 +17,9 @@ export default function ShippingAddress({
 	buildingNumber,
 	zipCode,
 	setInfo,
-}: IAddressInfo & { setInfo: React.Dispatch<React.SetStateAction<IAddressCreate>> }) {
+}: IAddressInfo & {
+	setInfo: React.Dispatch<React.SetStateAction<IAddressCreate>>;
+}) {
 	const options = getNames()
 		.map((name) => {
 			const code = getCode(name);

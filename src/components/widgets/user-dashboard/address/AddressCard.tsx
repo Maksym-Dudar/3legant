@@ -5,9 +5,9 @@ import Link from "next/link";
 import { Mode } from "./type";
 
 interface Props {
-    label: string;
-    name: string;
-    phoneNumber: string;
+	label: string;
+	name: string;
+	phoneNumber: string;
 	address: string;
 	id: number;
 }
@@ -19,14 +19,14 @@ export function AddressCard({ label, name, phoneNumber, address, id }: Props) {
 				<h6 className='text-16 font-600 leading-160 text-black'>{label}</h6>
 				<button className='flex flex-row gap-2 items-center'>
 					<Image
-						src={IMAGE.EDIT.href}
+						src={IMAGE.EDIT.src}
 						alt={IMAGE.EDIT.alt}
 						width={14}
 						height={14}
 						className='object-cover'
 					/>
 					<Link
-						href={PAGE.ADDRESCREATE.link + `?mode=${Mode.EDIT}&addressId=${id}`}
+						src={PAGE.ADDRESCREATE.link + `?mode=${Mode.EDIT}&addressId=${id}`}
 						className='text-16 font-600 leading-160 text-descriptiongray'
 					>
 						Edit

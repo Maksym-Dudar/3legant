@@ -1,6 +1,6 @@
-"use client"
-import PadingXLayouts from "@/layout/PadingXLayouts";
-import { useUserStore } from "@/services/store/user/store";
+"use client";
+import PadingXLayouts from "@/components/layout/PaddingXLayouts";
+import { useUserStore } from "@/store/user/store";
 
 export default function HeroTitle() {
 	return (
@@ -11,10 +11,10 @@ export default function HeroTitle() {
 					<br />
 					Simply Better
 				</h2>
-				<div className='text-descriptiongray items-center justify-center font-inter w-4/5 sm:w-2/5 lg:w-3/12'>
+				<div className='text-description_gray items-center justify-center font-inter w-4/5 sm:w-2/5 lg:w-3/12'>
 					<strong className='text-black text-16 font-600 leading-160'>
 						3legant
-					</strong>{' '}
+					</strong>{" "}
 					is a gift & decorations store based in HCMC, Vietnam. Est since 2019.
 				</div>
 			</div>

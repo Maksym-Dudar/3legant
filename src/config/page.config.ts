@@ -1,6 +1,6 @@
 import type { CategoryFilter } from "./product.config";
 
-interface IPage {
+export interface IPage {
     link: string;
     label: string;
 }
@@ -35,7 +35,7 @@ class PagesConfig {
 		link: `${this.ACCOUNT.link}/address`,
 		label: "Address",
 	};
-	ADDRESCREATE: IPage = {
+	ADDRESS_CREATE: IPage = {
 		link: `${this.ADDRESS.link}/create`,
 		label: "Create",
 	};
@@ -93,7 +93,7 @@ class PagesConfig {
 
 	// Admin
 	ADMIN_DASHBOARD: IPage = {
-		link: "/admin-panel",
+		link: "/admin",
 		label: "Dashboard",
 	};
 	CREATE_PRODUCT: IPage = {
@@ -108,5 +108,5 @@ class PagesConfig {
 
 export const PAGE = new PagesConfig()
 
-export const MENU = [PAGE.HOME, PAGE.SHOP, PAGE.BLOG, PAGE.CONTACT_US];
-export const TERMSPRIVACY = [PAGE.PRIVACY_POLICY, PAGE.TERMS_OF_USE];
+export const NAVIGATION = [PAGE.HOME, PAGE.SHOP, PAGE.BLOG, PAGE.CONTACT_US];
+export const TERMS_PRIVACY = [PAGE.PRIVACY_POLICY, PAGE.TERMS_OF_USE];

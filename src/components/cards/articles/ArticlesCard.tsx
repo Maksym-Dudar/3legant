@@ -1,32 +1,21 @@
-import type { PropsWithChildren } from "react";
 import Image from "next/image";
-import { ButtonPage } from "@/components/ui";
+import { ArrowLink } from "@/components/ui";
+
 interface Props {
 	title: string;
-	href: string;
+	src: string;
 	link: string;
-	alt: string
+	alt: string;
 }
-export function ArticlesCard({
-	title,
-	href,
-	link,
-	alt
-}: Props) {
+
+export function ArticlesCard({ title, src, link, alt }: Props) {
 	return (
-		<div className='flex flex-col gap-4 lg:gap-6'>
-			<Image
-				src={href}
-				alt={alt}
-				width={0}
-				height={0}
-				sizes='100vw'
-				style={{ width: "100%", height: "auto" }}
-			/>
+		<article className='flex flex-col gap-4 lg:gap-6'>
+			<Image src={src} alt={alt} width={0} fill className='object-cover' />
 			<div className='gap-2'>
 				<h5 className='text-18 lg:text-20 font-500 leading-140'>{title}</h5>
-				<ButtonPage title='Read More' href={link} />
+				<ArrowLink title='Read More' src={link} />
 			</div>
-		</div>
+		</article>
 	);
 }

@@ -1,7 +1,11 @@
 "use client";
 
 import { InputFullWidth } from "@/components/ui";
-import type { IContactInfo, IAddress, IAddressCreate } from "@/shared/types/address.type";
+import type {
+	IContactInfo,
+	IAddress,
+	IAddressCreate,
+} from "@/shared/types/address/address.type";
 
 export default function ContactInfo({
 	firstName,
@@ -9,7 +13,9 @@ export default function ContactInfo({
 	phoneNumber,
 	email,
 	setInfo,
-}: IContactInfo & { setInfo: React.Dispatch<React.SetStateAction<IAddressCreate>> }) {
+}: IContactInfo & {
+	setInfo: React.Dispatch<React.SetStateAction<IAddressCreate>>;
+}) {
 	return (
 		<section className='flex flex-col w-full gap-6'>
 			<h4 className='text-20 font-500 leading-140'>Contact Infomation</h4>

@@ -3,29 +3,19 @@ module.exports = {
 	content: [
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/config/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/constants/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/external/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/hooks/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/layout/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/provider/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/server-actions/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/services/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/shared/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/store/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/utils/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
 		extend: {
 			colors: {
 				black: "var(--black)",
 				white: "var(--white)",
-				descriptiongray: "var(--descriptiongray)",
-				descriptionwhite: "var(--descriptionwhite)",
+				description_gray: "var(--description-gray)",
+				description_white: "var(--description-white)",
 				subtitle: "var(--subtitle)",
-				notactive: "var(--notactive)",
+				not_active: "var(--not-active)",
 				action: "var(--action)",
-				whitegray: "var(--whitegray)",
+				white_gray: "var(--white-gray)",
 				green: "#38CB89",
 				red: "#DC1616",
 				gray: "#F3F5F7",
@@ -42,6 +32,7 @@ module.exports = {
 				50: "12.5rem",
 				70: "17.5rem",
 				100: "25rem",
+				125: "31.25rem",
 			},
 			keyframes: {
 				"smooth-display-right": {
@@ -58,9 +49,9 @@ module.exports = {
 			white: "#fff",
 			green: "#38CB89",
 			gray: "#F3F5F7",
-			darkgray: "#6C7275",
-			emailform: "#F2F4F5",
-			palered: "#F5B8B2",
+			dark_gray: "#6C7275",
+			email_form: "#F2F4F5",
+			pale_red: "#F5B8B2",
 			red: "#DC1616",
 		},
 		borderWidth: {
@@ -68,6 +59,7 @@ module.exports = {
 			"2/3": "0.075rem",
 			1: "1px",
 			2: "2px",
+			3: "3px"
 		},
 		fontSize: {
 			8: "0.5rem",

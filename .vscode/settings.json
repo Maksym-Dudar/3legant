@@ -2,9 +2,4 @@
     "extensions.closeExtensionDetailsOnViewChange": false,
     "docker.extension.editor.dockerfileBuildStageDecorationLines": true,
     "editor.formatOnSave": true,
-    
-    "[prisma]": {
-  "editor.defaultFormatter": "Prisma.prisma",
-},
-
 }

@@ -1,7 +1,6 @@
 "use client";
 
-import { useBagContext } from "@/provider";
-import { ButtonClose } from "@/components/ui";
+import { ButtonCross } from "@/components/ui";
 import { useQuery } from "@tanstack/react-query";
 import { calculateSubtotal, checkout } from "@/services/bag";
 import { FoterBag } from "./FoterBag";
@@ -9,12 +8,9 @@ import { CardListBag } from "./CardListBag";
 import type { IBagCard } from "@/shared/types/bag.type";
 import { Loading, Error } from "..";
 import { fetchBagStorage } from "@/services/requests/bag";
-import { useBagStore } from "@/services/store/bag/store";
 import { useMemo } from "react";
 
 export function BagSidebar() {
-	const { isOpenBag, closeBag } = useBagContext();
-	const { bag } = useBagStore();
 
 	const arrayProductInBag = bag.map((item) => item.id);
 
@@ -38,7 +34,7 @@ export function BagSidebar() {
 								<h3 className='text-black text-20 sm:text-24 md:text-28 font-500 leading-120'>
 									Cart
 								</h3>
-								<ButtonClose size={8} onClick={closeBag} />
+								<ButtonCross size={8} onClick={closeBag} />
 							</div>
 							<CardListBag data={data ?? []} />
 						</section>

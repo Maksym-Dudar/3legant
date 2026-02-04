@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useUserStore } from "@/services/store/user/store";
+import { useUserStore } from "@/store/user/store";
 import { IMAGE } from "@/config/image.config";
 import { PAGE } from "@/config/page.config";
 import { useState } from "react";
@@ -37,7 +37,8 @@ export function SideMenu() {
 			if (!file) {
 				throw new Error("File not find");
 			}
-			await sendAvatar(file);
+			const res = await sendAvatar(file);
+			console.log(res);
 		} catch (error) {
 			setErrorToast(String(error));
 		}
@@ -51,7 +52,7 @@ export function SideMenu() {
 				<div className='flex relative'>
 					<div className='m-3 w-20 h-20 rounded-full overflow-hidden'>
 						<Image
-							src={userAvatar ?? IMAGE.USERICON.href}
+							src={userAvatar ?? IMAGE.USERICON.src}
 							alt={IMAGE.USERICON.alt}
 							width={80}
 							height={80}
@@ -60,7 +61,7 @@ export function SideMenu() {
 					</div>
 					<div className='absolute bottom-4 right-4 border-2 border-gray flex w-7 h-7 rounded-full bg-black cursor-pointer items-center justify-center'>
 						<Image
-							src={IMAGE.CAMERA.href}
+							src={IMAGE.CAMERA.src}
 							alt={IMAGE.CAMERA.alt}
 							width={16}
 							height={15}

@@ -1,24 +1,23 @@
 "use client";
 
-import {  useQuery, type QueryFunctionContext } from "@tanstack/react-query";
+import { useQuery, type QueryFunctionContext } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { Error, Loading } from "../..";
-import PadingXLayouts from "@/layout/PadingXLayouts";
+import PadingXLayouts from "@/components/layout/PaddingXLayouts";
 import type { IComment } from "../types";
 import { CustomComment } from "./CustomComment";
 import { fetchComment } from "@/services/requests/product";
 import { CommentCard } from "@/components/cards";
 
-
 export function CommentProductSection() {
 	const params = useParams();
 	const id = params.id;
-	
+
 	const { data, isLoading, error } = useQuery<IComment[]>({
 		queryKey: ["comment", id],
 		queryFn: fetchComment,
 	});
-	
+
 	if (error) return <Error masage={error.message} />;
 	if (isLoading) return <Loading />;
 
@@ -32,7 +31,7 @@ export function CommentProductSection() {
 					</h5>
 					<div className='flex flex-col gap-4 sm:gap-5 md:gap-6'>
 						{data?.map((item) => (
-							<CommentCard {...item} key={item.comment} />
+							<CommentCard {...item} key={item.id} />
 						))}
 					</div>
 				</section>

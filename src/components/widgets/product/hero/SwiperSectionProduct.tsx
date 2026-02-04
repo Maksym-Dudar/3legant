@@ -31,10 +31,10 @@ export function SwiperSectionProduct({ images, isNew, sale }: Props) {
 						<div className='font-inter px-3 sm:px-5 md:px-3 lg:px-5 py-[6px] sm:py-2 md:py-[6px] lg:py-2 bg-white rounded text-14 md:text-16 font-700 leading-100'>
 							NEW
 						</div>
-					) }
+					)}
 					{sale != 0 && (
 						<div className='font-inter px-3 sm:px-5 md:px-3 lg:px-5 py-[6px] sm:py-2 md:py-[6px] lg:py-2 bg-green rounded text-center text-white text-14 md:text-16 font-700 leading-100'>
-							-{sale * 100}%
+							-{(Number(sale) * 100).toFixed()}%
 						</div>
 					)}
 				</div>
@@ -64,7 +64,7 @@ export function SwiperSectionProduct({ images, isNew, sale }: Props) {
 				))}
 				<div className='prev rotate-180 absolute top-40% translate-y-1/2 z-10 left-6 lg:left-8 rounded-full bg-white p-2.5 cursor-pointer'>
 					<Image
-						src={IMAGE.ARROWBLACK.href}
+						src={IMAGE.ARROWBLACK.src}
 						alt={IMAGE.ARROWBLACK.alt}
 						width={buttonSize}
 						height={buttonSize}
@@ -72,7 +72,7 @@ export function SwiperSectionProduct({ images, isNew, sale }: Props) {
 				</div>
 				<div className='next absolute top-40% translate-y-1/2 z-10 right-6 lg:right-8 rounded-full bg-white p-2.5 cursor-pointer'>
 					<Image
-						src={IMAGE.ARROWBLACK.href}
+						src={IMAGE.ARROWBLACK.src}
 						alt={IMAGE.ARROWBLACK.alt}
 						width={buttonSize}
 						height={buttonSize}

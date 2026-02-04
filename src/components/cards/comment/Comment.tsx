@@ -4,10 +4,17 @@ import { useWindowSize } from "@/hooks";
 import { IMAGE } from "@/config/image.config";
 import { mobileSize } from "@/constants/windowSize";
 
-export function CommentCard({ id, name, date, rating, avatar, comment }: IComment) {
+export function CommentCard({
+	id,
+	firstName,
+	createdAt,
+	rating,
+	avatar,
+	text,
+}: IComment) {
 	const { width } = useWindowSize();
 
-	const dateComment = new Date(date);
+	const dateComment = new Date(createdAt);
 
 	const starSize = width > mobileSize ? 16 : 13;
 
@@ -16,7 +23,7 @@ export function CommentCard({ id, name, date, rating, avatar, comment }: ICommen
 			<div className='w-12 h-12'>
 				<Image
 					src={avatar}
-					alt={name}
+					alt={firstName}
 					width={0}
 					height={0}
 					sizes='100vw'
@@ -25,14 +32,14 @@ export function CommentCard({ id, name, date, rating, avatar, comment }: ICommen
 			</div>
 			<section className='flex flex-col gap-2 md:gap-4 w-fit'>
 				<h6 className='text-16 md:text-20 font-inter font-600 leading-160'>
-					{name}
+					{firstName}
 				</h6>
 				<div className='flex flex-row gap-1'>
 					{Array(rating)
 						.fill(0)
 						.map((_, i) => (
 							<Image
-								src={IMAGE.STAR_ACTIVE.href}
+								src={IMAGE.STAR_ACTIVE.src}
 								alt={IMAGE.STAR_ACTIVE.alt}
 								width={starSize}
 								height={starSize}
@@ -41,7 +48,7 @@ export function CommentCard({ id, name, date, rating, avatar, comment }: ICommen
 						))}
 				</div>
 				<p className='text-12 md:text-16 font-inter font-400 leading-160 text-descriptiongray'>
-					{comment}
+					{text}
 				</p>
 				<p className='text-10 md:text-14 font-400 leading-160 text-footerline pt-1 md:pt-2'>
 					{dateComment.getFullYear()}-{dateComment.getMonth()}-

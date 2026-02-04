@@ -7,7 +7,6 @@ import { useEffect, useState, type Dispatch, type FormEventHandler, type SetStat
 import { initialProduct, optionCreate } from "./constants";
 import { createProduct, getProductGroup } from "@/services/requests/admin-panel/create-product";
 import { Category } from "@/config/product.config";
-import { Label } from "@/components/ui";
 
 type TProductGroupSevrerRes = {
 	title: string,

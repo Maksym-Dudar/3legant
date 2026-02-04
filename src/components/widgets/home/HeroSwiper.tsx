@@ -5,19 +5,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import PadingXLayouts from "@/layout/PadingXLayouts";
-import { mobileSize } from "@/constants/windowSize";
-import { useWindowSize } from "@/hooks";
 import { IMAGE } from "@/config/image.config";
 import Image from "next/image";
 
-
 export default function HeroSwiper() {
-	const { width } = useWindowSize();
-	const showButtonInSwiper = width > mobileSize;
-	
+
+
 	return (
-		<PadingXLayouts>
 			<Swiper
 				modules={[Navigation, Pagination, Autoplay]}
 				navigation={{
@@ -32,7 +26,7 @@ export default function HeroSwiper() {
 				{IMAGE.PATH_IMAGE_SLIDER.map((item) => (
 					<SwiperSlide key={item.alt}>
 						<Image
-							src={item.href}
+							src={item.src}
 							alt={item.alt}
 							width={0}
 							height={0}
@@ -42,12 +36,11 @@ export default function HeroSwiper() {
 						/>
 					</SwiperSlide>
 				))}
-				{showButtonInSwiper && (
 					<>
 						<button className='prev rotate-180 absolute top-40% translate-y-1/2 z-10 left-8 justify-center items-center rounded-full bg-white p-[10px] cursor-pointer'>
 							<Image
-								src={IMAGE.ARROWBLACK.href}
-								alt={IMAGE.ARROWBLACK.alt}
+								src={IMAGE.ARROW_BLACK.src}
+								alt={IMAGE.ARROW_BLACK.alt}
 								width={32}
 								height={32}
 								priority
@@ -55,16 +48,15 @@ export default function HeroSwiper() {
 						</button>
 						<button className='next absolute top-40% translate-y-1/2 z-10 right-8 justify-center items-center rounded-full bg-white p-[10px] cursor-pointer'>
 							<Image
-								src={IMAGE.ARROWBLACK.href}
-								alt={IMAGE.ARROWBLACK.alt}
+								src={IMAGE.ARROW_BLACK.src}
+								alt={IMAGE.ARROW_BLACK.alt}
 								width={32}
 								height={32}
 								priority
 							/>
 						</button>
 					</>
-				)}
+				
 			</Swiper>
-		</PadingXLayouts>
 	);
 }

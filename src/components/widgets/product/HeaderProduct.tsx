@@ -9,7 +9,7 @@ interface Props {
 
 export function HeaderProduct({ category, nameProduct }: Props) {
   return (
-		<div className='flex gap-4 py-4'>
+		<div className='flex flex-row gap-4 py-4'>
 			<PathPage name={PAGE.HOME.label} path={PAGE.HOME.link} />
 			<PathPage name={PAGE.SHOP.label} path={PAGE.SHOP.link} />
 			<PathPage

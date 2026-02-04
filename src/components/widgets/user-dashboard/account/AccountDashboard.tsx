@@ -1,7 +1,7 @@
 "use client";
 
 import { InputFullWidth, ButtonAction, ErrorToast } from "@/components/ui";
-import { useUserStore } from "@/services/store/user/store";
+import { useUserStore } from "@/store/user/store";
 import { useMemo, useState } from "react";
 import type { IUserInfo, IUserSecurity } from "./type";
 import { updateUserData } from "@/services/requests/user";
@@ -39,7 +39,9 @@ export function AccountDashboard() {
 				throw new Error("Ви не ввели старий пароль");
 			}
 			if (!user) {
-				throw new Error("Користувача незнайдено спробуйте авторизуватися знову");
+				throw new Error(
+					"Користувача незнайдено спробуйте авторизуватися знову"
+				);
 			}
 
 			const playload: IUser & IPassword = {

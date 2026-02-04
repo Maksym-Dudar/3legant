@@ -3,12 +3,10 @@
 import { DropdownFilter, DropdownSort } from "@/components/ui";
 import { FilterOpen, useShopContext } from "@/provider/ShopContext";
 import { Prices, Sorts, CategoryFilter } from "@/config/product.config";
-import PadingXLayouts from "@/layout/PadingXLayouts";
 
 export function FilterShop() {
-	const { filter, openFilter, setOpenFilter, setFilter } = useShopContext();
+	const { filter, openFilter, setOpenFilter, setFilter } = useShopContext(); // todo use react hook forms
 	return (
-		<PadingXLayouts>
 			<div className='flex flex-col md:flex-row md:justify-between gap-6 md:gap-0 pt-10 md:pt-15 w-full'>
 				<div className='flex gap-4 sm:gap-6 flex-col md:flex-row w-full'>
 					<DropdownFilter
@@ -30,7 +28,8 @@ export function FilterShop() {
 						}
 						isOpen={openFilter == FilterOpen.category}
 						close={() => setOpenFilter(FilterOpen.none)}
-					/>
+				/>
+				
 					<DropdownFilter
 						label='PRICE'
 						value={filter.price}
@@ -62,6 +61,5 @@ export function FilterShop() {
 					close={() => setOpenFilter(FilterOpen.none)}
 				/>
 			</div>
-		</PadingXLayouts>
 	);
 }

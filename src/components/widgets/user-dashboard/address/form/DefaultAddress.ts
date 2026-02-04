@@ -1,4 +1,7 @@
-import type { IAddress, IAddressCreate } from "@/shared/types/address.type";
+import type {
+	IAddress,
+	IAddressCreate,
+} from "@/shared/types/address/address.type";
 
 export function getDefaultAddress(): IAddressCreate {
 	return {

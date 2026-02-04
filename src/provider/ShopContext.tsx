@@ -1,6 +1,6 @@
 "use client";
 
-import { Prices, Sorts, CategoryFilter } from "@/config/product.config";
+import { Prices, Sorts, CategoryFilter, type IPriseValue, PriceRanges } from "@/config/product.config";
 import {
 	createContext,
 	useContext,
@@ -13,17 +13,13 @@ import {
 
 interface IFilterState {
 	category: CategoryFilter;
-	price: Prices;
+	price: IPriseValue;
 	sort: Sorts;
 }
-
-export enum FilterOpen { "category" , "price" , "sort", "none"};
 
 interface ShopContextType {
 	filter: IFilterState;
 	setFilter: Dispatch<SetStateAction<IFilterState>>;
-	openFilter: FilterOpen ;
-	setOpenFilter: Dispatch<SetStateAction<FilterOpen>>;
 }
 
 const ShopContext = createContext<ShopContextType | undefined>(undefined);
@@ -31,19 +27,16 @@ const ShopContext = createContext<ShopContextType | undefined>(undefined);
 export function ShopProvider({ children }: { children: ReactNode }) {
 	const [filter, setFilter] = useState<IFilterState>({
 		category: CategoryFilter.All,
-		price: Prices.All,
+		price: PriceRanges[Prices.All],
 		sort: Sorts.Top_rated,
 	});
-	const [openFilter, setOpenFilter] = useState<FilterOpen>(FilterOpen.none);
 
 	const contextValue = useMemo(
 		() => ({
 			filter,
 			setFilter,
-			openFilter,
-			setOpenFilter,
 		}),
-		[filter, openFilter, setFilter, setOpenFilter]
+		[filter, setFilter]
 	);
 	return (
 		<ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>

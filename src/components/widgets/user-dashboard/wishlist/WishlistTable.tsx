@@ -2,12 +2,10 @@
 
 import { Row } from "./Row";
 import { useQuery } from "@tanstack/react-query";
-import { useWishlistStore } from "@/services/store/wishlist/store";
-import { getUserWishlist } from "@/services/requests/user";
-import { ButtonAction, ButtonClose } from "@/components/ui";
+import { useWishlistStore } from "@/store/wishlist/store";
+import { Button } from "@/components/ui";
 import { Loading, Error } from "../..";
 import { ProductPreview } from "./ProductPreview";
-import { useBagStore } from "@/services/store/bag/store";
 import ColumnTitle from "@/components/ui/table/ColumnTitel";
 
 interface Props {
@@ -20,7 +18,6 @@ interface Props {
 
 export function WishlistTable() {
 	const { wishlist, removeProduct } = useWishlistStore();
-	const { addProduct } = useBagStore();
 	const wishlistString = wishlist.join(",");
 	const {
 		data = [],
@@ -31,9 +28,9 @@ export function WishlistTable() {
 		queryFn: getUserWishlist,
 	});
 
-			if (error) return <Error masage={error.message} />;
+	if (error) return <Error masage={error.message} />;
 	if (isLoading) return <Loading />;
-	
+
 	return (
 		<table className='w-full gap-2 h-fit'>
 			<thead>
@@ -50,17 +47,19 @@ export function WishlistTable() {
 						id={item.id}
 						price={item.price}
 						action={
-							<ButtonAction
+							<Button
 								text='Add to cart'
 								paddingX={1}
 								paddingY={2}
-								onClick={() =>
-									addProduct({ id: item.id, quantity: 1 })
-								}
+								onClick={() => addProduct({ id: item.id, quantity: 1 })}
 							/>
 						}
 						product={
-							<ProductPreview {...item} removeProduct={() =>removeProduct(item.id)} image={item.image[0]} />
+							<ProductPreview
+								{...item}
+								removeProduct={() => removeProduct(item.id)}
+								image={item.image[0]}
+							/>
 						}
 					/>
 				))}

@@ -1,46 +1,46 @@
-"use client";
+// "use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react";
-import { useOverlayContext } from "./OverlayContext";
+// import { createContext, useContext, useState, type ReactNode } from "react";
+// import { useOverlayContext } from "./OverlayContext";
 
-interface MobileMenuContextType {
-	isOpenMobileMenu: boolean;
-	openMobileMenu: () => void;
-	closeMobileMenu: () => void;
-}
+// interface MobileMenuContextType {
+// 	isOpenMobileMenu: boolean;
+// 	openMobileMenu: () => void;
+// 	closeMobileMenu: () => void;
+// }
 
-const MobileMenuContext = createContext<MobileMenuContextType | undefined>(
-	undefined
-);
+// const MobileMenuContext = createContext<MobileMenuContextType | undefined>(
+// 	undefined
+// );
 
-export function MobileMenuProvider({ children }: { children: ReactNode }) {
-	const { offOverlay, onOverlay } = useOverlayContext();
-	const [isOpenMobileMenu, setisOpenMobileMenu] = useState(false);
+// export function MobileMenuProvider({ children }: { children: ReactNode }) {
+// 	const { offOverlay, onOverlay } = useOverlayContext();
+// 	const [isOpenMobileMenu, setisOpenMobileMenu] = useState(false);
 
-	const openMobileMenu = () => {
-		onOverlay();
-		setisOpenMobileMenu(true);
-	};
-	const closeMobileMenu = () => {
-		offOverlay();
-		setisOpenMobileMenu(false);
-	};
+// 	const openMobileMenu = () => {
+// 		onOverlay();
+// 		setisOpenMobileMenu(true);
+// 	};
+// 	const closeMobileMenu = () => {
+// 		offOverlay();
+// 		setisOpenMobileMenu(false);
+// 	};a
 
-	return (
-		<MobileMenuContext.Provider
-			value={{ isOpenMobileMenu, openMobileMenu, closeMobileMenu }}
-		>
-			{children}
-		</MobileMenuContext.Provider>
-	);
-}
+// 	return (
+// 		<MobileMenuContext.Provider
+// 			value={{ isOpenMobileMenu, openMobileMenu, closeMobileMenu }}
+// 		>
+// 			{children}
+// 		</MobileMenuContext.Provider>
+// 	);
+// }
 
-export function useMobileMenuContext() {
-	const context = useContext(MobileMenuContext);
-	if (!context) {
-		throw new Error(
-			"useMobileMenuContext must be used within a MobileMenuProvider"
-		);
-	}
-	return context;
-}
+// export function useMobileMenuContext() {
+// 	const context = useContext(MobileMenuContext);
+// 	if (!context) {
+// 		throw new Error(
+// 			"useMobileMenuContext must be used within a MobileMenuProvider"
+// 		);
+// 	}
+// 	return context;
+// }
