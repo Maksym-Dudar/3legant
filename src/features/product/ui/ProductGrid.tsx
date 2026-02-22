@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useErrorToast } from "@/hooks/useErrorToast";
 import { useProductGrid } from "../hook/useProductGrid";
@@ -16,7 +16,7 @@ export function ProductGrid() {
 		isError,
 		error,
 	} = useProductGrid();
-	const { errorMessage, closeError } = useErrorToast(isError, error);
+	const { errorMessage, closeError } = useErrorToast(error, isError);
 
 	if (isLoading) return <Loading />;
 	return (

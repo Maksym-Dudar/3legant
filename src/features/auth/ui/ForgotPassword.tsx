@@ -21,8 +21,9 @@ export function ForgotPassword() {
 		resolver: zodResolver(ForgotPasswordSchema),
 	});
 
-	const { submit, generateOtp, isError, error, isPending, isEmailLocked } = useForgotPassword();
-	const { errorMessage, closeError } = useErrorToast(isError, error)
+	const { submit, generateOtp, isError, error, isPending, isEmailLocked } =
+		useForgotPassword();
+	const { errorMessage, closeError } = useErrorToast(error, isError);
 
 	const onSubmit = handleSubmit((data: ForgotPasswordSchema) => submit(data));
 	const onSendCode = () => generateOtp({ email: watch("email") });

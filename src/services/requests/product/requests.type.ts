@@ -6,4 +6,6 @@ export interface IGetSearchRequest {
 	search: string;
 }
 
-
+export interface IGetWishlistRequest {
+	wishlist: string;
+}

@@ -1,9 +1,15 @@
 class ApiConfig {
 	USER = "/user";
 	USER_AVATAR = `${this.USER}/avatar`;
-	USER_ADDRESS = `${this.USER}/address`;
 	USER_WISHLIST = `${this.USER}/wishlist`;
 	USER_ORDERS = `${this.USER}/orders`;
+
+	ADDRESS = "/address";
+	ADDRESS_ALL = "/address/all";
+
+	getAddressById(id: number) {
+		return `${this.ADDRESS}?id=${id}`;
+	}
 
 	PRODUCT = "/product";
 	PRODUCT_CARDS = `${this.PRODUCT}/cards`;

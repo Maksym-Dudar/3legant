@@ -32,6 +32,7 @@ export function ShopFilter() {
 					label='CATEGORIES'
 					options={categoryOptions}
 					value={categoryValue}
+					className='w-full md:w-44 lg:w-52 xl:w-60'
 					onChange={(val) =>
 						setFilter((prev) => ({
 							...prev,
@@ -45,6 +46,7 @@ export function ShopFilter() {
 					label='PRICE'
 					options={priceOptions}
 					value={priceValue}
+					className='w-full md:w-44 lg:w-52 xl:w-60'
 					onChange={(val) =>
 						setFilter((prev) => ({
 							...prev,
@@ -59,6 +61,7 @@ export function ShopFilter() {
 				label='Sort by'
 				options={sortOptions}
 				value={sortValue}
+				className='w-full md:w-52 xl:w-60'
 				onChange={(val) =>
 					setFilter((prev) => ({
 						...prev,

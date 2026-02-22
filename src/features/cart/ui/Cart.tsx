@@ -12,7 +12,7 @@ export function Cart() {
 	const { close } = useOverlay();
 	const { data, isLoading, error, isError, subtotal, total, onCheckout } =
 		useCart();
-	const { errorMessage, closeError } = useErrorToast(isError, error);
+	const { errorMessage, closeError } = useErrorToast(error, isError);
 	return (
 		<>
 			{errorMessage && (

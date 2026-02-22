@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { authServices } from "@/services/requests/auth/auth.services";
+import { authService } from "@/services/requests/auth/auth.services";
 import type { ISignIn } from "@/shared/types/auth/auth.type";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config";
@@ -10,7 +10,7 @@ export function useSignIn() {
 	const router = useRouter();
 
 	const signInMutation = useMutation({
-		mutationFn: (data: ISignIn) => authServices.signIn(data),
+		mutationFn: (data: ISignIn) => authService.signIn(data),
 		onSuccess: () => router.push(PAGE.HOME.link),
 	});
 

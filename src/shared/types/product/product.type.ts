@@ -41,8 +41,7 @@ export interface ICartItem {
 	price: number;
 	sale: number;
 	id: number;
-} 
-
+}
 
 export interface IProductParams {
 	page?: number;
@@ -52,4 +51,12 @@ export interface IProductParams {
 	maxPrice?: number;
 	minPrice?: number;
 	groupId?: number | null;
+}
+
+export interface IWishlist {
+	id: number;
+	color: string;
+	price: number;
+	image: string;
+	title: string;
 }

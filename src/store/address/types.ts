@@ -1,14 +1,14 @@
-import type { IAddress } from "@/shared/types/address/address.type";
+// import type { IAddress } from "@/shared/types/address/address.type";
 
-export interface IInitialAddressStore {
-	addressArray: IAddress[];
-}
+// export interface IInitialAddressStore {
+// 	addressArray: IAddress[];
+// }
 
-interface IAction {
-	rehydrate: (addres: IAddress[]) => void;
-	createAddres: (addres: IAddress) => void;
-	updateAddres: (addres: IAddress) => void;
-	delateAddres: (addres: IAddress) => void;
-}
+// interface IAction {
+// 	rehydrate: (addres: IAddress[]) => void;
+// 	createAddres: (addres: IAddress) => void;
+// 	updateAddres: (addres: IAddress) => void;
+// 	delateAddres: (addres: IAddress) => void;
+// }
 
-export interface IAddressStore extends IInitialAddressStore, IAction {}
+// export interface IAddressStore extends IInitialAddressStore, IAction {}

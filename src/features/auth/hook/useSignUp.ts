@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { authServices } from "@/services/requests/auth/auth.services";
+import { authService } from "@/services/requests/auth/auth.services";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config";
@@ -13,7 +13,7 @@ export function useSignUp() {
 	const [error, setError] = useState<Error | null>(null);
 
 	const signUpMutation = useMutation({
-		mutationFn: (data: ISignUp) => authServices.signUp(data),
+		mutationFn: (data: ISignUp) => authService.signUp(data),
 		onSuccess: () => router.push(PAGE.HOME.link),
 		onError: (err: Error) => setError(err),
 	});

@@ -13,7 +13,7 @@ export default function HomeArticlesSection() {
 		queryKey: ["articlesCard"],
 		queryFn: fetchArticlesCard,
 	});
-	const { errorMessage, closeError } = useErrorToast(isError, error);
+	const { errorMessage, closeError } = useErrorToast(error, isError);
 
 	if (isLoading) return <Loading />;
 

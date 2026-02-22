@@ -22,7 +22,7 @@ export function SignUp() {
 		resolver: zodResolver(SignUpSchema),
 	});
 	const { submit, isPending, isError, error } = useSignUp();
-	const { errorMessage, closeError } = useErrorToast(isError, error);
+	const { errorMessage, closeError } = useErrorToast(error, isError);
 
 	const onSubmit = handleSubmit((data: SignUpSchema) => submit(data));
 	return (

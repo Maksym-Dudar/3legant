@@ -1,8 +1,9 @@
-export { API as API } from "./api.config";
-export { IMAGE as IMAGE } from "./image.config";
-export { PAGE as PAGE } from "./page.config";
-export { NAVIGATION as NAVIGATION } from "./page.config";
-export { TERMS_PRIVACY as TERMS_PRIVACY } from "./page.config";
+export { API } from "./api.config";
+export { IMAGE } from "./image.config";
+export { PAGE } from "./page.config";
+export { NAVIGATION } from "./page.config";
+export { TERMS_PRIVACY } from "./page.config";
+export { NEXT_PUBLIC_BACKEND_URL } from "./env";
 
 // interface
 export type { IPage as IPage } from "./page.config";

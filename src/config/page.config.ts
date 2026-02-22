@@ -39,6 +39,12 @@ class PagesConfig {
 		link: `${this.ADDRESS.link}/create`,
 		label: "Create",
 	};
+	AddressEdit(id: number): IPage {
+		return {
+			link: `${this.ADDRESS.link}/edit/${id}`,
+			label: "Edit"
+		}
+	};
 	ORDERS: IPage = {
 		link: `${this.ACCOUNT.link}/orders`,
 		label: "Orders",

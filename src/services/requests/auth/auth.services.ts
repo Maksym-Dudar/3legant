@@ -4,7 +4,7 @@ import type { IUser } from "@/shared/types/user/user.type";
 import type { MassageResponse } from "../type";
 import type { IForgotPassword, IGenerateOtp, ISignIn, ISignUp } from "@/shared/types/auth/auth.type";
 
-class AuthServices {
+class AuthService {
 	async signIn(payload: ISignIn): Promise<IUser> {
 		return (await instance.post(API.AUTH_SIGN_IN, payload)).data;
 	}
@@ -26,4 +26,4 @@ class AuthServices {
 	}
 }
 
-export const authServices = new AuthServices();
+export const authService = new AuthService();

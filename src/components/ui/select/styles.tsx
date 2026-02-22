@@ -46,7 +46,7 @@ export const createSelectVariantStyles = <T,>(): Record<
 });
 
 export const baseLayoutStyles: { div: string; p: string } = {
-	div: "flex w-full md:w-fit",
+	div: "flex ",
 	p: "text-14 sm:text-16 font-400 leading-160 font-inter text-description_gray",
 };
 export const layoutStyles: Record<SelectVariant, { div: string; p: string }> = {

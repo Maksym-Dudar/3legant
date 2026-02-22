@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Select, { type StylesConfig } from "react-select";
 import { twMerge } from "tailwind-merge";
@@ -18,6 +18,7 @@ interface Props<T> {
 	placeholder: string;
 	styleType: SelectVariant;
 	isDisabled?: boolean;
+	className?: string;
 	onChange: (val: SelectOption<T> | null) => void;
 }
 
@@ -27,10 +28,11 @@ function CustomSelect<T>({
 	placeholder,
 	styleType,
 	value,
+	className,
 	isDisabled = false,
 	onChange,
 }: Props<T>) {
-	const id = useId()
+	const id = useId();
 
 	const selectStyles: StylesConfig<SelectOption<T>, false> = {
 		...createSelectBaseStyles<T>(),
@@ -38,14 +40,14 @@ function CustomSelect<T>({
 	};
 
 	return (
-		<div className={twMerge(layoutStyles[styleType].div, baseLayoutStyles.div)}>
+		<div className={twMerge(layoutStyles[styleType].div, baseLayoutStyles.div, className)}>
 			<label
 				htmlFor={id}
 				className={twMerge(layoutStyles[styleType].p, baseLayoutStyles.p)}
 			>
 				{label}
 			</label>
-			<div className='w-full md:w-44 lg:w-52 xl:w-60'>
+			<div className='w-full'>
 				<Select<SelectOption<T>, false>
 					inputId={id}
 					instanceId={id}
@@ -57,7 +59,7 @@ function CustomSelect<T>({
 					isDisabled={isDisabled}
 					classNames={{
 						singleValue: () =>
-							"text-14 sm:text-16 text-black font-600 leading-160",
+							"text-14 sm:text-16 text-black font-400 leading-160",
 						control: () => "min-h-[48px]",
 						menu: () => "text-14 md:text-16 text-description_gray",
 						indicatorSeparator: () => "hidden",

@@ -12,7 +12,7 @@ import { useErrorToast } from "@/hooks/useErrorToast";
 interface Props extends Partial<IProductParams>, PropsWithChildren {}
 export function ProductRow({ children, ...params }: Props) {
 	const { scrollRef, data, isLoading, error, isError } = useProductRow(params);
-	const { errorMessage, closeError } = useErrorToast(isError, error);
+	const { errorMessage, closeError } = useErrorToast(error, isError);
 
 	if (isLoading) return <Loading />;
 

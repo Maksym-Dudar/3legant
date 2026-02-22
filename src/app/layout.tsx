@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "@/config/globals.css";
-import { Suspense } from "react";
+import { Suspense, type PropsWithChildren } from "react";
 import { OverlayProvider, QueryProvider } from "@/provider";
 
 export const metadata: Metadata = {
@@ -21,11 +21,8 @@ const geistInter = Inter({
 	variable: "--font-inter",
 });
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
+
 	return (
 		<html lang='en'>
 			<body

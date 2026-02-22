@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { authServices } from "@/services/requests/auth/auth.services";
+import { authService } from "@/services/requests/auth/auth.services";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config";
@@ -18,13 +18,13 @@ export function useForgotPassword() {
 	const router = useRouter();
 
 	const forgotPasswordMutation = useMutation({
-		mutationFn: (data: IForgotPassword) => authServices.resetPasswordOtp(data),
+		mutationFn: (data: IForgotPassword) => authService.resetPasswordOtp(data),
 		onSuccess: () => router.push(PAGE.HOME.link),
 		onError: (error) => setError(error),
 	});
 
 	const generateOtpMutation = useMutation({
-		mutationFn: (data: IGenerateOtp) => authServices.generateOtp(data),
+		mutationFn: (data: IGenerateOtp) => authService.generateOtp(data),
 		onError: (error) => setError(error),
 		onSuccess: () => setIsEmailLocked(true),
 	});

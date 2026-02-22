@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { SideMenu } from "./SideMenu";
+import { Sidebar } from "../side-menu/Sidebar";
 export function AccountLayouts({ children }: PropsWithChildren<unknown>) {
 	return (
 		<div className='w-full flex flex-col'>
@@ -7,7 +7,7 @@ export function AccountLayouts({ children }: PropsWithChildren<unknown>) {
 				My account
 			</h2>
 			<section className='w-full flex flex-col gap-10 sm:gap-12 lg:gap-20 sm:flex-row'>
-				<SideMenu />
+				<Sidebar />
 				{children}
 			</section>
 		</div>

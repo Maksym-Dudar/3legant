@@ -6,10 +6,15 @@ import type {
 	IProductDetails,
 	IProductGroupSearchCard,
 	IProductParams,
+	IWishlist,
 } from "@/shared/types/product/product.type";
 import type { IProductDetailsDto } from "./dto.type";
 import categoryParser from "@/utils/categoryParser";
-import type { IGetDetailsRequest, IGetSearchRequest } from "./requests.type";
+import type {
+	IGetDetailsRequest,
+	IGetSearchRequest,
+	IGetWishlistRequest,
+} from "./requests.type";
 
 class ProductService {
 	constructor() {}
@@ -51,6 +56,13 @@ class ProductService {
 	): Promise<ICartItem[]> {
 		const params = products.join(",");
 		return await instance.get(API.PRODUCT_BAG, { params, signal });
+	}
+
+	async getWishlist(
+		params: IGetWishlistRequest,
+		signal?: AbortSignal,
+	): Promise<IWishlist[]> {
+		return await instance.get(API.USER_WISHLIST, { params, signal });
 	}
 }
 

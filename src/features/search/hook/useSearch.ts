@@ -2,6 +2,7 @@
 
 import { PAGE } from "@/config";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useOverlay } from "@/provider/overlay/OverlayProvider";
 import { productService } from "@/services/requests/product/product.services";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -12,7 +13,7 @@ export interface SearchOptions {
 	groupId: number;
 }
 
-export default function useSearch() {
+export function useSearch() {
 	const router = useRouter();
 	const [search, setSearch] = useState("");
 	const debouncedSearch = useDebounce(search, 400);
@@ -45,7 +46,6 @@ export default function useSearch() {
 	const searchButton = () => {
 		if (search.length > 0) {
 			const groupIdArray = searchOptions.map((item) => item.groupId);
-			// closeMobileMenu();
 			setSearch("");
 			router.push(`${PAGE.SHOP.link}?groupId=${groupIdArray}`);
 		}

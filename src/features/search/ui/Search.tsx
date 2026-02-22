@@ -1,23 +1,26 @@
 import { IMAGE } from "@/config/image.config";
-import UseSearch from "@/features/search/hook/useSearch";
 import Image from "next/image";
+import { useSearch } from "../hook/useSearch";
 
 export function Search() {
-	const { search, searchOptions, goToProducts, handleInputChange, searchButton } =
-		UseSearch();
+	const {
+		search,
+		searchOptions,
+		goToProducts,
+		handleInputChange,
+		searchButton,
+	} = useSearch();
 	return (
-		<form role='search' className="relative">
+		<form role='search' className='relative'>
 			<div className='flex relative'>
-				<label htmlFor='search' className='flex w-full '>
-					<input
-						id='search'
-						type='text'
-						placeholder='Search'
-						className='text-14 font-400 leading-160 font-inter pl-11 py-2 border border-description_gray rounded-lg w-full z-50'
-						value={search}
-						onChange={handleInputChange}
-					/>
-				</label>
+				<input
+					id='search'
+					type='text'
+					placeholder='Search'
+					className=' flex text-14 font-400 leading-160 font-inter pl-11 py-2 border border-description_gray rounded-lg w-full z-50'
+					value={search}
+					onChange={handleInputChange}
+				/>
 
 				<button type='submit' onClick={searchButton}>
 					<Image
