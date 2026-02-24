@@ -1,3 +1,5 @@
+"use client";
+
 import { useBreadcrumbs } from "./useBreadcrumbs";
 import { PathPage } from "@/components/ui";
 

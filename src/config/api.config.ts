@@ -22,6 +22,8 @@ class ApiConfig {
 	AUTH_RESET_PASSWORD_OTP = `${this.AUTH}/reset-password-otp`;
 	AUTH_GENERATE_OTP = `${this.AUTH}/otp-code`;
 	AUTH_LOG_OUT = `${this.AUTH}/log-out`;
+
+	CONTACT = '/contact'
 }
 
 export const API = new ApiConfig();

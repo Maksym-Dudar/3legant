@@ -1,43 +1,37 @@
+"use client"
+
+import { memo, useId, type TextareaHTMLAttributes } from "react";
 import { Label } from "..";
 
-interface Props {
-	id: string;
-	name: string;
-	placeholder: string;
-	value: string;
-	label: string;
-	disabled?: boolean;
-	isRequired?: boolean;
-	rows: number;
-	onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+
+interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+	errorMessage?: string;
+	label?: string; 
 }
-export function TextArea({
-	id,
-	name,
-	placeholder,
-	value,
+
+function TextArea({
+errorMessage,
 	label,
-	isRequired = false,
-	disabled = false,
-	onChange,
+	...props
+
 }: Props) {
+	const generatedId = useId();
+	
 	return (
 		<div>
-			<Label id={id} label={label} />
+			{label && <Label id={generatedId} label={label} />}
 			<textarea
-				value={value}
-				name={name}
-				placeholder={placeholder}
-				onChange={onChange}
-				disabled={disabled}
+				id={generatedId}
 				rows={10}
 				style={{
 					resize: "none",
 					overflowY: "auto",
 				}}
-				required={isRequired} 
-				className='w-full text-inter text-14 md:text-16 font-400 leading-160 border border-solid px-4 rounded-md text-black border-descriptiongray border-opacity-0'
+				className='w-full text-inter text-14 md:text-16 font-400 leading-160 border border-solid px-4 rounded-md text-black border-description_gray border-opacity-0'
+				{...props}
 			/>
 		</div>
 	);
 }
+
+export default memo(TextArea);

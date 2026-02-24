@@ -33,7 +33,7 @@ export function CartFooter({ isLoading, subtotal, total, onCheckout }: Props) {
 				<Button
 					type='button'
 					text='Checkout'
-					className='py-12'
+					className='py-3'
 					onClick={onCheckout}
 					disabled={isLoading}
 				/>

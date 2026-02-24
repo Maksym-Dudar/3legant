@@ -7,14 +7,14 @@ export function ContactAbout() {
 	return (
 		<div className='flex flex-col md:flex-row bg-gray'>
 			<Image
-				src={IMAGE.MYHPHOTO.src}
-				alt={IMAGE.MYHPHOTO.alt}
+				src={IMAGE.MY_PHOTO.src}
+				alt={IMAGE.MY_PHOTO.alt}
 				width={0}
 				height={0}
 				sizes='100vw'
 				className='w-full md:w-1/2 object-cover'
 			/>
-			<div className='flex flex-col justify-center pl-8 sm:pl-10 md:pl-14 lg:pl-16 xl:pl-18 py-14 sm:py-16 md:py-18 gap-5 lg:gap-6 '>
+			<div className='flex flex-col justify-center pl-8 sm:pl-10 md:pl-14 lg:pl-16 xl:pl-18 py-14 sm:py-16 md:py-18 gap-5 lg:gap-6 w-full md:w-1/2'>
 				<div className='flex flex-col gap-5'>
 					<h4 className='text-34 sm:text-36 lg:text-40 font-500 leading-110'>
 						About Me
@@ -27,7 +27,7 @@ export function ContactAbout() {
 						terms of time and resources.
 					</p>
 				</div>
-				<ArrowLink title='My GitHub' src={gitHubAccount} />
+				<ArrowLink title='My GitHub' link={gitHubAccount} />
 			</div>
 		</div>
 	);

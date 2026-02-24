@@ -18,7 +18,7 @@ export function Cart() {
 			{errorMessage && (
 				<ErrorToast message={errorMessage} onClose={closeError} />
 			)}
-			<aside className='flex flex-col justify-between h-full w-4/5 sm:w-3/5 lg:w-1/2 xl:w-1/3 bg-white right-0 py-10 px-6'>
+			<aside className='flex flex-col justify-between h-full w-full bg-white right-0 py-10 px-6'>
 				<div className='flex flex-col gap-4'>
 					<CartHeader close={close} />
 					{!errorMessage && (

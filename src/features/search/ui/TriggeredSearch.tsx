@@ -57,7 +57,7 @@ export function TriggeredSearch() {
 
 				<button
 					onClick={handleSearchClick}
-					className={`absolute h-fit w-6 top-1/2 -translate-y-1/2 z-50 ${
+					className={`absolute h-fit w-6 top-1/2 -translate-y-1/2 z-30 ${
 						isOpen
 							? "right-3"
 							: "right-0"

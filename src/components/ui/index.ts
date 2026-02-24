@@ -9,4 +9,5 @@ export { default as OfferTime } from "./OfferTime";
 export { default as PathPage } from "./PathPage";
 export { default as ErrorToast } from "../widgets/error/ErrorToast";
 export { default as Input } from "./inputs/Input";
+export { default as TextArea } from "./inputs/TextArea";
 export { Label as Label } from "./inputs/Label";
