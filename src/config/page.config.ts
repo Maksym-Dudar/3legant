@@ -42,9 +42,9 @@ class PagesConfig {
 	AddressEdit(id: number): IPage {
 		return {
 			link: `${this.ADDRESS.link}/edit/${id}`,
-			label: "Edit"
-		}
-	};
+			label: "Edit",
+		};
+	}
 	ORDERS: IPage = {
 		link: `${this.ACCOUNT.link}/orders`,
 		label: "Orders",
@@ -65,6 +65,14 @@ class PagesConfig {
 	CART: IPage = {
 		link: "/cart",
 		label: "Cart",
+	};
+	CHECKOUT_DETAILS: IPage = {
+		link: "/checkout/details",
+		label: "Checkout details",
+	};
+	CHECKOUT_COMPLETE: IPage = {
+		link: "/checkout/complete",
+		label: "Checkout complete",
 	};
 	FORGOT_PASSWORD: IPage = {
 		link: "/forgot-password",

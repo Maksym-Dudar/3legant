@@ -111,6 +111,10 @@ class ImageConfig {
 		src: "/ui/reaction/eye_close.svg",
 		alt: "Close eye",
 	};
+	CHECK_MARK: IImage = {
+		src: "/ui/icon/check_mark.svg",
+		alt: "check_mark",
+	};
 
 	//image
 

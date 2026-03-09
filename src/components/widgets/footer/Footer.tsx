@@ -17,8 +17,8 @@ export function Footer() {
 									3legant
 								</h1>
 							</Link>
-							<div className='h-px w-6 md:rotate-90 bg-dark_gray'></div>
-							<p className='text-12 md:text-14 text-white_gray font-400 leading-160'>
+							<div className='h-px w-6 md:rotate-90 bg-dark_grey'></div>
+							<p className='text-12 md:text-14 text-white_grey font-400 leading-160'>
 								Gift & Decoration Store
 							</p>
 						</section>

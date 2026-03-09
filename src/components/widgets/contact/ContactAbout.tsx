@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function ContactAbout() {
 	return (
-		<div className='flex flex-col md:flex-row bg-gray'>
+		<div className='flex flex-col md:flex-row bg-grey'>
 			<Image
 				src={IMAGE.MY_PHOTO.src}
 				alt={IMAGE.MY_PHOTO.alt}

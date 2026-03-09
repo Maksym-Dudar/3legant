@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { memo, useId, type InputHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
@@ -10,7 +10,7 @@ type TVariantInput = "outlined" | "borderless";
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
 	variant?: TVariantInput;
 	errorMessage?: string;
-	label?: string; 
+	label?: string;
 }
 
 function Input({
@@ -23,10 +23,10 @@ function Input({
 	const generatedId = useId();
 
 	const baseStyle =
-		"w-full text-inter text-14 md:text-16 font-400 leading-160 px-2 bg-white autofill:bg-white";
+		"w-full text-inter text-14 md:text-16 font-400 leading-160 px-2 mt-2 bg-white autofill:bg-white";
 	const variants = {
 		outlined: "h-10 px-4 border border-solid rounded-md",
-		borderless: "border-b-1 border-solid border-white_gray py-1 ",
+		borderless: "border-b-1 border-solid border-white_grey py-1 ",
 	};
 
 	return (
@@ -83,6 +83,6 @@ export default memo(Input);
 // className={`w-full text-inter text-14 md:text-16 font-400 leading-160 border border-solid h-10 px-4 rounded-md
 // 		${
 // 			hasError
-// 				? " text-black border-descriptiongray border-opacity-0"
-// 				: " text-descriptiongray border-red bg-palered"
+// 				? " text-black border-descriptiongrey border-opacity-0"
+// 				: " text-descriptiongrey border-red bg-palered"
 // 		} `}

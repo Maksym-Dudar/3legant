@@ -4,11 +4,12 @@ import { productService } from "@/services/requests/product/product.services";
 import type { ICartItem } from "@/shared/types/product/product.type";
 import { useCartStore } from "@/store/cart/store";
 import { useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import calcSubtotal from "../lib/calcSubtotal";
 import calcTotal from "../lib/calcTotal";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config";
+import type { IDelivery } from "@/constants/delivery.constants";
 
 export function useCart() {
 	const router = useRouter();
@@ -20,12 +21,17 @@ export function useCart() {
 		enabled: productIds.length > 0,
 	});
 
+	const [shippingMethod, setShippingMethod] = useState<IDelivery>("Free");
+
 	const subtotal = useMemo(() => calcSubtotal(cart, data ?? []), [cart, data]);
 
 	const total = useMemo(() => calcTotal(subtotal, 0), [subtotal]);
 
-	const onCheckout = () => router.push(PAGE.CART.link)
+	const onCheckout = () => router.push(PAGE.CHECKOUT_DETAILS.link);
+
+	
 	return {
+		shippingMethod,
 		data,
 		isLoading,
 		isError,
@@ -33,5 +39,6 @@ export function useCart() {
 		subtotal,
 		total,
 		onCheckout,
+		setShippingMethod,
 	};
 }

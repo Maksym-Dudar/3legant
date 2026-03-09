@@ -13,14 +13,20 @@ import { useSidebar } from "./useSidebar";
 
 export function Sidebar() {
 	const pathname = usePathname();
-	const { data, errorMessage, userAvatar, logOut, handleFileChange, onCloseError } =
-		useSidebar();
+	const {
+		data,
+		errorMessage,
+		userAvatar,
+		logOut,
+		handleFileChange,
+		onCloseError,
+	} = useSidebar();
 	return (
 		<>
 			{errorMessage && (
 				<ErrorToast message={errorMessage} onClose={onCloseError} />
 			)}
-			<aside className='flex flex-col justify-center py-10 px-4 gap-10 w-full sm:w-44 md:w-60 h-fit bg-gray rounded-md mb-20'>
+			<aside className='flex flex-col justify-center py-10 px-4 gap-10 w-full sm:w-44 md:w-60 h-fit bg-grey rounded-md mb-20'>
 				<SidebarUser
 					firstName={data?.firstName || ""}
 					lastName={data?.lastName || ""}

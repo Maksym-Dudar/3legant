@@ -11,7 +11,7 @@ interface Props {
 export function FoterBag({ subtotal, total, checkout }: Props) {
 	return (
 		<section className='flex flex-col'>
-			<div className='flex flex-row justify-between border-b border-gray-200 py-3'>
+			<div className='flex flex-row justify-between border-b border-grey-200 py-3'>
 				<p className='text-black font-inter text-14 sm:text-16 font-400 leading-160'>
 					Subtotal
 				</p>

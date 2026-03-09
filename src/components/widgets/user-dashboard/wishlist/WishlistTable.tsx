@@ -4,7 +4,7 @@ import { Row } from "./Row";
 import { useQuery } from "@tanstack/react-query";
 import { useWishlistStore } from "@/store/wishlist/store";
 import { Loading, Error } from "../..";
-import ColumnTitle from "@/components/ui/table/ColumnTitel";
+import ColumnTitle from "@/components/ui/table/ColumnTitle";
 import { productService } from "@/services/requests";
 import { useCartStore } from "@/store/cart/store";
 import { ErrorToast } from "@/components/ui";
@@ -37,9 +37,9 @@ export function WishlistTable() {
 			<table className='w-full gap-2 h-fit'>
 				<thead>
 					<tr>
-						<ColumnTitle title='Product' />
-						<ColumnTitle title='Price' />
-						<ColumnTitle title='Action' />
+						<ColumnTitle children='Product' />
+						<ColumnTitle children='Price' />
+						<ColumnTitle children='Action' />
 					</tr>
 				</thead>
 				<tbody className=''>

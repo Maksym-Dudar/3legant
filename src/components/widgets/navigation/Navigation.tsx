@@ -16,7 +16,7 @@ const VARIANT_STYLES = {
 	},
 	night: {
 		active: "text-black",
-		inactive: "text-description_gray",
+		inactive: "text-description_grey",
 	},
 } as const;
 

@@ -4,3 +4,4 @@ export type SelectOption<T> = {
 };
 
 export type SelectVariant = "outlined" | "borderless";
+export type LabelVariant = "bold" | "thin";

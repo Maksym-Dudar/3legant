@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, } from "react";
+import { useState } from "react";
 import Image from "next/image";
 interface Props {
 	imagesPreview: string[];
@@ -15,7 +15,7 @@ export function ProductPhotoInput({ imagesPreview, handleFileChange }: Props) {
 			</h6>
 			<label
 				htmlFor='productImages'
-				className='inline-flex items-center justify-center px-4 py-2 rounded-full border-1 border-gray bg-white text-gray-900 shadow-md transition hover:shadow-lg active:shadow-inner'
+				className='inline-flex items-center justify-center px-4 py-2 rounded-full border-1 border-grey bg-white text-grey-900 shadow-md transition hover:shadow-lg active:shadow-inner'
 			>
 				Select product images
 			</label>

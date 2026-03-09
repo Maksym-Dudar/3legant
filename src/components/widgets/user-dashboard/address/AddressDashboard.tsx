@@ -8,12 +8,10 @@ import { addressService } from "@/services/requests/address/address.services";
 import { useErrorToast } from "@/hooks/useErrorToast";
 import { Loading } from "../..";
 import ErrorToast from "../../error/ErrorToast";
+import { useAddress } from "@/features/address/hook/useAddress";
 
 export function AddressDashboard() {
-	const { data, isLoading, isError, error } = useQuery({
-		queryKey: ["address", "all"],
-		queryFn: () => addressService.getAllAddress(),
-	});
+	const { addressData, isLoading, isError, error } = useAddress();
 	const { errorMessage, closeError } = useErrorToast(error, isError);
 
 	if (isLoading) return <Loading />;
@@ -28,7 +26,7 @@ export function AddressDashboard() {
 					Address
 				</h4>
 				<div className='grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-6 pb-10 w-full'>
-					{data?.map((val) => (
+					{addressData?.map((val) => (
 						<AddressCard
 							key={val.id}
 							phoneNumber={val.phone}
@@ -47,7 +45,7 @@ export function AddressDashboard() {
 					))}
 					<Link
 						href={PAGE.ADDRESS_CREATE.link}
-						className='w-full h-32 rounded-lg border-1 border-description_gray text-center text-black text-48 font-200 leading-160 content-center'
+						className='w-full h-32 rounded-lg border-1 border-description_grey text-center text-black text-48 font-200 leading-160 content-center'
 					>
 						+
 					</Link>

@@ -33,7 +33,7 @@ export function CardProductInBag({
 					<h6 className='font-inter font-600 text-14 sm:text-16 leading-160'>
 						{title}
 					</h6>
-					<p className='font-inter font-400 text-12 md:text-14 leading-170 text-descriptiongray'>
+					<p className='font-inter font-400 text-12 md:text-14 leading-170 text-descriptiongrey'>
 						Color: {color}
 					</p>
 					<div className='flex flex-row items-center text-12 font-600 leading-170 w-fit px-1 md:px-2 py-[2px] md:py-1 gap-3 bg-white rounded-lg border border-notactive'>

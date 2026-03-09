@@ -21,7 +21,7 @@ export function Row({
 	return (
 		<tr
 			key={id}
-			className='h-15 md:h-17 border-b-1 border-white_gray border-solid'
+			className='h-15 md:h-17 border-b-1 border-white_grey border-solid'
 		>
 			<Cell>
 				<ProductPreview

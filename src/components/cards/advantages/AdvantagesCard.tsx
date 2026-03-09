@@ -8,7 +8,7 @@ interface Props {
 }
 export function AdvantagesCard({ src, title, subtitle, alt }: Props) {
 	return (
-		<div className='flex flex-col py-4 sm:py-9 md:py-10 lg:py-11 xl:py-12 px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8 bg-gray gap-4 w-full'>
+		<div className='flex flex-col py-4 sm:py-9 md:py-10 lg:py-11 xl:py-12 px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8 bg-grey gap-4 w-full'>
 			<Image
 				src={src}
 				alt={alt}
@@ -20,7 +20,7 @@ export function AdvantagesCard({ src, title, subtitle, alt }: Props) {
 				<h5 className='text-14 sm:text-16 md:text-18 lg:text-20 font-500 leading-140'>
 					{title}
 				</h5>
-				<p className='text-12  md:text-14 font-400 leading-170 text-description_gray'>
+				<p className='text-12  md:text-14 font-400 leading-170 text-description_grey'>
 					{subtitle}
 				</p>
 			</div>

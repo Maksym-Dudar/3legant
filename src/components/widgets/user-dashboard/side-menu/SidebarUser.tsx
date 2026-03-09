@@ -26,7 +26,7 @@ export function SidebarUser({
 						className='object-cover'
 					/>
 				</div>
-				<div className='absolute bottom-4 right-4 border-2 border-gray flex w-7 h-7 rounded-full bg-black cursor-pointer items-center justify-center'>
+				<div className='absolute bottom-4 right-4 border-2 border-grey flex w-7 h-7 rounded-full bg-black cursor-pointer items-center justify-center'>
 					<Image
 						src={IMAGE.CAMERA.src}
 						alt={IMAGE.CAMERA.alt}

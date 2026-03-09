@@ -10,15 +10,15 @@ module.exports = {
 			colors: {
 				black: "var(--black)",
 				white: "var(--white)",
-				description_gray: "var(--description-gray)",
+				description_grey: "var(--description-grey)",
 				description_white: "var(--description-white)",
 				subtitle: "var(--subtitle)",
 				not_active: "var(--not-active)",
 				action: "var(--action)",
-				white_gray: "var(--white-gray)",
+				white_grey: "var(--white-grey)",
 				green: "#38CB89",
 				red: "#DC1616",
-				gray: "#F3F5F7",
+				grey: "#F3F5F7",
 			},
 			spacing: {
 				"1/2": "50%",
@@ -48,8 +48,8 @@ module.exports = {
 			black: "#141718",
 			white: "#fff",
 			green: "#38CB89",
-			gray: "#F3F5F7",
-			dark_gray: "#6C7275",
+			grey: "#F3F5F7",
+			dark_grey: "#6C7275",
 			email_form: "#F2F4F5",
 			pale_red: "#F5B8B2",
 			red: "#DC1616",
@@ -59,7 +59,7 @@ module.exports = {
 			"2/3": "0.075rem",
 			1: "1px",
 			2: "2px",
-			3: "3px"
+			3: "3px",
 		},
 		fontSize: {
 			8: "0.5rem",

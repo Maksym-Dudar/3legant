@@ -30,6 +30,7 @@ export function ShopFilter() {
 			<div className='flex gap-4 lg:gap-6 flex-col md:flex-row w-full'>
 				<CustomSelect
 					label='CATEGORIES'
+					labelVersion='thin'
 					options={categoryOptions}
 					value={categoryValue}
 					className='w-full md:w-44 lg:w-52 xl:w-60'
@@ -44,6 +45,7 @@ export function ShopFilter() {
 				/>
 				<CustomSelect
 					label='PRICE'
+					labelVersion='thin'
 					options={priceOptions}
 					value={priceValue}
 					className='w-full md:w-44 lg:w-52 xl:w-60'
@@ -59,6 +61,7 @@ export function ShopFilter() {
 			</div>
 			<CustomSelect
 				label='Sort by'
+				labelVersion='thin'
 				options={sortOptions}
 				value={sortValue}
 				className='w-full md:w-52 xl:w-60'

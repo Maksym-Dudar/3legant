@@ -6,7 +6,7 @@ const SALE = 35;
 
 export function DiscountBanner() {
 	return (
-		<section className='flex flex-col md:flex-row bg-gray'>
+		<section className='flex flex-col md:flex-row bg-grey'>
 			<Image
 				src={IMAGE.DISCOUNT_BANNER.src}
 				alt={IMAGE.DISCOUNT_BANNER.alt}
@@ -25,7 +25,7 @@ export function DiscountBanner() {
 						<br />
 						New lower prices!
 					</h4>
-					<p className='font-inter text-description_gray text-14 sm:text-16 md:text-18 lg:text-20 font-400 leading-160'>
+					<p className='font-inter text-description_grey text-14 sm:text-16 md:text-18 lg:text-20 font-400 leading-160'>
 						It’s more affordable than ever to give every
 						<br /> room in your home a stylish makeover
 					</p>

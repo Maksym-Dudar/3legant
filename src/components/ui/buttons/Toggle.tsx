@@ -13,7 +13,7 @@ export default function IosToggle({ checked, onChange }: Props) {
 			aria-checked={checked}
 			onClick={() => onChange(!checked)}
 			className={`relative inline-flex h-6 w-11 pl-[2px] items-center rounded-full transition-colors
-    			${checked ? "bg-green-500 shadow-md" : "bg-gray-300 shadow-inner"}`}
+    			${checked ? "bg-green-500 shadow-md" : "bg-grey-300 shadow-inner"}`}
 		>
 			<span
 				className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition

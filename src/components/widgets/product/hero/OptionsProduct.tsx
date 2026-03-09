@@ -14,7 +14,7 @@ export function OptionsProduct({ measurements, color, same }: Props) {
 	return (
 		<section className='flex flex-col py-6 gap-6'>
 			<div className='flex flex-col gap-2'>
-				<p className='font-inter font-600 text-14 md:text-16 leading-160 text-descriptiongray'>
+				<p className='font-inter font-600 text-14 md:text-16 leading-160 text-descriptiongrey'>
 					Measurements
 				</p>
 				<p className='font-inter font-300 text-18 md:text-20 leading-180 text-black'>
@@ -24,7 +24,7 @@ export function OptionsProduct({ measurements, color, same }: Props) {
 			<div className='flex flex-col gap-4'>
 				<div className='flex flex-col gap-2'>
 					<div className='flex items-center gap-2'>
-						<p className='font-inter font-600 text-14 md:text-16 leading-160 text-descriptiongray'>
+						<p className='font-inter font-600 text-14 md:text-16 leading-160 text-descriptiongrey'>
 							Choose Color
 						</p>
 						<Image

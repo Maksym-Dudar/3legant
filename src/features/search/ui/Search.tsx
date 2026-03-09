@@ -17,7 +17,7 @@ export function Search() {
 					id='search'
 					type='text'
 					placeholder='Search'
-					className=' flex text-14 font-400 leading-160 font-inter pl-11 py-2 border border-description_gray rounded-lg w-full z-50'
+					className=' flex text-14 font-400 leading-160 font-inter pl-11 py-2 border border-description_grey rounded-lg w-full z-50'
 					value={search}
 					onChange={handleInputChange}
 				/>
@@ -33,7 +33,7 @@ export function Search() {
 				</button>
 			</div>
 			{searchOptions.length > 0 && (
-				<ul className='absolute flex flex-col w-full bg-gray z-50 rounded-2xl border-1 border-gray py-3 top-7'>
+				<ul className='absolute flex flex-col w-full bg-grey z-50 rounded-2xl border-1 border-grey py-3 top-7'>
 					{searchOptions.map((item) => (
 						<li
 							key={item.groupId}

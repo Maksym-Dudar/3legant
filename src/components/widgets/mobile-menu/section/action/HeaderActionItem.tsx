@@ -8,7 +8,7 @@ interface Props extends IPage, IImage {
 
 export function HeaderActionItem({ label, link, src, alt, size }: Props) {
 	return (
-		<div className='w-full border-b-1 border-white_gray pb-2'>
+		<div className='w-full border-b-1 border-white_grey pb-2'>
 			<Link
 				href={link}
 				className='flex flex-row justify-between text-16 font-500 leading-170'

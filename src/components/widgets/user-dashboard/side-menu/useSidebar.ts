@@ -1,5 +1,6 @@
 import { IMAGE, NEXT_PUBLIC_BACKEND_URL, PAGE } from "@/config";
 import { useErrorToast } from "@/hooks/useErrorToast";
+import { useUser } from "@/provider/UserContext";
 import { authService, userService } from "@/services/requests";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -8,10 +9,7 @@ import { useState } from "react";
 export function useSidebar() {
   	const router = useRouter();
 		const [localError, setLocalError] = useState<Error | null>(null);
-		const { data, isError, error } = useQuery({
-			queryKey: ["user"],
-			queryFn: ({ signal }) => userService.getUser(signal),
-		});
+	const { userData, isError, error } = useUser();
 		const logoutMutation = useMutation({
 			mutationKey: ["logout"],
 			mutationFn: () => authService.logOut(),
@@ -30,8 +28,8 @@ export function useSidebar() {
 			isError,
 		);
 
-		const userAvatar = data?.avatar
-			? NEXT_PUBLIC_BACKEND_URL + data.avatar
+		const userAvatar = userData?.avatar
+			? NEXT_PUBLIC_BACKEND_URL + userData.avatar
 			: IMAGE.USER_ICON.src;
 
 		function logOut() {
@@ -51,5 +49,12 @@ export function useSidebar() {
 			closeError();
 			setLocalError(null);
 		};
-  return { data, errorMessage, userAvatar, logOut, handleFileChange, onCloseError };
+  return {
+		userData,
+		errorMessage,
+		userAvatar,
+		logOut,
+		handleFileChange,
+		onCloseError,
+	};
 }

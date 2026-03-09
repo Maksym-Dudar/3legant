@@ -36,7 +36,7 @@ export function SignUp() {
 			>
 				<section className='flex flex-col gap-6'>
 					<h2 className='text-40 font-500 leading-110'>{PAGE.SIGN_UP.label}</h2>
-					<p className='text-16 font-400 leading-160 font-inter text-description_gray'>
+					<p className='text-16 font-400 leading-160 font-inter text-description_grey'>
 						Already have an account?{" "}
 						<Link href={PAGE.SIGN_IN.link} className='text-green'>
 							{PAGE.SIGN_IN.label}

@@ -23,9 +23,9 @@ const cartStore: StateCreator<ICartStore> = (set) => ({
 		});
 	},
 
-	removeProduct: (item) => {
+	removeProduct: (id) => {
 		set((state) => {
-			const cart = state.cart.filter((val) => val.id !== item.id);
+			const cart = state.cart.filter((val) => val.id !== id);
 			return { ...state, cart };
 		});
 	},

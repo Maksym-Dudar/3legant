@@ -14,7 +14,7 @@ export function MobileNavigationItem({ item, isActive, close }: Props) {
 		? "hover:scale-105 text-not_active"
 		: "text-black";
 	return (
-		<div className='w-full border-b-1 border-white_gray pb-2'>
+		<div className='w-full border-b-1 border-white_grey pb-2'>
 			<Link
 				href={item.link}
 				className={twMerge(baseStyle, activeStyle)}

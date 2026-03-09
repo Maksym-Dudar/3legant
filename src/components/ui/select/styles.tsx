@@ -19,7 +19,7 @@ export const createSelectBaseStyles = <T,>(): StylesConfig<
 			? "#000"
 			: isFocused
 				? "var(--black)"
-				: "var(--description-gray)",
+				: "var(--description-grey)",
 		cursor: "pointer",
 	}),
 });
@@ -47,7 +47,7 @@ export const createSelectVariantStyles = <T,>(): Record<
 
 export const baseLayoutStyles: { div: string; p: string } = {
 	div: "flex ",
-	p: "text-14 sm:text-16 font-400 leading-160 font-inter text-description_gray",
+	p: "text-14 sm:text-16 font-400 leading-160 font-inter text-description_grey",
 };
 export const layoutStyles: Record<SelectVariant, { div: string; p: string }> = {
 	outlined: {

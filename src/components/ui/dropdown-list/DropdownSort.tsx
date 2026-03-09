@@ -48,7 +48,7 @@
 // 					option: ({ isFocused, isSelected }) =>
 // 						[
 // 							"font-inter text-16 font-500 leading-160 py-1 pl-4 cursor-pointer",
-// 							isSelected && "text-descriptiongray pointer-events-none",
+// 							isSelected && "text-descriptiongrey pointer-events-none",
 // 							!isSelected && isFocused && "bg-black text-white",
 // 						]
 // 							.filter(Boolean)

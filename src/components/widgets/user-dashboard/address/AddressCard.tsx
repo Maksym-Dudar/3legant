@@ -13,7 +13,7 @@ interface Props {
 
 export function AddressCard({ name, phoneNumber, address, id }: Props) {
 	return (
-		<div className='w-full h-fit rounded-lg border-1 border-description_gray gap-2 p-4 justify-between'>
+		<div className='w-full h-fit rounded-lg border-1 border-description_grey gap-2 p-4 justify-between'>
 			<section className='flex flex-row w-full justify-between'>
 				<h6 className='text-16 font-600 leading-160 text-black'>{name}</h6>
 				<button className='flex flex-row gap-2 items-center'>
@@ -25,8 +25,10 @@ export function AddressCard({ name, phoneNumber, address, id }: Props) {
 						className='object-cover'
 					/>
 					<Link
-						href={PAGE.AddressEdit(id).link + `?mode=${Mode.EDIT}&addressId=${id}`}
-						className='text-16 font-600 leading-160 text-description_gray'
+						href={
+							PAGE.AddressEdit(id).link + `?mode=${Mode.EDIT}&addressId=${id}`
+						}
+						className='text-16 font-600 leading-160 text-description_grey'
 					>
 						Edit
 					</Link>

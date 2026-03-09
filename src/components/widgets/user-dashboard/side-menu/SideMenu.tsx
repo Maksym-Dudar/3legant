@@ -31,7 +31,7 @@ export function SideMenu({ pathname, logOut }: Props) {
 				isActive={!!match(pathname)(PAGE.WISHLIST.link)}
 			/>
 			<button
-				className='py-1 text-description_gray font-inter font-500 text-18 sm:text-16 leading-160 cursor-pointer'
+				className='py-1 text-description_grey font-inter font-500 text-18 sm:text-16 leading-160 cursor-pointer'
 				onClick={logOut}
 			>
 				Log Out

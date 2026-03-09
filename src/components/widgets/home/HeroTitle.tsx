@@ -11,7 +11,7 @@ export default function HeroTitle() {
 					<br />
 					Simply Better
 				</h2>
-				<div className='text-description_gray items-center justify-center font-inter w-4/5 sm:w-2/5 lg:w-3/12'>
+				<div className='text-description_grey items-center justify-center font-inter w-4/5 sm:w-2/5 lg:w-3/12'>
 					<strong className='text-black text-16 font-600 leading-160'>
 						3legant
 					</strong>{" "}

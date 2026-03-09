@@ -12,7 +12,7 @@ export function SideMenuLink({ title, link, isActive }: Props) {
 	const baseStyle = "font-inter font-500 text-18 sm:text-16 leading-160 ";
 	const activeStyleText = isActive
 		? "text-black"
-		: "text-description_gray hover:text-black hover:opacity-80";
+		: "text-description_grey hover:text-black hover:opacity-80";
 
 	return (
 		<li

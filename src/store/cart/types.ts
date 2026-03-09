@@ -8,7 +8,7 @@ export interface IInitialCartStore {
 
 export interface IAction {
 	addProduct: (item: ICartStoreItem) => void;
-	removeProduct: (item: ICartStoreItem) => void;
+	removeProduct: (id: number) => void;
 	decreaseItemCount: (item: ICartStoreItem) => void;
 }
 

@@ -27,7 +27,7 @@ export function CustomComment() {
 				</h5>
 				<StarRating rating={customReting} setRating={setCustomReting} />
 			</div>
-			<div className='flex flex-row w-full h-16 border-2 rounded-3xl border-whitegray items-center justify-between p-6 pr-4'>
+			<div className='flex flex-row w-full h-16 border-2 rounded-3xl border-whitegrey items-center justify-between p-6 pr-4'>
 				<textarea
 					className='w-fit md:w-3/5'
 					onChange={(val) => setCommentText(val.target.value)}

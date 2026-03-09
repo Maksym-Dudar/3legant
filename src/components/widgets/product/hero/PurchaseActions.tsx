@@ -4,6 +4,7 @@ import { ButtonAction } from "@/components/ui";
 import { useState } from "react";
 import { IMAGE } from "@/config/image.config";
 import { useWishlistStore } from "@/store/wishlist/store";
+import { Counter } from "@/components/ui/buttons/Counter";
 
 interface Props {
 	id: number;
@@ -16,9 +17,15 @@ export function PurchaseActions({ id }: Props) {
 	const itemToAddBag = { id: id, quantity: counter };
 
 	return (
-		<section className='flex flex-col gap-4 py-8 border-b border-gray'>
+		<section className='flex flex-col gap-4 py-8 border-b border-grey'>
 			<div className='flex gap-6'>
-				<div className='flex flex-row text-18 md:text-20 font-300 leading-170 w-fit px-3 md:px-4 py-[6px] md:py-3 gap-6 bg-gray rounded-lg'>
+				<Counter
+					variant='grey'
+					quantity={counter}
+					increment={() => setCount((prev) => prev + 1)}
+					decrement={() => setCount((prev) => (prev > 1 ? prev - 1 : prev))}
+				/>
+				{/* <div className='flex flex-row text-18 md:text-20 font-300 leading-170 w-fit px-3 md:px-4 py-1.5 md:py-3 gap-6 bg-grey rounded-lg'>
 					<button
 						onClick={() => setCount((prev) => (prev > 1 ? prev - 1 : prev))}
 					>
@@ -26,7 +33,7 @@ export function PurchaseActions({ id }: Props) {
 					</button>
 					<p className='flex w-1 justify-center'> {counter}</p>
 					<button onClick={() => setCount((prev) => prev + 1)}>+</button>
-				</div>
+				</div> */}
 				<button
 					onClick={() => toggleProduct(id)}
 					className='flex w-full text-center border border-black py-1 sm:py-2 rounded-lg justify-center items-center gap-2'

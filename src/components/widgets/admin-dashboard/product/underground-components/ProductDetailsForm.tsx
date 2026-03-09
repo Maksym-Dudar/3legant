@@ -40,7 +40,7 @@ export function ProductDetailsForm({
 				styles={{
 					control: (base) => ({
 						...base,
-						border: "1px solid var(--descriptiongray)",
+						border: "1px solid var(--descriptiongrey)",
 						borderRadius: "6px",
 						padding: "0 7px",
 						color: "var(--black)",

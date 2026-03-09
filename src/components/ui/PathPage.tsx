@@ -11,7 +11,7 @@ export default function PathPage({ label, src }: Props) {
 	return (
 		<div className='flex items-center gap-2'>
 			<Link
-				className='font-inter text-description_gray text-12 md:text-14'
+				className='font-inter text-description_grey text-12 md:text-14'
 				href={src}
 			>
 				{label}

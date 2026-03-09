@@ -39,7 +39,7 @@ export function TriggeredSearch() {
 		                overflow-hidden transition-all duration-300 ease-in-out
 		                ${
 											isOpen
-												? "w-40 opacity-100 pr-10 pl-4 py-1 border-description_gray"
+												? "w-40 opacity-100 pr-10 pl-4 py-1 border-description_grey"
 												: "w-0 opacity-0 p-0 border-transparent"
 										}
 	                `}
@@ -58,9 +58,7 @@ export function TriggeredSearch() {
 				<button
 					onClick={handleSearchClick}
 					className={`absolute h-fit w-6 top-1/2 -translate-y-1/2 z-30 ${
-						isOpen
-							? "right-3"
-							: "right-0"
+						isOpen ? "right-3" : "right-0"
 					}`}
 				>
 					<Image
@@ -72,7 +70,7 @@ export function TriggeredSearch() {
 				</button>
 			</div>
 			{searchOptions.length > 0 && (
-				<ul className='absolute flex flex-col w-full bg-gray z-50 rounded-2xl border-1 border-gray py-3 top-7'>
+				<ul className='absolute flex flex-col w-full bg-grey z-50 rounded-2xl border-1 border-grey py-3 top-7'>
 					{searchOptions.map((item) => (
 						<li
 							key={item.groupId}
