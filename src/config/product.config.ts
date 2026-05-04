@@ -11,6 +11,19 @@ export const Category = {
 
 export type Category = (typeof Category)[keyof typeof Category];
 
+export const BackendCategory = {
+	All: "ALL",
+	LivingRoom: "LIVING_ROOM",
+	Bedroom: "BEDROOM",
+	Kitchen: "KITCHEN",
+	Bathroom: "BATHROOM",
+	Office: "OFFICE",
+} as const;
+
+export type BackendCategory =
+	(typeof BackendCategory)[keyof typeof BackendCategory];
+
+
 export const CategoryFilter = {
 	All: "All Room",
 	...Category,
@@ -35,14 +48,15 @@ export interface IPriseValue {
 }
 
 export const PriceRanges: Record<Prices, IPriseValue> = {
-	[Prices.All]: { min: 0, max: Infinity },
+	[Prices.All]: { min: 0, max: 9999999999999999 },
 	[Prices.Price_to_100]: { min: 0, max: 100 },
 	[Prices.Price_to_200]: { min: 100, max: 200 },
 	[Prices.Price_to_300]: { min: 200, max: 300 },
 	[Prices.Price_to_400]: { min: 300, max: 400 },
 	[Prices.Price_to_500]: { min: 400, max: 500 },
-	[Prices.Price_over_500]: { min: 500, max: Infinity },
+	[Prices.Price_over_500]: { min: 500, max: 99999999999999999 },
 };
+// todo
 
 export type PriceOption = {
 	label: Prices;

@@ -28,7 +28,8 @@ export function FooterCard({
 						<Image
 							src={IMAGE.STAR_ACTIVE.src}
 							alt={IMAGE.STAR_ACTIVE.alt}
-							className='w-3 h-3 md:w-5 md:h-5'
+							width={12}
+							height={12}
 							key={i}
 						/>
 					))}

@@ -1,4 +1,4 @@
-import type { Category, CategoryFilter, Sorts } from "@/config/product.config";
+import type { Category, BackendCategory, Sorts } from "@/config/product.config";
 
 export interface IProductCard {
 	id: number;
@@ -47,7 +47,7 @@ export interface IProductParams {
 	page?: number;
 	take: number;
 	sort?: Sorts;
-	category?: CategoryFilter;
+	category?: BackendCategory;
 	maxPrice?: number;
 	minPrice?: number;
 	groupId?: number | null;
@@ -59,4 +59,29 @@ export interface IWishlist {
 	price: number;
 	image: string;
 	title: string;
+}
+
+export interface IProductPage {
+	id: number;
+	title: string;
+	description: string;
+	price: number;
+	priceWithSale: number;
+	sale: number;
+	rating: number;
+	isNew: boolean;
+	offerExpires: Date;
+	measurements: string;
+	sameProduct: ISameColorCard[];
+	color: string;
+	image: string[];
+	category: Category[];
+	reviews: number;
+}
+
+export interface ISameColorCard {
+	color: string;
+	id: number;
+	image: string;
+	isActive: boolean;
 }

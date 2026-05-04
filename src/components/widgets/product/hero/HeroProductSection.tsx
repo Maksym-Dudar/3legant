@@ -1,32 +1,45 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { SwiperSectionProduct } from "./SwiperSectionProduct";
 import { useQuery } from "@tanstack/react-query";
 import { Error, Loading } from "../..";
-import PadingXLayouts from "@/components/layout/PaddingXLayouts";
-import type { IProductPage } from "../types";
+import PaddingXLayouts from "@/components/layout/PaddingXLayouts";
 import { HeaderProduct } from "../HeaderProduct";
 import { InfoProduct } from "./InfoProduct";
 import { CountdownTimer } from "./CountdownTimer";
+
+import { MetaDataProduct } from "./MetaDataProduct";
+import { productService } from "@/services/requests";
+import { useErrorToast } from "@/hooks/useErrorToast";
+import { ErrorToast } from "@/components/ui";
+import { SwiperSectionProduct } from "./SwiperSectionProduct";
 import { OptionsProduct } from "./OptionsProduct";
 import { PurchaseActions } from "./PurchaseActions";
-import { MetaDataProduct } from "./MetaDataProduct";
-import { fetchCardPage } from "@/services/requests/product";
+import type { IProductPage } from "@/shared/types/product/product.type";
 
 export function HeroProductSection() {
 	const params = useParams();
 	const id = Number(params.id);
-	const { data, isLoading, error } = useQuery<IProductPage>({
-		queryKey: [id],
-		queryFn: fetchCardPage,
-	});
+	const { data, isLoading, error, isError } = useQuery<IProductPage>({
+		queryKey: ["product", id],
+		queryFn: ({ signal }) => productService.getDetails(id, signal),
+		enabled: Number.isFinite(id),
+    });
+    console.log(data)
 
-	if (error) return <Error masage={error.message} />;
+	const { errorMessage, closeError } = useErrorToast(error, isError);
+
+	if (!Number.isFinite(id)) {
+		return <Error message='Invalid product id' />;
+	}
+
 	if (isLoading) return <Loading />;
 
 	return (
-		<PadingXLayouts>
+		<>
+			{errorMessage && (
+				<ErrorToast message={errorMessage} onClose={closeError} />
+			)}
 			{data && (
 				<div className='flex flex-col w-full'>
 					<HeaderProduct category={data.category[0]} nameProduct={data.title} />
@@ -45,7 +58,7 @@ export function HeroProductSection() {
 								reviews={data.reviews}
 								description={data.description}
 								price={data.price}
-								priceWithoutSale={data.priceWithoutSale}
+								priceWithSale={data.priceWithSale}
 								sale={!!data.sale}
 							/>
 							{data.sale && (
@@ -56,7 +69,7 @@ export function HeroProductSection() {
 							)}
 							<OptionsProduct
 								color={data.color}
-								same={data.same}
+								same={data.sameProduct}
 								measurements={data.measurements}
 							/>
 							<PurchaseActions id={id} />
@@ -65,6 +78,6 @@ export function HeroProductSection() {
 					</div>
 				</div>
 			)}
-		</PadingXLayouts>
+		</>
 	);
 }

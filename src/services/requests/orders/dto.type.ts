@@ -1,6 +1,21 @@
-export interface IOrdersDto {
+import type { IDeliveryOptions } from "@/shared/types/orders/orders";
+
+export interface IGetUserOrdersDto {
+	total: number;
+	subtotal: number;
+	shippingMethod: IDeliveryOptions;
 	id: number;
+	userId: number;
+	addressId: number | null;
 	createdAt: Date;
-	status: string;
-	price: number;
+	status:
+		| "PENDING"
+		| "CONFIRMED"
+		| "PROCESSING"
+		| "SHIPPED"
+		| "DELIVERED"
+		| "COMPLETED"
+		| "CANCELLED"
+		| "RETURNED"
+		| "FAILED"; // todo
 }

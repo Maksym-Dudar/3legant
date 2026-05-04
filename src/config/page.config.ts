@@ -1,14 +1,13 @@
 import type { CategoryFilter } from "./product.config";
 
 export interface IPage {
-    link: string;
-    label: string;
+	link: string;
+	label: string;
 }
 
-interface ISocial{
-    link: string
+interface ISocial {
+	link: string;
 }
-
 
 class PagesConfig {
 	HOME: IPage = {
@@ -63,17 +62,16 @@ class PagesConfig {
 		label: "Terms of use",
 	};
 	CART: IPage = {
-		link: "/cart",
+		link: "/checkout/cart",
 		label: "Cart",
 	};
-	CHECKOUT_DETAILS: IPage = {
-		link: "/checkout/details",
-		label: "Checkout details",
-	};
-	CHECKOUT_COMPLETE: IPage = {
-		link: "/checkout/complete",
-		label: "Checkout complete",
-	};
+	CHECKOUT_DETAILS(id: number) {
+		return `/checkout/details?orderId=${id}`;
+	}
+
+	CHECKOUT_COMPLETE(id: number) {
+		return `/checkout/complete?orderId=${id}`;
+	}
 	FORGOT_PASSWORD: IPage = {
 		link: "/forgot-password",
 		label: "Forgot password",
@@ -114,13 +112,13 @@ class PagesConfig {
 		link: `${this.ADMIN_DASHBOARD.link}/create-product`,
 		label: "Product",
 	};
-	ADMIN_ORDERS: IPage = {
-		link: `${this.ADMIN_DASHBOARD.link}/orders`,
-		label: "Orders",
+	ADMIN_SHIPPING_METHOD: IPage = {
+		link: `${this.ADMIN_DASHBOARD.link}/create-shipping-method`,
+		label: "Shipping method",
 	};
 }
 
-export const PAGE = new PagesConfig()
+export const PAGE = new PagesConfig();
 
 export const NAVIGATION = [PAGE.HOME, PAGE.SHOP, PAGE.BLOG, PAGE.CONTACT_US];
 export const TERMS_PRIVACY = [PAGE.PRIVACY_POLICY, PAGE.TERMS_OF_USE];

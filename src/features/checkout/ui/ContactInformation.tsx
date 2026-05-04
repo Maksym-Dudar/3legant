@@ -5,9 +5,10 @@ import type { CheckoutSchema } from "../model/checkout.schema";
 interface Props {
 	register: UseFormRegister<CheckoutSchema>;
 	errors: FieldErrors<CheckoutSchema>;
+	disabled: boolean;
 }
 
-export function ContactInformation({ register, errors }: Props) {
+export function ContactInformation({ register, errors, disabled }: Props) {
 	return (
 		<section className='flex flex-col gap-3 border-1 border-description_gray rounded-lg pt-10 pb-6 px-6'>
 			<h5 className='text-20 font-500 leading-140 pb-2'>Contact Information</h5>
@@ -16,6 +17,7 @@ export function ContactInformation({ register, errors }: Props) {
 					variant='outlined'
 					label='FIRST NAME'
 					placeholder='First name'
+					disabled={disabled}
 					errorMessage={errors.firstName?.message}
 					{...register("firstName")}
 				/>
@@ -23,6 +25,7 @@ export function ContactInformation({ register, errors }: Props) {
 					variant='outlined'
 					label='LAST NAME'
 					placeholder='Last name'
+					disabled={disabled}
 					errorMessage={errors.lastName?.message}
 					{...register("lastName")}
 				/>
@@ -31,6 +34,7 @@ export function ContactInformation({ register, errors }: Props) {
 				variant='outlined'
 				label='PHONE NUMBER'
 				placeholder='Phone number'
+				disabled={disabled}
 				errorMessage={errors.phone?.message}
 				{...register("phone")}
 			/>
@@ -38,6 +42,7 @@ export function ContactInformation({ register, errors }: Props) {
 				variant='outlined'
 				label='EMAIL ADDRESS'
 				placeholder='Your Email'
+				disabled={disabled}
 				errorMessage={errors.email?.message}
 				{...register("email")}
 			/>

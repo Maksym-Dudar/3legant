@@ -20,6 +20,9 @@ module.exports = {
 				red: "#DC1616",
 				grey: "#F3F5F7",
 			},
+			boxShadow: {
+				soft: "0 32px 48px rgba(18,18,18,0.10)",
+			},
 			spacing: {
 				"1/2": "50%",
 				"40%": "38%",

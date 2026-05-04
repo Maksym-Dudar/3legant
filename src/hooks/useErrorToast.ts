@@ -13,5 +13,5 @@ export function useErrorToast(error: Error | null, isError?: boolean) {
 
 	const closeError = () => setErrorMessage(null);
 
-	return { errorMessage, closeError };
+	return { errorMessage, closeError, setErrorMessage };
 }

@@ -7,7 +7,6 @@ import { BigRow } from "./BigRow";
 import ColumnTitle from "@/components/ui/table/ColumnTitle";
 import { useCart } from "../hook/useCart";
 import { CartFooter } from "./CartFooter";
-import { deliveryOptions } from "@/constants/delivery.constants";
 import Radio from "@/components/ui/inputs/Radio";
 import { useWindowSize } from "@/hooks";
 import { lgSize, smSize, xlSize } from "@/constants/windowSize";
@@ -25,6 +24,7 @@ export function CartPage() {
 		total,
 		subtotal,
 		onCheckout,
+		deliveryMethods,
 	} = useCart();
 	const { width } = useWindowSize();
 	const { errorMessage, closeError } = useErrorToast(error, isError);
@@ -77,20 +77,20 @@ export function CartPage() {
 					</thead>
 					<tbody>{rows}</tbody>
 				</table>
-				<aside className='flex flex-col gap-4 p-6 sm:p-4 lg:p-6 border-1 border-description_gray rounded-lg min-w-full lg:min-w-80 xl:min-w-90'>
+				<aside className='flex flex-col gap-4 p-6 sm:p-4 lg:p-6 border-1 border-description_gray rounded-lg min-w-full lg:min-w-80 xl:min-w-90 h-fit'>
 					<h3 className='text-18 sm:text-18 lg:text-20 font-500 leading-140'>
 						Cart summary
 					</h3>
 					<div className='flex flex-col gap-3 w-full'>
-						{deliveryOptions.map((item) => (
+						{deliveryMethods?.map((item) => (
 							<Radio
-								key={item.value}
+								key={item.method}
 								name='shipping'
-								value={item.value}
-								checked={shippingMethod === item.value}
-								onChange={() => setShippingMethod(item.value)}
+								value={item.method}
+								checked={shippingMethod?.method === item.method}
+								onChange={() => setShippingMethod(item)}
 								label={item.label}
-								valueName={item.valueName}
+								valueName={item.label}
 							/>
 						))}
 					</div>

@@ -9,4 +9,4 @@ export interface IUser {
 export type IUserBasic = Partial<IUser> & Pick<IUser, "id" | "email" | "firstName">
 	
 
-export type IPartialUser = Partial<IUser>
+export type IPartialUser = Omit<Partial<IUser>, "id" | "email">

@@ -8,6 +8,7 @@ interface Props {
 	subtotal: number;
 	total: number;
 	onCheckout: () => void;
+	close?: () => void;
 	isHaveButtonLink?: boolean;
 }
 export function CartFooter({
@@ -16,10 +17,11 @@ export function CartFooter({
 	total,
 	isHaveButtonLink = true,
 	onCheckout,
+	close,
 }: Props) {
 	const subtotalText = isLoading ? "Loading..." : subtotal;
 	const totalText = isLoading ? "Loading..." : total;
-	const buttonPadding = isHaveButtonLink ? "pt-4" : "pt-8"
+	const buttonPadding = isHaveButtonLink ? "pt-4" : "pt-8";
 	return (
 		<section className='flex flex-col w-full'>
 			<div className='flex flex-row justify-between border-b border-grey py-3'>
@@ -45,7 +47,12 @@ export function CartFooter({
 					type='button'
 					text='Checkout'
 					className='py-2 lg:py-3'
-					onClick={onCheckout}
+					onClick={() => {
+						if (close) {
+							close();
+						}
+						onCheckout();
+					}}
 					disabled={isLoading}
 				/>
 				{!!isHaveButtonLink && (
@@ -53,6 +60,7 @@ export function CartFooter({
 						<Link
 							href={PAGE.CART.link}
 							className='flex w-fit pt-2 border-b border-black'
+							onClick={close}
 						>
 							<div className='py-1 pr-1 font-inter text-12 md:text-14 font-600 leading-160 text-black'>
 								{PAGE.CART.label}

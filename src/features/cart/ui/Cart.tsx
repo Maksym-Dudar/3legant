@@ -18,7 +18,7 @@ export function Cart() {
 			{errorMessage && (
 				<ErrorToast message={errorMessage} onClose={closeError} />
 			)}
-			<aside className='flex flex-col justify-between h-full w-full bg-white right-0 py-10 px-6'>
+			<aside className='flex flex-col justify-between h-full w-full overflow-y-scroll bg-white right-0 py-10 px-6'>
 				<div className='flex flex-col gap-4'>
 					<CartHeader close={close} />
 					{!errorMessage && (
@@ -31,6 +31,7 @@ export function Cart() {
 						subtotal={subtotal}
 						total={total}
 						onCheckout={onCheckout}
+						close={close}
 					/>
 				)}
 			</aside>

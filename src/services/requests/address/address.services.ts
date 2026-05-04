@@ -6,7 +6,7 @@ class AddressService {
 	constructor() {}
 
 	async getAllAddress(): Promise<IAddress[]> {
-		return (await instance.get(API.ADDRESS_ALL)).data;
+		return (await instance.get(API.ADDRESS)).data;
 	}
 	async getAddress(id: number): Promise<IAddress> {
 		return (await instance.put(API.getAddressById(id))).data;

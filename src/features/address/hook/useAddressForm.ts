@@ -3,6 +3,7 @@ import type { IAddress, IAddressBase } from "@/shared/types/address/address.type
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getCode, getNames } from "country-list";
 import { useMemo } from "react";
+import { useCreateAddress } from "./useCreateAddress";
 
 interface Props {
 	id?: number;
@@ -30,10 +31,7 @@ export function useAddressForm({ id }: Props) {
 				),
 		[],
 	);
-	const createAddressMutation = useMutation({
-		mutationFn: (payload: IAddressBase) =>
-			addressService.createAddress(payload),
-	});
+	const {createAddressMutation} = useCreateAddress();
 	const updateAddressMutation = useMutation({
 		mutationFn: (payload: UpdateAddressPayload) =>
 			addressService.updateAddress(payload),

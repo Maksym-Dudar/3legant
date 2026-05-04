@@ -1,9 +1,20 @@
+"use client"
+
+import { useCheckout } from "@/features/checkout/hook/useCheckout";
 import { CheckoutPage } from "@/features/checkout/ui/CheckoutPage";
+import PaymentProvider from "@/provider/stripe/StripeProvider";
 
 export default function page() {
+		const {
+			orderData,
+		} = useCheckout();
+	console.log("orderData: ", orderData);
+	if (!orderData || !orderData?.id) return;
 	return (
 		<div>
-			<CheckoutPage />
+			<PaymentProvider orderId={orderData?.id}>
+				<CheckoutPage />
+			</PaymentProvider>
 		</div>
 	);
 }

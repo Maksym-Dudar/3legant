@@ -1,6 +1,9 @@
 "use client";
 
-import Select, { type StylesConfig } from "react-select";
+import Select, {
+	type StylesConfig,
+	type Props as ReactSelectProps,
+} from "react-select";
 import { twMerge } from "tailwind-merge";
 import {
 	baseLayoutStyles,
@@ -13,10 +16,13 @@ import { memo, useId, type JSX } from "react";
 import { Label } from "../inputs/Label";
 import { FieldError } from "../inputs/FieldError";
 
-interface Props<T> {
+interface Props<T, IsMulti extends boolean = false> extends Omit<
+	ReactSelectProps<SelectOption<T>, IsMulti>,
+	"onChange" | "value"
+> {
 	label: string;
 	options: SelectOption<T>[];
-	value: SelectOption<T> | null;
+	value: IsMulti extends true ? SelectOption<T>[] : SelectOption<T> | null;
 	placeholder: string;
 	styleType: SelectVariant;
 	labelVersion?: LabelVariant;
@@ -24,10 +30,13 @@ interface Props<T> {
 	className?: string;
 	isCanHaveError?: boolean;
 	errorMessage?: string;
-	onChange: (val: SelectOption<T> | null) => void;
+	isMulti?: IsMulti;
+	onChange: (
+		val: IsMulti extends true ? SelectOption<T>[] : SelectOption<T> | null,
+	) => void;
 }
 
-function CustomSelect<T>({
+function CustomSelect<T, IsMulti extends boolean = false>({
 	label,
 	options,
 	placeholder,
@@ -38,14 +47,16 @@ function CustomSelect<T>({
 	isDisabled = false,
 	labelVersion = "bold",
 	isCanHaveError = false,
+	isMulti = false as IsMulti,
 	onChange,
-}: Props<T>) {
+	...props
+}: Props<T, IsMulti>) {
 	const id = useId();
 
-	const selectStyles: StylesConfig<SelectOption<T>, false> = {
-		...createSelectBaseStyles<T>(),
-		...createSelectVariantStyles<T>()[styleType],
-	};
+const selectStyles = {
+	...createSelectBaseStyles<T>(),
+	...createSelectVariantStyles<T>()[styleType],
+} as unknown as StylesConfig<SelectOption<T>, IsMulti>;
 
 	return (
 		<div
@@ -55,7 +66,7 @@ function CustomSelect<T>({
 				className,
 			)}
 		>
-			{labelVersion == "bold" ? (
+			{labelVersion === "bold" ? (
 				<Label id={id} label={label} />
 			) : (
 				<label
@@ -67,15 +78,16 @@ function CustomSelect<T>({
 			)}
 
 			<div className='w-full'>
-				<Select<SelectOption<T>, false>
+				<Select<SelectOption<T>, IsMulti>
 					inputId={id}
 					instanceId={id}
 					options={options}
-					value={value}
-					onChange={(val) => onChange(val)}
+					value={value as any} // TS тут любить підкидати через generic
+					onChange={(val) => onChange(val as any)}
 					placeholder={placeholder}
 					styles={selectStyles}
 					isDisabled={isDisabled}
+					isMulti={isMulti}
 					classNames={{
 						singleValue: () =>
 							"text-14 sm:text-16 text-black font-400 leading-160",
@@ -83,11 +95,14 @@ function CustomSelect<T>({
 						menu: () => "text-14 md:text-16 text-description_grey",
 						indicatorSeparator: () => "hidden",
 					}}
+					{...props}
 				/>
 			</div>
-			{!!isCanHaveError && (<FieldError errorMessage={errorMessage} />)}
+			{isCanHaveError && <FieldError errorMessage={errorMessage} />}
 		</div>
 	);
 }
 
-export default memo(CustomSelect) as <T>(props: Props<T>) => JSX.Element;
+export default memo(CustomSelect) as <T, IsMulti extends boolean = false>(
+	props: Props<T, IsMulti>,
+) => JSX.Element;

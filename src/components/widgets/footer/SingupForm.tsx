@@ -18,7 +18,7 @@
 // 			</div>
 // 			<form
 // 				onSubmit={handelSubmit}
-// 				className='flex gap-2 items-center border-b border-descriptiongrey pb-3'
+// 				className='flex gap-2 items-center border-b border-description_grey pb-3'
 // 			>
 // 				<Image
 // 					src={IMAGE.EMAIL.src}
@@ -34,7 +34,7 @@
 // 				/>
 // 				<button
 // 					type='submit'
-// 					className='text-12 sm:text-14 md:text-16 font-500 leading-180 text-descriptiongrey'
+// 					className='text-12 sm:text-14 md:text-16 font-500 leading-180 text-description_grey'
 // 				>
 // 					Signup
 // 				</button>

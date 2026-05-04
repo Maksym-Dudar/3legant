@@ -6,6 +6,7 @@ import type { IProductCard } from "@/shared/types/product/product.type";
 import { useProductCard } from "./useProductCard";
 import { Button } from "@/components/ui";
 import ButtonLike from "@/components/ui/buttons/ButtonLike";
+import { useCartStore } from "@/store/cart/store";
 
 interface Props extends IProductCard {}
 export function ProductCard({
@@ -25,8 +26,10 @@ export function ProductCard({
 		buttonFavoriteRef,
 		toggleWishlist,
 		isInWishlist,
-		addToBag,
 	} = useProductCard({ id });
+	const { addProduct } = useCartStore();
+
+	console.log(image);
 	return (
 		<article
 			className='w-full h-auto'
@@ -46,12 +49,14 @@ export function ProductCard({
 					isActive={isInWishlist}
 					onClick={toggleWishlist}
 				/>
-				<Button
-					ref={buttonRef}
-					text={"Add to cart"}
-					className='absolute bottom-2 md:bottom-4 mx-2 md:mx-4 w-full py-1 md:py-2'
-					onClick={() => addToBag(1)}
-				/>
+				<div className='absolute bottom-2 md:bottom-4w-full px-2 md:px-4 w-full'>
+					<Button
+						ref={buttonRef}
+						text={"Add to cart"}
+						className='w-full py-1 md:py-2'
+						onClick={() => addProduct({ productId: id, quantity: 1 })}
+					/>
+				</div>
 			</div>
 			<FooterCard
 				id={id}

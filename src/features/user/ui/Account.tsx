@@ -10,6 +10,7 @@ import { userService } from "@/services/requests";
 import type { IPartialUser } from "@/shared/types/user/user.type";
 import { Button, ErrorToast } from "@/components/ui";
 import { AccountSchema } from "../model/account.schema";
+import { useState } from "react";
 
 export function Account() {
 	const {
@@ -20,15 +21,25 @@ export function Account() {
 		resolver: zodResolver(AccountSchema),
 	});
 
+	const [error, setError] = useState("");
+
 	const forgotPasswordMutation = useMutation({
 		mutationFn: (data: IPartialUser) => userService.updateUser(data),
+		onError: (error) => setError(error.message),
 	});
-	const { errorMessage, closeError } = useErrorToast(
-		forgotPasswordMutation.error,
-		forgotPasswordMutation.isError,
-	);
+	const { errorMessage, closeError } = useErrorToast(new Error(error), !!error);
 
-	const submit = () => handleSubmit((data) => forgotPasswordMutation.mutate(data));
+	const submit = () =>
+		handleSubmit((data) => {
+			if (data.confirmNewPassword != data.newPassword) {
+				setError("Password don't same");
+			}
+			if (data.confirmNewPassword == data.newPassword && !data.oldPassword) {
+				setError("Please enter old password");
+			}
+			const { email, confirmNewPassword, ...restData } = data;
+			forgotPasswordMutation.mutate(restData);
+		});
 
 	return (
 		<>

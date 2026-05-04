@@ -1,3 +1,8 @@
-export default function calcTotal(subtotal: number, delivery: number, tax:number = 0, coupon: number = 0) {
-	return subtotal * (1 - coupon) + delivery + tax;
+export default function calcTotal(
+	subtotal: number,
+	percent: number,
+	fixedFee: number,
+	coupon: number = 0,
+) {
+	return (subtotal * (1 - coupon)) + (subtotal * percent) + fixedFee ;
 }

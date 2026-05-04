@@ -11,13 +11,13 @@ const cartStore: StateCreator<ICartStore> = (set) => ({
 	addProduct: (item) => {
 		set((state) => {
 			const cart = [...state.cart];
-			const index = cart.findIndex((val) => val.id === item.id);
+			const index = cart.findIndex((val) => val.productId === item.productId);
 			if (index !== -1) {
 				const existing = cart[index];
-				const newQty = Math.max(existing.quantity + 1, item.quantity);
+				const newQty = Math.max(existing.quantity + 1, item.quantity); //todo
 				cart[index] = { ...existing, quantity: newQty };
 			} else {
-				cart.push({ id: item.id, quantity: item.quantity });
+				cart.push({ productId: item.productId, quantity: item.quantity });
 			}
 			return { ...state, cart };
 		});
@@ -25,7 +25,7 @@ const cartStore: StateCreator<ICartStore> = (set) => ({
 
 	removeProduct: (id) => {
 		set((state) => {
-			const cart = state.cart.filter((val) => val.id !== id);
+			const cart = state.cart.filter((val) => val.productId !== id);
 			return { ...state, cart };
 		});
 	},
@@ -33,7 +33,7 @@ const cartStore: StateCreator<ICartStore> = (set) => ({
 	decreaseItemCount: (item) => {
 		set((state) => {
 			const cart = [...state.cart];
-			const index = cart.findIndex((val) => val.id === item.id);
+			const index = cart.findIndex((val) => val.productId === item.productId);
 			if (index !== -1) {
 				const existing = cart[index];
 				const newQty = existing.quantity - 1;

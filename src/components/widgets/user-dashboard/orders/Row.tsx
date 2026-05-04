@@ -4,10 +4,10 @@ interface Props {
 	id: number;
 	createdAt: Date;
 	status: string; // todo status
-	price: number;
+	total: number;
 }
 
-export function Row({ id, createdAt, status, price }: Props) {
+export function Row({ id, createdAt, status, total }: Props) {
 	return (
 		<tr
 			key={id}
@@ -16,7 +16,7 @@ export function Row({ id, createdAt, status, price }: Props) {
 			<Cell children={id} />
 			<Cell children={String(createdAt)} />
 			<Cell children={status} />
-			<Cell children={"$ " + String(price)} />
+			<Cell children={"$ " + String(total)} />
 		</tr>
 	);
 }

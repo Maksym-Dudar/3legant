@@ -28,12 +28,12 @@ export function SwiperSectionProduct({ images, isNew, sale }: Props) {
 			<div className='flex absolute p-3 sm:p-5 z-20'>
 				<div className='flex flex-col gap-2'>
 					{isNew && (
-						<div className='font-inter px-3 sm:px-5 md:px-3 lg:px-5 py-[6px] sm:py-2 md:py-[6px] lg:py-2 bg-white rounded text-14 md:text-16 font-700 leading-100'>
+						<div className='font-inter px-3 sm:px-5 md:px-3 lg:px-5 py-1.5 sm:py-2 md:py-1.5 lg:py-2 bg-white rounded text-14 md:text-16 font-700 leading-100'>
 							NEW
 						</div>
 					)}
 					{sale != 0 && (
-						<div className='font-inter px-3 sm:px-5 md:px-3 lg:px-5 py-[6px] sm:py-2 md:py-[6px] lg:py-2 bg-green rounded text-center text-white text-14 md:text-16 font-700 leading-100'>
+						<div className='font-inter px-3 sm:px-5 md:px-3 lg:px-5 py-1.5 sm:py-2 md:py-1.5 lg:py-2 bg-green rounded text-center text-white text-14 md:text-16 font-700 leading-100'>
 							-{(Number(sale) * 100).toFixed()}%
 						</div>
 					)}
@@ -64,18 +64,22 @@ export function SwiperSectionProduct({ images, isNew, sale }: Props) {
 				))}
 				<div className='prev rotate-180 absolute top-40% translate-y-1/2 z-10 left-6 lg:left-8 rounded-full bg-white p-2.5 cursor-pointer'>
 					<Image
-						src={IMAGE.ARROWBLACK.src}
-						alt={IMAGE.ARROWBLACK.alt}
-						width={buttonSize}
-						height={buttonSize}
+						src={IMAGE.ARROW_BLACK.src}
+						alt={IMAGE.ARROW_BLACK.alt}
+						width={0}
+						height={0}
+						sizes='100vw'
+						className='w-7 h-7 lg:w-8 lg:h-8'
 					/>
 				</div>
 				<div className='next absolute top-40% translate-y-1/2 z-10 right-6 lg:right-8 rounded-full bg-white p-2.5 cursor-pointer'>
 					<Image
-						src={IMAGE.ARROWBLACK.src}
-						alt={IMAGE.ARROWBLACK.alt}
-						width={buttonSize}
-						height={buttonSize}
+						src={IMAGE.ARROW_BLACK.src}
+						alt={IMAGE.ARROW_BLACK.alt}
+						width={0}
+						height={0}
+						sizes='100vw'
+						className='w-7 h-7 lg:w-8 lg:h-8'
 					/>
 				</div>
 			</Swiper>

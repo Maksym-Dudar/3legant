@@ -1,4 +1,4 @@
-import { passwordSchema } from "@/shared/model/password.schems";
+import { passwordSchema } from "@/shared/model/password.schema";
 import { z } from "zod";
 
 export const SignInSchema = z.object({

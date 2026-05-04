@@ -17,18 +17,16 @@ export function BigRow({ id, image, price, title, color }: Props) {
 	const { addProduct, decreaseItemCount, removeProduct, cart } = useCartStore();
 	const quantity = selectProductQuantity(cart, id);
 	return (
-		<tr
-			key={id}
-			className='h-15 md:h-17 border-b-1 border-white_grey border-solid'
-		>
+		<tr key={id} className='border-b-1 border-white_grey border-solid'>
 			<Cell>
-				<div className='flex flex-row gap-4'>
+				<div className='flex flex-row gap-4 items-center'>
 					<Image
 						src={image}
 						alt={title}
-						fill
-						className='object-cover'
-						sizes='100vw'
+						width={80}
+						height={95}
+						className='object-cover '
+						// sizes='100vw'
 					/>
 					<span className='flex flex-col gap-2'>
 						<h5 className='font-inter text-14 font-600 leading-160'>{title}</h5>
@@ -36,7 +34,7 @@ export function BigRow({ id, image, price, title, color }: Props) {
 							Color: {color}
 						</p>
 						<ButtonCross
-							size={20}
+							size={5}
 							onClick={() => removeProduct(id)}
 							text='Remove'
 						/>
@@ -44,20 +42,23 @@ export function BigRow({ id, image, price, title, color }: Props) {
 				</div>
 			</Cell>
 			<Cell>
-				<Counter
-					quantity={quantity}
-					decrement={() => decreaseItemCount({ id, quantity })}
-					increment={() => addProduct({ id, quantity })}
-				/>
+				<div className='flex items-center justify-center'>
+					<Counter
+						quantity={quantity}
+						decrement={() => decreaseItemCount({ productId: id, quantity })}
+						increment={() => addProduct({ productId: id, quantity })}
+					/>
+				</div>
 			</Cell>
 			<Cell>
-				<p className='text-18 font-400 font-inter leading-160'>{"$" + price}</p>
+				<p className='text-18 font-400 font-inter leading-160 text-end'>
+					{"$" + price}
+				</p>
 			</Cell>
 			<Cell>
-				<p className='text-18 font-600 font-inter leading-160'>
+				<p className='text-18 font-600 font-inter leading-160 text-end'>
 					{"$" + price * quantity}
 				</p>
-				<ButtonCross size={20} onClick={() => removeProduct(id)} />
 			</Cell>
 		</tr>
 	);

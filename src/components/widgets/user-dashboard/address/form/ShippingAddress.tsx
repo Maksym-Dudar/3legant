@@ -45,7 +45,7 @@
 // 				styles={{
 // 					control: (base) => ({
 // 						...base,
-// 						border: "1px solid var(--descriptiongrey)",
+// 						border: "1px solid var(--description_grey)",
 // 						borderRadius: "6px",
 // 						padding: "0 7px",
 // 						color: "var(--black)",

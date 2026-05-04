@@ -22,7 +22,7 @@ function CartItem({
 	const quantity = selectProductQuantity(cart, id);
 
 	return (
-		<article className='flex w-full flex-row justify-between border-b-1 border-description_gray py-6 shrink-0'>
+		<article className='flex w-full flex-row justify-between border-b-1 border-b-description_grey py-6 shrink-0'>
 			<div className='flex flex-row gap-4'>
 				<Image src={image} alt={image} width={90} height={0} />
 				<div className='flex flex-col gap-2'>
@@ -34,8 +34,8 @@ function CartItem({
 					</p>
 					<Counter
 						quantity={quantity}
-						decrement={() => decreaseItemCount({ id, quantity })}
-						increment={() => addProduct({ id, quantity })}
+						decrement={() => decreaseItemCount({ productId: id, quantity })}
+						increment={() => addProduct({ productId: id, quantity })}
 						disabled={!isCanChange}
 					/>
 				</div>

@@ -19,7 +19,7 @@ export default function Layout({ children }: PropsWithChildren) {
 				</DrawerShell>
 				<DrawerShell
 					id='cart'
-					openClass='right-0 top-0 h-full w-11/12 sm:w-8/12 bg-white shadow-lg'
+					openClass='right-0 top-0 h-full w-11/12 sm:w-1/3 bg-white shadow-lg'
 					closedClass='-right-full top-0 h-full w-11/12 sm:w-8/12 bg-white shadow-lg'
 				>
 					<Cart />

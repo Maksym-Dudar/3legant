@@ -1,6 +1,5 @@
 "use client";
 import PadingXLayouts from "@/components/layout/PaddingXLayouts";
-import { useUserStore } from "@/store/user/store";
 
 export default function HeroTitle() {
 	return (

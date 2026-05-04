@@ -1,12 +1,14 @@
-import type { ICartItem } from "@/shared/types/product/product.type";
-import type { IDelivery } from "@/constants/delivery.constants";
 import CartItem from "@/features/cart/ui/CartItem";
+import type {
+	IDeliveryOptions,
+	IOrderItem,
+} from "@/shared/types/orders/orders";
 
 interface Props {
-	data: ICartItem[];
-	shippingMethod: IDelivery;
-    total: number;
-    subtotal: number;
+	data: IOrderItem[];
+	shippingMethod: IDeliveryOptions;
+	total: number;
+	subtotal: number;
 }
 
 export function OderSummary({ data, shippingMethod, total, subtotal }: Props) {
@@ -20,24 +22,20 @@ export function OderSummary({ data, shippingMethod, total, subtotal }: Props) {
 					<CartItem {...item} isCanChange={false} />
 				))}
 			</section>
-			<section className="flex flex-col">
+			<section className='flex flex-col'>
 				<span className='flex flex-row justify-between items-center py-3 border-b-1 border-grey'>
 					<h6 className='text-16 font-400 leading-160 font-inter'>Shipping</h6>
 					<p className='text-16 font-600 leading-160 font-inter'>
-						{shippingMethod}
+						{shippingMethod.label}
 					</p>
 				</span>
 				<span className='flex flex-row justify-between items-center py-3 border-b-1 border-grey'>
 					<h6 className='text-16 font-400 leading-160 font-inter'>Subtotal</h6>
-					<p className='text-16 font-600 leading-160 font-inter'>
-						{total}
-					</p>
+					<p className='text-16 font-600 leading-160 font-inter'>{total}</p>
 				</span>
 				<span className='flex flex-row justify-between items-center py-3 border-b-1 border-grey'>
 					<h5 className='text-20 font-500 leading-140 font-inter'>Total</h5>
-					<p className='text-20 font-500 leading-140 font-inter'>
-						{subtotal}
-					</p>
+					<p className='text-20 font-500 leading-140 font-inter'>{subtotal}</p>
 				</span>
 			</section>
 		</aside>

@@ -1,9 +1,30 @@
 import { useAddress } from "@/features/address/hook/useAddress";
 import { useUser } from "@/features/user/hook/useUser";
+import { ordersService } from "@/services/requests";
+import { useQuery } from "@tanstack/react-query";
 import { getCode, getNames } from "country-list";
-import { useMemo } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 
 export function useCheckout() {
+	const sp = useSearchParams();
+	const [error, setError] = useState<Error | null>(null);
+
+	const orderId = Number(sp.get("orderId"));
+
+	useEffect(() => {
+		if (!orderId) setError(new Error("Order not found"));
+	}, [orderId, orderId]);
+
+	const {
+		data: orderData,
+		isLoading: isLoadingOrder,
+		isError: isErrorOrder,
+		error: errorOrder,
+	} = useQuery({
+		queryKey: ["order", orderId],
+		queryFn: () => ordersService.getOrder(orderId),
+	});
 	const {
 		addressData,
 		isLoading: isLoadingAddress,
@@ -38,12 +59,13 @@ export function useCheckout() {
 		[],
 	);
 	return {
+		orderData,
 		addressData,
 		userData,
 		addressOptions,
 		countryOptions,
-		isLoading: isLoadingAddress || isLoadingUser,
-		isError: isErrorAddress || isErrorUser,
-		error: errorAddress || errorUser,
+		isLoading: isLoadingAddress || isLoadingUser || isLoadingOrder,
+		isError: isErrorAddress || isErrorUser || !!error || isErrorOrder,
+		error: errorAddress || errorUser || error || errorOrder,
 	};
 }

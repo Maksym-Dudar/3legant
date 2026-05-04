@@ -8,69 +8,80 @@ interface Props {
 	register: UseFormRegister<CheckoutSchema>;
 	errors: FieldErrors<CheckoutSchema>;
 	control: Control<CheckoutSchema>;
-	options: SelectOption<string>[];
+    options: SelectOption<string>[];
+    disabled: boolean;
 }
 
-export function ShippingAddress({ register, errors, control, options}: Props) {
-    return (
-       <section className='flex flex-col gap-3 border-1 border-description_gray rounded-lg pt-10 pb-6 px-6'>
-                        <h5 className='text-20 font-500 leading-140 pb-2'>
-                            Shipping Address
-                        </h5>
-                        <Input
-                            variant='outlined'
-                            label='STREET ADDRESS'
-                            placeholder='Street Address'
-                            errorMessage={errors.street?.message}
-                            {...register("street")}
-                        />
-                        <Controller
-                            control={control}
-                            name='country'
-                            render={({ field }) => (
-                                <CustomSelect
-                                    label='COUNTRY'
-                                    placeholder='Country'
-                                    className='w-full '
-                                    options={options}
-                                    styleType='outlined'
-                                    onChange={(option) => field.onChange(option?.value)}
-                                    value={null}
-                                    errorMessage={errors.country?.message}
-                                    isCanHaveError={true}
-                                />
-                            )}
-                        />
-                        <Input
-                            variant='outlined'
-                            label='TOWN / CITY'
-                            placeholder='Town / City'
-                            errorMessage={errors.city?.message}
-                            {...register("city")}
-                        />
-                        <div className='flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-5 xl:gap-6 '>
-                            <Input
-                                variant='outlined'
-                                label='STATE'
-                                placeholder='State'
-                                errorMessage={errors.state?.message}
-                                {...register("state")}
-                            />
-                            <Input
-                                variant='outlined'
-                                label='ZIP CODE'
-                                placeholder='Zip Code'
-                                errorMessage={errors.zipCode?.message}
-                                {...register("zipCode")}
-                            />
-                        </div>
-                        <Input
-                            variant='outlined'
-                            label='BUILDING NUMBER'
-                            placeholder='Building Number'
-                            errorMessage={errors.buildingNumber?.message}
-                            {...register("buildingNumber")}
-                        />
-                    </section>
-    );
+export function ShippingAddress({
+	register,
+	errors,
+	control,
+	options,
+	disabled,
+}: Props) {
+	return (
+		<section className='flex flex-col gap-3 border-1 border-description_gray rounded-lg pt-10 pb-6 px-6'>
+			<h5 className='text-20 font-500 leading-140 pb-2'>Shipping Address</h5>
+			<Input
+				variant='outlined'
+				label='STREET ADDRESS'
+				placeholder='Street Address'
+				disabled={disabled}
+				errorMessage={errors.street?.message}
+				{...register("street")}
+			/>
+			<Controller
+				control={control}
+				name='country'
+				disabled={disabled}
+				render={({ field }) => (
+					<CustomSelect
+						label='COUNTRY'
+						placeholder='Country'
+						className='w-full '
+						options={options}
+						styleType='outlined'
+						onChange={(option) => field.onChange(option?.value)}
+						value={null}
+						errorMessage={errors.country?.message}
+						isCanHaveError={true}
+					/>
+				)}
+			/>
+			<Input
+				variant='outlined'
+				label='TOWN / CITY'
+				placeholder='Town / City'
+				disabled={disabled}
+				errorMessage={errors.city?.message}
+				{...register("city")}
+			/>
+			<div className='flex flex-row gap-2 sm:gap-3 md:gap-4 lg:gap-5 xl:gap-6 '>
+				<Input
+					variant='outlined'
+					label='STATE'
+					placeholder='State'
+					disabled={disabled}
+					errorMessage={errors.state?.message}
+					{...register("state")}
+				/>
+				<Input
+					variant='outlined'
+					label='ZIP CODE'
+					placeholder='Zip Code'
+					disabled={disabled}
+					errorMessage={errors.zipCode?.message}
+					{...register("zipCode")}
+				/>
+			</div>
+			<Input
+				variant='outlined'
+				label='BUILDING NUMBER'
+				placeholder='Building Number'
+				disabled={disabled}
+				errorMessage={errors.buildingNumber?.message}
+				{...register("buildingNumber")}
+			/>
+		</section>
+	);
 }

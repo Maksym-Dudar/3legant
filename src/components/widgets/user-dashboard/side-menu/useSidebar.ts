@@ -1,10 +1,10 @@
 import { IMAGE, NEXT_PUBLIC_BACKEND_URL, PAGE } from "@/config";
 import { useErrorToast } from "@/hooks/useErrorToast";
-import { useUser } from "@/provider/UserContext";
 import { authService, userService } from "@/services/requests";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useUser } from "@/features/user/hook/useUser"
 
 export function useSidebar() {
   	const router = useRouter();

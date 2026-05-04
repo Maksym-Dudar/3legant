@@ -4,16 +4,24 @@ import Radio from "@/components/ui/inputs/Radio";
 import CustomSelect from "@/components/ui/select/CustomSelect";
 import type { SelectOption } from "@/components/ui/select/type";
 import { useState } from "react";
+import type { TAddressMode } from "./CheckoutPage";
 
-type AddressMode = "existing" | "new";
 
 interface Props {
+	addressMode: TAddressMode;
 	options: SelectOption<number>[];
 	handleAddressSelect: (addressId: number) => void;
+	onCreateAddress: () => void;
+	onExistingAddress: () => void;
 }
 
-export function AddressMode({ options, handleAddressSelect }: Props) {
-	const [addressMode, setAddressMode] = useState<AddressMode>("new");
+export function AddressMode({
+	addressMode,
+	options,
+	handleAddressSelect,
+	onCreateAddress,
+	onExistingAddress,
+}: Props) {
 	return (
 		<section className='flex flex-col gap-6 border-1 border-description_gray rounded-lg py-10 px-6'>
 			<h5 className='text-20 font-500 leading-140'>Address Mode</h5>
@@ -21,13 +29,13 @@ export function AddressMode({ options, handleAddressSelect }: Props) {
 				label='Create address'
 				name='address-settings'
 				checked={addressMode == "new"}
-				onChange={() => setAddressMode("new")}
+				onChange={onCreateAddress}
 			/>
 			<Radio
 				label='Use an already existing address'
 				checked={addressMode == "existing"}
 				name='address-settings'
-				onChange={() => setAddressMode("existing")}
+				onChange={onExistingAddress}
 			/>
 			<CustomSelect
 				label='EXISTING ADDRESS'

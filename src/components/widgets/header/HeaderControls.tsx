@@ -28,18 +28,22 @@ export function HeaderControls({ showAdaptive, openCart, cartSize }: Props) {
 					</div>
 				</Link>
 			)}
-			<button type="button" className='relative flex items-center gap-1' onClick={openCart}>
+			<button
+				type='button'
+				className='relative flex items-center gap-1'
+				onClick={openCart}
+			>
 				<Image
 					src={IMAGE.SHOPPING_BAG.src}
 					alt={IMAGE.SHOPPING_BAG.alt}
 					width={25}
 					height={25}
 				/>
-				<div className='w-4 md:w-5 h-4 md:h-5 bg-black flex justify-center items-center rounded-full'>
+				<span className='w-4 md:w-5 h-4 md:h-5 bg-black flex justify-center items-center rounded-full'>
 					<p className='text-10 md:text-12 font-700 leading-80 text-white text-center'>
 						{cartSize}
 					</p>
-				</div>
+				</span>
 			</button>
 		</div>
 	);

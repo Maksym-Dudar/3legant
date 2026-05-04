@@ -1,47 +1,47 @@
-"use client";
+// "use client";
 
-import { ButtonCross } from "@/components/ui";
-import { useQuery } from "@tanstack/react-query";
-import { calculateSubtotal, checkout } from "@/services/bag";
-import { FoterBag } from "./FoterBag";
-import { CardListBag } from "./CardListBag";
-import type { IBagCard } from "@/shared/types/bag.type";
-import { Loading, Error } from "..";
-import { fetchBagStorage } from "@/services/requests/bag";
-import { useMemo } from "react";
+// import { ButtonCross } from "@/components/ui";
+// import { useQuery } from "@tanstack/react-query";
+// import { calculateSubtotal, checkout } from "@/services/bag";
+// import { FoterBag } from "./FoterBag";
+// import { CardListBag } from "./CardListBag";
+// import type { IBagCard } from "@/shared/types/bag.type";
+// import { Loading, Error } from "..";
+// import { fetchBagStorage } from "@/services/requests/bag";
+// import { useMemo } from "react";
 
-export function BagSidebar() {
+// export function BagSidebar() {
 
-	const arrayProductInBag = bag.map((item) => item.id);
+// 	const arrayProductInBag = bag.map((item) => item.id);
 
-	const { isLoading, error, data } = useQuery<IBagCard[]>({
-		queryKey: ["bag", arrayProductInBag],
-		queryFn: fetchBagStorage,
-	});
-	const subtotal = useMemo(() => calculateSubtotal(data ?? []), [bag, data]);
+// 	const { isLoading, error, data } = useQuery<IBagCard[]>({
+// 		queryKey: ["bag", arrayProductInBag],
+// 		queryFn: fetchBagStorage,
+// 	});
+// 	const subtotal = useMemo(() => calculateSubtotal(data ?? []), [bag, data]);
 
-	return (
-		isOpenBag && (
-			<aside className='flex flex-col justify-between fixed h-full w-4/5 sm:w-3/5 lg:w-1/2 xl:w-1/3 z-50 bg-white right-0 py-10 px-6'>
-				{isLoading ? (
-					<Loading />
-				) : error ? (
-					<Error masage={error.message} />
-				) : (
-					<>
-						<section className='flex flex-col gap-4'>
-							<div className='flex flex-row justify-between'>
-								<h3 className='text-black text-20 sm:text-24 md:text-28 font-500 leading-120'>
-									Cart
-								</h3>
-								<ButtonCross size={8} onClick={closeBag} />
-							</div>
-							<CardListBag data={data ?? []} />
-						</section>
-						<FoterBag subtotal={subtotal} total={0} checkout={checkout} />
-					</>
-				)}
-			</aside>
-		)
-	);
-}
+// 	return (
+// 		isOpenBag && (
+// 			<aside className='flex flex-col justify-between fixed h-full w-4/5 sm:w-3/5 lg:w-1/2 xl:w-1/3 z-50 bg-white right-0 py-10 px-6'>
+// 				{isLoading ? (
+// 					<Loading />
+// 				) : error ? (
+// 					<Error masage={error.message} />
+// 				) : (
+// 					<>
+// 						<section className='flex flex-col gap-4'>
+// 							<div className='flex flex-row justify-between'>
+// 								<h3 className='text-black text-20 sm:text-24 md:text-28 font-500 leading-120'>
+// 									Cart
+// 								</h3>
+// 								<ButtonCross size={8} onClick={closeBag} />
+// 							</div>
+// 							<CardListBag data={data ?? []} />
+// 						</section>
+// 						<FoterBag subtotal={subtotal} total={0} checkout={checkout} />
+// 					</>
+// 				)}
+// 			</aside>
+// 		)
+// 	);
+// }

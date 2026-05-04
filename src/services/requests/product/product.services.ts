@@ -5,16 +5,15 @@ import type {
 	IProductCard,
 	IProductDetails,
 	IProductGroupSearchCard,
+	IProductPage,
 	IProductParams,
 	IWishlist,
 } from "@/shared/types/product/product.type";
-import type { IProductDetailsDto } from "./dto.type";
+import type { IProductPageDto, IProductGroup } from "./dto.type";
 import categoryParser from "@/utils/categoryParser";
-import type {
-	IGetDetailsRequest,
-	IGetSearchRequest,
-	IGetWishlistRequest,
-} from "./requests.type";
+import type { IGetSearchRequest, IGetWishlistRequest } from "./requests.type";
+import { mapCategoryFromBackend } from "@/utils/categoryMapper";
+import { BackendCategory } from "@/config/product.config";
 
 class ProductService {
 	constructor() {}
@@ -23,23 +22,24 @@ class ProductService {
 		params: IProductParams,
 		signal?: AbortSignal,
 	): Promise<IProductCard[]> {
-		return await instance.get(API.PRODUCT_CARDS, { params, signal });
+		const res = await instance.get(API.PRODUCT_CARDS, { params, signal });
+		return res.data;
 	}
 
-	async getDetails(
-		params: IGetDetailsRequest,
-		signal?: AbortSignal,
-	): Promise<IProductDetails> {
-		const res = await instance.get<IProductDetailsDto>(API.PRODUCT, {
-			params,
+	async getDetails(id: number, signal?: AbortSignal): Promise<IProductPage> {
+		const res = await instance.get<IProductPageDto>(API.PRODUCT_DETAILS, {
+			params: { id },
 			signal,
 		});
+		console.log(res);
 		return {
 			...res.data,
 			offerExpires: new Date(res.data.offerExpires),
-			category: res.data.category.map((val) => {
-				return categoryParser(val);
-			}),
+			category: res.data.category
+				.filter((val): val is BackendCategory =>
+					Object.values(BackendCategory).includes(val as BackendCategory),
+				)
+				.map((val) => mapCategoryFromBackend(val)),
 		};
 	}
 
@@ -47,7 +47,7 @@ class ProductService {
 		params: IGetSearchRequest,
 		signal?: AbortSignal,
 	): Promise<IProductGroupSearchCard[]> {
-		return await instance.get(API.PRODUCT_SEARCH, { params, signal });
+		return (await instance.get(API.PRODUCT_SEARCH, { params, signal })).data;
 	}
 
 	async getCartCards(
@@ -55,14 +55,24 @@ class ProductService {
 		signal?: AbortSignal,
 	): Promise<ICartItem[]> {
 		const params = products.join(",");
-		return await instance.get(API.PRODUCT_BAG, { params, signal });
+		console.log(params);
+		const res = (await instance.get(API.PRODUCT_BAG, { params: { ids: params }, signal }));
+		return res.data;
 	}
 
 	async getWishlist(
 		params: IGetWishlistRequest,
 		signal?: AbortSignal,
 	): Promise<IWishlist[]> {
-		return await instance.get(API.USER_WISHLIST, { params, signal });
+		return (await instance.get(API.USER_WISHLIST, { params, signal })).data;
+	}
+
+	async getProductGroup(signal?: AbortSignal): Promise<IProductGroup[]> {
+		return (await instance.get(API.PRODUCT_GROUP, { signal })).data;
+	}
+
+	async createProduct(payload: FormData): Promise<IProductDetails> {
+		return (await instance.post(API.PRODUCT, payload)).data;
 	}
 }
 

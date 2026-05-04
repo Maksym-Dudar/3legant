@@ -1,17 +1,26 @@
-export interface IProductDetailsDto {
+import type {
+	ISameColorCard,
+} from "@/shared/types/product/product.type";
+
+export interface IProductPageDto {
+	offerExpires: string;
+	category: string[];
 	id: number;
-	productGroupId: number;
+	title: string;
+	description: string;
 	price: number;
 	priceWithSale: number;
-	offerExpires: string;
-	measurements: string;
-	rating: number;
 	sale: number;
+	rating: number;
 	isNew: boolean;
-	image: string[];
-	category: string[];
-	reviews: number;
+	measurements: string;
+	sameProduct: ISameColorCard[];
 	color: string;
-	description: string;
+	image: string[];
+	reviews: number;
+}
+
+export interface IProductGroup {
 	title: string;
+	id: number;
 }

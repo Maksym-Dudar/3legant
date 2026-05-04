@@ -5,8 +5,8 @@ import { Loading } from "../..";
 import { ordersService } from "@/services/requests";
 import { ErrorToast } from "@/components/ui";
 import { useErrorToast } from "@/hooks/useErrorToast";
-import { Row } from "./Row";
 import ColumnTitle from "@/components/ui/table/ColumnTitle";
+import { Row } from "./Row";
 
 interface Props {
 	id: string;

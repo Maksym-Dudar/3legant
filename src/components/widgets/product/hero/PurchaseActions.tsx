@@ -1,10 +1,11 @@
+"use client"
 import Image from "next/image";
-import { ButtonAction } from "@/components/ui";
-
 import { useState } from "react";
 import { IMAGE } from "@/config/image.config";
 import { useWishlistStore } from "@/store/wishlist/store";
 import { Counter } from "@/components/ui/buttons/Counter";
+import { Button } from "@/components/ui";
+import { useCartStore } from "@/store/cart/store";
 
 interface Props {
 	id: number;
@@ -12,9 +13,10 @@ interface Props {
 
 export function PurchaseActions({ id }: Props) {
 	const [counter, setCount] = useState<number>(1);
-	const { toggleProduct, isInWishlist } = useWishlistStore();
+    const { toggleProduct, isInWishlist } = useWishlistStore();
+    const { addProduct } = useCartStore();
 
-	const itemToAddBag = { id: id, quantity: counter };
+	const itemToAddBag = { productId: id, quantity: counter };
 
 	return (
 		<section className='flex flex-col gap-4 py-8 border-b border-grey'>
@@ -24,16 +26,7 @@ export function PurchaseActions({ id }: Props) {
 					quantity={counter}
 					increment={() => setCount((prev) => prev + 1)}
 					decrement={() => setCount((prev) => (prev > 1 ? prev - 1 : prev))}
-				/>
-				{/* <div className='flex flex-row text-18 md:text-20 font-300 leading-170 w-fit px-3 md:px-4 py-1.5 md:py-3 gap-6 bg-grey rounded-lg'>
-					<button
-						onClick={() => setCount((prev) => (prev > 1 ? prev - 1 : prev))}
-					>
-						-
-					</button>
-					<p className='flex w-1 justify-center'> {counter}</p>
-					<button onClick={() => setCount((prev) => prev + 1)}>+</button>
-				</div> */}
+				/> 
 				<button
 					onClick={() => toggleProduct(id)}
 					className='flex w-full text-center border border-black py-1 sm:py-2 rounded-lg justify-center items-center gap-2'
@@ -58,16 +51,7 @@ export function PurchaseActions({ id }: Props) {
 					</p>
 				</button>
 			</div>
-
-			<ButtonAction
-				text='Add to Cart'
-				paddingY={3}
-				onClick={() => {
-					if (itemToAddBag) {
-						addProduct(itemToAddBag);
-					}
-				}}
-			/>
+			<Button text='Add to Cart' className="py-3" onClick={() => addProduct(itemToAddBag)}/>
 		</section>
 	);
 }

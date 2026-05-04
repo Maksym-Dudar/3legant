@@ -21,7 +21,7 @@ export function ProductRow({ children, ...params }: Props) {
 			{errorMessage && (
 				<ErrorToast message={errorMessage} onClose={closeError} />
 			)}
-			<section className='flex flex-col w-full p-12 gap-12'>
+			<section className='flex flex-col w-full py-12 gap-12'>
 				<div className='flex justify-between items-end h-fit'>
 					<h3 className='text-32 sm:text-36 md:text-38 lg:text-40 font-500 leading-110 grid grid-rows-2 h-20'>
 						{children}

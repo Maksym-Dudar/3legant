@@ -83,6 +83,6 @@ export default memo(Input);
 // className={`w-full text-inter text-14 md:text-16 font-400 leading-160 border border-solid h-10 px-4 rounded-md
 // 		${
 // 			hasError
-// 				? " text-black border-descriptiongrey border-opacity-0"
-// 				: " text-descriptiongrey border-red bg-palered"
+// 				? " text-black border-description_grey border-opacity-0"
+// 				: " text-description_grey border-red bg-palered"
 // 		} `}

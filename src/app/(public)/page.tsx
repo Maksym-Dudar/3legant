@@ -18,7 +18,7 @@ export default function Home() {
 					<Swiper />
 					<Lead />
 					<CategoryBanner />
-					<ProductRow sort={Sorts.Newest}>
+					<ProductRow sort={Sorts.Newest} take={12}>
 						<span>New</span>
 						<span>Arrivals</span>
 					</ProductRow>

@@ -47,7 +47,7 @@ export function CommentCard({
 							/>
 						))}
 				</div>
-				<p className='text-12 md:text-16 font-inter font-400 leading-160 text-descriptiongrey'>
+				<p className='text-12 md:text-16 font-inter font-400 leading-160 text-description_grey'>
 					{text}
 				</p>
 				<p className='text-10 md:text-14 font-400 leading-160 text-footerline pt-1 md:pt-2'>

@@ -7,6 +7,7 @@ import {
 } from "@/config/product.config";
 import { useShopContext } from "@/provider/ShopContext";
 import { productService } from "@/services/requests/product/product.services";
+import { mapCategoryToBackend } from "@/utils/categoryMapper";
 import { toNumber, toNumberOrNull } from "@/utils/numberParser";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
@@ -35,19 +36,12 @@ export function useProductGrid() {
 		() => ({
 			take: paramTake,
 			sort: filter.sort,
-			category: filter.category,
+			category: mapCategoryToBackend(filter.category),
 			maxPrice: filter.price.max,
 			minPrice: filter.price.min,
 			groupId: paramGroupId,
 		}),
-		[
-			paramTake,
-			filter.sort,
-			filter.category,
-			filter.price.max,
-			filter.price.min,
-			paramGroupId,
-		],
+		[paramTake, filter, paramGroupId],
 	);
 
 	useEffect(() => {
@@ -67,7 +61,15 @@ export function useProductGrid() {
 		isError,
 		error,
 	} = useInfiniteQuery({
-		queryKey: ["products", params],
+		queryKey: [
+			"products",
+			paramTake,
+			filter.sort,
+			filter.category,
+			filter.price.max,
+			filter.price.min,
+			paramGroupId,
+		],
 		queryFn: ({ pageParam, signal }) =>
 			productService.getCards({ ...params, page: pageParam }, signal),
 		initialPageParam: 1,

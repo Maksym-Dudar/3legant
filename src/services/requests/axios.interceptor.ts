@@ -7,11 +7,18 @@ export const instance = axios.create({
 	withCredentials: true,
 });
 
-instance.interceptors.request.use();
+instance.interceptors.request.use(
+	(config) => {
+		console.log("Request:", config.method?.toUpperCase(), config.url);
+		return config;
+	},
+	(error) => Promise.reject(error),
+);
 
 instance.interceptors.response.use(
 	(res) => res,
 	(error) => {
+		console.log(error);
 		if (axios.isAxiosError(error)) {
 			const serverMessage = (error.response?.data as MassageResponse)?.message;
 			return Promise.reject(new Error(serverMessage || "Server error"));

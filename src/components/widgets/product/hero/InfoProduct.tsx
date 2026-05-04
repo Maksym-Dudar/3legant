@@ -1,6 +1,4 @@
 import { IMAGE } from "@/config/image.config";
-import { mobileSize } from "@/constants/windowSize";
-import { useWindowSize } from "@/hooks";
 import Image from "next/image";
 
 interface Props {
@@ -9,7 +7,7 @@ interface Props {
 	reviews: number;
 	description: string;
 	price: number;
-	priceWithoutSale: number;
+	priceWithSale: number;
 	sale: boolean;
 }
 
@@ -19,13 +17,9 @@ export function InfoProduct({
 	reviews,
 	description,
 	price,
-	priceWithoutSale,
+	priceWithSale,
 	sale,
 }: Props) {
-	const { width } = useWindowSize();
-
-	const starSize = width > mobileSize ? 16 : 14;
-
 	return (
 		<section className='flex flex-col w-full h-fit gap-4 pb-6 border-b border-grey'>
 			<div className='flex gap-3 '>
@@ -36,8 +30,8 @@ export function InfoProduct({
 							<Image
 								src={IMAGE.STAR_ACTIVE.src}
 								alt={IMAGE.STAR_ACTIVE.alt}
-								width={starSize}
-								height={starSize}
+								width={15}
+								height={15}
 								key={i}
 							/>
 						))}
@@ -47,7 +41,7 @@ export function InfoProduct({
 				</p>
 			</div>
 			<h3 className='text-36 md:text-40 font-500 leading-110'>{name}</h3>
-			<p className='text-14 md:text-16 leading-160 font-inter font-400 text-descriptiongrey'>
+			<p className='text-14 md:text-16 leading-160 font-inter font-400 text-description_grey'>
 				{description}
 			</p>
 			{sale && (
@@ -55,7 +49,7 @@ export function InfoProduct({
 					<p className='text-24 md:text-28 font-400 leading-120'>${price}</p>
 
 					<s className='text-notactive text-18 md:text-20 font-500 leading-140'>
-						${priceWithoutSale}
+						${priceWithSale}
 					</s>
 				</div>
 			)}
