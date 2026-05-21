@@ -14,7 +14,7 @@ export function CompleteDetailTable({
 	total,
 	shippingMethod,
 }: Props) {
-	const monthName = new Intl.DateTimeFormat("us-US", {
+	const monthName = new Intl.DateTimeFormat("uk-UA", {
 		month: "long",
 	}).format(createdAt);
 	const date =

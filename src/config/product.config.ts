@@ -56,8 +56,6 @@ export const PriceRanges: Record<Prices, IPriseValue> = {
 	[Prices.Price_to_500]: { min: 400, max: 500 },
 	[Prices.Price_over_500]: { min: 500, max: 99999999999999999 },
 };
-// todo
-
 export type PriceOption = {
 	label: Prices;
 	value: IPriseValue;
@@ -72,4 +70,3 @@ export const Sorts = {
 } as const;
 
 export type Sorts = (typeof Sorts)[keyof typeof Sorts];
-

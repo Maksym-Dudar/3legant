@@ -3,8 +3,6 @@ export { ArrowLink } from "./ArrowLink";
 export { default as ButtonCross } from "./buttons/ButtonCross";
 export { default as ButtonMenu } from "./buttons/ButtonMenu";
 export { default as Toggle } from "./buttons/Toggle";
-// export { default as DropdownFilter } from "./dropdown-list/DropdownFilter";
-// export { default as DropdownSort } from "./dropdown-list/DropdownSort";
 export { default as OfferTime } from "./OfferTime";
 export { default as PathPage } from "./PathPage";
 export { default as ErrorToast } from "../widgets/error/ErrorToast";

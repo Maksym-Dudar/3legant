@@ -50,7 +50,7 @@ export function useProductGrid() {
 			sort: paramSort,
 			price: { max: paramMaxPrice, min: paramMinPrice },
 		});
-	}, [paramCategory, paramSort, paramMaxPrice, paramMinPrice]);
+	}, [paramCategory, paramSort, paramMaxPrice, paramMinPrice, setFilter]);
 
 	const {
 		data,

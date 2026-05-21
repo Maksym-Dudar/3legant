@@ -1,5 +1,6 @@
 import { instance } from "../axios.interceptor";
 import { API } from "@/config";
+import type { ISendMailDto } from "./dto.type";
 
 class EmailService {
 	constructor() {}

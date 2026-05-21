@@ -4,12 +4,13 @@ import { z } from "zod";
 export const CreateProductSchema = z.object({
 	productGroupId: z.number(),
 	isNew: z.boolean(),
-	offerExpires: z.date(),
+	offerExpires: z.date().optional(),
 	sale: z
 		.number()
 		.max(1, "Enter value between 0 and 1")
-		.min(0, "Enter value between 0 and 1"),
-	title: z.string().nonempty("This field is mandatory"),
+		.min(0, "Enter value between 0 and 1")
+		.optional(),
+	title: z.string(),
 	measurements: z.string().nonempty("This field is mandatory"),
 	price: z.number().min(0, "This field is mandatory"),
 	quantityWarehouse: z.number().min(0, "This field is mandatory"),

@@ -1,11 +1,13 @@
 "use client";
 
-import { paymentService } from "@/services/requests/payment/payment.services";
+import { Loading } from "@/components/widgets";
+import { usePayment } from "@/features/checkout/hook/usePayment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useQuery } from "@tanstack/react-query";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!);
+const stripePromise = loadStripe(
+	process.env.NEXT_PUBLIC_STRIPE_KEY!
+);
 
 export default function PaymentProvider({
 	children,
@@ -14,17 +16,27 @@ export default function PaymentProvider({
 	children: React.ReactNode;
 	orderId: number;
 }) {
-	const { data } = useQuery({
-		queryKey: ["order", orderId],
-		queryFn: () => paymentService.getClientSecret({ orderId }),
-	});
+	const { data, isLoading, error } = usePayment(orderId);
 
-	
-	console.log("pay data:", data);
-	if (!data || !data?.clientSecret) return
-	
+	if (isLoading) {
+		return <Loading />;
+	}
+
+	if (error) {
+		return <div>{error.message}</div>;
+	}
+
+	if (!data?.clientSecret) {
+		return <div>No client secret</div>;
+	}
+
 	return (
-		<Elements stripe={stripePromise} options={data}>
+		<Elements
+			stripe={stripePromise}
+			options={{
+				clientSecret: data.clientSecret,
+			}}
+		>
 			{children}
 		</Elements>
 	);

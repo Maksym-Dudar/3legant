@@ -2,7 +2,12 @@ import { API } from "@/config/api.config";
 import { instance } from "../axios.interceptor";
 import type { IUser } from "@/shared/types/user/user.type";
 import type { MassageResponse } from "../type";
-import type { IForgotPassword, IGenerateOtp, ISignIn, ISignUp } from "@/shared/types/auth/auth.type";
+import type {
+	IForgotPassword,
+	IGenerateOtp,
+	ISignIn,
+	ISignUp,
+} from "@/shared/types/auth/auth.type";
 
 class AuthService {
 	async signIn(payload: ISignIn): Promise<IUser> {
@@ -10,11 +15,7 @@ class AuthService {
 	}
 
 	async signUp(payload: ISignUp): Promise<IUser> {
-		console.log("good");
-		const res = (await instance.post(API.AUTH_SIGN_UP, payload)).data;
-		console.log(res);
-
-		return res;
+		return (await instance.post(API.AUTH_SIGN_UP, payload)).data;
 	}
 
 	async generateOtp(payload: IGenerateOtp): Promise<MassageResponse> {
@@ -28,13 +29,6 @@ class AuthService {
 	async logOut(): Promise<MassageResponse> {
 		return (await instance.delete(API.AUTH_LOG_OUT)).data;
 	}
-	// async verifyJWTToken(token: string) {
-	// 	return (
-	// 		await instance.get(API.AUTH_VERIFY_JWT, {
-	// 			headers: { cookie: `accessToken=${token}` },
-	// 		})
-	// 	).data;
-	// }
 }
 
 export const authService = new AuthService();

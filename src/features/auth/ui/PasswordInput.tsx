@@ -33,11 +33,10 @@ export default function PasswordInput({ placeholder, errorMessage, ...props }: P
 				type='button'
 				className='absolute right-2 top-2'
 				onClick={() => setShow((v) => !v)}
-				aria-label={show ? "Hide password" : "Show password"}
+					aria-label={show ? "Hide password" : "Show password"}
 			>
 				<Image src={icon.src} alt={icon.alt} width={20} height={icon.height} />
 			</button>
 		</div>
 	);
 }
-

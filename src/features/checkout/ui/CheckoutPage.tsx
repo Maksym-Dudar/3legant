@@ -11,7 +11,6 @@ import { useCheckout } from "../hook/useCheckout";
 import { Loading } from "@/components/widgets";
 import { useErrorToast } from "@/hooks/useErrorToast";
 import { useMutation } from "@tanstack/react-query";
-import { paymentService } from "@/services/requests/payment/payment.services";
 import { PaymentMethod } from "./PaymentMethod";
 import { AddressMode } from "./AddressMode";
 import { useState } from "react";
@@ -25,11 +24,13 @@ import {
 } from "@stripe/react-stripe-js";
 import { ordersService } from "@/services/requests";
 import type { IConfirmOrder } from "@/services/requests/orders/requests.type";
+import { usePayment } from "../hook/usePayment";
 
 export type TAddressMode = "existing" | "new";
 
 export function CheckoutPage() {
 	const {
+		orderId,
 		orderData,
 		addressData,
 		userData,
@@ -48,9 +49,11 @@ export function CheckoutPage() {
 	} = useForm<CheckoutSchema>({
 		resolver: zodResolver(CheckoutSchema),
 	});
-	const { errorMessage, closeError, setErrorMessage } = useErrorToast(
-		error,
-		isError,
+	const [paymentError, setPaymentError] = useState<Error | null>(null);
+
+	const { errorMessage, closeError } = useErrorToast(
+		paymentError || error,
+		isError || !!paymentError,
 	);
 	const [addressMode, setAddressMode] = useState<TAddressMode>("new");
 	const [addressId, setAddressId] = useState<number | null>(null);
@@ -58,10 +61,7 @@ export function CheckoutPage() {
 	const stripe = useStripe();
 	const elements = useElements();
 
-	const paymentMutation = useMutation({
-		mutationFn: (orderId: number) =>
-			paymentService.getClientSecret({ orderId: orderId }), // todo
-	});
+	const { data: paymentData } = usePayment(orderId);
 
 	const orderMutation = useMutation({
 		mutationFn: (payload: IConfirmOrder) => ordersService.confirmOrder(payload),
@@ -81,8 +81,29 @@ export function CheckoutPage() {
 		reset({ ...restAddress, ...restUser });
 	};
 	const { createAddressMutation } = useCreateAddress();
+
 	const submit = handleSubmit(async (data) => {
-		if (!orderData || !orderData.id || !stripe || !elements) return;
+		setPaymentError(null);
+
+		if (!orderData?.id) {
+			setPaymentError(new Error("Order not found"));
+			return;
+		}
+
+		if (!paymentData?.clientSecret) {
+			setPaymentError(new Error("Failed to prepare payment"));
+			return;
+		}
+
+		if (!stripe || !elements) {
+			setPaymentError(new Error("Stripe not loaded"));
+			return;
+		}
+		const cardElement = elements.getElement(CardNumberElement);
+		if (!cardElement) {
+			setPaymentError(new Error("Card element not found"));
+			return;
+		}
 		let finalAddressId = addressId;
 
 		if (!finalAddressId) {
@@ -92,7 +113,7 @@ export function CheckoutPage() {
 				country: data.country,
 				state: data.state,
 				city: data.city,
-				phone: data.phone,
+				phoneNumber: data.phoneNumber,
 				buildingNumber: data.buildingNumber,
 				zipCode: data.zipCode,
 			};
@@ -102,39 +123,35 @@ export function CheckoutPage() {
 			setAddressId(res.id);
 		}
 
-		const { clientSecret } = await paymentMutation.mutateAsync(orderData.id);
-
-		const cardElement = elements.getElement(CardNumberElement);
-
-		const result = await stripe.confirmCardPayment(clientSecret, {
+		const result = await stripe.confirmCardPayment(paymentData.clientSecret, {
 			payment_method: {
-				card: cardElement!,
+				card: cardElement,
 				billing_details: {
 					name: `${data.firstName} ${data.lastName}`,
 					email: data.email,
 				},
 			},
 		});
+
 		if (result.error) {
-			setErrorMessage(result.error.message || "Payment error");
-		} else {
-			await orderMutation.mutateAsync({
-				id: orderData.id,
-				addressId: finalAddressId,
-				firstName: data.firstName,
-				lastName: data.lastName,
-				email: data.email,
-			});
-			router.push(PAGE.CHECKOUT_COMPLETE(orderData.id));
+			setPaymentError(new Error(result.error.message ?? "Payment error"));
+			return;
 		}
+
+		await orderMutation.mutateAsync({
+			id: orderData.id,
+			addressId: finalAddressId,
+			firstName: data.firstName,
+			lastName: data.lastName,
+			email: data.email,
+		});
+		router.push(PAGE.CHECKOUT_COMPLETE(orderData.id));
 	});
 
-	if (!orderData || !orderData.id) {
-		router.push(PAGE.CART.link);
-		return;
-	}
-
 	if (isLoading) return <Loading />;
+	if (!orderData) {
+		return <div className='py-20 text-center'>Order not found</div>;
+	}
 
 	return (
 		<>
@@ -143,34 +160,35 @@ export function CheckoutPage() {
 			)}
 			<div className='flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-12 xl:gap-16 py-10 md:py-15 lg:py-20 '>
 				<form className='flex flex-col w-full gap-6' onSubmit={submit}>
-						<AddressMode
-							options={addressOptions}
-							handleAddressSelect={handleAddressSelect}
-							addressMode={addressMode}
-							onCreateAddress={() => {
-								setAddressMode("new");
-								setAddressId(null);
-							}}
-							onExistingAddress={() => setAddressMode("existing")}
-						/>
-						<ContactInformation
-							register={register}
-							errors={errors}
-							disabled={addressMode == "existing"}
-						/>
-						<ShippingAddress
-							register={register}
-							errors={errors}
-							control={control}
-							options={countryOptions}
-							disabled={addressMode == "existing"}
-						/>
-						<PaymentMethod />
+					<AddressMode
+						options={addressOptions}
+						selectedAddressId={addressId}
+						handleAddressSelect={handleAddressSelect}
+						addressMode={addressMode}
+						onCreateAddress={() => {
+							setAddressMode("new");
+							setAddressId(null);
+						}}
+						onExistingAddress={() => setAddressMode("existing")}
+					/>
+					<ContactInformation
+						register={register}
+						errors={errors}
+						disabled={addressMode === "existing"}
+					/>
+					<ShippingAddress
+						register={register}
+						errors={errors}
+						control={control}
+						options={countryOptions}
+						disabled={addressMode === "existing"}
+					/>
+					<PaymentMethod />
 					<Button text='Place Order' type='submit' className='py-3' />
 				</form>
 				<OderSummary
 					data={orderData?.orderItem || []}
-					shippingMethod={orderData.shippingMethod}
+					shippingMethod={orderData?.shippingMethod}
 					total={orderData?.total || 0}
 					subtotal={orderData?.subtotal || 0}
 				/>

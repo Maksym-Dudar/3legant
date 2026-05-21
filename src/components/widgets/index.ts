@@ -1,4 +1,3 @@
-// export { Overlay } from "./overlay/overlay";
 export { MobileMenu as MobileMenu } from "./mobile-menu/MobileMenu";
 export { Header as Header } from "./header/Header";
 export { Error as Error } from "./error/Error";

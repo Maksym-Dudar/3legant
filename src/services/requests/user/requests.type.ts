@@ -3,6 +3,4 @@ export interface IUpdateAvatarRequest {
 }
 
 export interface IUpdateUserRequest {
-	// Partial<IUser>
 }
-

@@ -16,4 +16,6 @@ const Button = forwardRef<HTMLButtonElement, Props>(({ className, text, ...props
 	);
 })
 
+Button.displayName = "Button";
+
 export default memo(Button);

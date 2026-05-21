@@ -4,7 +4,7 @@ import { productService } from "@/services/requests/product/product.services";
 import type { ICartItem } from "@/shared/types/product/product.type";
 import { useCartStore } from "@/store/cart/store";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import calcSubtotal from "../lib/calcSubtotal";
 import calcTotal from "../lib/calcTotal";
 import { useRouter } from "next/navigation";
@@ -22,7 +22,6 @@ export function useCart() {
 		() => cart.map((item) => item.productId).sort(),
 		[cart],
 	);
-	console.log(productIds);
 
 	const {
 		data: cartCards,
@@ -45,14 +44,11 @@ export function useCart() {
 		queryFn: () => ordersService.getDeliveryOptions(),
 	});
 
-	const [shippingMethod, setShippingMethod] = useState<IDeliveryOptions | null>(
-		null,
-	);
-	useEffect(() => {
-		if (deliveryMethods?.length && !shippingMethod) {
-			setShippingMethod(deliveryMethods[0]);
-		}
-	}, [deliveryMethods, shippingMethod]);
+	const [selectedShippingMethod, setSelectedShippingMethod] =
+		useState<IDeliveryOptions | null>(null);
+
+	const shippingMethod = selectedShippingMethod ?? deliveryMethods?.[0] ?? null;
+
 	const subtotal = useMemo(
 		() => calcSubtotal(cart, cartCards ?? []),
 		[cart, cartCards],
@@ -95,6 +91,6 @@ export function useCart() {
 		subtotal,
 		total,
 		onCheckout,
-		setShippingMethod,
+		setShippingMethod: setSelectedShippingMethod,
 	};
 }

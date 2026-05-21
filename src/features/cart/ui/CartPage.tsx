@@ -53,26 +53,27 @@ export function CartPage() {
 				<table className='w-full h-fit'>
 					<thead className='border-b-1 border-black'>
 						<tr>
+							<ColumnTitle variant='black' className='text-left pb-6'>
+								Product
+							</ColumnTitle>
 							<ColumnTitle
-								children='Product'
-								variant='black'
-								className='text-left pb-6'
-							/>
-							<ColumnTitle
-								children='Quantity'
 								variant='black'
 								className='hidden sm:table-cell lg:hidden xl:table-cell text-center pb-6'
-							/>
+							>
+								Quantity
+							</ColumnTitle>
 							<ColumnTitle
-								children='Price'
 								variant='black'
 								className='hidden sm:table-cell lg:hidden xl:table-cell text-right pb-6'
-							/>
+							>
+								Price
+							</ColumnTitle>
 							<ColumnTitle
-								children='Subtotal'
 								variant='black'
 								className='hidden sm:table-cell lg:hidden xl:table-cell text-right pb-6'
-							/>
+							>
+								Subtotal
+							</ColumnTitle>
 						</tr>
 					</thead>
 					<tbody>{rows}</tbody>

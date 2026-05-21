@@ -20,7 +20,7 @@ export function CategoryHero({
 	...props
 }: Props) {
 	const baseStyle = "relative";
-	console.log(src)
+
 	return (
 		<article className={twMerge(className, baseStyle)} {...props}>
 			<div className='absolute z-10 flex flex-col p-10 pointer-events-none'>

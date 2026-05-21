@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import "@/config/globals.css";
 import { Suspense, type PropsWithChildren } from "react";
 import { OverlayProvider, QueryProvider } from "@/provider";
+import "./globals.css";
 
 export const metadata: Metadata = {
 	title: "3Legant",
@@ -16,17 +16,16 @@ const geistPoppins = Poppins({
 });
 
 const geistInter = Inter({
-	subsets: ["latin"],
+	subsets: ["latin", "cyrillic"],
 	weight: ["200", "300", "400", "500", "600", "700"],
 	variable: "--font-inter",
 });
 
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
-
 	return (
-		<html lang='en'>
+		<html lang='uk' className="h-full">
 			<body
-				className={`${geistPoppins.variable} ${geistInter.variable} antialiased`}
+				className={`${geistPoppins.variable} ${geistInter.variable} antialiased w-full h-full`}
 			>
 				<Suspense>
 					<QueryProvider>

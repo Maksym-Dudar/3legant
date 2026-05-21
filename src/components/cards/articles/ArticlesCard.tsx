@@ -14,7 +14,7 @@ export function ArticlesCard({ title, src, link, alt }: Props) {
 			<Image src={src} alt={alt} width={0} fill className='object-cover' />
 			<div className='gap-2'>
 				<h5 className='text-18 lg:text-20 font-500 leading-140'>{title}</h5>
-				<ArrowLink title='Read More' link={link} />
+			<ArrowLink title='Read More' link={link} />
 			</div>
 		</article>
 	);

@@ -54,6 +54,7 @@ export function Complete() {
 									src={val.image}
 									alt={val.image}
 									quantity={val.quantity}
+									key={val.image}
 								/>
 							))}
 					</div>

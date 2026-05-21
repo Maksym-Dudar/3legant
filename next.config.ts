@@ -1,12 +1,18 @@
 import type { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
-	swcMinify: true,
 	images: {
 		unoptimized: true,
 	},
+	  rewrites: async () => {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://webcorseworkbakend.up.railway.app/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

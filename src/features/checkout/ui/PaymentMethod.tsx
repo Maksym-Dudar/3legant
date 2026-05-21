@@ -6,23 +6,21 @@ import {
 	CardExpiryElement,
 	CardCvcElement,
 } from "@stripe/react-stripe-js";
-import { WalletPayment } from "./WalletPayment";
 
 const elementStyle = {
-    base: {
-        position: "absolute",
-        fontSize: "16px",
-        color: "#000",
-        "::placeholder": { color: "#aaa" },
-        height: "30px",
-        padding: "5px 16px",
-    },
-    invalid: {
-        color: "#fa755a",
-    },
+	base: {
+		fontSize: "16px",
+		color: "#000",
+		"::placeholder": {
+			color: "#aaa",
+		},
+	},
+	invalid: {
+		color: "#fa755a",
+	},
 };
-export function PaymentMethod() {
 
+export function PaymentMethod() {
 	return (
 		<section className='flex flex-col border-1 border-description_gray rounded-lg pt-10 pb-6 px-6 gap-6'>
 			<h5 className='text-20 font-500 leading-140 pb-2'>Payment method</h5>
@@ -59,7 +57,6 @@ export function PaymentMethod() {
 					</div>
 				</div>
 			</div>
-			<WalletPayment />
 		</section>
 	);
 }

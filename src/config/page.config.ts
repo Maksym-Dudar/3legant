@@ -18,10 +18,10 @@ class PagesConfig {
 		link: "/shop",
 		label: "Shop",
 	};
-	BLOG: IPage = {
-		link: "/blog",
-		label: "Blog",
-	};
+	// BLOG: IPage = {
+	// 	link: "/blog",
+	// 	label: "/blog",
+	// };
 	CONTACT_US: IPage = {
 		link: "/contact-us",
 		label: "Contact us",
@@ -102,8 +102,6 @@ class PagesConfig {
 	PRODUCT(item: number) {
 		return `${this.SHOP.link}/${item}`;
 	}
-
-	// Admin
 	ADMIN_DASHBOARD: IPage = {
 		link: "/admin",
 		label: "Dashboard",
@@ -120,5 +118,5 @@ class PagesConfig {
 
 export const PAGE = new PagesConfig();
 
-export const NAVIGATION = [PAGE.HOME, PAGE.SHOP, PAGE.BLOG, PAGE.CONTACT_US];
+export const NAVIGATION = [PAGE.HOME, PAGE.SHOP, PAGE.CONTACT_US];
 export const TERMS_PRIVACY = [PAGE.PRIVACY_POLICY, PAGE.TERMS_OF_USE];

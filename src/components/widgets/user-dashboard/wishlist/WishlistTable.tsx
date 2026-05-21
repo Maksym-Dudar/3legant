@@ -37,17 +37,18 @@ export function WishlistTable() {
 			<table className='w-full gap-2 h-fit'>
 				<thead>
 					<tr>
-						<ColumnTitle children='Product' />
-						<ColumnTitle children='Price' />
-						<ColumnTitle children='Action' />
+						<ColumnTitle>Product</ColumnTitle>
+						<ColumnTitle>Action</ColumnTitle>
+						<ColumnTitle>Price</ColumnTitle>
 					</tr>
 				</thead>
 				<tbody className=''>
 					{data.map((item) => (
 						<Row
 							{...item}
-							onAction={() => addProduct({ id: item.id, quantity: 1 })}
+							onAction={() => addProduct({ productId: item.id, quantity: 1 })}
 							onRemove={() => removeProduct(item.id)}
+							key={item.id}
 						/>
 					))}
 				</tbody>

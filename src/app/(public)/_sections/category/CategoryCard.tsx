@@ -20,7 +20,7 @@ export function CategoryCard({ title, src, alt, className, ...props }: Props) {
 					{title}
 				</h4>
 				<div className='pointer-events-auto'>
-					<ArrowLink title='Shop Now' link={PAGE.SHOP_BY_CATEGORY(title)} />
+				<ArrowLink title='Shop Now' link={PAGE.SHOP_BY_CATEGORY(title)} />
 				</div>
 			</div>
 			<Image src={src} alt={alt} fill className='object-cover' sizes='100vw' />

@@ -22,7 +22,7 @@ export function CountdownTimer({ offerExpires, sale }: Props) {
 					<OfferTime time={difTime.getDate()} title='Days' />
 					<OfferTime time={difTime.getHours()} title='Hours' />
 					<OfferTime time={difTime.getMinutes()} title='Minutes' />
-					<OfferTime time={difTime.getSeconds()} title='Seconds' />
+					<OfferTime time={difTime.getSeconds()} title='Minutes' />
 				</div>
 			)}
 		</section>

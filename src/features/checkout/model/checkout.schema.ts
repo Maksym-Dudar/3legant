@@ -3,7 +3,7 @@ import { z } from "zod";
 export const CheckoutSchema = z.object({
 	firstName: z.string().nonempty("This area mandatory"),
 	lastName: z.string().nonempty("This area mandatory"),
-	phone: z
+	phoneNumber: z
 		.string()
 		.length(10, "Phone number must be exactly 10 characters")
 		.nonempty("This area mandatory"),

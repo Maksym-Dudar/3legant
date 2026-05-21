@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const AddressSchema = z.object({
 	name: z.string().nonempty("This area mandatory"),
-	phone: z
+	phoneNumber: z
 		.string()
 		.length(10, "Phone number must be exactly 10 characters")
 		.nonempty("This area mandatory"),

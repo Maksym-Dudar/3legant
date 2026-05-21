@@ -41,10 +41,10 @@ export function OrderTable() {
 				<table className='w-full gap-2 h-fit'>
 					<thead>
 						<tr>
-							<ColumnTitle children='Number ID' />
-							<ColumnTitle children='Dates' />
-							<ColumnTitle children='Status' />
-							<ColumnTitle children='Price' />
+							<ColumnTitle>Number ID</ColumnTitle>
+							<ColumnTitle>Price</ColumnTitle>
+							<ColumnTitle>Status</ColumnTitle>
+							<ColumnTitle>Dates</ColumnTitle>
 						</tr>
 					</thead>
 					<tbody className=''>

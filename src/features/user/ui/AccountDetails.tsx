@@ -15,10 +15,10 @@ export function AccountDetails({ register, errors }: Props) {
 			</h4>
 			<div className='flex flex-col w-full gap-1'>
 				<Input
-					label='FIRST NAME *'
+					label="FIRST NAME *"
 					variant='outlined'
 					errorMessage={errors.firstName?.message}
-					placeholder='First name'
+					placeholder="First name"
 					{...register("firstName")}
 				/>
 				<Input

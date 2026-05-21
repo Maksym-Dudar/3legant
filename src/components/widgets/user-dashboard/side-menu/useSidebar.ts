@@ -39,7 +39,7 @@ export function useSidebar() {
 		function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
 			const file = event.target.files?.[0];
 			if (!file) {
-				setLocalError(Error("File not find"));
+			setLocalError(Error("File not find"));
 				return;
 			}
 			sendFileMutation.mutate(file);

@@ -19,7 +19,7 @@ export function OderSummary({ data, shippingMethod, total, subtotal }: Props) {
 			</h3>
 			<section className='flex flex-col gap-6 w-full py-4'>
 				{data.map((item) => (
-					<CartItem {...item} isCanChange={false} />
+					<CartItem {...item} isCanChange={false} key={item.id} />
 				))}
 			</section>
 			<section className='flex flex-col'>

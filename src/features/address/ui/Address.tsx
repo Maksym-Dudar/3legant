@@ -23,8 +23,7 @@ export default function Address({ id }: Props) {
 	} = useForm<AddressSchema>({
 		resolver: zodResolver(AddressSchema),
 	});
-	const submit = () =>
-		handleSubmit((data) => 
+	const submit = handleSubmit((data) => 
 			!id ? createAddress(data) : updateAddress({ id, ...data }),
 		);
 	useEffect(() => {
@@ -97,11 +96,14 @@ export default function Address({ id }: Props) {
 				variant='outlined'
 				label='PHONE NUMBER'
 				placeholder='Phone number'
-				errorMessage={errors.phone?.message}
-				{...register("phone")}
+				errorMessage={errors.phoneNumber?.message}
+				{...register("phoneNumber")}
 			/>
-			<Button text={id ? "Update" : "Create"} className='w-fit px-20 py-2' />
+			<Button
+				type='submit'
+				text={id ? "Update" : "Create"}
+				className='w-fit px-20 py-2'
+			/>
 		</form>
 	);
 }
-2;

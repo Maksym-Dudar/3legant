@@ -1,6 +1,3 @@
-import type { PropsWithChildren } from "react";
-import { text } from "stream/consumers";
-
 interface Props {
 	onClick: () => void;
 	size: number;

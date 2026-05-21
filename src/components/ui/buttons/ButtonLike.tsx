@@ -25,5 +25,6 @@ const ButtonLike = forwardRef<HTMLButtonElement, Props>(({ isActive, onClick }, 
 		</button>
 	);
 })
+ButtonLike.displayName = "Button";
 
 export default memo(ButtonLike);

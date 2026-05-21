@@ -1,9 +1,9 @@
 "use client";
 
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import { CreateProductSchema } from "../../model/create-product.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
 	Button,
 	ErrorToast,
@@ -18,10 +18,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { productService } from "@/services/requests";
 import { useErrorToast } from "@/hooks/useErrorToast";
 import { Loading } from "@/components/widgets";
-import { Category } from "@/config/product.config";
+import { BackendCategory, Category } from "@/config/product.config";
 import Image from "next/image";
 import { FieldError } from "@/components/ui/inputs/FieldError";
-import { useRouter } from "next/navigation";
 
 export const optionCreate = {
 	label: "Create",
@@ -33,10 +32,13 @@ export function CreateProduct() {
 		register,
 		control,
 		handleSubmit,
-		watch,
 		formState: { errors },
 	} = useForm<CreateProductSchema>({
 		resolver: zodResolver(CreateProductSchema),
+		defaultValues: {
+			isNew: false,
+			category: [],
+		},
 	});
 
 	const { data, isError, isLoading, error } = useQuery({
@@ -44,13 +46,11 @@ export function CreateProduct() {
 		queryFn: () => productService.getProductGroup(),
 	});
 
-	const [imagesPreview, setImagesPreview] = useState<string[]>([]);
 	const [haveSale, setHaveSale] = useState<boolean>(false);
-	const { errorMessage, closeError, setErrorMessage } = useErrorToast(
+	const { errorMessage, closeError } = useErrorToast(
 		error,
 		isError,
 	);
-	const router = useRouter();
 
 	const groupOptions = (data ?? []).map((val) => ({
 		label: val.title,
@@ -58,53 +58,56 @@ export function CreateProduct() {
 	}));
 	groupOptions.push(optionCreate);
 
-	const categoryOptions = Object.values(Category).map((val) => ({
-		label: String(val),
-		value: String(val)
-			.toLocaleUpperCase()
-			.split(" ")
-			.reduce((acc, word, index) => acc + (index > 0 ? "_" : "") + word, ""),
-	}));
+	const categoryOptions = [
+		{ label: Category.LivingRoom, value: BackendCategory.LivingRoom },
+		{ label: Category.Bedroom, value: BackendCategory.Bedroom },
+		{ label: Category.Kitchen, value: BackendCategory.Kitchen },
+		{ label: Category.Bathroom, value: BackendCategory.Bathroom },
+		{ label: Category.Office, value: BackendCategory.Office },
+	];
+
+	const images = useWatch({ control, name: "images" });
+	const productGroupId = useWatch({ control, name: "productGroupId" });
+
+	const imagesPreview = useMemo(() => {
+		if (!images?.length) {
+			return [];
+		}
+
+		return Array.from(images).map((file) => URL.createObjectURL(file));
+	}, [images]);
 
 	useEffect(() => {
-		const images = watch("images");
-		if (!images) return;
-		const imageUrls = Array.from(images).map((file) =>
-			URL.createObjectURL(file),
-		);
-		setImagesPreview(imageUrls);
-	}, [watch("images")]);
+		if (!imagesPreview.length) return;
+
+		return () => {
+			imagesPreview.forEach((url) => URL.revokeObjectURL(url));
+		};
+	}, [imagesPreview]);
 
 	const createProductMutation = useMutation({
 		mutationFn: (payload: FormData) => productService.createProduct(payload),
 	});
 
-	const submit = handleSubmit(
-		async (payload: Record<string, any>) => {
-			const formData = new FormData();
+	const submit = handleSubmit(async (payload) => {
+		const formData = new FormData();
 
-			Object.entries(payload).forEach(([key, value]) => {
-				if (key === "images" && value instanceof FileList) {
-					Array.from(value).forEach((file) => {
-						formData.append("images", file);
-					});
-				} else if (Array.isArray(value)) {
-					value.forEach((v) => formData.append(key, String(v)));
-				} else {
-					formData.append(key, String(value));
-				}
-			});
+		Object.entries(payload).forEach(([key, value]) => {
+			if (key === "images" && value instanceof FileList) {
+				Array.from(value).forEach((file) => {
+					formData.append("images", file);
+				});
+			} else if (Array.isArray(value)) {
+				value.forEach((v) => formData.append(key, String(v)));
+			} else if (value instanceof Date) {
+				formData.append(key, value.toISOString());
+			} else if (value !== undefined && value !== null) {
+				formData.append(key, String(value));
+			}
+		});
 
-			const res = await createProductMutation.mutateAsync(formData);
-
-			// router.push(PAGE.ADDRESS_CREATE.link);
-
-			return;
-		},
-		(errors) => {
-			console.log("ERRORS", errors);
-		},
-	);
+		await createProductMutation.mutateAsync(formData);
+	});
 
 	if (isLoading) return <Loading />;
 
@@ -184,7 +187,7 @@ export function CreateProduct() {
 							label='PRODUCT NAME'
 							placeholder='Product name'
 							errorMessage={errors.title?.message}
-							disabled={watch("productGroupId") != optionCreate.value}
+							disabled={productGroupId === undefined}
 							{...register("title")}
 						/>
 						<h6 className='text-16 sm:text-18 lg:text-20 font-500 leading-140 pb-2'>

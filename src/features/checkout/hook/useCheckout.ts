@@ -4,27 +4,18 @@ import { ordersService } from "@/services/requests";
 import { useQuery } from "@tanstack/react-query";
 import { getCode, getNames } from "country-list";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useOrder } from "./useOrder";
 
 export function useCheckout() {
 	const sp = useSearchParams();
-	const [error, setError] = useState<Error | null>(null);
 
 	const orderId = Number(sp.get("orderId"));
 
-	useEffect(() => {
-		if (!orderId) setError(new Error("Order not found"));
-	}, [orderId, orderId]);
+	const error = !orderId ? new Error("Order don't found") : null;
 
-	const {
-		data: orderData,
-		isLoading: isLoadingOrder,
-		isError: isErrorOrder,
-		error: errorOrder,
-	} = useQuery({
-		queryKey: ["order", orderId],
-		queryFn: () => ordersService.getOrder(orderId),
-	});
+	const { orderData, isLoadingOrder, isErrorOrder, errorOrder } =
+		useOrder(orderId);
 	const {
 		addressData,
 		isLoading: isLoadingAddress,
@@ -43,7 +34,7 @@ export function useCheckout() {
 				label: item.name,
 				value: item.id,
 			})) ?? [],
-		[],
+		[addressData],
 	);
 
 	const countryOptions = useMemo(
@@ -59,6 +50,7 @@ export function useCheckout() {
 		[],
 	);
 	return {
+		orderId,
 		orderData,
 		addressData,
 		userData,

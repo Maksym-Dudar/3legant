@@ -2,7 +2,6 @@ import { Breadcrumbs } from "@/components/widgets/breadcrumbs/Breadcrumbs";
 import { ContactAbout } from "@/components/widgets/contact/ContactAbout";
 import { ContactHero } from "@/components/widgets/contact/ContactHero";
 import { ContactInfo } from "@/components/widgets/contact/ContactInfo";
-import { SimpleMap } from "@/components/widgets/map/SimpleMap";
 import { ContactMailForm } from "@/features/contact-us/ui/ContactMailForm";
 
 export default function ContactUs() {
@@ -15,7 +14,6 @@ export default function ContactUs() {
 			<ContactInfo />
 			<div className="flex flex-row gap-20">
 				<ContactMailForm />
-				<SimpleMap />
 			</div>
 		</section>
 

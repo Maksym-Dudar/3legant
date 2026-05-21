@@ -116,20 +116,16 @@ class ImageConfig {
 		alt: "check_mark",
 	};
 
-	//image
-
 	MY_PHOTO: IImage = {
 		src: "/contact/me.jpg",
 		alt: "Me",
 	};
 
-	//footer
 	FOOTER_BANNER: IImage = {
 		src: "/market/images/footer_banner/footer_banner.png",
 		alt: "banner",
 	};
 
-	// home
 	PATH_IMAGE_SLIDER: IImage[] = [
 		{
 			alt: "slide1",
@@ -159,33 +155,16 @@ class ImageConfig {
 		},
 	];
 
-	// BIG_BANNER: IImage = {
-	// 	src: "/market/images/main_page/banner_grid/big_banner.png",
-	// 	alt: "Banner 1",
-	// };
-
-	// SMALL_BANNER_1: IImage = {
-	// 	src: "/market/images/main_page/banner_grid/small_banner_1.png",
-	// 	alt: "Banner 2",
-	// };
-
-	// SMALL_BANNER_2: IImage = {
-	// 	src: "/market/images/main_page/banner_grid/small_banner_2.png",
-	// 	alt: "Banner 3",
-	// };
-
 	DISCOUNT_BANNER: IImage = {
 		src: "/market/images/main_page/discount_banner/banner.png",
 		alt: "Banner",
 	};
 
-	//shop
 	SHOP_BANNER: IImage = {
 		src: "/market/images/shop_page/hero_banner/hero_banner.png",
 		alt: "Shop Banner",
 	};
 
-	// auth
 	AUTH_BANNER: IImage = {
 		src: "/auth/banner.png",
 		alt: "Auth Banner",

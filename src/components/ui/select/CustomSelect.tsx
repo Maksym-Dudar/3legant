@@ -82,7 +82,7 @@ const selectStyles = {
 					inputId={id}
 					instanceId={id}
 					options={options}
-					value={value as any} // TS тут любить підкидати через generic
+					value={value as any} // TS complains here because of the generic
 					onChange={(val) => onChange(val as any)}
 					placeholder={placeholder}
 					styles={selectStyles}

@@ -8,7 +8,6 @@ import {
 	Swiper,
 } from "./_sections";
 import { ProductRow } from "@/features/product/ui/ProductRow";
-// import HomeArticlesSection from "@/features/blog/ui/HomeArticlesSection";
 
 export default function Home() {
 	return (
@@ -26,9 +25,6 @@ export default function Home() {
 				</div>
 			</PaddingXLayouts>
 			<DiscountBanner />
-			{/* <PaddingXLayouts>
-				<HomeArticlesSection />
-			</PaddingXLayouts> */}
 		</>
 	);
 }

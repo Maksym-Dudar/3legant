@@ -1,4 +1,4 @@
-interface ISendMailDto {
+export interface ISendMailDto {
 	name: string;
 	email: string;
 	message: string;

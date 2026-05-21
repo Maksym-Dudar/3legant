@@ -6,15 +6,18 @@ import Link from "next/link";
 import PaddingXLayouts from "@/components/layout/PaddingXLayouts";
 import { PAGE } from "@/config/page.config";
 import { Navigation } from "../navigation/Navigation";
-import { showMobileAdaptive } from "@/utils/mobileAdaptive";
 import { useOverlay } from "@/provider/overlay/OverlayProvider";
 import { useCart } from "@/features/cart/hook/useCart";
 import { HeaderControls } from "./HeaderControls";
+import { useWindowSize } from "@/hooks";
+import { mobileSize } from "@/constants/windowSize";
 
 export function Header() {
-	const showAdaptive = showMobileAdaptive();
+	const { width } = useWindowSize();
 	const { open } = useOverlay();
-	const { data } = useCart()
+	const { data } = useCart();
+
+	const showAdaptive = width < mobileSize;
 
 	return (
 		<PaddingXLayouts>
