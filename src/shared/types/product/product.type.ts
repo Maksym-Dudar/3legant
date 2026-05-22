@@ -50,7 +50,7 @@ export interface IProductParams {
 	category?: BackendCategory;
 	maxPrice?: number;
 	minPrice?: number;
-	groupId?: number[] | undefined;
+	groupId?: string;
 }
 
 export interface IWishlist {

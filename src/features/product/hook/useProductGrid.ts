@@ -29,11 +29,7 @@ export function useProductGrid() {
 		PriceRanges[Prices.All].min,
 	);
 	const paramTake = toNumber(sp.get("take"), DEFAULT_PRODUCTS_LIMIT);
-	const paramGroupId = sp
-		.get("groupId")
-		?.split(",")
-		.map((val) => toNumberOrNull(val))
-		.filter((val): val is number => val !== null);
+	const paramGroupId = sp.get("groupId") ?? undefined;
 	
 	const { filter, setFilter } = useShopContext();
 	const params = useMemo(
