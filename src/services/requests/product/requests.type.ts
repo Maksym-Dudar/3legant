@@ -5,7 +5,7 @@ export interface IGetSearchRequest {
 }
 
 export interface IGetWishlistRequest {
-	wishlist: string;
+	ids: string;
 }
 
 export interface ICreateProduct extends CreateProductSchema {}

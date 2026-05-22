@@ -2,7 +2,6 @@ class ApiConfig {
 	USER = "/user";
 	USER_AVATAR = `${this.USER}/avatar`;
 	USER_WISHLIST = `${this.USER}/wishlist`;
-	USER_ORDERS = `${this.USER}/orders`;
 
 	ADDRESS = "/address";
 	ADDRESS_ALL = "/address/all";
@@ -37,7 +36,8 @@ class ApiConfig {
 	getCompleteOrderById(id: number) {
 		return `${this.ORDER}/complete?orderId=${id}`;
 	}
-	DELIVERY_METHODS = "/order/delivery-methods"
+	DELIVERY_METHODS = "/order/delivery-methods";
+	USER_ORDERS = `${this.ORDER}/all`;
 }
 
 export const API = new ApiConfig();

@@ -22,7 +22,7 @@ export function WishlistTable() {
 	} = useQuery({
 		queryKey: ["wishlist", wishlistIdsString],
 		queryFn: ({ signal }) =>
-			productService.getWishlist({ wishlist: wishlistIdsString }, signal),
+			productService.getWishlist({ ids: wishlistIdsString }, signal),
 	});
 
 	const { errorMessage, closeError } = useErrorToast(error, isError);

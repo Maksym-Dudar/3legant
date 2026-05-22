@@ -29,8 +29,12 @@ export function useProductGrid() {
 		PriceRanges[Prices.All].min,
 	);
 	const paramTake = toNumber(sp.get("take"), DEFAULT_PRODUCTS_LIMIT);
-	const paramGroupId = toNumberOrNull(sp.get("group-id"));
-
+	const paramGroupId = sp
+		.get("groupId")
+		?.split(",")
+		.map((val) => toNumberOrNull(val))
+		.filter((val): val is number => val !== null);
+	
 	const { filter, setFilter } = useShopContext();
 	const params = useMemo(
 		() => ({
@@ -77,7 +81,7 @@ export function useProductGrid() {
 			lastPage.length < paramTake ? undefined : pages.length + 1,
 	});
 	return {
-		data: data?.pages.flatMap(page => page) ?? [],
+		data: data?.pages.flatMap((page) => page) ?? [],
 		fetchNextPage,
 		hasNextPage,
 		isFetchingNextPage,
