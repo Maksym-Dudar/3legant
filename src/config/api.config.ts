@@ -1,7 +1,6 @@
 class ApiConfig {
 	USER = "/user";
 	USER_AVATAR = `${this.USER}/avatar`;
-	USER_WISHLIST = `${this.USER}/wishlist`;
 
 	ADDRESS = "/address";
 	ADDRESS_ALL = "/address/all";
@@ -16,6 +15,7 @@ class ApiConfig {
 	PRODUCT_BAG = `${this.PRODUCT}/bag`;
 	PRODUCT_GROUP = `${this.PRODUCT}/group`;
 	PRODUCT_DETAILS = `${this.PRODUCT}/details`;
+	USER_WISHLIST = `${this.PRODUCT}/wishlist`;
 
 	AUTH = "/auth";
 	AUTH_SIGN_IN = `${this.AUTH}/sign-in`;
