@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "https://webcorseworkbakend.up.railway.app/:path*",
+        destination: "https://3elegant-backend.up.railway.app/:path*",
       },
     ];
   },
