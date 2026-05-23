@@ -10,16 +10,23 @@ import { userService } from "@/services/requests";
 import type { IPartialUser } from "@/shared/types/user/user.type";
 import { Button, ErrorToast } from "@/components/ui";
 import { AccountSchema } from "../model/account.schema";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useUser } from "../hook/useUser";
 
 export function Account() {
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<AccountSchema>({
 		resolver: zodResolver(AccountSchema),
 	});
+
+	const {userData } = useUser()
+		useEffect(() => {
+			userData && reset(userData);
+		}, [userData, reset]);
 
 	const [error, setError] = useState("");
 
